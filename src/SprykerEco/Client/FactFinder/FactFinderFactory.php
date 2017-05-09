@@ -14,7 +14,6 @@ use SprykerEco\Client\FactFinder\Business\Api\Handler\Request\SearchRequest;
 use SprykerEco\Client\FactFinder\Business\Api\Handler\Request\SuggestRequest;
 use SprykerEco\Client\FactFinder\Business\Api\Handler\Request\TrackingRequest;
 use Spryker\Client\Kernel\AbstractFactory;
-use Spryker\Client\Quote\Session\QuoteSession;
 
 /**
  * @method \SprykerEco\Client\FactFinder\FactFinderConfig getConfig()
@@ -80,14 +79,6 @@ class FactFinderFactory extends AbstractFactory
     protected function createConverterFactory()
     {
         return new ConverterFactory();
-    }
-
-    /**
-     * @return \Spryker\Client\Quote\Session\QuoteSession
-     */
-    public function createQuoteSession()
-    {
-        return new QuoteSession($this->getProvidedDependency(FactFinderDependencyProvider::CLIENT_SESSION));
     }
 
     /**

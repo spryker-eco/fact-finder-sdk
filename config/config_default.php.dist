@@ -45,4 +45,5 @@ $config[FactFinderConstants::EXPORT_QUERY_LIMIT] = 1000;
 $config[FactFinderConstants::EXPORT_FILE_NAME_PREFIX] = 'product';
 $config[FactFinderConstants::EXPORT_FILE_NAME_DELIMITER] = '_';
 $config[FactFinderConstants::EXPORT_FILE_EXTENSION] = '.csv';
-$config[FactFinderConstants::PHP_LOGGER_CONFIG_PATH] = APPLICATION_ROOT_DIR . '/config/Shared/log4php.xml'
+$config[FactFinderConstants::PHP_LOGGER_CONFIG_PATH] = APPLICATION_ROOT_DIR . '/config/Shared/log4php.xml';
+$config[FactFinderConstants::DETAIL_PAGE_URL] = '/fact-finder/detail/';

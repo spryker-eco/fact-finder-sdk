@@ -69,4 +69,12 @@ class FactFinderConfig extends AbstractBundleConfig
         return $this->get(FactFinderConstants::EXPORT_FILE_EXTENSION);
     }
 
+    /**
+     * @return string
+     */
+    public function getDetailPageUrl()
+    {
+        return $this->get(FactFinderConstants::DETAIL_PAGE_URL);
+    }
+
 }

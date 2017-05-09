@@ -41,6 +41,8 @@ class SuggestResponseConverter extends BaseConverter
                 'label' => $suggestion->getLabel(),
                 'url' => $suggestion->getUrl(),
                 'attributes' => $suggestion->getAttributes(),
+                'type' => $suggestion->getType(),
+                'hitCount' => $suggestion->getHitCount(),
             ]);
         }
 

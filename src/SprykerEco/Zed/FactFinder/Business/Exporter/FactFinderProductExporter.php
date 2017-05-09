@@ -197,7 +197,8 @@ class FactFinderProductExporter implements FactFinderProductExporterInterface
      */
     protected function addProductUrl($data)
     {
-        $productUrl = "/fact-finder/detail/{$data[FactFinderConstants::ITEM_PRODUCT_NUMBER]}";
+        $productUrl = $this->factFinderConfig
+                ->getDetailPageUrl() . $data[FactFinderConstants::ITEM_PRODUCT_NUMBER];
         $data[FactFinderConstants::ITEM_PRODUCT_URL] = $productUrl;
 
         return $data;
