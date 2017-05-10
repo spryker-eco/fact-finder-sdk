@@ -12,7 +12,6 @@ use Codeception\TestCase\Test;
 use SprykerEco\Zed\FactFinder\Business\FactFinderBusinessFactory;
 use SprykerEco\Zed\FactFinder\Business\FactFinderFacade;
 use SprykerEco\Zed\FactFinder\FactFinderConfig;
-use SprykerEco\Zed\FactFinder\Persistence\FactFinderQueryContainer;
 use Spryker\Zed\Locale\Business\LocaleFacade;
 
 /**
@@ -42,7 +41,7 @@ class FactFinderFacadeTest extends Test
     {
         $localeTransfer = $this->getLocaleTransfer('de_DE');
 
-        $this->factFinderFacade->setFactory($this->createFactoryMock());
+        $this->factFinderFacade->setFactory($this->createFactory());
         $this->factFinderFacade->createFactFinderCsv($localeTransfer);
 
         $this->assertFileExists(Configuration::outputDir() . 'product_de_DE.csv');
@@ -83,18 +82,14 @@ class FactFinderFacadeTest extends Test
     }
 
     /**
-     * @return \PHPUnit_Framework_MockObject_MockObject|\Spryker\Zed\Kernel\Business\AbstractBusinessFactory
+     * @return \Spryker\Zed\Kernel\Business\AbstractBusinessFactory
      */
-    protected function createFactoryMock()
+    protected function createFactory()
     {
-        $factoryMock = $this->createMock(FactFinderBusinessFactory::class);
-        $factoryMock->method('getConfig')
-            ->willReturn($this->createConfigMock());
+        $factory = new FactFinderBusinessFactory();
+        $factory->setConfig($this->createConfigMock());
 
-        $queryContainer = new FactFinderQueryContainer();
-        $factoryMock->setQueryContainer($queryContainer);
-
-        return $factoryMock;
+        return $factory;
     }
 
 }
