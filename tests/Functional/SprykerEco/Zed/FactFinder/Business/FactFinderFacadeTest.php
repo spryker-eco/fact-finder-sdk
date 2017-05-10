@@ -9,10 +9,10 @@ namespace Functional\SprykerEco\Zed\FactFinder\Business;
 
 use Codeception\Configuration;
 use Codeception\TestCase\Test;
+use Spryker\Zed\Locale\Business\LocaleFacade;
 use SprykerEco\Zed\FactFinder\Business\FactFinderBusinessFactory;
 use SprykerEco\Zed\FactFinder\Business\FactFinderFacade;
 use SprykerEco\Zed\FactFinder\FactFinderConfig;
-use Spryker\Zed\Locale\Business\LocaleFacade;
 
 /**
  * @group Functional
@@ -26,10 +26,13 @@ class FactFinderFacadeTest extends Test
 {
 
     /**
-     * @var FactFinderFacade
+     * @var \SprykerEco\Zed\FactFinder\Business\FactFinderFacade
      */
     protected $factFinderFacade;
 
+    /**
+     * @return void
+     */
     public function setUp()
     {
         parent::setUp();
@@ -37,6 +40,9 @@ class FactFinderFacadeTest extends Test
         $this->factFinderFacade = new FactFinderFacade();
     }
 
+    /**
+     * @return void
+     */
     public function testCreateFactFinderCsv()
     {
         $localeTransfer = $this->getLocaleTransfer('de_DE');
@@ -48,7 +54,7 @@ class FactFinderFacadeTest extends Test
     }
 
     /**
-     * @param $localeName
+     * @param string $localeName
      *
      * @return \Generated\Shared\Transfer\LocaleTransfer
      */

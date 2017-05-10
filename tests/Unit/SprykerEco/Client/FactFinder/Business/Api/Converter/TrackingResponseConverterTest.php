@@ -41,7 +41,7 @@ class TrackingResponseConverterTest extends PHPUnit_Framework_TestCase
      */
     protected function createTrackingAdapterMock()
     {
-        $trackingAdapterMock =  $this->getMockBuilder(Tracking::class)
+        $trackingAdapterMock = $this->getMockBuilder(Tracking::class)
             ->disableOriginalConstructor()
             ->getMock();
 
@@ -49,10 +49,11 @@ class TrackingResponseConverterTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @return FactFinderTrackingResponseTransfer
+     * @return \Generated\Shared\Transfer\FactFinderTrackingResponseTransfer
      */
     protected function getExpectedTransferObject()
     {
         return new FactFinderTrackingResponseTransfer();
     }
+
 }

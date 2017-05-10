@@ -7,8 +7,8 @@
 
 namespace SprykerEco\Client\FactFinder;
 
-use SprykerEco\Shared\FactFinder\FactFinderConstants;
 use Spryker\Zed\Kernel\AbstractBundleConfig;
+use SprykerEco\Shared\FactFinder\FactFinderConstants;
 
 class FactFinderConfig extends AbstractBundleConfig
 {

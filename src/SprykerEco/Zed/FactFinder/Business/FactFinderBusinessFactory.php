@@ -8,11 +8,11 @@
 namespace SprykerEco\Zed\FactFinder\Business;
 
 use Generated\Shared\Transfer\LocaleTransfer;
+use Spryker\Zed\Kernel\Business\AbstractBusinessFactory;
 use SprykerEco\Zed\FactFinder\Business\Exporter\FactFinderProductExporter;
 use SprykerEco\Zed\FactFinder\Business\Writer\AbstractFileWriter;
 use SprykerEco\Zed\FactFinder\Business\Writer\CsvFileWriter;
 use SprykerEco\Zed\FactFinder\FactFinderDependencyProvider;
-use Spryker\Zed\Kernel\Business\AbstractBusinessFactory;
 
 /**
  * @method \SprykerEco\Zed\FactFinder\Persistence\FactFinderQueryContainerInterface getQueryContainer()

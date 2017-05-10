@@ -19,9 +19,9 @@ use Orm\Zed\Product\Persistence\SpyProductAbstractQuery;
 use Orm\Zed\ProductCategory\Persistence\Map\SpyProductCategoryTableMap;
 use Orm\Zed\ProductImage\Persistence\Map\SpyProductImageTableMap;
 use Orm\Zed\Stock\Persistence\Map\SpyStockProductTableMap;
-use SprykerEco\Shared\FactFinder\FactFinderConstants;
 use Spryker\Zed\Kernel\Persistence\AbstractQueryContainer;
 use Spryker\Zed\PropelOrm\Business\Runtime\ActiveQuery\Criteria;
+use SprykerEco\Shared\FactFinder\FactFinderConstants;
 
 /**
  * @method \SprykerEco\Zed\FactFinder\Persistence\FactFinderPersistenceFactory getFactory()

@@ -29,7 +29,6 @@ class SuggestResponseConverterTest extends PHPUnit_Framework_TestCase
      */
     public function testConvert()
     {
-
         $suggestResponseConverter = new SuggestResponseConverter($this->createSuggestAdapterMock());
         $resultFactFinderSuggestResponseTransfer = $suggestResponseConverter->convert();
 
@@ -41,11 +40,11 @@ class SuggestResponseConverterTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @return \PHPUnit_Framework_MockObject_MockObject|Suggest
+     * @return \PHPUnit_Framework_MockObject_MockObject|\FACTFinder\Adapter\Suggest
      */
     protected function createSuggestAdapterMock()
     {
-        $suggestAdapterMock =  $this->getMockBuilder(Suggest::class)
+        $suggestAdapterMock = $this->getMockBuilder(Suggest::class)
             ->disableOriginalConstructor()
             ->getMock();
 
@@ -54,12 +53,11 @@ class SuggestResponseConverterTest extends PHPUnit_Framework_TestCase
                 $this->getSuggestQuery(),
             ]);
 
-
         return $suggestAdapterMock;
     }
 
     /**
-     * @return SuggestQuery
+     * @return \FACTFinder\Data\SuggestQuery
      */
     protected function getSuggestQuery()
     {
@@ -74,7 +72,7 @@ class SuggestResponseConverterTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @return FactFinderSuggestResponseTransfer
+     * @return \Generated\Shared\Transfer\FactFinderSuggestResponseTransfer
      */
     protected function getExpectedTransferObject()
     {
@@ -87,9 +85,10 @@ class SuggestResponseConverterTest extends PHPUnit_Framework_TestCase
                 'attributes' => [],
                 'type' => 'product',
                 'hitCount' => 0,
-            ]
+            ],
         ]);
 
         return $factFinderSuggestResponseTransfer;
     }
+
 }

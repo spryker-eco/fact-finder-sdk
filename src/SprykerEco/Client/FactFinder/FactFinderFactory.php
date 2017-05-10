@@ -7,13 +7,13 @@
 
 namespace SprykerEco\Client\FactFinder;
 
+use Spryker\Client\Kernel\AbstractFactory;
 use SprykerEco\Client\FactFinder\Business\Api\Converter\ConverterFactory;
 use SprykerEco\Client\FactFinder\Business\Api\FactFinderConnector;
 use SprykerEco\Client\FactFinder\Business\Api\Handler\Request\RecommendationRequest;
 use SprykerEco\Client\FactFinder\Business\Api\Handler\Request\SearchRequest;
 use SprykerEco\Client\FactFinder\Business\Api\Handler\Request\SuggestRequest;
 use SprykerEco\Client\FactFinder\Business\Api\Handler\Request\TrackingRequest;
-use Spryker\Client\Kernel\AbstractFactory;
 
 /**
  * @method \SprykerEco\Client\FactFinder\FactFinderConfig getConfig()

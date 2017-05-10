@@ -7,8 +7,8 @@
 
 namespace SprykerEco\Zed\FactFinder\Communication;
 
-use SprykerEco\Zed\FactFinder\FactFinderDependencyProvider;
 use Spryker\Zed\Kernel\Communication\AbstractCommunicationFactory;
+use SprykerEco\Zed\FactFinder\FactFinderDependencyProvider;
 
 /**
  * @method \SprykerEco\Zed\FactFinder\Persistence\FactFinderQueryContainerInterface getQueryContainer()

@@ -7,6 +7,7 @@
 
 namespace Unit\SprykerEco\Client\FactFinder\Business\Api\Converter;
 
+use ArrayObject;
 use FACTFinder\Adapter\Search;
 use FACTFinder\Data\Record;
 use FACTFinder\Data\Result;
@@ -62,8 +63,8 @@ class SearchResponseConverterTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @param Search $searchAdapter
-     * @param ConverterFactory $converterFactory
+     * @param \FACTFinder\Adapter\Search $searchAdapter
+     * @param \SprykerEco\Client\FactFinder\Business\Api\Converter\ConverterFactory $converterFactory
      *
      * @return \PHPUnit_Framework_MockObject_MockObject|\SprykerEco\Client\FactFinder\Business\Api\Converter\SearchResponseConverter
      */
@@ -104,7 +105,7 @@ class SearchResponseConverterTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @return Result
+     * @return \FACTFinder\Data\Result
      */
     protected function createResult()
     {
@@ -150,12 +151,12 @@ class SearchResponseConverterTest extends PHPUnit_Framework_TestCase
                 ],
                 99.980000000000004,
                 2
-            )
+            ),
         ], 2);
     }
 
     /**
-     * @return FactFinderSearchResponseTransfer
+     * @return \Generated\Shared\Transfer\FactFinderSearchResponseTransfer
      */
     protected function createExpectedTransfer()
     {
@@ -167,7 +168,7 @@ class SearchResponseConverterTest extends PHPUnit_Framework_TestCase
         $searchResponseTransfer->setPaging($this->getPagingTransfer());
         $searchResponseTransfer->setResult($this->getResultTransfer());
         $searchResponseTransfer->setResultsPerPageOptions($this->getResultPerPageTransfer());
-        $searchResponseTransfer->setSingleWordSearchItems(new \ArrayObject());
+        $searchResponseTransfer->setSingleWordSearchItems(new ArrayObject());
         $searchResponseTransfer->setSortingItems($this->getSortingItemsArray());
         $searchResponseTransfer->setFollowSearchValue('9998');
         $searchResponseTransfer->setIsSearchTimedOut(false);
@@ -176,7 +177,7 @@ class SearchResponseConverterTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @return FactFinderDataResultsPerPageOptionsTransfer
+     * @return \Generated\Shared\Transfer\FactFinderDataResultsPerPageOptionsTransfer
      */
     protected function getResultPerPageTransfer()
     {
@@ -185,7 +186,7 @@ class SearchResponseConverterTest extends PHPUnit_Framework_TestCase
         $defaultOption->setSelected(true);
         $defaultOption->setUrl(' ');
 
-        $defaultOptionArray = new \ArrayObject();
+        $defaultOptionArray = new ArrayObject();
         $defaultOptionArray->append($defaultOption);
 
         $resultPerPage = new FactFinderDataResultsPerPageOptionsTransfer();
@@ -197,7 +198,7 @@ class SearchResponseConverterTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @return FactFinderDataPagingTransfer
+     * @return \Generated\Shared\Transfer\FactFinderDataPagingTransfer
      */
     protected function getPagingTransfer()
     {
@@ -240,26 +241,26 @@ class SearchResponseConverterTest extends PHPUnit_Framework_TestCase
         $breadCrumb->setFieldName('');
         $breadCrumb->setItem($item);
 
-        $breadCrumbArray = new \ArrayObject();
+        $breadCrumbArray = new ArrayObject();
         $breadCrumbArray->append($breadCrumb);
 
         return $breadCrumbArray;
     }
 
     /**
-     * @return FactFinderDataAfterSearchNavigationTransfer
+     * @return \Generated\Shared\Transfer\FactFinderDataAfterSearchNavigationTransfer
      */
     protected function getAfterSearchNavigationTransfer()
     {
         $afterSearchNavigation = new FactFinderDataAfterSearchNavigationTransfer();
-        $afterSearchNavigation->setFilterGroups(new \ArrayObject());
+        $afterSearchNavigation->setFilterGroups(new ArrayObject());
         $afterSearchNavigation->setHasPreviewImages(false);
 
         return $afterSearchNavigation;
     }
 
     /**
-     * @return FactFinderDataCampaignIteratorTransfer
+     * @return \Generated\Shared\Transfer\FactFinderDataCampaignIteratorTransfer
      */
     protected function getCampaignIteratorTransfer()
     {
@@ -269,11 +270,11 @@ class SearchResponseConverterTest extends PHPUnit_Framework_TestCase
         $campaignIterator->setHasPushedProducts(false);
         $campaignIterator->setHasActiveQuestions(false);
         $campaignIterator->setHasAdvisorTree(false);
-        $campaignIterator->setPushedProducts(new \ArrayObject());
-        $campaignIterator->setGetActiveQuestions(new \ArrayObject());
-        $campaignIterator->setGetActiveQuestions(new \ArrayObject());
-        $campaignIterator->setAdvisorTree(new \ArrayObject());
-        $campaignIterator->setCampaigns(new \ArrayObject());
+        $campaignIterator->setPushedProducts(new ArrayObject());
+        $campaignIterator->setGetActiveQuestions(new ArrayObject());
+        $campaignIterator->setGetActiveQuestions(new ArrayObject());
+        $campaignIterator->setAdvisorTree(new ArrayObject());
+        $campaignIterator->setCampaigns(new ArrayObject());
         $campaignIterator->setHasFeedback(null);
 
         return $campaignIterator;
@@ -292,7 +293,7 @@ class SearchResponseConverterTest extends PHPUnit_Framework_TestCase
             'sort.priceDesc',
         ];
 
-        $resultArray = new \ArrayObject();
+        $resultArray = new ArrayObject();
 
         foreach ($labels as $label) {
             $sortingItem = new FactFinderDataItemTransfer();
@@ -312,7 +313,7 @@ class SearchResponseConverterTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @return FactFinderDataResultTransfer
+     * @return \Generated\Shared\Transfer\FactFinderDataResultTransfer
      */
     protected function getResultTransfer()
     {
@@ -348,7 +349,7 @@ class SearchResponseConverterTest extends PHPUnit_Framework_TestCase
             'Description',
         ]);
 
-        $recordsArray = new \ArrayObject();
+        $recordsArray = new ArrayObject();
 
         $recordsArray->append($dataRecord);
 

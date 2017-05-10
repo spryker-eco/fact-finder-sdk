@@ -7,11 +7,11 @@
 
 namespace SprykerEco\Zed\FactFinder;
 
+use Spryker\Zed\Kernel\AbstractBundleDependencyProvider;
+use Spryker\Zed\Kernel\Container;
 use SprykerEco\Zed\FactFinder\Dependency\Facade\FactFinderToLocaleBridge;
 use SprykerEco\Zed\FactFinder\Dependency\Persistence\FactFinderToCategoryDataFeedBridge;
 use SprykerEco\Zed\FactFinder\Dependency\Persistence\FactFinderToProductAbstractDataFeedBridge;
-use Spryker\Zed\Kernel\AbstractBundleDependencyProvider;
-use Spryker\Zed\Kernel\Container;
 
 class FactFinderDependencyProvider extends AbstractBundleDependencyProvider
 {

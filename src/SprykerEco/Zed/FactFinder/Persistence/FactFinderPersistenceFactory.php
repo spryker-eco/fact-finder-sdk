@@ -7,8 +7,8 @@
 
 namespace SprykerEco\Zed\FactFinder\Persistence;
 
-use SprykerEco\Zed\FactFinder\FactFinderDependencyProvider;
 use Spryker\Zed\Kernel\Persistence\AbstractPersistenceFactory;
+use SprykerEco\Zed\FactFinder\FactFinderDependencyProvider;
 
 /**
  * @method \SprykerEco\Zed\FactFinder\FactFinderConfig getConfig()
