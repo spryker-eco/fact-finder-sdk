@@ -218,9 +218,9 @@ class FactFinderProductExporter implements FactFinderProductExporterInterface
         );
 
         if (empty($parentCategoryName)) {
-            $categoryPath = $data[FactFinderConstants::ITEM_CATEGORY];
+            $categoryPath = urlencode($data[FactFinderConstants::ITEM_CATEGORY]);
         } else {
-            $categoryPath = $parentCategoryName . '/' . $data[FactFinderConstants::ITEM_CATEGORY];
+            $categoryPath = $parentCategoryName . '/' . urlencode($data[FactFinderConstants::ITEM_CATEGORY]);
         }
         $data[FactFinderConstants::ITEM_CATEGORY_PATH] = $categoryPath;
 
