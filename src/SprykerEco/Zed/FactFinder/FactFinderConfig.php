@@ -7,6 +7,7 @@
 
 namespace SprykerEco\Zed\FactFinder;
 
+use Spryker\Shared\Application\ApplicationConstants;
 use Spryker\Zed\Kernel\AbstractBundleConfig;
 use SprykerEco\Shared\FactFinder\FactFinderConstants;
 
@@ -72,9 +73,9 @@ class FactFinderConfig extends AbstractBundleConfig
     /**
      * @return string
      */
-    public function getDetailPageUrl()
+    public function getYvesHost()
     {
-        return $this->get(FactFinderConstants::DETAIL_PAGE_URL);
+        return $this->get(ApplicationConstants::HOST_YVES);
     }
 
 }

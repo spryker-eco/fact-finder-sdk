@@ -19,6 +19,7 @@ use Orm\Zed\Product\Persistence\SpyProductAbstractQuery;
 use Orm\Zed\ProductCategory\Persistence\Map\SpyProductCategoryTableMap;
 use Orm\Zed\ProductImage\Persistence\Map\SpyProductImageTableMap;
 use Orm\Zed\Stock\Persistence\Map\SpyStockProductTableMap;
+use Orm\Zed\Url\Persistence\Map\SpyUrlTableMap;
 use Spryker\Zed\Kernel\Persistence\AbstractQueryContainer;
 use Spryker\Zed\PropelOrm\Business\Runtime\ActiveQuery\Criteria;
 use SprykerEco\Shared\FactFinder\FactFinderConstants;
@@ -52,6 +53,11 @@ class FactFinderQueryContainer extends AbstractQueryContainer implements FactFin
         $productsAbstractQuery = $this->getFactory()
             ->getProductAbstractDataFeedQueryContainer()
             ->queryAbstractProductDataFeed($productAbstractDataFeedTransfer);
+
+        $productsAbstractQuery
+            ->useSpyUrlQuery()
+                ->filterByFkLocale($localeTransfer->getIdLocale())
+            ->endUse();
 
         $productsAbstractQuery = $this->addColumns($productsAbstractQuery);
         $productsAbstractQuery = $this->addInStockConditions($productsAbstractQuery);
@@ -97,6 +103,7 @@ class FactFinderQueryContainer extends AbstractQueryContainer implements FactFin
         $productsAbstractQuery->withColumn(SpyProductLocalizedAttributesTableMap::COL_DESCRIPTION, FactFinderConstants::ITEM_DESCRIPTION);
         $productsAbstractQuery->withColumn(SpyProductCategoryTableMap::COL_FK_CATEGORY, FactFinderConstants::ITEM_CATEGORY_ID);
         $productsAbstractQuery->withColumn(SpyCategoryNodeTableMap::COL_FK_PARENT_CATEGORY_NODE, FactFinderConstants::ITEM_PARENT_CATEGORY_NODE_ID);
+        $productsAbstractQuery->withColumn(SpyUrlTableMap::COL_URL, FactFinderConstants::ITEM_PRODUCT_URL);
 
         return $productsAbstractQuery;
     }

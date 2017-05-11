@@ -57,6 +57,14 @@ class FactFinderBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
+     * @return \SprykerEco\Zed\FactFinder\Dependency\Facade\FactFinderToMoneyInterface
+     */
+    public function getMoneyFacade()
+    {
+        return $this->getProvidedDependency(FactFinderDependencyProvider::MONEY_FACADE);
+    }
+
+    /**
      * @param \SprykerEco\Zed\FactFinder\Business\Writer\AbstractFileWriter $fileWriter
      * @param \Generated\Shared\Transfer\LocaleTransfer $localeTransfer
      *
@@ -68,7 +76,8 @@ class FactFinderBusinessFactory extends AbstractBusinessFactory
             $fileWriter,
             $localeTransfer,
             $this->getConfig(),
-            $this->getQueryContainer()
+            $this->getQueryContainer(),
+            $this->getMoneyFacade()
         );
     }
 

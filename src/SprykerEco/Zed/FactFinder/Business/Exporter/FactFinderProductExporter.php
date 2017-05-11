@@ -11,6 +11,7 @@ use Generated\Shared\Transfer\LocaleTransfer;
 use Orm\Zed\Product\Persistence\Base\SpyProductAbstractQuery;
 use SprykerEco\Shared\FactFinder\FactFinderConstants;
 use SprykerEco\Zed\FactFinder\Business\Writer\AbstractFileWriter;
+use SprykerEco\Zed\FactFinder\Dependency\Facade\FactFinderToMoneyInterface;
 use SprykerEco\Zed\FactFinder\FactFinderConfig;
 use SprykerEco\Zed\FactFinder\Persistence\FactFinderQueryContainerInterface;
 
@@ -63,18 +64,25 @@ class FactFinderProductExporter implements FactFinderProductExporterInterface
     protected $factFinderConfig;
 
     /**
+     * @var \SprykerEco\Zed\FactFinder\Dependency\Facade\FactFinderToMoneyInterface
+     */
+    private $money;
+
+    /**
      * FactFinderProductExporterPlugin constructor.
      *
      * @param \SprykerEco\Zed\FactFinder\Business\Writer\AbstractFileWriter $fileWriter
      * @param \Generated\Shared\Transfer\LocaleTransfer $localeTransfer
      * @param \SprykerEco\Zed\FactFinder\FactFinderConfig $factFinderConfig
      * @param \SprykerEco\Zed\FactFinder\Persistence\FactFinderQueryContainerInterface $factFinderQueryContainer
+     * @param \SprykerEco\Zed\FactFinder\Dependency\Facade\FactFinderToMoneyInterface $money
      */
     public function __construct(
         AbstractFileWriter $fileWriter,
         LocaleTransfer $localeTransfer,
         FactFinderConfig $factFinderConfig,
-        FactFinderQueryContainerInterface $factFinderQueryContainer
+        FactFinderQueryContainerInterface $factFinderQueryContainer,
+        FactFinderToMoneyInterface $money
     ) {
 
         $this->fileWriter = $fileWriter;
@@ -85,6 +93,7 @@ class FactFinderProductExporter implements FactFinderProductExporterInterface
         $this->fileExtension = $factFinderConfig->getExportFileExtension();
         $this->factFinderQueryContainer = $factFinderQueryContainer;
         $this->factFinderConfig = $factFinderConfig;
+        $this->money = $money;
     }
 
     /**
@@ -176,6 +185,7 @@ class FactFinderProductExporter implements FactFinderProductExporterInterface
         foreach ($data as $row) {
             $prepared = [];
             $row = $this->addProductUrl($row);
+            $row = $this->convertPrice($row);
             $row = $this->addCategoryPath($row, $localeTransfer);
 
             foreach ($headers as $headerName) {
@@ -198,8 +208,23 @@ class FactFinderProductExporter implements FactFinderProductExporterInterface
     protected function addProductUrl($data)
     {
         $productUrl = $this->factFinderConfig
-                ->getDetailPageUrl() . $data[FactFinderConstants::ITEM_PRODUCT_NUMBER];
+                ->getYvesHost() . $data[FactFinderConstants::ITEM_PRODUCT_URL];
         $data[FactFinderConstants::ITEM_PRODUCT_URL] = $productUrl;
+
+        return $data;
+    }
+
+    /**
+     * @param array $data
+     *
+     * @return array mixed
+     */
+    protected function convertPrice($data)
+    {
+        $price = $this->money
+            ->convertIntegerToDecimal($data[FactFinderConstants::ITEM_PRICE]);
+
+        $data[FactFinderConstants::ITEM_PRICE] = $price;
 
         return $data;
     }

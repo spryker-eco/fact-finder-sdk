@@ -10,6 +10,7 @@ namespace SprykerEco\Zed\FactFinder;
 use Spryker\Zed\Kernel\AbstractBundleDependencyProvider;
 use Spryker\Zed\Kernel\Container;
 use SprykerEco\Zed\FactFinder\Dependency\Facade\FactFinderToLocaleBridge;
+use SprykerEco\Zed\FactFinder\Dependency\Facade\FactFinderToMoneyBridge;
 use SprykerEco\Zed\FactFinder\Dependency\Persistence\FactFinderToCategoryDataFeedBridge;
 use SprykerEco\Zed\FactFinder\Dependency\Persistence\FactFinderToProductAbstractDataFeedBridge;
 
@@ -19,6 +20,7 @@ class FactFinderDependencyProvider extends AbstractBundleDependencyProvider
     const PRODUCT_ABSTRACT_DATA_FEED = 'PRODUCT_ABSTRACT_DATA_FEED';
     const CATEGORY_DATA_FEED = 'CATEGORY_DATA_FEED';
     const LOCALE_FACADE = 'LOCALE_FACADE';
+    const MONEY_FACADE = 'MONEY_FACADE';
 
     /**
      * @param \Spryker\Zed\Kernel\Container $container
@@ -59,6 +61,24 @@ class FactFinderDependencyProvider extends AbstractBundleDependencyProvider
                 ->queryContainer();
 
             return new FactFinderToCategoryDataFeedBridge($categoryDataFeedQueryContainer);
+        };
+
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    public function provideBusinessLayerDependencies(Container $container)
+    {
+        $container[self::MONEY_FACADE] = function (Container $container) {
+            $moneyFacade = $container->getLocator()
+                ->money()
+                ->facade();
+
+            return new FactFinderToMoneyBridge($moneyFacade);
         };
 
         return $container;
