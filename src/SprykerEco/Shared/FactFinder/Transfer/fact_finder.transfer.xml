@@ -199,9 +199,7 @@
         <property name="userId" type="string"/>
         <property name="cookieId" type="string"/>
         <property name="query" type="string"/>
-        <property name="pos" type="string"/>
         <property name="pos" type="int"/>
-        <property name="origPos" type="int"/>
         <property name="origPos" type="int"/>
         <property name="page" type="int"/>
         <property name="pageSize" type="int"/>
