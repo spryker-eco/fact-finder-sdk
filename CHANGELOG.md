@@ -1,3 +1,3 @@
-# FactFinder Changelog
+# FactFinderApi Changelog
 
-[FactFinder Changelog](https://github.com/spryker-eco/FactFinder/releases)
+[FactFinderApi Changelog](https://github.com/spryker-eco/FactFinderApi/releases)

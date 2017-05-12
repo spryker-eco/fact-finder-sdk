@@ -1,9 +1,9 @@
-# FactFinder Bundle
+# FactFinderApi Bundle
 
 ## Installation
 
 ```
-composer require spryker-eco/fact-finder
+composer require spryker-eco/fact-finder-api
 ```
 
 ## Documentation
