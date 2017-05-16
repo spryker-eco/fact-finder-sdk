@@ -11,6 +11,25 @@
         <property name="sortName" type="string"/>
         <property name="sortPrice" type="string"/>
         <property name="format" type="string"/>
+        <property name="channel" type="string"/>
+        <property name="productsPerPage" type="int"/>
+        <property name="sort" type="string"/>
+        <property name="filter" type="string"/>
+        <property name="searchField" type="string"/>
+        <property name="noArticleNumberSearch" type="bool"/>
+        <property name="sid" type="string"/>
+        <property name="useAsn" type="bool"/>
+        <property name="useFoundWords" type="string"/>
+        <property name="useCampaigns" type="bool"/>
+        <property name="navigation" type="string"/>
+        <property name="idsOnly" type="bool"/>
+        <property name="useKeywords" type="bool"/>
+        <property name="generateAdvisorTree" type="bool"/>
+        <property name="disableCache" type="bool"/>
+        <property name="followSearch" type="bool"/>
+        <property name="usePersonalization" type="bool"/>
+        <property name="useSemanticEnhancer" type="bool"/>
+        <property name="useAso" type="bool"/>
     </transfer>
 
     <transfer name="FactFinderApiSearchResponse">
