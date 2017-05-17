@@ -31,6 +31,11 @@ class FactFinderApiFacadeTest extends Test
     protected $factFinderFacade;
 
     /**
+     * @var string
+     */
+    protected $filePathName;
+
+    /**
      * @return void
      */
     public function setUp()
@@ -38,6 +43,9 @@ class FactFinderApiFacadeTest extends Test
         parent::setUp();
 
         $this->factFinderFacade = new FactFinderApiFacade();
+        $this->filePathName = Configuration::outputDir() . 'product_de_DE.csv';
+
+        @unlink($this->filePathName);
     }
 
     /**
@@ -50,7 +58,7 @@ class FactFinderApiFacadeTest extends Test
         $this->factFinderFacade->setFactory($this->createFactory());
         $this->factFinderFacade->createFactFinderApiCsv($localeTransfer);
 
-        $this->assertFileExists(Configuration::outputDir() . 'product_de_DE.csv');
+        $this->assertFileExists($this->filePathName);
     }
 
     /**
