@@ -56,7 +56,7 @@ class SearchRequestTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @return SearchRequest
+     * @return \SprykerEco\Client\FactFinderApi\Business\Api\Handler\Request\SearchRequest
      */
     protected function createSearchRequest()
     {
@@ -67,7 +67,7 @@ class SearchRequestTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @return \PHPUnit_Framework_MockObject_MockObject|FactFinderConnector
+     * @return \PHPUnit_Framework_MockObject_MockObject|\SprykerEco\Client\FactFinderApi\Business\Api\FactFinderConnector
      */
     protected function createFactFinderConnectorMock()
     {

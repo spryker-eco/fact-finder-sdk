@@ -39,7 +39,7 @@ class TrackingRequestTest extends PHPUnit_Framework_TestCase
             ->toArray();
 
         $expected = [
-            'result' => true
+            'result' => true,
         ];
 
         $this->assertEquals($expected, $result);
@@ -60,7 +60,7 @@ class TrackingRequestTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @return \PHPUnit_Framework_MockObject_MockObject|FactFinderConnector
+     * @return \PHPUnit_Framework_MockObject_MockObject|\SprykerEco\Client\FactFinderApi\Business\Api\FactFinderConnector
      */
     protected function createFactFinderConnectorMock()
     {
@@ -74,7 +74,7 @@ class TrackingRequestTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @return TrackingRequest
+     * @return \SprykerEco\Client\FactFinderApi\Business\Api\Handler\Request\TrackingRequest
      */
     protected function createTrackingRequest()
     {

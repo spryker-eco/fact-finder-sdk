@@ -45,7 +45,9 @@ class FactFinderApiFacadeTest extends Test
         $this->factFinderFacade = new FactFinderApiFacade();
         $this->filePathName = Configuration::outputDir() . 'product_de_DE.csv';
 
-        @unlink($this->filePathName);
+        try {
+            unlink($this->filePathName);
+        } catch (\Exception $e) {}
     }
 
     /**

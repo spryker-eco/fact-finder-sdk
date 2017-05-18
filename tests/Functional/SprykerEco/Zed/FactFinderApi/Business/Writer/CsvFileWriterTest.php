@@ -23,7 +23,7 @@ class CsvFileWriterTest extends Test
 {
 
     /**
-     * @var CsvFileWriter
+     * @var \SprykerEco\Zed\FactFinderApi\Business\Writer\CsvFileWriter
      */
     protected $csvFileWriter;
 
@@ -42,7 +42,9 @@ class CsvFileWriterTest extends Test
         $this->csvFileWriter = new CsvFileWriter();
         $this->filePathName = Configuration::outputDir() . 'test.csv';
 
-        @unlink($this->filePathName);
+        try {
+            unlink($this->filePathName);
+        } catch (\Exception $e) {}
     }
 
     /**
@@ -50,7 +52,6 @@ class CsvFileWriterTest extends Test
      */
     public function testWrite()
     {
-
         $data = [
             [
                 'id',
@@ -61,7 +62,7 @@ class CsvFileWriterTest extends Test
                 '938383',
                 'Acer Aspire',
                 'http://example.com/acer-aspire',
-            ]
+            ],
         ];
 
         $this->csvFileWriter

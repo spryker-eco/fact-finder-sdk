@@ -47,15 +47,15 @@ class SuggestRequestTest extends PHPUnit_Framework_TestCase
                     'attributes' => [],
                     'type' => 'product',
                     'hitCount' => 0,
-                ]
-            ]
+                ],
+            ],
         ];
 
         $this->assertEquals($expected, $result);
     }
 
     /**
-     * @return SuggestRequest
+     * @return \SprykerEco\Client\FactFinderApi\Business\Api\Handler\Request\SuggestRequest
      */
     protected function createSuggestRequest()
     {
@@ -66,7 +66,7 @@ class SuggestRequestTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @return \PHPUnit_Framework_MockObject_MockObject|FactFinderConnector
+     * @return \PHPUnit_Framework_MockObject_MockObject|\SprykerEco\Client\FactFinderApi\Business\Api\FactFinderConnector
      */
     protected function createFactFinderConnectorMock()
     {
