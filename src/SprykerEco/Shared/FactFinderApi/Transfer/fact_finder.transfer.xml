@@ -167,10 +167,11 @@
 
     <transfer name="FactFinderApiRecommendationRequest">
         <property name="id" type="string"/>
+        <property name="sid" type="string"/>
     </transfer>
 
     <transfer name="FactFinderApiRecommendationResponse">
-        <property name="temp" type="string"/>
+        <property name="recommendations" type="array"/>
     </transfer>
 
     <transfer name="FactFinderApiSuggestRequest">
@@ -249,5 +250,4 @@
         <property name="number" type="string" />
         <property name="contents" type="string" />
     </transfer>
-
 </transfer>

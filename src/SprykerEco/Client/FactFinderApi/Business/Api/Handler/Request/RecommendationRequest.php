@@ -7,6 +7,7 @@
 
 namespace SprykerEco\Client\FactFinderApi\Business\Api\Handler\Request;
 
+use FACTFinder\Util\Parameters;
 use Generated\Shared\Transfer\FactFinderApiRecommendationRequestTransfer;
 use SprykerEco\Client\FactFinderApi\Business\Api\ApiConstants;
 
@@ -22,16 +23,15 @@ class RecommendationRequest extends AbstractRequest implements RecommendationReq
      */
     public function request(FactFinderApiRecommendationRequestTransfer $factFinderRecommendationRequestTransfer)
     {
-        $requestParameters = $this->factFinderConnector->createRequestParametersFromRequestParser();
+        $requestParameters = new Parameters();
+        $requestParameters->setAll($factFinderRecommendationRequestTransfer->toArray());
         $this->factFinderConnector->setRequestParameters($requestParameters);
 
-        $suggestAdapter = $this->factFinderConnector
+        $recommendationAdapter = $this->factFinderConnector
             ->createRecommendationAdapter();
 
-        $recommendations = $suggestAdapter->getRecommendations();
-
         $responseTransfer = $this->converterFactory
-            ->createRecommendationResponseConverter($suggestAdapter)
+            ->createRecommendationResponseConverter($recommendationAdapter)
             ->convert();
 
         return $responseTransfer;

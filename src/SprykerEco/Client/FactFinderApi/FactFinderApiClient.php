@@ -28,12 +28,12 @@ class FactFinderApiClient extends AbstractClient implements FactFinderApiClientI
      */
     public function search(FactFinderApiSearchRequestTransfer $factFinderSearchRequestTransfer)
     {
-        $ffSearchResponseTransfer = $this
+        $factFinderSearchResponseTransfer = $this
             ->getFactory()
             ->createSearchRequest()
             ->request($factFinderSearchRequestTransfer);
 
-        return $ffSearchResponseTransfer;
+        return $factFinderSearchResponseTransfer;
     }
 
     /**
@@ -61,12 +61,12 @@ class FactFinderApiClient extends AbstractClient implements FactFinderApiClientI
      */
     public function getSuggestions(FactFinderApiSuggestRequestTransfer $factFinderSuggestRequestTransfer)
     {
-        $ffSuggestResponseTransfer = $this
+        $factFinderSuggestResponseTransfer = $this
             ->getFactory()
             ->createSuggestRequest()
             ->request($factFinderSuggestRequestTransfer);
 
-        return $ffSuggestResponseTransfer;
+        return $factFinderSuggestResponseTransfer;
     }
 
     /**
