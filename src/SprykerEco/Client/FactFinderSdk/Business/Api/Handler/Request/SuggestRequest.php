@@ -1,0 +1,39 @@
+<?php
+
+/**
+ * MIT License
+ * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
+ */
+
+namespace SprykerEco\Client\FactFinderSdk\Business\Api\Handler\Request;
+
+use FACTFinder\Util\Parameters;
+use Generated\Shared\Transfer\FactFinderSdkSuggestRequestTransfer;
+use SprykerEco\Client\FactFinderSdk\Business\Api\ApiConstants;
+
+class SuggestRequest extends AbstractRequest implements SuggestRequestInterface
+{
+
+    const TRANSACTION_TYPE = ApiConstants::TRANSACTION_TYPE_SUGGEST;
+
+    /**
+     * @param \Generated\Shared\Transfer\FactFinderSdkSuggestRequestTransfer $factFinderSuggestRequestTransfer
+     *
+     * @return \Generated\Shared\Transfer\FactFinderSdkSuggestResponseTransfer
+     */
+    public function request(FactFinderSdkSuggestRequestTransfer $factFinderSuggestRequestTransfer)
+    {
+        $requestParameters = new Parameters();
+        $requestParameters->setAll($factFinderSuggestRequestTransfer->toArray());
+        $this->factFinderConnector->setRequestParameters($requestParameters);
+
+        $suggestAdapter = $this->factFinderConnector->createSuggestAdapter();
+
+        $responseTransfer = $this->converterFactory
+            ->createSuggestResponseConverter($suggestAdapter)
+            ->convert();
+
+        return $responseTransfer;
+    }
+
+}

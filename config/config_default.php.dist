@@ -2,10 +2,10 @@
 /**
  * Fact Finder
  */
-use SprykerEco\Shared\FactFinderApi\FactFinderApiConstants;
+use SprykerEco\Shared\FactFinderSdk\FactFinderSdkConstants;
 
-$config[FactFinderApiConstants::ENVIRONMENT] = FactFinderApiConstants::ENVIRONMENT_PRODUCTION;
-$config[FactFinderApiConstants::ENVIRONMENT . FactFinderApiConstants::ENVIRONMENT_PRODUCTION] = [
+$config[FactFinderSdkConstants::ENVIRONMENT] = FactFinderSdkConstants::ENVIRONMENT_PRODUCTION;
+$config[FactFinderSdkConstants::ENVIRONMENT . FactFinderSdkConstants::ENVIRONMENT_PRODUCTION] = [
     'debug' => true,
     'requestProtocol' => 'http', //https
     'serverAddress' => 'partner3.fact-finder.de',
@@ -40,9 +40,9 @@ $config[FactFinderApiConstants::ENVIRONMENT . FactFinderApiConstants::ENVIRONMEN
     'clientUrlEncoding' => 'UTF-8',
 ];
 
-$config[FactFinderApiConstants::CSV_DIRECTORY] = APPLICATION_ROOT_DIR . '/public/Zed/assets/fact_finder/';
-$config[FactFinderApiConstants::EXPORT_QUERY_LIMIT] = 1000;
-$config[FactFinderApiConstants::EXPORT_FILE_NAME_PREFIX] = 'product';
-$config[FactFinderApiConstants::EXPORT_FILE_NAME_DELIMITER] = '_';
-$config[FactFinderApiConstants::EXPORT_FILE_EXTENSION] = '.csv';
-$config[FactFinderApiConstants::PHP_LOGGER_CONFIG_PATH] = APPLICATION_ROOT_DIR . '/config/Shared/log4php.xml';
+$config[FactFinderSdkConstants::CSV_DIRECTORY] = APPLICATION_ROOT_DIR . '/public/Zed/assets/fact_finder/';
+$config[FactFinderSdkConstants::EXPORT_QUERY_LIMIT] = 1000;
+$config[FactFinderSdkConstants::EXPORT_FILE_NAME_PREFIX] = 'product';
+$config[FactFinderSdkConstants::EXPORT_FILE_NAME_DELIMITER] = '_';
+$config[FactFinderSdkConstants::EXPORT_FILE_EXTENSION] = '.csv';
+$config[FactFinderSdkConstants::PHP_LOGGER_CONFIG_PATH] = APPLICATION_ROOT_DIR . '/config/Shared/log4php.xml';

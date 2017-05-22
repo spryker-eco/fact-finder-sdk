@@ -1,0 +1,92 @@
+<?php
+
+/**
+ * MIT License
+ * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
+ */
+
+namespace SprykerEco\Client\FactFinderSdk;
+
+use Spryker\Client\Kernel\AbstractFactory;
+use SprykerEco\Client\FactFinderSdk\Business\Api\Converter\ConverterFactory;
+use SprykerEco\Client\FactFinderSdk\Business\Api\FactFinderConnector;
+use SprykerEco\Client\FactFinderSdk\Business\Api\Handler\Request\RecommendationRequest;
+use SprykerEco\Client\FactFinderSdk\Business\Api\Handler\Request\SearchRequest;
+use SprykerEco\Client\FactFinderSdk\Business\Api\Handler\Request\SuggestRequest;
+use SprykerEco\Client\FactFinderSdk\Business\Api\Handler\Request\TrackingRequest;
+
+/**
+ * @method \SprykerEco\Client\FactFinderSdk\FactFinderSdkConfig getConfig()
+ */
+class FactFinderSdkFactory extends AbstractFactory
+{
+
+    /**
+     * @return \SprykerEco\Client\FactFinderSdk\Business\Api\Handler\Request\SearchRequestInterface
+     */
+    public function createSearchRequest()
+    {
+        return new SearchRequest(
+            $this->createFactFinderConnector(),
+            $this->createConverterFactory()
+        );
+    }
+
+    /**
+     * @return \SprykerEco\Client\FactFinderSdk\Business\Api\Handler\Request\SuggestRequestInterface
+     */
+    public function createSuggestRequest()
+    {
+        return new SuggestRequest(
+            $this->createFactFinderConnector(),
+            $this->createConverterFactory()
+        );
+    }
+
+    /**
+     * @return \SprykerEco\Client\FactFinderSdk\Business\Api\Handler\Request\TrackingRequestInterface
+     */
+    public function createTrackingRequest()
+    {
+        return new TrackingRequest(
+            $this->createFactFinderConnector(),
+            $this->createConverterFactory()
+        );
+    }
+
+    /**
+     * @return \SprykerEco\Client\FactFinderSdk\Business\Api\Handler\Request\RecommendationRequestInterface
+     */
+    public function createRecommendationsRequest()
+    {
+        return new RecommendationRequest(
+            $this->createFactFinderConnector(),
+            $this->createConverterFactory()
+        );
+    }
+
+    /**
+     * @return \SprykerEco\Client\FactFinderSdk\Business\Api\FactFinderConnector
+     */
+    public function createFactFinderConnector()
+    {
+        return new FactFinderConnector($this->getConfig());
+    }
+
+    /**
+     * @return \SprykerEco\Client\FactFinderSdk\Business\Api\Converter\ConverterFactory
+     */
+    protected function createConverterFactory()
+    {
+        return new ConverterFactory();
+    }
+
+    /**
+     * @return \Spryker\Client\Session\SessionClientInterface
+     */
+    public function getSession()
+    {
+        return $this->getProvidedDependency(FactFinderSdkDependencyProvider::CLIENT_SESSION);
+    }
+
+}
