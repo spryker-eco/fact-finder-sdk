@@ -265,14 +265,17 @@ class FactFinderConnector
     public function createRequestParametersFromSearchRequestTransfer(FactFinderSdkSearchRequestTransfer $searchRequestTransfer)
     {
         $config = $this->factFinderConfig->getFactFinderConfiguration();
-        $parameters = [];
-        $parameters['channel'] = $config['channel'];
-        $query = trim($searchRequestTransfer->getQuery());
-        if (!strlen($query)) {
-            $query = '*';
+        $parameters = $searchRequestTransfer->getRequest();
+
+        if (empty($parameters['channel'])) {
+            $parameters['channel'] = $config['channel'];
         }
-        $parameters['query'] = $query;
-        $parameters['page'] = $searchRequestTransfer->getPage();
+        if (empty($parameters['query'])) {
+            $parameters['navigation'] = true;
+        }
+        if (empty($parameters['productsPerPage'])) {
+            $parameters['productsPerPage'] = $config['defaultProductsPerPage'];
+        }
 
         return FactFinderLoader::getInstance(
             'Util\Parameters',

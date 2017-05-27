@@ -26,10 +26,10 @@ interface FactFinderSdkQueryContainerInterface extends QueryContainerInterface
      * @api
      *
      * @param \Generated\Shared\Transfer\LocaleTransfer $localeTransfer
-     * @param int $rootCategoryNodeId
+     * @param int $categoryId
      *
      * @return \Orm\Zed\Category\Persistence\SpyCategoryQuery
      */
-    public function getParentCategoryQuery(LocaleTransfer $localeTransfer, $rootCategoryNodeId);
+    public function getParentCategoryQuery(LocaleTransfer $localeTransfer, $categoryId);
 
 }

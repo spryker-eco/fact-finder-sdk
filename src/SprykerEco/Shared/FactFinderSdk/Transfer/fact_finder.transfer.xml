@@ -6,11 +6,7 @@
 >
 
     <transfer name="FactFinderSdkSearchRequest">
-        <property name="query" type="string"/>
-        <property name="page" type="string"/>
-        <property name="sortName" type="string"/>
-        <property name="sortPrice" type="string"/>
-        <property name="format" type="string"/>
+        <property name="request" type="array"/>
     </transfer>
 
     <transfer name="FactFinderSdkSearchResponse">
@@ -93,6 +89,10 @@
         <property name="clusterLevel" type="int"/>
         <property name="previewImage" type="string"/>
         <property name="hasPreviewImage" type="bool"/>
+        <property name="absoluteMinimum" type="string"/>
+        <property name="absoluteMaximum" type="string"/>
+        <property name="selectedMinimum" type="string"/>
+        <property name="selectedMaximum" type="string"/>
     </transfer>
 
     <transfer name="FactFinderSdkDataBreadCrumb">

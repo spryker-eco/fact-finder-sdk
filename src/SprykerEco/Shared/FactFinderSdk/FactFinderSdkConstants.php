@@ -35,8 +35,10 @@ interface FactFinderSdkConstants
     const ITEM_CATEGORY_ID = 'CategoryId';
     const ITEM_PARENT_CATEGORY_NAME = 'ParentCategoryName';
     const ITEM_PARENT_CATEGORY_NODE_ID = 'ParentCategoryNodeId';
+    const ITEM_MASTER_ID = 'MasterProductNumber';
 
     const ITEM_FIELDS = [
+        self::ITEM_MASTER_ID,
         self::ITEM_PRODUCT_NUMBER,
         self::ITEM_NAME,
         self::ITEM_PRICE,
