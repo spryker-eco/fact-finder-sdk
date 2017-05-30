@@ -9,6 +9,7 @@ namespace SprykerEco\Client\FactFinderSdk\Business\Api\Handler\Request;
 
 use FACTFinder\Util\Parameters;
 use Generated\Shared\Transfer\FactFinderSdkSuggestRequestTransfer;
+use Generated\Shared\Transfer\FactFinderSdkSuggestResponseTransfer;
 use SprykerEco\Client\FactFinderSdk\Business\Api\ApiConstants;
 
 class SuggestRequest extends AbstractRequest implements SuggestRequestInterface
@@ -29,9 +30,14 @@ class SuggestRequest extends AbstractRequest implements SuggestRequestInterface
 
         $suggestAdapter = $this->factFinderConnector->createSuggestAdapter();
 
-        $responseTransfer = $this->converterFactory
-            ->createSuggestResponseConverter($suggestAdapter)
-            ->convert();
+        try {
+            $responseTransfer = $this->converterFactory
+                ->createSuggestResponseConverter($suggestAdapter)
+                ->convert();
+        } catch (\Exception $exception) {
+            $responseTransfer = new FactFinderSdkSuggestResponseTransfer();
+        }
+
 
         return $responseTransfer;
     }

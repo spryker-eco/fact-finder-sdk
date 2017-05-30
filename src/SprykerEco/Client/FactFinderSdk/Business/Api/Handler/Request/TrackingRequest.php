@@ -34,7 +34,12 @@ class TrackingRequest extends AbstractRequest implements TrackingRequestInterfac
         $this->factFinderConnector->setRequestParameters($parameters);
 
         $trackingAdapter = $this->factFinderConnector->createTrackingAdapter();
-        $result = $trackingAdapter->applyTracking();
+
+        try {
+            $result = $trackingAdapter->applyTracking();
+        } catch (\Exception $exception) {
+            $result = false;
+        }
 
         $responseTransfer = new FactFinderSdkTrackingResponseTransfer();
         $responseTransfer->setResult($result);

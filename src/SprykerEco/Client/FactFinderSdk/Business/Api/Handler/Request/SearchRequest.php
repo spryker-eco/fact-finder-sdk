@@ -8,6 +8,7 @@
 namespace SprykerEco\Client\FactFinderSdk\Business\Api\Handler\Request;
 
 use Generated\Shared\Transfer\FactFinderSdkSearchRequestTransfer;
+use Generated\Shared\Transfer\FactFinderSdkSearchResponseTransfer;
 use SprykerEco\Client\FactFinderSdk\Business\Api\ApiConstants;
 
 class SearchRequest extends AbstractRequest implements SearchRequestInterface
@@ -28,9 +29,13 @@ class SearchRequest extends AbstractRequest implements SearchRequestInterface
 
         $searchAdapter = $this->factFinderConnector->createSearchAdapter();
 
-        $responseTransfer = $this->converterFactory
-            ->createSearchResponseConverter($searchAdapter)
-            ->convert();
+        try {
+            $responseTransfer = $this->converterFactory
+                ->createSearchResponseConverter($searchAdapter)
+                ->convert();
+        } catch (\Exception $e) {
+            $responseTransfer = new FactFinderSdkSearchResponseTransfer();
+        }
 
         return $responseTransfer;
     }
