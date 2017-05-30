@@ -63,8 +63,6 @@ class FactFinderSdkProductExporter implements FactFinderSdkProductExporterInterf
      */
     protected $factFinderConfig;
 
-    protected $categories;
-
     /**
      * FactFinderProductExporterPlugin constructor.
      *
@@ -72,7 +70,6 @@ class FactFinderSdkProductExporter implements FactFinderSdkProductExporterInterf
      * @param \Generated\Shared\Transfer\LocaleTransfer $localeTransfer
      * @param \SprykerEco\Zed\FactFinderSdk\FactFinderSdkConfig $factFinderConfig
      * @param \SprykerEco\Zed\FactFinderSdk\Persistence\FactFinderSdkQueryContainerInterface $factFinderQueryContainer
-     * @param \SprykerEco\Zed\FactFinderSdk\Dependency\Facade\FactFinderSdkToMoneyInterface $money
      */
     public function __construct(
         AbstractFileWriter $fileWriter,

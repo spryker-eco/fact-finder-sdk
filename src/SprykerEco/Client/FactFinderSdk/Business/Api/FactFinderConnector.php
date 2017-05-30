@@ -274,7 +274,7 @@ class FactFinderConnector
             $parameters['navigation'] = true;
         }
         if (empty($parameters['productsPerPage'])) {
-            $parameters['productsPerPage'] = $this->factFinderConfig->getDefaultProductsPerPage();
+            $parameters['productsPerPage'] = $config['defaultProductsPerPage'];
         }
 
         return FactFinderLoader::getInstance(
