@@ -12,7 +12,9 @@ use Generated\Shared\Transfer\LocaleTransfer;
 use Generated\Shared\Transfer\ProductAbstractDataFeedTransfer;
 use Orm\Zed\Category\Persistence\Map\SpyCategoryAttributeTableMap;
 use Orm\Zed\Category\Persistence\Map\SpyCategoryNodeTableMap;
+use Orm\Zed\Category\Persistence\Map\SpyCategoryTableMap;
 use Orm\Zed\Price\Persistence\Map\SpyPriceProductTableMap;
+use Orm\Zed\Product\Persistence\Map\SpyProductAbstractTableMap;
 use Orm\Zed\Product\Persistence\Map\SpyProductLocalizedAttributesTableMap;
 use Orm\Zed\Product\Persistence\Map\SpyProductTableMap;
 use Orm\Zed\Product\Persistence\SpyProductAbstractQuery;
@@ -60,7 +62,7 @@ class FactFinderSdkQueryContainer extends AbstractQueryContainer implements Fact
             ->endUse();
 
         $productsAbstractQuery = $this->addColumns($productsAbstractQuery);
-        $productsAbstractQuery = $this->addInStockConditions($productsAbstractQuery);
+//        $productsAbstractQuery = $this->addInStockConditions($productsAbstractQuery);
 
         return $productsAbstractQuery;
     }
@@ -69,11 +71,11 @@ class FactFinderSdkQueryContainer extends AbstractQueryContainer implements Fact
      * @api
      *
      * @param \Generated\Shared\Transfer\LocaleTransfer $localeTransfer
-     * @param int $rootCategoryNodeId
+     * @param int $categoryId
      *
      * @return \Orm\Zed\Category\Persistence\SpyCategoryQuery
      */
-    public function getParentCategoryQuery(LocaleTransfer $localeTransfer, $rootCategoryNodeId)
+    public function getParentCategoryQuery(LocaleTransfer $localeTransfer, $categoryId)
     {
         $categoryDataFeedTransfer = new CategoryDataFeedTransfer();
         $categoryDataFeedTransfer->setIdLocale($localeTransfer->getIdLocale());
@@ -82,7 +84,7 @@ class FactFinderSdkQueryContainer extends AbstractQueryContainer implements Fact
             ->getCategoryDataFeedQueryContainer()
             ->queryCategoryDataFeed($categoryDataFeedTransfer);
 
-        $categoryQuery->where(SpyCategoryNodeTableMap::COL_ID_CATEGORY_NODE . ' = ?', $rootCategoryNodeId);
+        $categoryQuery->where(SpyCategoryTableMap::COL_ID_CATEGORY . ' = ?', $categoryId);
 
         return $categoryQuery;
     }
@@ -94,7 +96,7 @@ class FactFinderSdkQueryContainer extends AbstractQueryContainer implements Fact
      */
     protected function addColumns(SpyProductAbstractQuery $productsAbstractQuery)
     {
-        $productsAbstractQuery->withColumn(SpyProductTableMap::COL_SKU, FactFinderSdkConstants::ITEM_PRODUCT_NUMBER);
+        $productsAbstractQuery->withColumn(SpyProductTableMap::COL_ID_PRODUCT, FactFinderSdkConstants::ITEM_PRODUCT_NUMBER);
         $productsAbstractQuery->withColumn(SpyProductLocalizedAttributesTableMap::COL_NAME, FactFinderSdkConstants::ITEM_NAME);
         $productsAbstractQuery->withColumn(SpyPriceProductTableMap::COL_PRICE, FactFinderSdkConstants::ITEM_PRICE);
         $productsAbstractQuery->withColumn(SpyStockProductTableMap::COL_QUANTITY, FactFinderSdkConstants::ITEM_STOCK);
@@ -104,6 +106,7 @@ class FactFinderSdkQueryContainer extends AbstractQueryContainer implements Fact
         $productsAbstractQuery->withColumn(SpyProductCategoryTableMap::COL_FK_CATEGORY, FactFinderSdkConstants::ITEM_CATEGORY_ID);
         $productsAbstractQuery->withColumn(SpyCategoryNodeTableMap::COL_FK_PARENT_CATEGORY_NODE, FactFinderSdkConstants::ITEM_PARENT_CATEGORY_NODE_ID);
         $productsAbstractQuery->withColumn(SpyUrlTableMap::COL_URL, FactFinderSdkConstants::ITEM_PRODUCT_URL);
+        $productsAbstractQuery->withColumn(SpyProductTableMap::COL_FK_PRODUCT_ABSTRACT, FactFinderSdkConstants::ITEM_MASTER_ID);
 
         return $productsAbstractQuery;
     }

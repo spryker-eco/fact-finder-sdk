@@ -46,3 +46,5 @@ $config[FactFinderSdkConstants::EXPORT_FILE_NAME_PREFIX] = 'product';
 $config[FactFinderSdkConstants::EXPORT_FILE_NAME_DELIMITER] = '_';
 $config[FactFinderSdkConstants::EXPORT_FILE_EXTENSION] = '.csv';
 $config[FactFinderSdkConstants::PHP_LOGGER_CONFIG_PATH] = APPLICATION_ROOT_DIR . '/config/Shared/log4php.xml';
+$config[FactFinderSdkConstants::CHANNEL_PREFIX] = '';
+$config[FactFinderSdkConstants::DEFAULT_PRODUCTS_PER_PAGE] = 20;

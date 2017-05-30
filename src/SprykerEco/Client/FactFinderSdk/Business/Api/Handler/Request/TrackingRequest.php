@@ -27,6 +27,10 @@ class TrackingRequest extends AbstractRequest implements TrackingRequestInterfac
         $parameters = new Parameters();
         $parameters->setAll($this->getRequestData($factFinderTrackingRequestTransfer));
 
+        if (empty($parameters['query'])) {
+            $parameters['query'] = '*';
+        }
+
         $this->factFinderConnector->setRequestParameters($parameters);
 
         $trackingAdapter = $this->factFinderConnector->createTrackingAdapter();

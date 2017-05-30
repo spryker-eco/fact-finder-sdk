@@ -21,6 +21,8 @@ interface FactFinderSdkConstants
     const EXPORT_FILE_EXTENSION = 'FACT_FINDER:EXPORT_FILE_EXTENSION';
     const PHP_LOGGER_CONFIG_PATH = 'FACT_FINDER:PHP_LOGGER_CONFIG_PATH';
     const DETAIL_PAGE_URL = 'FACT_FINDER:DETAIL_PAGE_URL';
+    const CHANNEL_PREFIX = 'FACT_FINDER:CHANNEL_PREFIX';
+    const DEFAULT_PRODUCTS_PER_PAGE = 'FACT_FINDER:DEFAULT_PRODUCTS_PER_PAGE';
 
     const ITEM_PRODUCT_NUMBER = 'ProductNumber';
     const ITEM_NAME = 'Name';
@@ -35,8 +37,10 @@ interface FactFinderSdkConstants
     const ITEM_CATEGORY_ID = 'CategoryId';
     const ITEM_PARENT_CATEGORY_NAME = 'ParentCategoryName';
     const ITEM_PARENT_CATEGORY_NODE_ID = 'ParentCategoryNodeId';
+    const ITEM_MASTER_ID = 'MasterProductNumber';
 
     const ITEM_FIELDS = [
+        self::ITEM_MASTER_ID,
         self::ITEM_PRODUCT_NUMBER,
         self::ITEM_NAME,
         self::ITEM_PRICE,

@@ -22,7 +22,8 @@ class SearchRequest extends AbstractRequest implements SearchRequestInterface
      */
     public function request(FactFinderSdkSearchRequestTransfer $factFinderSearchRequestTransfer)
     {
-        $requestParameters = $this->factFinderConnector->createRequestParametersFromRequestParser();
+        $requestParameters = $this->factFinderConnector
+            ->createRequestParametersFromSearchRequestTransfer($factFinderSearchRequestTransfer);
         $this->factFinderConnector->setRequestParameters($requestParameters);
 
         $searchAdapter = $this->factFinderConnector->createSearchAdapter();

@@ -8,10 +8,10 @@
 namespace SprykerEco\Zed\FactFinderSdk\Business\Exporter;
 
 use Generated\Shared\Transfer\LocaleTransfer;
+use Orm\Zed\Category\Persistence\SpyCategoryNode;
 use Orm\Zed\Product\Persistence\Base\SpyProductAbstractQuery;
 use SprykerEco\Shared\FactFinderSdk\FactFinderSdkConstants;
 use SprykerEco\Zed\FactFinderSdk\Business\Writer\AbstractFileWriter;
-use SprykerEco\Zed\FactFinderSdk\Dependency\Facade\FactFinderSdkToMoneyInterface;
 use SprykerEco\Zed\FactFinderSdk\FactFinderSdkConfig;
 use SprykerEco\Zed\FactFinderSdk\Persistence\FactFinderSdkQueryContainerInterface;
 
@@ -63,10 +63,7 @@ class FactFinderSdkProductExporter implements FactFinderSdkProductExporterInterf
      */
     protected $factFinderConfig;
 
-    /**
-     * @var \SprykerEco\Zed\FactFinderSdk\Dependency\Facade\FactFinderSdkToMoneyInterface
-     */
-    private $money;
+    protected $categories;
 
     /**
      * FactFinderProductExporterPlugin constructor.
@@ -81,8 +78,7 @@ class FactFinderSdkProductExporter implements FactFinderSdkProductExporterInterf
         AbstractFileWriter $fileWriter,
         LocaleTransfer $localeTransfer,
         FactFinderSdkConfig $factFinderConfig,
-        FactFinderSdkQueryContainerInterface $factFinderQueryContainer,
-        FactFinderSdkToMoneyInterface $money
+        FactFinderSdkQueryContainerInterface $factFinderQueryContainer
     ) {
 
         $this->fileWriter = $fileWriter;
@@ -93,7 +89,6 @@ class FactFinderSdkProductExporter implements FactFinderSdkProductExporterInterf
         $this->fileExtension = $factFinderConfig->getExportFileExtension();
         $this->factFinderQueryContainer = $factFinderQueryContainer;
         $this->factFinderConfig = $factFinderConfig;
-        $this->money = $money;
     }
 
     /**
@@ -185,8 +180,8 @@ class FactFinderSdkProductExporter implements FactFinderSdkProductExporterInterf
         foreach ($data as $row) {
             $prepared = [];
             $row = $this->addProductUrl($row);
-            $row = $this->convertPrice($row);
             $row = $this->addCategoryPath($row, $localeTransfer);
+            $row = $this->encodeDescription($row);
 
             foreach ($headers as $headerName) {
                 if (isset($row[$headerName])) {
@@ -217,6 +212,18 @@ class FactFinderSdkProductExporter implements FactFinderSdkProductExporterInterf
     /**
      * @param array $data
      *
+     * @return array
+     */
+    protected function encodeDescription($data)
+    {
+        $data[FactFinderSdkConstants::ITEM_DESCRIPTION] = urlencode($data[FactFinderSdkConstants::ITEM_DESCRIPTION]);
+
+        return $data;
+    }
+
+    /**
+     * @param array $data
+     *
      * @return array mixed
      */
     protected function convertPrice($data)
@@ -237,38 +244,50 @@ class FactFinderSdkProductExporter implements FactFinderSdkProductExporterInterf
      */
     protected function addCategoryPath($data, LocaleTransfer $localeTransfer)
     {
-        $parentCategoryName = $this->getParentСategoryName(
+        $categoriesPathArray = $this->getCategoryPathArray(
             $localeTransfer,
-            $data[FactFinderSdkConstants::ITEM_PARENT_CATEGORY_NODE_ID]
+            $data[FactFinderSdkConstants::ITEM_CATEGORY_ID]
         );
 
-        if (empty($parentCategoryName)) {
-            $categoryPath = urlencode($data[FactFinderSdkConstants::ITEM_CATEGORY]);
-        } else {
-            $categoryPath = $parentCategoryName . '/' . urlencode($data[FactFinderSdkConstants::ITEM_CATEGORY]);
-        }
-        $data[FactFinderSdkConstants::ITEM_CATEGORY_PATH] = $categoryPath;
+        $categoriesPathArray = array_map(function($value) {
+            return urlencode($value);
+        }, $categoriesPathArray);
+
+        $data[FactFinderSdkConstants::ITEM_CATEGORY_PATH] = implode('/', $categoriesPathArray);
 
         return $data;
     }
 
     /**
      * @param \Generated\Shared\Transfer\LocaleTransfer $localeTransfer
-     * @param int $rootCategoryNodeId
+     * @param int $categoryId
      *
-     * @return string
+     * @return array
      */
-    protected function getParentСategoryName(LocaleTransfer $localeTransfer, $rootCategoryNodeId)
+    protected function getCategoryPathArray(LocaleTransfer $localeTransfer, $categoryId)
     {
+        $pathArray = [];
+
         $query = $this->factFinderQueryContainer
-            ->getParentCategoryQuery($localeTransfer, $rootCategoryNodeId);
+            ->getParentCategoryQuery($localeTransfer, $categoryId);
         $category = $query->findOne();
 
         if (!$category) {
-            return '';
+            return $pathArray;
+        }
+        $pathArray[] = $category->getName();
+
+        /** @var SpyCategoryNode $node */
+        $node = $category->getNodes()
+            ->getFirst();
+
+        if ($node->getFkParentCategoryNode()) {
+            $parentCategoryId = $node->getParentCategoryNode()
+                ->getFkCategory();
+            $pathArray = array_merge($this->getCategoryPathArray($localeTransfer, $parentCategoryId), $pathArray);
         }
 
-        return $category->getName();
+        return $pathArray;
     }
 
     /**

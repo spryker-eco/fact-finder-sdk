@@ -45,4 +45,12 @@ class FactFinderSdkConfig extends AbstractBundleConfig
         return $this->get(FactFinderSdkConstants::PHP_LOGGER_CONFIG_PATH);
     }
 
+    /**
+     * @return string
+     */
+    public function getDefaultProductsPerPage()
+    {
+        return $this->get(FactFinderSdkConstants::DEFAULT_PRODUCTS_PER_PAGE);
+    }
+
 }

@@ -9,6 +9,7 @@ namespace SprykerEco\Client\FactFinderSdk\Business\Api\Converter\Data;
 
 use FACTFinder\Data\Filter;
 use FACTFinder\Data\FilterGroup;
+use FACTFinder\Data\SliderFilter;
 use Generated\Shared\Transfer\FactFinderSdkDataFilterGroupTransfer;
 use Generated\Shared\Transfer\FactFinderSdkDataFilterTransfer;
 use SprykerEco\Client\FactFinderSdk\Business\Api\Converter\BaseConverter;
@@ -58,6 +59,7 @@ class FilterGroupConverter extends BaseConverter
                 $this->convertFilter($filter)
             );
         }
+
         $factFinderDataFilterGroupTransfer->setName($this->filterGroup->getName());
         $factFinderDataFilterGroupTransfer->setDetailedLinkCount($this->filterGroup->getDetailedLinkCount());
         $factFinderDataFilterGroupTransfer->setUnit($this->filterGroup->getUnit());
@@ -95,6 +97,14 @@ class FilterGroupConverter extends BaseConverter
         $factFinderDataFilterTransfer->setClusterLevel($filter->getClusterLevel());
         $factFinderDataFilterTransfer->setPreviewImage($filter->getPreviewImage());
         $factFinderDataFilterTransfer->setHasPreviewImage($filter->hasPreviewImage());
+
+        if ($filter instanceof SliderFilter) {
+            $factFinderDataFilterTransfer->setAbsoluteMinimum($filter->getAbsoluteMinimum());
+            $factFinderDataFilterTransfer->setAbsoluteMaximum($filter->getAbsoluteMaximum());
+            $factFinderDataFilterTransfer->setSelectedMinimum($filter->getSelectedMinimum());
+            $factFinderDataFilterTransfer->setSelectedMaximum($filter->getSelectedMaximum());
+        }
+
 
         return $factFinderDataFilterTransfer;
     }
