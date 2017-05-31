@@ -10,7 +10,7 @@ namespace SprykerEco\Client\FactFinderSdk\Business\Api\Converter\Data;
 use FACTFinder\Data\Record;
 use Generated\Shared\Transfer\FactFinderSdkDataRecordTransfer;
 use SprykerEco\Client\FactFinderSdk\Business\Api\Converter\BaseConverter;
-use SprykerEco\Shared\FactFinderSdk\FactFinderSdkConstants;
+use SprykerEco\Client\FactFinderSdk\FactFinderSdkConfig;
 
 class RecordConverter extends BaseConverter
 {
@@ -19,6 +19,23 @@ class RecordConverter extends BaseConverter
      * @var \FACTFinder\Data\Record
      */
     protected $record;
+
+    /**
+     * @var \SprykerEco\Client\FactFinderSdk\FactFinderSdkConfig
+     */
+    private $config;
+
+    /**
+     * RecordConverter constructor.
+     *
+     * @param \SprykerEco\Client\FactFinderSdk\FactFinderSdkConfig $config
+     * @param \FACTFinder\Data\Record|null $record
+     */
+    public function __construct(FactFinderSdkConfig $config, Record $record = null)
+    {
+        $this->record = $record;
+        $this->config = $config;
+    }
 
     /**
      * @param \FACTFinder\Data\Record $record
@@ -55,7 +72,7 @@ class RecordConverter extends BaseConverter
     protected function convertFields(FactFinderSdkDataRecordTransfer $factFinderDataRecordTransfer)
     {
         $fields = [];
-        foreach (FactFinderSdkConstants::ITEM_FIELDS as $itemFieldName) {
+        foreach ($this->config->getItemFields() as $itemFieldName) {
             $fields[$itemFieldName] = $this->record->getField($itemFieldName);
         }
         $factFinderDataRecordTransfer->setFields($fields);

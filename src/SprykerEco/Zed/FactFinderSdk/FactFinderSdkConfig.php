@@ -78,4 +78,20 @@ class FactFinderSdkConfig extends AbstractBundleConfig
         return $this->get(ApplicationConstants::HOST_YVES);
     }
 
+    /**
+     * @return array
+     */
+    public function getItemFields()
+    {
+        return $this->get(FactFinderSdkConstants::ITEM_FIELDS);
+    }
+
+    /**
+     * @return int
+     */
+    public function getCategoriesMaxCount()
+    {
+        return $this->get(FactFinderSdkConstants::CATEGORIES_MAX_COUNT);
+    }
+
 }

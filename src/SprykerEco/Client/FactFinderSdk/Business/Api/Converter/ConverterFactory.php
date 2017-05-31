@@ -19,9 +19,23 @@ use SprykerEco\Client\FactFinderSdk\Business\Api\Converter\Data\FilterGroupConve
 use SprykerEco\Client\FactFinderSdk\Business\Api\Converter\Data\ItemConverter;
 use SprykerEco\Client\FactFinderSdk\Business\Api\Converter\Data\PagingConverter;
 use SprykerEco\Client\FactFinderSdk\Business\Api\Converter\Data\RecordConverter;
+use SprykerEco\Client\FactFinderSdk\FactFinderSdkConfig;
 
 class ConverterFactory
 {
+
+    /**
+     * @var \SprykerEco\Client\FactFinderSdk\FactFinderSdkConfig
+     */
+    protected $factFinderSdkConfig;
+
+    /**
+     * @param \SprykerEco\Client\FactFinderSdk\FactFinderSdkConfig $factFinderSdkConfig
+     */
+    public function __construct(FactFinderSdkConfig $factFinderSdkConfig)
+    {
+        $this->factFinderSdkConfig = $factFinderSdkConfig;
+    }
 
     /**
      * @param \FACTFinder\Adapter\Search $searchAdapter
@@ -36,7 +50,8 @@ class ConverterFactory
             $this->createDataItemConverter(),
             $this->createDataRecordConverter(),
             $this->createDataFilterGroup(),
-            $this->createDataAdvisorQuestionConverter()
+            $this->createDataAdvisorQuestionConverter(),
+            $this->factFinderSdkConfig
         );
     }
 
@@ -123,7 +138,7 @@ class ConverterFactory
      */
     public function createDataRecordConverter()
     {
-        return new RecordConverter();
+        return new RecordConverter($this->factFinderSdkConfig);
     }
 
     /**

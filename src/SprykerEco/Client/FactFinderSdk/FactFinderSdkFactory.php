@@ -78,7 +78,7 @@ class FactFinderSdkFactory extends AbstractFactory
      */
     protected function createConverterFactory()
     {
-        return new ConverterFactory();
+        return new ConverterFactory($this->getConfig());
     }
 
     /**

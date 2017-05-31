@@ -30,7 +30,7 @@ use SprykerEco\Client\FactFinderSdk\Business\Api\Converter\Data\FilterGroupConve
 use SprykerEco\Client\FactFinderSdk\Business\Api\Converter\Data\ItemConverter;
 use SprykerEco\Client\FactFinderSdk\Business\Api\Converter\Data\PagingConverter;
 use SprykerEco\Client\FactFinderSdk\Business\Api\Converter\Data\RecordConverter;
-use SprykerEco\Shared\FactFinderSdk\FactFinderSdkConstants;
+use SprykerEco\Client\FactFinderSdk\FactFinderSdkConfig;
 
 class SearchResponseConverter extends BaseConverter
 {
@@ -71,12 +71,18 @@ class SearchResponseConverter extends BaseConverter
     protected $advisorQuestionConverter;
 
     /**
+     * @var \SprykerEco\Client\FactFinderSdk\FactFinderSdkConfig
+     */
+    private $factFinderSdkConfig;
+
+    /**
      * @param \FACTFinder\Adapter\Search $searchAdapter
      * @param \SprykerEco\Client\FactFinderSdk\Business\Api\Converter\Data\PagingConverter $pagingConverter
      * @param \SprykerEco\Client\FactFinderSdk\Business\Api\Converter\Data\ItemConverter $itemConverter
      * @param \SprykerEco\Client\FactFinderSdk\Business\Api\Converter\Data\RecordConverter $recordConverter
      * @param \SprykerEco\Client\FactFinderSdk\Business\Api\Converter\Data\FilterGroupConverter $filterGroupConverter
      * @param \SprykerEco\Client\FactFinderSdk\Business\Api\Converter\Data\AdvisorQuestionConverter $advisorQuestionConverter
+     * @param \SprykerEco\Client\FactFinderSdk\FactFinderSdkConfig $factFinderSdkConfig
      */
     public function __construct(
         FactFinderSearchAdapter $searchAdapter,
@@ -84,7 +90,8 @@ class SearchResponseConverter extends BaseConverter
         ItemConverter $itemConverter,
         RecordConverter $recordConverter,
         FilterGroupConverter $filterGroupConverter,
-        AdvisorQuestionConverter $advisorQuestionConverter
+        AdvisorQuestionConverter $advisorQuestionConverter,
+        FactFinderSdkConfig $factFinderSdkConfig
     ) {
         $this->searchAdapter = $searchAdapter;
         $this->pagingConverter = $pagingConverter;
@@ -92,6 +99,7 @@ class SearchResponseConverter extends BaseConverter
         $this->recordConverter = $recordConverter;
         $this->filterGroupConverter = $filterGroupConverter;
         $this->advisorQuestionConverter = $advisorQuestionConverter;
+        $this->factFinderSdkConfig = $factFinderSdkConfig;
     }
 
     /**
@@ -263,7 +271,7 @@ class SearchResponseConverter extends BaseConverter
     {
         $factFinderDataResultTransfer = new FactFinderSdkDataResultTransfer();
         $factFinderDataResultTransfer->setFoundRecordsCount($result->getFoundRecordsCount());
-        $factFinderDataResultTransfer->setFieldNames(FactFinderSdkConstants::ITEM_FIELDS);
+        $factFinderDataResultTransfer->setFieldNames($this->factFinderSdkConfig->getItemFields());
         /** @var \FACTFinder\Data\Record $record */
         foreach ($result as $record) {
             $this->recordConverter->setRecord($record);

@@ -105,7 +105,6 @@ class FilterGroupConverter extends BaseConverter
             $factFinderDataFilterTransfer->setSelectedMaximum($filter->getSelectedMaximum());
         }
 
-
         return $factFinderDataFilterTransfer;
     }
 

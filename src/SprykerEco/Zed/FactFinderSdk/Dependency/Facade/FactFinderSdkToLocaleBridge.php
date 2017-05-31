@@ -106,6 +106,8 @@ class FactFinderSdkToLocaleBridge implements FactFinderSdkToLocaleInterface
     }
 
     /**
+     * @param string $localeName
+     *
      * @return \Generated\Shared\Transfer\LocaleTransfer
      */
     public function createLocale($localeName)

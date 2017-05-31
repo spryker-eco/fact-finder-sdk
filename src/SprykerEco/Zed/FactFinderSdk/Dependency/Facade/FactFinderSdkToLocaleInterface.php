@@ -60,7 +60,7 @@ interface FactFinderSdkToLocaleInterface
     public function getCurrentLocale();
 
     /**
-     * @throws \Spryker\Zed\Locale\Business\Exception\LocaleExistsException
+     * @param string $localeName
      *
      * @return \Generated\Shared\Transfer\LocaleTransfer
      */

@@ -53,4 +53,12 @@ class FactFinderSdkConfig extends AbstractBundleConfig
         return $this->get(FactFinderSdkConstants::DEFAULT_PRODUCTS_PER_PAGE);
     }
 
+    /**
+     * @return array
+     */
+    public function getItemFields()
+    {
+        return $this->get(FactFinderSdkConstants::ITEM_FIELDS);
+    }
+
 }

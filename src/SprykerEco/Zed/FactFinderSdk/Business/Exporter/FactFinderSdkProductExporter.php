@@ -8,7 +8,6 @@
 namespace SprykerEco\Zed\FactFinderSdk\Business\Exporter;
 
 use Generated\Shared\Transfer\LocaleTransfer;
-use Orm\Zed\Category\Persistence\SpyCategoryNode;
 use Orm\Zed\Product\Persistence\Base\SpyProductAbstractQuery;
 use SprykerEco\Shared\FactFinderSdk\FactFinderSdkConstants;
 use SprykerEco\Zed\FactFinderSdk\Business\Writer\AbstractFileWriter;
@@ -146,7 +145,7 @@ class FactFinderSdkProductExporter implements FactFinderSdkProductExporterInterf
      */
     protected function getFileHeader()
     {
-        return FactFinderSdkConstants::ITEM_FIELDS;
+        return $this->factFinderConfig->getItemFields();
     }
 
     /**
@@ -176,8 +175,10 @@ class FactFinderSdkProductExporter implements FactFinderSdkProductExporterInterf
 
         foreach ($data as $row) {
             $prepared = [];
+            $categoriesPathArray = $this->getCategoryPathArray($localeTransfer, $row[FactFinderSdkConstants::ITEM_CATEGORY_ID]);
             $row = $this->addProductUrl($row);
-            $row = $this->addCategoryPath($row, $localeTransfer);
+            $row = $this->addCategoryPath($row, $categoriesPathArray);
+            $row = $this->addCategories($row, $categoriesPathArray);
             $row = $this->encodeDescription($row);
 
             foreach ($headers as $headerName) {
@@ -220,37 +221,46 @@ class FactFinderSdkProductExporter implements FactFinderSdkProductExporterInterf
 
     /**
      * @param array $data
+     * @param array $categoriesPathArray
      *
-     * @return array mixed
+     * @return array
      */
-    protected function convertPrice($data)
+    protected function addCategoryPath($data, $categoriesPathArray)
     {
-        $price = $this->money
-            ->convertIntegerToDecimal($data[FactFinderSdkConstants::ITEM_PRICE]);
+        $categoriesPathArray = array_map(function ($value) {
+            return urlencode($value);
+        }, $categoriesPathArray);
 
-        $data[FactFinderSdkConstants::ITEM_PRICE] = $price;
+        $data[FactFinderSdkConstants::ITEM_CATEGORY_PATH] = implode('/', $categoriesPathArray);
 
         return $data;
     }
 
     /**
      * @param array $data
-     * @param \Generated\Shared\Transfer\LocaleTransfer $localeTransfer
+     * @param array $categoriesPathArray
      *
-     * @return array
+     * @return mixed
      */
-    protected function addCategoryPath($data, LocaleTransfer $localeTransfer)
+    protected function addCategories($data, $categoriesPathArray)
     {
-        $categoriesPathArray = $this->getCategoryPathArray(
-            $localeTransfer,
-            $data[FactFinderSdkConstants::ITEM_CATEGORY_ID]
-        );
+        $categoriesMaxCount = $this->factFinderConfig->getCategoriesMaxCount();
 
-        $categoriesPathArray = array_map(function($value) {
-            return urlencode($value);
-        }, $categoriesPathArray);
+        for ($i = 1; $i <= $categoriesMaxCount; $i++) {
+            $data[FactFinderSdkConstants::ITEM_CATEGORY . $i] = '';
+        }
 
-        $data[FactFinderSdkConstants::ITEM_CATEGORY_PATH] = implode('/', $categoriesPathArray);
+        foreach ($categoriesPathArray as $key => $category) {
+            $key++;
+
+            if ($key < $categoriesMaxCount) {
+                $data[FactFinderSdkConstants::ITEM_CATEGORY . $key] = $category;
+            }
+        }
+
+        if (count($categoriesPathArray) > $categoriesMaxCount) {
+            $data[FactFinderSdkConstants::ITEM_CATEGORY . $categoriesMaxCount] = end($categoriesPathArray);
+        }
 
         return $data;
     }
@@ -266,7 +276,8 @@ class FactFinderSdkProductExporter implements FactFinderSdkProductExporterInterf
         $pathArray = [];
 
         $query = $this->factFinderQueryContainer
-            ->getParentCategoryQuery($localeTransfer, $categoryId);
+            ->getParentCategoryQuery($localeTransfer, $categoryId)
+            ->filterByIsSearchable(true);
         $category = $query->findOne();
 
         if (!$category) {
@@ -274,7 +285,7 @@ class FactFinderSdkProductExporter implements FactFinderSdkProductExporterInterf
         }
         $pathArray[] = $category->getName();
 
-        /** @var SpyCategoryNode $node */
+        /** @var \Orm\Zed\Category\Persistence\SpyCategoryNode $node */
         $node = $category->getNodes()
             ->getFirst();
 

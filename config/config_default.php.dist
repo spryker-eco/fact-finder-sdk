@@ -10,13 +10,13 @@ $config[FactFinderSdkConstants::ENVIRONMENT . FactFinderSdkConstants::ENVIRONMEN
     'requestProtocol' => 'http', //https
     'serverAddress' => 'partner3.fact-finder.de',
     'port' => '80',
-    'context' => 'Spryker',
+    'context' => 'Context',
     'channel' => 'test',
     'language' => 'de',
     'authenticationType' => 'advanced',
 // This is another possible option for authentication type
 //   'authenticationType' => 'manual',
-    'userName' => 'campaignManager',
+    'userName' => 'user',
     'password' => 'change123',
     'authenticationPrefix' => 'FACT-FINDER',
     'authenticationPostfix' => 'FACT-FINDER',
@@ -48,3 +48,20 @@ $config[FactFinderSdkConstants::EXPORT_FILE_EXTENSION] = '.csv';
 $config[FactFinderSdkConstants::PHP_LOGGER_CONFIG_PATH] = APPLICATION_ROOT_DIR . '/config/Shared/log4php.xml';
 $config[FactFinderSdkConstants::CHANNEL_PREFIX] = '';
 $config[FactFinderSdkConstants::DEFAULT_PRODUCTS_PER_PAGE] = 20;
+$config[FactFinderSdkConstants::CATEGORIES_MAX_COUNT] = 4;
+
+$config[FactFinderSdkConstants::ITEM_FIELDS] = [
+    FactFinderSdkConstants::ITEM_MASTER_ID,
+    FactFinderSdkConstants::ITEM_PRODUCT_NUMBER,
+    FactFinderSdkConstants::ITEM_NAME,
+    FactFinderSdkConstants::ITEM_PRICE,
+    FactFinderSdkConstants::ITEM_STOCK,
+    FactFinderSdkConstants::ITEM_CATEGORY_1,
+    FactFinderSdkConstants::ITEM_CATEGORY_2,
+    FactFinderSdkConstants::ITEM_CATEGORY_3,
+    FactFinderSdkConstants::ITEM_CATEGORY_4,
+    FactFinderSdkConstants::ITEM_CATEGORY_PATH,
+    FactFinderSdkConstants::ITEM_PRODUCT_URL,
+    FactFinderSdkConstants::ITEM_IMAGE_URL,
+    FactFinderSdkConstants::ITEM_DESCRIPTION,
+];

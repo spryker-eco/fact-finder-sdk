@@ -23,6 +23,8 @@ interface FactFinderSdkConstants
     const DETAIL_PAGE_URL = 'FACT_FINDER:DETAIL_PAGE_URL';
     const CHANNEL_PREFIX = 'FACT_FINDER:CHANNEL_PREFIX';
     const DEFAULT_PRODUCTS_PER_PAGE = 'FACT_FINDER:DEFAULT_PRODUCTS_PER_PAGE';
+    const ITEM_FIELDS = 'FACT_FINDER:ITEM_FIELDS';
+    const CATEGORIES_MAX_COUNT = 'FACT_FINDER:CATEGORIES_MAX_COUNT';
 
     const ITEM_PRODUCT_NUMBER = 'ProductNumber';
     const ITEM_NAME = 'Name';
@@ -30,6 +32,10 @@ interface FactFinderSdkConstants
     const ITEM_PRICE = 'Price';
     const ITEM_STOCK = 'Stock';
     const ITEM_CATEGORY = 'Category';
+    const ITEM_CATEGORY_1 = 'Category1';
+    const ITEM_CATEGORY_2 = 'Category2';
+    const ITEM_CATEGORY_3 = 'Category3';
+    const ITEM_CATEGORY_4 = 'Category4';
     const ITEM_CATEGORY_PATH = 'CategoryPath';
     const ITEM_PRODUCT_URL = 'ProductURL';
     const ITEM_IMAGE_URL = 'ImageURL';
@@ -38,18 +44,5 @@ interface FactFinderSdkConstants
     const ITEM_PARENT_CATEGORY_NAME = 'ParentCategoryName';
     const ITEM_PARENT_CATEGORY_NODE_ID = 'ParentCategoryNodeId';
     const ITEM_MASTER_ID = 'MasterProductNumber';
-
-    const ITEM_FIELDS = [
-        self::ITEM_MASTER_ID,
-        self::ITEM_PRODUCT_NUMBER,
-        self::ITEM_NAME,
-        self::ITEM_PRICE,
-        self::ITEM_STOCK,
-        self::ITEM_CATEGORY,
-        self::ITEM_CATEGORY_PATH,
-        self::ITEM_PRODUCT_URL,
-        self::ITEM_IMAGE_URL,
-        self::ITEM_DESCRIPTION,
-    ];
 
 }

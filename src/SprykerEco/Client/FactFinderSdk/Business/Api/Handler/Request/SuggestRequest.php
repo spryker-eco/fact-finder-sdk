@@ -38,7 +38,6 @@ class SuggestRequest extends AbstractRequest implements SuggestRequestInterface
             $responseTransfer = new FactFinderSdkSuggestResponseTransfer();
         }
 
-
         return $responseTransfer;
     }
 
