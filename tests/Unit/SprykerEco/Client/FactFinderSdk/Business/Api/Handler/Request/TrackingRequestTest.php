@@ -13,6 +13,7 @@ use PHPUnit_Framework_TestCase;
 use SprykerEco\Client\FactFinderSdk\Business\Api\Converter\ConverterFactory;
 use SprykerEco\Client\FactFinderSdk\Business\Api\FactFinderConnector;
 use SprykerEco\Client\FactFinderSdk\Business\Api\Handler\Request\TrackingRequest;
+use SprykerEco\Client\FactFinderSdk\FactFinderSdkConfig;
 
 /**
  * @group Unit
@@ -80,8 +81,18 @@ class TrackingRequestTest extends PHPUnit_Framework_TestCase
     {
         return new TrackingRequest(
             $this->createFactFinderConnectorMock(),
-            new ConverterFactory()
+            new ConverterFactory($this->createConfigMock())
         );
+    }
+
+    /**
+     * @return \PHPUnit_Framework_MockObject_MockObject|\SprykerEco\Client\FactFinderSdk\FactFinderSdkConfig
+     */
+    protected function createConfigMock()
+    {
+        $configMock = $this->createMock(FactFinderSdkConfig::class);
+
+        return $configMock;
     }
 
 }

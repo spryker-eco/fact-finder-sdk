@@ -2,4 +2,3 @@ class_name: FunctionalTester
 modules:
     enabled:
         - Filesystem
-        - \FactFinderEco\Module\Functional

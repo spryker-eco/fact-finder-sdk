@@ -91,6 +91,18 @@ class FactFinderSdkFacadeTest extends Test
             ->willReturn('.csv');
         $configMock->method('getExportQueryLimit')
             ->willReturn(1000);
+        $configMock->method('getItemFields')
+            ->willReturn([
+                'ProductNumber',
+                'Name',
+                'Price',
+                'Stock',
+                'Category',
+                'CategoryPath',
+                'ProductURL',
+                'ImageURL',
+                'Description',
+            ]);
 
         return $configMock;
     }
