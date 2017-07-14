@@ -10,7 +10,7 @@ namespace SprykerEco\Client\FactFinderSdk\Business\Api\Converter;
 use FACTFinder\Adapter\Recommendation as FactFinderRecommendationAdapter;
 use FACTFinder\Data\Record;
 use Generated\Shared\Transfer\FactFinderSdkRecommendationResponseTransfer;
-use SprykerEco\Shared\FactFinderSdk\FactFinderSdkConstants;
+use SprykerEco\Client\FactFinderSdk\FactFinderSdkConfig;
 
 class RecommendationResponseConverter extends BaseConverter
 {
@@ -21,11 +21,18 @@ class RecommendationResponseConverter extends BaseConverter
     protected $recommendationAdapter;
 
     /**
-     * @param \FACTFinder\Adapter\Recommendation $recommendationAdapter
+     * @var \SprykerEco\Client\FactFinderSdk\FactFinderSdkConfig
      */
-    public function __construct(FactFinderRecommendationAdapter $recommendationAdapter)
+    private $factFinderSdkConfig;
+
+    /**
+     * @param \FACTFinder\Adapter\Recommendation $recommendationAdapter
+     * @param \SprykerEco\Client\FactFinderSdk\FactFinderSdkConfig $factFinderSdkConfig
+     */
+    public function __construct(FactFinderRecommendationAdapter $recommendationAdapter, FactFinderSdkConfig $factFinderSdkConfig)
     {
         $this->recommendationAdapter = $recommendationAdapter;
+        $this->factFinderSdkConfig = $factFinderSdkConfig;
     }
 
     /**
@@ -38,9 +45,11 @@ class RecommendationResponseConverter extends BaseConverter
         $recommendations = $this->recommendationAdapter
             ->getRecommendations();
 
-        foreach ($recommendations as $recommendation) {
-            $recommendationData = $this->getRecommendationData($recommendation);
-            $responseTransfer->addRecommendations($recommendationData);
+        if ($recommendations->count()) {
+            foreach ($recommendations as $recommendation) {
+                $recommendationData = $this->getRecommendationData($recommendation);
+                $responseTransfer->addRecommendations($recommendationData);
+            }
         }
 
         return $responseTransfer;
@@ -59,7 +68,7 @@ class RecommendationResponseConverter extends BaseConverter
         $result['seoPath'] = $recommendation->getSeoPath();
         $result['keywords'] = $recommendation->getKeywords();
         $result['similarity'] = $recommendation->getSimilarity();
-        $result['id'] = $recommendation->getId();
+        $result['id'] = $recommendation->getID();
         $result['fields'] = $this->getFields($recommendation);
 
         return $result;
@@ -74,7 +83,7 @@ class RecommendationResponseConverter extends BaseConverter
     {
         $fields = [];
 
-        foreach (FactFinderSdkConstants::ITEM_FIELDS as $fieldName) {
+        foreach ($this->factFinderSdkConfig->getItemFields() as $fieldName) {
             $fields[$fieldName] = $recommendation->getField($fieldName);
         }
 
