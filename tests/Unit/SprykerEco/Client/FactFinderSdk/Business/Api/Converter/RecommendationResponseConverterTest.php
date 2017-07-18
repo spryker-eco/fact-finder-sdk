@@ -56,7 +56,7 @@ class RecommendationResponseConverterTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @return \FACTFinder\Data\SuggestQuery
+     * @return object
      */
     protected function getRecommendations()
     {
