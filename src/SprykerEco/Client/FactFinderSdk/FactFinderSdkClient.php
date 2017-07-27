@@ -7,6 +7,7 @@
 
 namespace SprykerEco\Client\FactFinderSdk;
 
+use Generated\Shared\Transfer\FactFinderSdkProductCampaignRequestTransfer;
 use Generated\Shared\Transfer\FactFinderSdkRecommendationRequestTransfer;
 use Generated\Shared\Transfer\FactFinderSdkSearchRequestTransfer;
 use Generated\Shared\Transfer\FactFinderSdkSuggestRequestTransfer;
@@ -84,6 +85,24 @@ class FactFinderSdkClient extends AbstractClient implements FactFinderSdkClientI
             ->request($factFinderRecommendationRequestTransfer);
 
         return $factFinderRecommendationResponseTransfer;
+    }
+
+    /**
+     * Specification:
+     * - Returns product campaigns.
+     *
+     * @param \Generated\Shared\Transfer\FactFinderSdkProductCampaignRequestTransfer $factFinderSdkProductCampaignRequestTransfer
+     *
+     * @return \Generated\Shared\Transfer\FactFinderSdkProductCampaignResponseTransfer
+     */
+    public function getProductCampaigns(FactFinderSdkProductCampaignRequestTransfer $factFinderSdkProductCampaignRequestTransfer)
+    {
+        $factFinderSdkProductCampaignResponseTransfer = $this
+            ->getFactory()
+            ->createProductCampaignRequest()
+            ->request($factFinderSdkProductCampaignRequestTransfer);
+
+        return $factFinderSdkProductCampaignResponseTransfer;
     }
 
     /**
