@@ -106,6 +106,24 @@ class FactFinderSdkClient extends AbstractClient implements FactFinderSdkClientI
     }
 
     /**
+     * Specification:
+     * - Returns shopping cart campaigns.
+     *
+     * @param \Generated\Shared\Transfer\FactFinderSdkProductCampaignRequestTransfer $factFinderSdkProductCampaignRequestTransfer
+     *
+     * @return \Generated\Shared\Transfer\FactFinderSdkProductCampaignResponseTransfer
+     */
+    public function getShoppingCartCampaigns(FactFinderSdkProductCampaignRequestTransfer $factFinderSdkProductCampaignRequestTransfer)
+    {
+        $factFinderSdkProductCampaignResponseTransfer = $this
+            ->getFactory()
+            ->createShoppingCartCampaignRequest()
+            ->request($factFinderSdkProductCampaignRequestTransfer);
+
+        return $factFinderSdkProductCampaignResponseTransfer;
+    }
+
+    /**
      * @api
      *
      * @return \Spryker\Client\Session\SessionClientInterface

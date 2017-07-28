@@ -45,7 +45,6 @@ class ProductCampaignResponseConverter extends BaseConverter
         AdvisorQuestionConverter $advisorQuestionConverter
     ) {
         $this->productCampaignAdapter = $productCampaignAdapter;
-        $this->productCampaignAdapter->makeProductCampaign();
         $this->recordConverter = $recordConverter;
         $this->advisorQuestionConverter = $advisorQuestionConverter;
     }

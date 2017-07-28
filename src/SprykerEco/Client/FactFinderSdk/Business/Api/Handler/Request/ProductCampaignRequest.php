@@ -26,14 +26,26 @@ class ProductCampaignRequest extends AbstractRequest implements ProductCampaignR
             ->createRequestParametersFromProductCampaignRequestTransfer($factFinderProductCampaignRequestTransfer);
         $this->factFinderConnector->setRequestParameters($requestParameters);
 
-        $productCampaignAdapter = $this->factFinderConnector
-            ->createProductCampaignAdapter();
+        $productCampaignAdapter = $this->prepareProductCampaignAdapter();
 
         $responseTransfer = $this->converterFactory
             ->createProductCampaignResponseConverter($productCampaignAdapter)
             ->convert();
 
         return $responseTransfer;
+    }
+
+    /**
+     * @return \FACTFinder\Adapter\ProductCampaign
+     */
+    protected function prepareProductCampaignAdapter()
+    {
+        $productCampaignAdapter = $this->factFinderConnector
+            ->createProductCampaignAdapter();
+
+        $productCampaignAdapter->makeProductCampaign();
+
+        return $productCampaignAdapter;
     }
 
 }
