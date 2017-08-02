@@ -165,13 +165,6 @@ class SearchResponseConverter extends BaseConverter
             );
         }
         $factFinderDataCampaignIteratorTransfer->setHasActiveQuestions($campaigns->hasActiveQuestions());
-        /** @var \FACTFinder\Data\Record $activeQuestion */
-        foreach ($campaigns->getActiveQuestions() as $activeQuestion) {
-            $this->recordConverter->setRecord($activeQuestion);
-            $factFinderDataCampaignIteratorTransfer->addGetActiveQuestions(
-                $this->recordConverter->convert()
-            );
-        }
         $factFinderDataCampaignIteratorTransfer->setHasAdvisorTree($campaigns->hasAdvisorTree());
         /** @var \FACTFinder\Data\Record $advisorTree */
         foreach ($campaigns->getAdvisorTree() as $advisorTree) {
@@ -201,7 +194,7 @@ class SearchResponseConverter extends BaseConverter
             foreach ($campaign->getActiveQuestions() as $activeQuestion) {
                 $this->advisorQuestionConverter->setAdvisorQuestion($activeQuestion);
                 $factFinderDataCampaignTransfer->addActiveQuestions(
-                    $this->advisorQuestionConverter->convert()
+                    $this->advisorQuestionConverter->convert($activeQuestion)
                 );
             }
             /** @var \FACTFinder\Data\AdvisorQuestion $advisorTree */

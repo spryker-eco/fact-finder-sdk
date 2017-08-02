@@ -136,6 +136,7 @@
     <transfer name="FactFinderSdkDataAdvisorAnswer">
         <property name="item" type="FactFinderSdkDataItem"/>
         <property name="text" type="string"/>
+        <property name="url" type="string"/>
         <property name="followUpQuestions" type="FactFinderSdkDataAdvisorQuestion[]"/>
     </transfer>
 

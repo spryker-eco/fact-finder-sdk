@@ -76,6 +76,7 @@ class AdvisorQuestionConverter extends BaseConverter
     {
         $factFinderDataAdvisorAnswerTransfer = new FactFinderSdkDataAdvisorAnswerTransfer();
         $factFinderDataAdvisorAnswerTransfer->setText($advisorAnswer->getText());
+        $factFinderDataAdvisorAnswerTransfer->setUrl($advisorAnswer->getUrl());
         $this->itemConverter->setItem($advisorAnswer);
         $factFinderDataAdvisorAnswerTransfer->setItem(
             $this->itemConverter->convert()
