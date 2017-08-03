@@ -155,7 +155,6 @@ class SearchResponseConverter extends BaseConverter
         $factFinderDataCampaignIteratorTransfer->setHasRedirect($campaigns->hasRedirect());
         $factFinderDataCampaignIteratorTransfer->setRedirectUrl($campaigns->getRedirectUrl());
         $factFinderDataCampaignIteratorTransfer->setHasFeedback($campaigns->hasFeedback());
-//        $factFinderDataCampaignIteratorTransfer->setFeedback($campaigns->getFeedback());
         $factFinderDataCampaignIteratorTransfer->setHasPushedProducts($campaigns->hasPushedProducts());
         /** @var \FACTFinder\Data\Record $pushedProduct */
         foreach ($campaigns->getPushedProducts() as $pushedProduct) {
