@@ -166,8 +166,8 @@
     <!--END FACTFinder\Data\.. Objects-->
 
     <transfer name="FactFinderSdkRecommendationRequest">
-        <property name="id" type="string"/>
         <property name="sid" type="string"/>
+        <property name="id" type="string[]"/>
     </transfer>
 
     <transfer name="FactFinderSdkRecommendationResponse">

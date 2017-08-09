@@ -26,6 +26,7 @@ use PHPUnit_Framework_TestCase;
 use SprykerEco\Client\FactFinderSdk\Business\Api\Converter\ConverterFactory;
 use SprykerEco\Client\FactFinderSdk\Business\Api\FactFinderConnector;
 use SprykerEco\Client\FactFinderSdk\Business\Api\Handler\Request\SearchRequest;
+use SprykerEco\Client\FactFinderSdk\FactFinderSdkConfig;
 
 /**
  * @group Unit
@@ -62,8 +63,30 @@ class SearchRequestTest extends PHPUnit_Framework_TestCase
     {
         return new SearchRequest(
             $this->createFactFinderConnectorMock(),
-            new ConverterFactory()
+            new ConverterFactory($this->createConfigMock())
         );
+    }
+
+    /**
+     * @return \PHPUnit_Framework_MockObject_MockObject|\SprykerEco\Client\FactFinderSdk\FactFinderSdkConfig
+     */
+    protected function createConfigMock()
+    {
+        $configMock = $this->createMock(FactFinderSdkConfig::class);
+        $configMock->method('getItemFields')
+            ->willReturn([
+                'ProductNumber',
+                'Name',
+                'Price',
+                'Stock',
+                'Category',
+                'CategoryPath',
+                'ProductURL',
+                'ImageURL',
+                'Description',
+            ]);
+
+        return $configMock;
     }
 
     /**

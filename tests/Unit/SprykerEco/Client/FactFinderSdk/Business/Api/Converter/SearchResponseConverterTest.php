@@ -24,6 +24,7 @@ use Generated\Shared\Transfer\FactFinderSdkSearchResponseTransfer;
 use PHPUnit_Framework_TestCase;
 use SprykerEco\Client\FactFinderSdk\Business\Api\Converter\ConverterFactory;
 use SprykerEco\Client\FactFinderSdk\Business\Api\Converter\SearchResponseConverter;
+use SprykerEco\Client\FactFinderSdk\FactFinderSdkConfig;
 
 /**
  * @group Unit
@@ -59,7 +60,29 @@ class SearchResponseConverterTest extends PHPUnit_Framework_TestCase
      */
     protected function createConverterFactory()
     {
-        return new ConverterFactory();
+        return new ConverterFactory($this->createConfigMock());
+    }
+
+    /**
+     * @return \PHPUnit_Framework_MockObject_MockObject|\SprykerEco\Client\FactFinderSdk\FactFinderSdkConfig
+     */
+    protected function createConfigMock()
+    {
+        $configMock = $this->createMock(FactFinderSdkConfig::class);
+        $configMock->method('getItemFields')
+            ->willReturn([
+                'ProductNumber',
+                'Name',
+                'Price',
+                'Stock',
+                'Category',
+                'CategoryPath',
+                'ProductURL',
+                'ImageURL',
+                'Description',
+            ]);
+
+        return $configMock;
     }
 
     /**
@@ -76,7 +99,8 @@ class SearchResponseConverterTest extends PHPUnit_Framework_TestCase
             $converterFactory->createDataItemConverter(),
             $converterFactory->createDataRecordConverter(),
             $converterFactory->createDataFilterGroup(),
-            $converterFactory->createDataAdvisorQuestionConverter()
+            $converterFactory->createDataAdvisorQuestionConverter(),
+            $this->createConfigMock()
         );
     }
 

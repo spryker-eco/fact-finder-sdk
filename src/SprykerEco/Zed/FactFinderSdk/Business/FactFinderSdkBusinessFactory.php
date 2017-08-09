@@ -28,8 +28,7 @@ class FactFinderSdkBusinessFactory extends AbstractBusinessFactory
      */
     public function createCsvFile(LocaleTransfer $localeTransfer)
     {
-        return $this->createFactFinderProductExporter(new CsvFileWriter(), $localeTransfer)
-            ->export();
+        $this->createFactFinderProductExporter($this->createFileWriter(), $localeTransfer)->export();
     }
 
     /**
@@ -62,6 +61,14 @@ class FactFinderSdkBusinessFactory extends AbstractBusinessFactory
     public function getMoneyFacade()
     {
         return $this->getProvidedDependency(FactFinderSdkDependencyProvider::MONEY_FACADE);
+    }
+
+    /**
+     * @return \SprykerEco\Zed\FactFinderSdk\Business\Writer\AbstractFileWriter
+     */
+    protected function createFileWriter()
+    {
+        return new CsvFileWriter();
     }
 
     /**

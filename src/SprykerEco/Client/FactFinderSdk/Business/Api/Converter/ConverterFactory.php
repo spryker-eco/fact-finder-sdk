@@ -62,7 +62,10 @@ class ConverterFactory
      */
     public function createRecommendationResponseConverter(FactFinderRecommendationAdapter $recommendationAdapter)
     {
-        return new RecommendationResponseConverter($recommendationAdapter);
+        return new RecommendationResponseConverter(
+            $recommendationAdapter,
+            $this->factFinderSdkConfig
+        );
     }
 
     /**
