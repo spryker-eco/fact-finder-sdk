@@ -28,7 +28,7 @@ class FactFinderSdkBusinessFactory extends AbstractBusinessFactory
      */
     public function createCsvFile(LocaleTransfer $localeTransfer)
     {
-        $this->createFactFinderProductExporter($this->createFileWriter(), $localeTransfer)->export();
+        $this->createFactFinderProductExporter($this->createCsvFileWriter(), $localeTransfer)->export();
     }
 
     /**
@@ -66,7 +66,7 @@ class FactFinderSdkBusinessFactory extends AbstractBusinessFactory
     /**
      * @return \SprykerEco\Zed\FactFinderSdk\Business\Writer\AbstractFileWriter
      */
-    protected function createFileWriter()
+    protected function createCsvFileWriter()
     {
         return new CsvFileWriter();
     }
