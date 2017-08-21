@@ -7,6 +7,7 @@
 
 namespace SprykerEco\Client\FactFinderSdk;
 
+use Generated\Shared\Transfer\FactFinderSdkProductCampaignRequestTransfer;
 use Generated\Shared\Transfer\FactFinderSdkRecommendationRequestTransfer;
 use Generated\Shared\Transfer\FactFinderSdkSearchRequestTransfer;
 use Generated\Shared\Transfer\FactFinderSdkSuggestRequestTransfer;
@@ -62,5 +63,25 @@ interface FactFinderSdkClientInterface
      * @return \Generated\Shared\Transfer\FactFinderSdkTrackingResponseTransfer
      */
     public function track(FactFinderSdkTrackingRequestTransfer $factFinderTrackingRequestTransfer);
+
+    /**
+     * Specification:
+     * - Returns product campaigns.
+     *
+     * @param \Generated\Shared\Transfer\FactFinderSdkProductCampaignRequestTransfer $factFinderSdkProductCampaignRequestTransfer
+     *
+     * @return \Generated\Shared\Transfer\FactFinderSdkProductCampaignResponseTransfer
+     */
+    public function getProductCampaigns(FactFinderSdkProductCampaignRequestTransfer $factFinderSdkProductCampaignRequestTransfer);
+
+    /**
+     * Specification:
+     * - Returns shopping cart campaigns.
+     *
+     * @param \Generated\Shared\Transfer\FactFinderSdkProductCampaignRequestTransfer $factFinderSdkProductCampaignRequestTransfer
+     *
+     * @return \Generated\Shared\Transfer\FactFinderSdkProductCampaignResponseTransfer
+     */
+    public function getShoppingCartCampaigns(FactFinderSdkProductCampaignRequestTransfer $factFinderSdkProductCampaignRequestTransfer);
 
 }

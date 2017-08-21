@@ -115,7 +115,11 @@ class ConverterFactory
      */
     public function createProductCampaignResponseConverter(FactFinderProductCampaignAdapter $productCampaignAdapter)
     {
-        return new ProductCampaignResponseConverter($productCampaignAdapter);
+        return new ProductCampaignResponseConverter(
+            $productCampaignAdapter,
+            $this->createDataRecordConverter(),
+            $this->createDataAdvisorQuestionConverter()
+        );
     }
 
     /**

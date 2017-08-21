@@ -10,8 +10,10 @@ namespace SprykerEco\Client\FactFinderSdk;
 use Spryker\Client\Kernel\AbstractFactory;
 use SprykerEco\Client\FactFinderSdk\Business\Api\Converter\ConverterFactory;
 use SprykerEco\Client\FactFinderSdk\Business\Api\FactFinderConnector;
+use SprykerEco\Client\FactFinderSdk\Business\Api\Handler\Request\ProductCampaignRequest;
 use SprykerEco\Client\FactFinderSdk\Business\Api\Handler\Request\RecommendationRequest;
 use SprykerEco\Client\FactFinderSdk\Business\Api\Handler\Request\SearchRequest;
+use SprykerEco\Client\FactFinderSdk\Business\Api\Handler\Request\ShoppingCartCampaignRequest;
 use SprykerEco\Client\FactFinderSdk\Business\Api\Handler\Request\SuggestRequest;
 use SprykerEco\Client\FactFinderSdk\Business\Api\Handler\Request\TrackingRequest;
 
@@ -60,6 +62,28 @@ class FactFinderSdkFactory extends AbstractFactory
     public function createRecommendationsRequest()
     {
         return new RecommendationRequest(
+            $this->createFactFinderConnector(),
+            $this->createConverterFactory()
+        );
+    }
+
+    /**
+     * @return \SprykerEco\Client\FactFinderSdk\Business\Api\Handler\Request\ProductCampaignRequest
+     */
+    public function createProductCampaignRequest()
+    {
+        return new ProductCampaignRequest(
+            $this->createFactFinderConnector(),
+            $this->createConverterFactory()
+        );
+    }
+
+    /**
+     * @return \SprykerEco\Client\FactFinderSdk\Business\Api\Handler\Request\ShoppingCartCampaignRequest
+     */
+    public function createShoppingCartCampaignRequest()
+    {
+        return new ShoppingCartCampaignRequest(
             $this->createFactFinderConnector(),
             $this->createConverterFactory()
         );

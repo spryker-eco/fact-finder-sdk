@@ -155,7 +155,6 @@ class SearchResponseConverter extends BaseConverter
         $factFinderDataCampaignIteratorTransfer->setHasRedirect($campaigns->hasRedirect());
         $factFinderDataCampaignIteratorTransfer->setRedirectUrl($campaigns->getRedirectUrl());
         $factFinderDataCampaignIteratorTransfer->setHasFeedback($campaigns->hasFeedback());
-//        $factFinderDataCampaignIteratorTransfer->setFeedback($campaigns->getFeedback());
         $factFinderDataCampaignIteratorTransfer->setHasPushedProducts($campaigns->hasPushedProducts());
         /** @var \FACTFinder\Data\Record $pushedProduct */
         foreach ($campaigns->getPushedProducts() as $pushedProduct) {
@@ -165,13 +164,6 @@ class SearchResponseConverter extends BaseConverter
             );
         }
         $factFinderDataCampaignIteratorTransfer->setHasActiveQuestions($campaigns->hasActiveQuestions());
-        /** @var \FACTFinder\Data\Record $activeQuestion */
-        foreach ($campaigns->getActiveQuestions() as $activeQuestion) {
-            $this->recordConverter->setRecord($activeQuestion);
-            $factFinderDataCampaignIteratorTransfer->addGetActiveQuestions(
-                $this->recordConverter->convert()
-            );
-        }
         $factFinderDataCampaignIteratorTransfer->setHasAdvisorTree($campaigns->hasAdvisorTree());
         /** @var \FACTFinder\Data\Record $advisorTree */
         foreach ($campaigns->getAdvisorTree() as $advisorTree) {
@@ -189,6 +181,7 @@ class SearchResponseConverter extends BaseConverter
             $factFinderDataCampaignTransfer->setRedirectUrl($campaign->getRedirectUrl());
             $factFinderDataCampaignTransfer->setFeedback($campaign->getFeedbackArray());
             $factFinderDataCampaignTransfer->setHasRedirect($campaign->hasRedirect());
+            $factFinderDataCampaignTransfer->setHasPushedProducts($campaign->hasPushedProducts());
             /** @var \FACTFinder\Data\Record $pushedProduct */
             foreach ($campaign->getPushedProducts() as $pushedProduct) {
                 $this->recordConverter->setRecord($pushedProduct);
@@ -200,7 +193,7 @@ class SearchResponseConverter extends BaseConverter
             foreach ($campaign->getActiveQuestions() as $activeQuestion) {
                 $this->advisorQuestionConverter->setAdvisorQuestion($activeQuestion);
                 $factFinderDataCampaignTransfer->addActiveQuestions(
-                    $this->advisorQuestionConverter->convert()
+                    $this->advisorQuestionConverter->convert($activeQuestion)
                 );
             }
             /** @var \FACTFinder\Data\AdvisorQuestion $advisorTree */

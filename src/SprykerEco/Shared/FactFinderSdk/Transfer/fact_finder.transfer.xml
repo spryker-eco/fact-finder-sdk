@@ -53,6 +53,7 @@
         <property name="activeQuestions" type="FactFinderSdkDataAdvisorQuestion[]"/>
         <property name="advisorTree" type="FactFinderSdkDataAdvisorQuestion[]"/>
         <property name="hasRedirect" type="bool"/>
+        <property name="hasPushedProducts" type="bool"/>
     </transfer>
 
     <transfer name="FactFinderSdkDataAfterSearchNavigation">
@@ -135,6 +136,7 @@
     <transfer name="FactFinderSdkDataAdvisorAnswer">
         <property name="item" type="FactFinderSdkDataItem"/>
         <property name="text" type="string"/>
+        <property name="url" type="string"/>
         <property name="followUpQuestions" type="FactFinderSdkDataAdvisorQuestion[]"/>
     </transfer>
 
@@ -191,7 +193,7 @@
     </transfer>
 
     <transfer name="FactFinderSdkTrackingRequest">
-        <property name="id" type="string"/>§
+        <property name="id" type="string"/>
         <property name="masterId" type="string"/>
         <property name="channel" type="string"/>
         <property name="sid" type="string"/>
@@ -237,11 +239,11 @@
     </transfer>
 
     <transfer name="FactFinderSdkProductCampaignRequest">
-        <property name="temp" type="string"/>
+        <property name="productNumber" type="string[]"/>
     </transfer>
 
     <transfer name="FactFinderSdkProductCampaignResponse">
-        <property name="temp" type="string"/>
+        <property name="campaignIterator" type="FactFinderSdkDataCampaignIterator"/>
     </transfer>
 
     <transfer name="FactFinderSdkCsv">

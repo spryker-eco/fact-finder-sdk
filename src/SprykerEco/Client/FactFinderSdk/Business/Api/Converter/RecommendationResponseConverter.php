@@ -23,7 +23,7 @@ class RecommendationResponseConverter extends BaseConverter
     /**
      * @var \SprykerEco\Client\FactFinderSdk\FactFinderSdkConfig
      */
-    private $factFinderSdkConfig;
+    protected $factFinderSdkConfig;
 
     /**
      * @param \FACTFinder\Adapter\Recommendation $recommendationAdapter

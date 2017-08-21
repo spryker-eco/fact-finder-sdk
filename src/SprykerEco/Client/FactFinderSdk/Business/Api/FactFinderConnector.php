@@ -10,6 +10,7 @@ namespace SprykerEco\Client\FactFinderSdk\Business\Api;
 use Exception;
 use FACTFinder\Loader as FactFinderLoader;
 use FACTFinder\Util\Parameters;
+use Generated\Shared\Transfer\FactFinderSdkProductCampaignRequestTransfer;
 use Generated\Shared\Transfer\FactFinderSdkSearchRequestTransfer;
 use SprykerEco\Client\FactFinderSdk\FactFinderSdkConfig;
 
@@ -276,6 +277,22 @@ class FactFinderConnector
         if (empty($parameters['productsPerPage'])) {
             $parameters['productsPerPage'] = $this->factFinderConfig->getDefaultProductsPerPage();
         }
+
+        return FactFinderLoader::getInstance(
+            'Util\Parameters',
+            $parameters
+        );
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\FactFinderSdkProductCampaignRequestTransfer $factFinderProductCampaignRequestTransfer
+     *
+     * @return \FACTFinder\Util\Parameters
+     */
+    public function createRequestParametersFromProductCampaignRequestTransfer(FactFinderSdkProductCampaignRequestTransfer $factFinderProductCampaignRequestTransfer)
+    {
+        $parameters = [];
+        $parameters['productNumber'] = $factFinderProductCampaignRequestTransfer->getProductNumber();
 
         return FactFinderLoader::getInstance(
             'Util\Parameters',
