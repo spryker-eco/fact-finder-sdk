@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<config>
+    <maintenance>
+        <pages>
+            <factfinderadmin>
+                <label>FactFinder Admin Panel</label>
+                <title>FactFinder Admin Panel</title>
+                <bundle>fact-finder-sdk</bundle>
+                <controller>navigation</controller>
+                <action>factFinderAdminPanel</action>
+                <icon>fa-space-shuttle</icon>
+            </factfinderadmin>
+        </pages>
+    </maintenance>
+</config>

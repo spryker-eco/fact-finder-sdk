@@ -38,6 +38,7 @@ $config[FactFinderSdkConstants::ENVIRONMENT . FactFinderSdkConstants::ENVIRONMEN
     'importTimeout' => 360,
     'pageContentEncoding' => 'UTF-8',
     'clientUrlEncoding' => 'UTF-8',
+    FactFinderSdkConstants::ADMIN_PANEL_URL => 'http://partner3.fact-finder.de/Spryker-UI/index.html',
 ];
 
 $config[FactFinderSdkConstants::CSV_DIRECTORY] = APPLICATION_ROOT_DIR . '/public/Zed/assets/fact_finder/';
