@@ -179,6 +179,7 @@ class FactFinderSdkProductExporter implements FactFinderSdkProductExporterInterf
             $row = $this->addProductUrl($row);
             $row = $this->addCategoryPath($row, $categoriesPathArray);
             $row = $this->addCategories($row, $categoriesPathArray);
+            $row = $this->convertPrice($row);
             $row = $this->encodeDescription($row);
 
             foreach ($headers as $headerName) {
@@ -214,7 +215,19 @@ class FactFinderSdkProductExporter implements FactFinderSdkProductExporterInterf
      */
     protected function encodeDescription($data)
     {
-        $data[FactFinderSdkConstants::ITEM_DESCRIPTION] = urlencode($data[FactFinderSdkConstants::ITEM_DESCRIPTION]);
+        $data[FactFinderSdkConstants::ITEM_DESCRIPTION] = quotemeta($data[FactFinderSdkConstants::ITEM_DESCRIPTION]);
+
+        return $data;
+    }
+
+    /**
+     * @param array $data
+     *
+     * @return array
+     */
+    protected function convertPrice($data)
+    {
+        $data[FactFinderSdkConstants::ITEM_PRICE] = number_format($data[FactFinderSdkConstants::ITEM_PRICE] / 100, 2);
 
         return $data;
     }
