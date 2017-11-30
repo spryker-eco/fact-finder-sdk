@@ -9,7 +9,6 @@ namespace SprykerEco\Zed\FactFinderSdk\Business\Exporter;
 
 use Generated\Shared\Transfer\LocaleTransfer;
 use Orm\Zed\Product\Persistence\Base\SpyProductAbstractQuery;
-use Spryker\Shared\Money\Builder\MoneyBuilder;
 use SprykerEco\Shared\FactFinderSdk\FactFinderSdkConstants;
 use SprykerEco\Zed\FactFinderSdk\Business\Writer\AbstractFileWriter;
 use SprykerEco\Zed\FactFinderSdk\FactFinderSdkConfig;
