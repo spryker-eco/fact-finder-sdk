@@ -95,7 +95,7 @@ class FactFinderSdkQueryContainer extends AbstractQueryContainer implements Fact
      */
     protected function addColumns(SpyProductAbstractQuery $productsAbstractQuery)
     {
-        $productsAbstractQuery->withColumn(SpyProductTableMap::COL_ID_PRODUCT, FactFinderSdkConstants::ITEM_PRODUCT_NUMBER);
+        $productsAbstractQuery->withColumn(SpyProductTableMap::COL_SKU, FactFinderSdkConstants::ITEM_PRODUCT_NUMBER);
         $productsAbstractQuery->withColumn(SpyProductLocalizedAttributesTableMap::COL_NAME, FactFinderSdkConstants::ITEM_NAME);
         $productsAbstractQuery->withColumn(SpyPriceProductTableMap::COL_PRICE, FactFinderSdkConstants::ITEM_PRICE);
         $productsAbstractQuery->withColumn(SpyStockProductTableMap::COL_QUANTITY, FactFinderSdkConstants::ITEM_STOCK);
@@ -105,7 +105,7 @@ class FactFinderSdkQueryContainer extends AbstractQueryContainer implements Fact
         $productsAbstractQuery->withColumn(SpyProductCategoryTableMap::COL_FK_CATEGORY, FactFinderSdkConstants::ITEM_CATEGORY_ID);
         $productsAbstractQuery->withColumn(SpyCategoryNodeTableMap::COL_FK_PARENT_CATEGORY_NODE, FactFinderSdkConstants::ITEM_PARENT_CATEGORY_NODE_ID);
         $productsAbstractQuery->withColumn(SpyUrlTableMap::COL_URL, FactFinderSdkConstants::ITEM_PRODUCT_URL);
-        $productsAbstractQuery->withColumn(SpyProductTableMap::COL_FK_PRODUCT_ABSTRACT, FactFinderSdkConstants::ITEM_MASTER_ID);
+        $productsAbstractQuery->withColumn(SpyProductTableMap::COL_SKU, FactFinderSdkConstants::ITEM_MASTER_ID);
 
         return $productsAbstractQuery;
     }
