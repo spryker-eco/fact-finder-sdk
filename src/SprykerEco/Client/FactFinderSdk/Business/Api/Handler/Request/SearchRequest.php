@@ -7,9 +7,11 @@
 
 namespace SprykerEco\Client\FactFinderSdk\Business\Api\Handler\Request;
 
+use FACTFinder\Util\Parameters;
 use Generated\Shared\Transfer\FactFinderSdkSearchRequestTransfer;
 use Generated\Shared\Transfer\FactFinderSdkSearchResponseTransfer;
 use SprykerEco\Client\FactFinderSdk\Business\Api\ApiConstants;
+use SprykerEco\Shared\FactFinderSdk\FactFinderSdkConstants;
 
 class SearchRequest extends AbstractRequest implements SearchRequestInterface
 {
@@ -25,6 +27,7 @@ class SearchRequest extends AbstractRequest implements SearchRequestInterface
     {
         $requestParameters = $this->factFinderConnector
             ->createRequestParametersFromSearchRequestTransfer($factFinderSearchRequestTransfer);
+        $requestParameters = $this->convertCategoryParameters($requestParameters);
         $this->factFinderConnector->setRequestParameters($requestParameters);
 
         $searchAdapter = $this->factFinderConnector->createSearchAdapter();
@@ -38,6 +41,29 @@ class SearchRequest extends AbstractRequest implements SearchRequestInterface
         }
 
         return $responseTransfer;
+    }
+
+    /**
+     * @param \FACTFinder\Util\Parameters $parameters
+     *
+     * @return \FACTFinder\Util\Parameters
+     */
+    protected function convertCategoryParameters(Parameters $parameters)
+    {
+        $parametersArray = $parameters->getArray();
+
+        foreach ($parametersArray as $key => $parameter) {
+            if (strpos($key, FactFinderSdkConstants::REQUEST_CATEGORY_PATH_ROOT_NAME) !== false) {
+                unset($parametersArray[$key]);
+                $newKey = str_replace('_', ' ', $key);
+                $parametersArray[$newKey] = $parameter;
+            }
+        }
+
+        $parameters->clear();
+        $parameters->setAll($parametersArray);
+
+        return $parameters;
     }
 
 }

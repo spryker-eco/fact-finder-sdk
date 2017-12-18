@@ -271,7 +271,7 @@ class FactFinderConnector
         if (empty($parameters['channel'])) {
             $parameters['channel'] = $config['channel'];
         }
-        if (empty($parameters['query'])) {
+        if (empty($parameters['query']) || $parameters['query'] == '*') {
             $parameters['navigation'] = true;
         }
         if (empty($parameters['productsPerPage'])) {

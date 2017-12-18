@@ -26,6 +26,7 @@ interface FactFinderSdkConstants
     const ITEM_FIELDS = 'FACT_FINDER:ITEM_FIELDS';
     const CATEGORIES_MAX_COUNT = 'FACT_FINDER:CATEGORIES_MAX_COUNT';
     const ADMIN_PANEL_URL = 'FACT_FINDER:ADMIN_PANEL_URL';
+    const REQUEST_CATEGORY_PATH_ROOT_NAME = 'filterCategoryPathROOT';
 
     const ITEM_PRODUCT_NUMBER = 'ProductNumber';
     const ITEM_NAME = 'Name';
