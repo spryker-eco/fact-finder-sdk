@@ -11,11 +11,31 @@ use FACTFinder\Util\Parameters;
 use Generated\Shared\Transfer\FactFinderSdkTrackingRequestTransfer;
 use Generated\Shared\Transfer\FactFinderSdkTrackingResponseTransfer;
 use SprykerEco\Client\FactFinderSdk\Business\Api\ApiConstants;
+use SprykerEco\Client\FactFinderSdk\Business\Api\Converter\ConverterFactory;
+use SprykerEco\Client\FactFinderSdk\Business\Api\FactFinderConnector;
+use SprykerEco\Client\FactFinderSdk\FactFinderSdkConfig;
 
 class TrackingRequest extends AbstractRequest implements TrackingRequestInterface
 {
 
     const TRANSACTION_TYPE = ApiConstants::TRANSACTION_TYPE_SEARCH;
+
+    /**
+     * @var FactFinderSdkConfig
+     */
+    protected $config;
+
+    /**
+     * TrackingRequest constructor.
+     * @param FactFinderConnector $factFinderConnector
+     * @param ConverterFactory $converterFactory
+     */
+    public function __construct(FactFinderConnector $factFinderConnector, ConverterFactory $converterFactory, FactFinderSdkConfig $config)
+    {
+        parent::__construct($factFinderConnector, $converterFactory);
+        $this->config = $config;
+    }
+
 
     /**
      * @param \Generated\Shared\Transfer\FactFinderSdkTrackingRequestTransfer $factFinderTrackingRequestTransfer
@@ -27,10 +47,7 @@ class TrackingRequest extends AbstractRequest implements TrackingRequestInterfac
         $parameters = new Parameters();
         $parameters->setAll($this->getRequestData($factFinderTrackingRequestTransfer));
 
-        if (empty($parameters['query'])) {
-            $parameters['query'] = '*';
-        }
-
+        $parameters = $this->fillDefaultValues($parameters);
         $this->factFinderConnector->setRequestParameters($parameters);
 
         $trackingAdapter = $this->factFinderConnector->createTrackingAdapter();
@@ -67,6 +84,26 @@ class TrackingRequest extends AbstractRequest implements TrackingRequestInterfac
         }
 
         return $data;
+    }
+
+    /**
+     * @param $parameters
+     * @return mixed
+     */
+    protected function fillDefaultValues($parameters)
+    {
+        $defaultValues = [
+            'query' => '*',
+            'channel' => $this->config->getFactFinderConfiguration()['channel'],
+        ];
+
+        foreach ($defaultValues as $key => $value) {
+            if (empty($parameters[$key])) {
+                $parameters[$key] = $value;
+            }
+        }
+
+        return $parameters;
     }
 
 }

@@ -52,7 +52,8 @@ class FactFinderSdkFactory extends AbstractFactory
     {
         return new TrackingRequest(
             $this->createFactFinderConnector(),
-            $this->createConverterFactory()
+            $this->createConverterFactory(),
+            $this->getConfig()
         );
     }
 
@@ -107,6 +108,7 @@ class FactFinderSdkFactory extends AbstractFactory
 
     /**
      * @return \Spryker\Client\Session\SessionClientInterface
+     * @throws \Spryker\Client\Kernel\Exception\Container\ContainerKeyNotFoundException
      */
     public function getSession()
     {
