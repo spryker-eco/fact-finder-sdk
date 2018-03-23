@@ -7,10 +7,14 @@
 
 namespace SprykerEco\Zed\FactFinderSdk\Business\Exporter;
 
+use Generated\Shared\Transfer\CurrencyTransfer;
 use Generated\Shared\Transfer\LocaleTransfer;
+use Generated\Shared\Transfer\StoreTransfer;
 use Orm\Zed\Product\Persistence\Base\SpyProductAbstractQuery;
 use SprykerEco\Shared\FactFinderSdk\FactFinderSdkConstants;
 use SprykerEco\Zed\FactFinderSdk\Business\Writer\AbstractFileWriter;
+use SprykerEco\Zed\FactFinderSdk\Dependency\Facade\FactFinderSdkToCurrencyInterface;
+use SprykerEco\Zed\FactFinderSdk\Dependency\Facade\FactFinderSdkToStoreInterface;
 use SprykerEco\Zed\FactFinderSdk\FactFinderSdkConfig;
 use SprykerEco\Zed\FactFinderSdk\Persistence\FactFinderSdkQueryContainerInterface;
 
@@ -62,18 +66,30 @@ class FactFinderSdkProductExporter implements FactFinderSdkProductExporterInterf
     protected $factFinderConfig;
 
     /**
-     * FactFinderProductExporterPlugin constructor.
-     *
+     * @var \Spryker\Zed\Currency\Business\CurrencyFacadeInterface
+     */
+    protected $currencyFacade;
+
+    /**
+     * @var \Spryker\Zed\Store\Business\StoreFacadeInterface
+     */
+    protected $storeFacade;
+
+    /**
      * @param \SprykerEco\Zed\FactFinderSdk\Business\Writer\AbstractFileWriter $fileWriter
      * @param \Generated\Shared\Transfer\LocaleTransfer $localeTransfer
      * @param \SprykerEco\Zed\FactFinderSdk\FactFinderSdkConfig $factFinderConfig
      * @param \SprykerEco\Zed\FactFinderSdk\Persistence\FactFinderSdkQueryContainerInterface $factFinderQueryContainer
+     * @param \SprykerEco\Zed\FactFinderSdk\Dependency\Facade\FactFinderSdkToCurrencyInterface $currencyFacade
+     * @param \SprykerEco\Zed\FactFinderSdk\Dependency\Facade\FactFinderSdkToStoreInterface $storeFacade
      */
     public function __construct(
         AbstractFileWriter $fileWriter,
         LocaleTransfer $localeTransfer,
         FactFinderSdkConfig $factFinderConfig,
-        FactFinderSdkQueryContainerInterface $factFinderQueryContainer
+        FactFinderSdkQueryContainerInterface $factFinderQueryContainer,
+        FactFinderSdkToCurrencyInterface $currencyFacade,
+        FactFinderSdkToStoreInterface $storeFacade
     ) {
 
         $this->fileWriter = $fileWriter;
@@ -84,6 +100,8 @@ class FactFinderSdkProductExporter implements FactFinderSdkProductExporterInterf
         $this->fileExtension = $factFinderConfig->getExportFileExtension();
         $this->factFinderQueryContainer = $factFinderQueryContainer;
         $this->factFinderConfig = $factFinderConfig;
+        $this->currencyFacade = $currencyFacade;
+        $this->storeFacade = $storeFacade;
     }
 
     /**
@@ -91,13 +109,16 @@ class FactFinderSdkProductExporter implements FactFinderSdkProductExporterInterf
      */
     public function export()
     {
+        $currency = $this->currencyFacade->getDefaultCurrencyForCurrentStore();
+        $store = $this->storeFacade->getCurrentStore();
+
         $query = $this->factFinderQueryContainer
-            ->getExportDataQuery($this->localeTransfer);
+            ->getExportDataQuery($this->localeTransfer, $store, $currency);
 
         if (!$this->productsExists($query)) {
             return;
         }
-        $filePath = $this->getFilePath($this->localeTransfer->getLocaleName());
+        $filePath = $this->getFilePath($this->localeTransfer, $store, $currency);
 
         $this->exportToCsv($filePath, $query);
     }
@@ -117,7 +138,7 @@ class FactFinderSdkProductExporter implements FactFinderSdkProductExporterInterf
             $result = $query->limit($this->queryLimit)
                 ->offset($offset)
                 ->find()
-                ->toArray();
+                ->toArray(FactFinderSdkConstants::ITEM_PRODUCT_NUMBER);
             $offset += $this->queryLimit;
 
             $prepared = $this->prepareDataForExport($result, $this->localeTransfer);
@@ -148,17 +169,29 @@ class FactFinderSdkProductExporter implements FactFinderSdkProductExporterInterf
     }
 
     /**
-     * @param string $localeName
+     * @param \Generated\Shared\Transfer\LocaleTransfer $localeTransfer
+     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
+     * @param \Generated\Shared\Transfer\CurrencyTransfer $currencyTransfer
      *
      * @return string
      */
-    protected function getFilePath($localeName)
+    protected function getFilePath(LocaleTransfer $localeTransfer, StoreTransfer $storeTransfer, CurrencyTransfer $currencyTransfer)
     {
         $directory = $this->factFinderConfig
             ->getCsvDirectory();
-        $fileName = $this->fileNamePrefix . $this->fileNameDelimiter . $localeName . $this->fileExtension;
+        $fileNameParts = [
+            $directory,
+            $this->fileNamePrefix,
+            $this->fileNameDelimiter,
+            $localeTransfer->getLocaleName(),
+            $this->fileNameDelimiter,
+            $storeTransfer->getName(),
+            $this->fileNameDelimiter,
+            $currencyTransfer->getName(),
+            $this->fileExtension,
+        ];
 
-        return $directory . $fileName;
+        return implode('', $fileNameParts);
     }
 
     /**
@@ -226,7 +259,7 @@ class FactFinderSdkProductExporter implements FactFinderSdkProductExporterInterf
      */
     protected function convertPrice($data)
     {
-        $data[FactFinderSdkConstants::ITEM_PRICE] = number_format($data[FactFinderSdkConstants::ITEM_PRICE] / 100, 2);
+        $data[FactFinderSdkConstants::ITEM_PRICE] = number_format($data[FactFinderSdkConstants::ITEM_PRICE] / 100, 2, '.', '');
 
         return $data;
     }

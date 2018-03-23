@@ -63,6 +63,22 @@ class FactFinderSdkBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
+     * @return \SprykerEco\Zed\FactFinderSdk\Dependency\Facade\FactFinderSdkToStoreInterface
+     */
+    public function getStoreFacade()
+    {
+        return $this->getProvidedDependency(FactFinderSdkDependencyProvider::STORE_FACADE);
+    }
+
+    /**
+     * @return \SprykerEco\Zed\FactFinderSdk\Dependency\Facade\FactFinderSdkToCurrencyInterface
+     */
+    public function getCurrencyFacade()
+    {
+        return $this->getProvidedDependency(FactFinderSdkDependencyProvider::CURRENCY_FACADE);
+    }
+
+    /**
      * @return \SprykerEco\Zed\FactFinderSdk\Business\Writer\AbstractFileWriter
      */
     protected function createCsvFileWriter()
@@ -83,7 +99,8 @@ class FactFinderSdkBusinessFactory extends AbstractBusinessFactory
             $localeTransfer,
             $this->getConfig(),
             $this->getQueryContainer(),
-            $this->getMoneyFacade()
+            $this->getCurrencyFacade(),
+            $this->getStoreFacade()
         );
     }
 }

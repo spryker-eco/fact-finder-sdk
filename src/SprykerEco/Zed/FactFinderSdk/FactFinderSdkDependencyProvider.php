@@ -9,8 +9,10 @@ namespace SprykerEco\Zed\FactFinderSdk;
 
 use Spryker\Zed\Kernel\AbstractBundleDependencyProvider;
 use Spryker\Zed\Kernel\Container;
+use SprykerEco\Zed\FactFinderSdk\Dependency\Facade\FactFinderSdkToCurrencyBridge;
 use SprykerEco\Zed\FactFinderSdk\Dependency\Facade\FactFinderSdkToLocaleBridge;
 use SprykerEco\Zed\FactFinderSdk\Dependency\Facade\FactFinderSdkToMoneyBridge;
+use SprykerEco\Zed\FactFinderSdk\Dependency\Facade\FactFinderSdkToStoreBridge;
 use SprykerEco\Zed\FactFinderSdk\Dependency\Persistence\FactFinderSdkToCategoryDataFeedBridge;
 use SprykerEco\Zed\FactFinderSdk\Dependency\Persistence\FactFinderSdkToProductAbstractDataFeedBridge;
 
@@ -20,6 +22,8 @@ class FactFinderSdkDependencyProvider extends AbstractBundleDependencyProvider
     const CATEGORY_DATA_FEED = 'CATEGORY_DATA_FEED';
     const LOCALE_FACADE = 'LOCALE_FACADE';
     const MONEY_FACADE = 'MONEY_FACADE';
+    const STORE_FACADE = 'STORE_FACADE';
+    const CURRENCY_FACADE = 'CURRENCY_FACADE';
 
     /**
      * @param \Spryker\Zed\Kernel\Container $container
@@ -28,13 +32,7 @@ class FactFinderSdkDependencyProvider extends AbstractBundleDependencyProvider
      */
     public function provideCommunicationLayerDependencies(Container $container)
     {
-        $container[self::LOCALE_FACADE] = function (Container $container) {
-            $localeFacade = $container->getLocator()
-                ->locale()
-                ->facade();
-
-            return new FactFinderSdkToLocaleBridge($localeFacade);
-        };
+        $container = $this->addLocaleFacade($container);
 
         return $container;
     }
@@ -72,12 +70,80 @@ class FactFinderSdkDependencyProvider extends AbstractBundleDependencyProvider
      */
     public function provideBusinessLayerDependencies(Container $container)
     {
+        $container = $this->addStoreFacade($container);
+        $container = $this->addCurrencyFacade($container);
+        $container = $this->addMoneyFacade($container);
+
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    protected function addStoreFacade(Container $container)
+    {
+        $container[self::STORE_FACADE] = function (Container $container) {
+            $storeFacade = $container->getLocator()
+                ->store()
+                ->facade();
+
+            return new FactFinderSdkToStoreBridge($storeFacade);
+        };
+
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    protected function addCurrencyFacade(Container $container)
+    {
+        $container[self::CURRENCY_FACADE] = function (Container $container) {
+            $currencyFacade = $container->getLocator()
+                ->currency()
+                ->facade();
+
+            return new FactFinderSdkToCurrencyBridge($currencyFacade);
+        };
+
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    protected function addMoneyFacade(Container $container)
+    {
         $container[self::MONEY_FACADE] = function (Container $container) {
             $moneyFacade = $container->getLocator()
                 ->money()
                 ->facade();
 
             return new FactFinderSdkToMoneyBridge($moneyFacade);
+        };
+
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    protected function addLocaleFacade(Container $container)
+    {
+        $container[self::LOCALE_FACADE] = function (Container $container) {
+            $localeFacade = $container->getLocator()
+                ->locale()
+                ->facade();
+
+            return new FactFinderSdkToLocaleBridge($localeFacade);
         };
 
         return $container;
