@@ -22,7 +22,6 @@ use SprykerEco\Client\FactFinderSdk\Business\Api\Converter\TrackingResponseConve
  */
 class TrackingResponseConverterTest extends PHPUnit_Framework_TestCase
 {
-
     /**
      * @return void
      */
@@ -55,5 +54,4 @@ class TrackingResponseConverterTest extends PHPUnit_Framework_TestCase
     {
         return new FactFinderSdkTrackingResponseTransfer();
     }
-
 }

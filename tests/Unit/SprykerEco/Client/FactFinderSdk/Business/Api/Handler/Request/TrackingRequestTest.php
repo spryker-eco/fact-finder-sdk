@@ -25,7 +25,6 @@ use SprykerEco\Client\FactFinderSdk\FactFinderSdkConfig;
  */
 class TrackingRequestTest extends PHPUnit_Framework_TestCase
 {
-
     /**
      * @return void
      */
@@ -94,5 +93,4 @@ class TrackingRequestTest extends PHPUnit_Framework_TestCase
 
         return $configMock;
     }
-
 }

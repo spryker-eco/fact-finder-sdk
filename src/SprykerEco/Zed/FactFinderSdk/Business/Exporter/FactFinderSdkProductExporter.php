@@ -16,7 +16,6 @@ use SprykerEco\Zed\FactFinderSdk\Persistence\FactFinderSdkQueryContainerInterfac
 
 class FactFinderSdkProductExporter implements FactFinderSdkProductExporterInterface
 {
-
     /**
      * @var \SprykerEco\Zed\FactFinderSdk\Business\Writer\AbstractFileWriter
      */
@@ -321,5 +320,4 @@ class FactFinderSdkProductExporter implements FactFinderSdkProductExporterInterf
         $header = $this->getFileHeader();
         $this->fileWriter->write($filePath, [$header]);
     }
-
 }

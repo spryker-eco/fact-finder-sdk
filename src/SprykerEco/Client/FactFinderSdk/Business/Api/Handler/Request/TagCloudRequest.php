@@ -12,7 +12,6 @@ use SprykerEco\Client\FactFinderSdk\Business\Api\ApiConstants;
 
 class TagCloudRequest extends AbstractRequest implements TagCloudRequestInterface
 {
-
     const TRANSACTION_TYPE = ApiConstants::TRANSACTION_TYPE_TAG_CLOUD;
 
     /**
@@ -31,5 +30,4 @@ class TagCloudRequest extends AbstractRequest implements TagCloudRequestInterfac
 
         return $responseTransfer;
     }
-
 }

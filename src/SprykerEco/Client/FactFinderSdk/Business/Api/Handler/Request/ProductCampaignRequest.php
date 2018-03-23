@@ -12,7 +12,6 @@ use SprykerEco\Client\FactFinderSdk\Business\Api\ApiConstants;
 
 class ProductCampaignRequest extends AbstractRequest implements ProductCampaignRequestInterface
 {
-
     const TRANSACTION_TYPE = ApiConstants::TRANSACTION_TYPE_PRODUCT_CAMPAIGN;
 
     /**
@@ -47,5 +46,4 @@ class ProductCampaignRequest extends AbstractRequest implements ProductCampaignR
 
         return $productCampaignAdapter;
     }
-
 }

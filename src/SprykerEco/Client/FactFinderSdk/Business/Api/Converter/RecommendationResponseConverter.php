@@ -14,7 +14,6 @@ use SprykerEco\Client\FactFinderSdk\FactFinderSdkConfig;
 
 class RecommendationResponseConverter extends BaseConverter
 {
-
     /**
      * @var \FACTFinder\Adapter\Recommendation
      */
@@ -89,5 +88,4 @@ class RecommendationResponseConverter extends BaseConverter
 
         return $fields;
     }
-
 }

@@ -23,7 +23,6 @@ use SprykerEco\Client\FactFinderSdk\FactFinderSdkConfig;
 
 class ConverterFactory
 {
-
     /**
      * @var \SprykerEco\Client\FactFinderSdk\FactFinderSdkConfig
      */
@@ -167,5 +166,4 @@ class ConverterFactory
             $this->createDataItemConverter()
         );
     }
-
 }

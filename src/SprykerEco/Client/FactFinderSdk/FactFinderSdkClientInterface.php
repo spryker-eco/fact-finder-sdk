@@ -15,7 +15,6 @@ use Generated\Shared\Transfer\FactFinderSdkTrackingRequestTransfer;
 
 interface FactFinderSdkClientInterface
 {
-
     /**
      * Specification:
      * - Searches products using FactFinder.
@@ -83,5 +82,4 @@ interface FactFinderSdkClientInterface
      * @return \Generated\Shared\Transfer\FactFinderSdkProductCampaignResponseTransfer
      */
     public function getShoppingCartCampaigns(FactFinderSdkProductCampaignRequestTransfer $factFinderSdkProductCampaignRequestTransfer);
-
 }

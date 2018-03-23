@@ -15,7 +15,6 @@ use Spryker\Zed\Kernel\Business\AbstractFacade;
  */
 class FactFinderSdkFacade extends AbstractFacade implements FactFinderSdkFacadeInterface
 {
-
     /**
      * @api
      *
@@ -28,5 +27,4 @@ class FactFinderSdkFacade extends AbstractFacade implements FactFinderSdkFacadeI
         $this->getFactory()
             ->createCsvFile($localeTransfer);
     }
-
 }

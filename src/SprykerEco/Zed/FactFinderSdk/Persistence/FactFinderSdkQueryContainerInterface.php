@@ -12,7 +12,6 @@ use Spryker\Zed\Kernel\Persistence\QueryContainer\QueryContainerInterface;
 
 interface FactFinderSdkQueryContainerInterface extends QueryContainerInterface
 {
-
     /**
      * @api
      *
@@ -31,5 +30,4 @@ interface FactFinderSdkQueryContainerInterface extends QueryContainerInterface
      * @return \Orm\Zed\Category\Persistence\SpyCategoryQuery
      */
     public function getParentCategoryQuery(LocaleTransfer $localeTransfer, $categoryId);
-
 }

@@ -27,7 +27,6 @@ use SprykerEco\Client\FactFinderSdk\FactFinderSdkConfig;
  */
 class RecommendationRequestTest extends PHPUnit_Framework_TestCase
 {
-
     /**
      * @return void
      */
@@ -156,8 +155,7 @@ class RecommendationRequestTest extends PHPUnit_Framework_TestCase
                     "brand" => "..Acer..",
                     "Stock" => "1",
                 ]
-            )
+            ),
         ], 1);
     }
-
 }

@@ -20,7 +20,6 @@ use SprykerEco\Zed\FactFinderSdk\FactFinderSdkDependencyProvider;
  */
 class FactFinderSdkBusinessFactory extends AbstractBusinessFactory
 {
-
     /**
      * @param \Generated\Shared\Transfer\LocaleTransfer $localeTransfer
      *
@@ -87,5 +86,4 @@ class FactFinderSdkBusinessFactory extends AbstractBusinessFactory
             $this->getMoneyFacade()
         );
     }
-
 }

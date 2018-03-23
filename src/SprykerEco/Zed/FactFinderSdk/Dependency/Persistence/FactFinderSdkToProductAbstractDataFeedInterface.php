@@ -11,12 +11,10 @@ use Generated\Shared\Transfer\ProductAbstractDataFeedTransfer;
 
 interface FactFinderSdkToProductAbstractDataFeedInterface
 {
-
     /**
      * @param \Generated\Shared\Transfer\ProductAbstractDataFeedTransfer|null $productDataFeedTransfer
      *
      * @return \Orm\Zed\Product\Persistence\SpyProductAbstractQuery
      */
     public function queryAbstractProductDataFeed(ProductAbstractDataFeedTransfer $productDataFeedTransfer = null);
-
 }

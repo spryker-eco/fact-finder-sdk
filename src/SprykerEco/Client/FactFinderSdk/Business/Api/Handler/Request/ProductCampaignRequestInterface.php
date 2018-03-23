@@ -11,12 +11,10 @@ use Generated\Shared\Transfer\FactFinderSdkProductCampaignRequestTransfer;
 
 interface ProductCampaignRequestInterface
 {
-
     /**
      * @param \Generated\Shared\Transfer\FactFinderSdkProductCampaignRequestTransfer $factFinderProductCampaignRequestTransfer
      *
      * @return \Generated\Shared\Transfer\FactFinderSdkProductCampaignResponseTransfer
      */
     public function request(FactFinderSdkProductCampaignRequestTransfer $factFinderProductCampaignRequestTransfer);
-
 }

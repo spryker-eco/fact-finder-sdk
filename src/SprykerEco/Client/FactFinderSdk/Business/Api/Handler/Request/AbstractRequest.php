@@ -13,7 +13,6 @@ use SprykerEco\Client\FactFinderSdk\Business\Log\LoggerTrait;
 
 abstract class AbstractRequest
 {
-
     use LoggerTrait;
 
     const TRANSACTION_TYPE = null;
@@ -40,5 +39,4 @@ abstract class AbstractRequest
         $this->factFinderConnector = $factFinderConnector;
         $this->converterFactory = $converterFactory;
     }
-
 }

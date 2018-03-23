@@ -36,7 +36,6 @@ use SprykerEco\Client\FactFinderSdk\FactFinderSdkConfig;
  */
 class SearchResponseConverterTest extends PHPUnit_Framework_TestCase
 {
-
     /**
      * @return void
      */
@@ -386,5 +385,4 @@ class SearchResponseConverterTest extends PHPUnit_Framework_TestCase
 
         return $result;
     }
-
 }

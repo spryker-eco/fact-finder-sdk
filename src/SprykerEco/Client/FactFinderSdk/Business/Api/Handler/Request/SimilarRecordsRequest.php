@@ -12,7 +12,6 @@ use SprykerEco\Client\FactFinderSdk\Business\Api\ApiConstants;
 
 class SimilarRecordsRequest extends AbstractRequest implements SimilarRecordsRequestInterface
 {
-
     const TRANSACTION_TYPE = ApiConstants::TRANSACTION_TYPE_SIMILAR_RECORDS;
 
     /**
@@ -31,5 +30,4 @@ class SimilarRecordsRequest extends AbstractRequest implements SimilarRecordsReq
 
         return $responseTransfer;
     }
-
 }

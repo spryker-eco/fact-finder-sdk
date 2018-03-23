@@ -12,7 +12,6 @@ use Generated\Shared\Transfer\FactFinderSdkSuggestResponseTransfer;
 
 class SuggestResponseConverter extends BaseConverter
 {
-
     /**
      * @var \FACTFinder\Adapter\Suggest
      */
@@ -48,5 +47,4 @@ class SuggestResponseConverter extends BaseConverter
 
         return $responseTransfer;
     }
-
 }

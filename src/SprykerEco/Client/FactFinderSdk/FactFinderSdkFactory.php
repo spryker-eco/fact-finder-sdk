@@ -22,7 +22,6 @@ use SprykerEco\Client\FactFinderSdk\Business\Api\Handler\Request\TrackingRequest
  */
 class FactFinderSdkFactory extends AbstractFactory
 {
-
     /**
      * @return \SprykerEco\Client\FactFinderSdk\Business\Api\Handler\Request\SearchRequestInterface
      */
@@ -108,11 +107,9 @@ class FactFinderSdkFactory extends AbstractFactory
 
     /**
      * @return \Spryker\Client\Session\SessionClientInterface
-     * @throws \Spryker\Client\Kernel\Exception\Container\ContainerKeyNotFoundException
      */
     public function getSession()
     {
         return $this->getProvidedDependency(FactFinderSdkDependencyProvider::CLIENT_SESSION);
     }
-
 }

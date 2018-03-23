@@ -11,12 +11,10 @@ use Generated\Shared\Transfer\CategoryDataFeedTransfer;
 
 interface FactFinderSdkToCategoryDataFeedInterface
 {
-
     /**
      * @param \Generated\Shared\Transfer\CategoryDataFeedTransfer $categoryDataFeedTransfer
      *
      * @return \Orm\Zed\Category\Persistence\SpyCategoryQuery
      */
     public function queryCategoryDataFeed(CategoryDataFeedTransfer $categoryDataFeedTransfer);
-
 }

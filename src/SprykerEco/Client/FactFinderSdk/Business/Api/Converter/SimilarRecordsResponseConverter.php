@@ -12,7 +12,6 @@ use Generated\Shared\Transfer\FactFinderSdkSimilarRecordsResponseTransfer;
 
 class SimilarRecordsResponseConverter extends BaseConverter
 {
-
     /**
      * @var \FACTFinder\Adapter\SimilarRecords
      */
@@ -35,5 +34,4 @@ class SimilarRecordsResponseConverter extends BaseConverter
 
         return $responseTransfer;
     }
-
 }

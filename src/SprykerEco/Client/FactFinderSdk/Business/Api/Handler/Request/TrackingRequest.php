@@ -7,6 +7,7 @@
 
 namespace SprykerEco\Client\FactFinderSdk\Business\Api\Handler\Request;
 
+use Exception;
 use FACTFinder\Util\Parameters;
 use Generated\Shared\Transfer\FactFinderSdkTrackingRequestTransfer;
 use Generated\Shared\Transfer\FactFinderSdkTrackingResponseTransfer;
@@ -17,25 +18,25 @@ use SprykerEco\Client\FactFinderSdk\FactFinderSdkConfig;
 
 class TrackingRequest extends AbstractRequest implements TrackingRequestInterface
 {
-
     const TRANSACTION_TYPE = ApiConstants::TRANSACTION_TYPE_SEARCH;
 
     /**
-     * @var FactFinderSdkConfig
+     * @var \SprykerEco\Client\FactFinderSdk\FactFinderSdkConfig
      */
     protected $config;
 
     /**
      * TrackingRequest constructor.
-     * @param FactFinderConnector $factFinderConnector
-     * @param ConverterFactory $converterFactory
+     *
+     * @param \SprykerEco\Client\FactFinderSdk\Business\Api\FactFinderConnector $factFinderConnector
+     * @param \SprykerEco\Client\FactFinderSdk\Business\Api\Converter\ConverterFactory $converterFactory
+     * @param \SprykerEco\Client\FactFinderSdk\FactFinderSdkConfig $config
      */
     public function __construct(FactFinderConnector $factFinderConnector, ConverterFactory $converterFactory, FactFinderSdkConfig $config)
     {
         parent::__construct($factFinderConnector, $converterFactory);
         $this->config = $config;
     }
-
 
     /**
      * @param \Generated\Shared\Transfer\FactFinderSdkTrackingRequestTransfer $factFinderTrackingRequestTransfer
@@ -54,7 +55,7 @@ class TrackingRequest extends AbstractRequest implements TrackingRequestInterfac
 
         try {
             $result = $trackingAdapter->applyTracking();
-        } catch (\Exception $exception) {
+        } catch (Exception $exception) {
             $result = false;
         }
 
@@ -87,8 +88,9 @@ class TrackingRequest extends AbstractRequest implements TrackingRequestInterfac
     }
 
     /**
-     * @param $parameters
-     * @return mixed
+     * @param array $parameters
+     *
+     * @return array
      */
     protected function fillDefaultValues($parameters)
     {
@@ -105,5 +107,4 @@ class TrackingRequest extends AbstractRequest implements TrackingRequestInterfac
 
         return $parameters;
     }
-
 }

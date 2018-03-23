@@ -34,7 +34,6 @@ use SprykerEco\Client\FactFinderSdk\FactFinderSdkConfig;
 
 class SearchResponseConverter extends BaseConverter
 {
-
     /**
      * @var \FACTFinder\Adapter\Search
      */
@@ -364,5 +363,4 @@ class SearchResponseConverter extends BaseConverter
 
         return $sortingItems;
     }
-
 }

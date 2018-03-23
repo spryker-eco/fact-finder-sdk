@@ -14,7 +14,6 @@ use SprykerEco\Client\FactFinderSdk\Business\Api\FactFinderConnector;
 
 class FactFinderSdkMocks extends PHPUnit_Framework_TestCase
 {
-
     /**
      * @return \PHPUnit_Framework_MockObject_MockObject|\SprykerEco\Client\FactFinderSdk\Business\Api\FactFinderConnector
      */
@@ -60,5 +59,4 @@ class FactFinderSdkMocks extends PHPUnit_Framework_TestCase
             []
         );
     }
-
 }

@@ -11,12 +11,10 @@ use Generated\Shared\Transfer\FactFinderSdkSuggestRequestTransfer;
 
 interface SuggestRequestInterface
 {
-
     /**
      * @param \Generated\Shared\Transfer\FactFinderSdkSuggestRequestTransfer $factFinderSuggestRequestTransfer
      *
      * @return \Generated\Shared\Transfer\FactFinderSdkSuggestResponseTransfer
      */
     public function request(FactFinderSdkSuggestRequestTransfer $factFinderSuggestRequestTransfer);
-
 }

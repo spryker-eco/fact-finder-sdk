@@ -11,7 +11,6 @@ use Generated\Shared\Transfer\ProductAbstractDataFeedTransfer;
 
 class FactFinderSdkToProductAbstractDataFeedBridge implements FactFinderSdkToProductAbstractDataFeedInterface
 {
-
     /**
      * @var \Spryker\Zed\ProductAbstractDataFeed\Persistence\ProductAbstractDataFeedQueryContainerInterface
      */
@@ -36,5 +35,4 @@ class FactFinderSdkToProductAbstractDataFeedBridge implements FactFinderSdkToPro
     {
         return $this->productAbstractDataFeed->queryAbstractProductDataFeed($productDataFeedTransfer);
     }
-
 }

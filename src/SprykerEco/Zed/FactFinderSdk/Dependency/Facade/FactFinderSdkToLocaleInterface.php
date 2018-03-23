@@ -9,7 +9,6 @@ namespace SprykerEco\Zed\FactFinderSdk\Dependency\Facade;
 
 interface FactFinderSdkToLocaleInterface
 {
-
     /**
      * @param string $localeName
      *
@@ -82,5 +81,4 @@ interface FactFinderSdkToLocaleInterface
      * @return \Generated\Shared\Transfer\LocaleTransfer[]
      */
     public function getLocaleCollection();
-
 }

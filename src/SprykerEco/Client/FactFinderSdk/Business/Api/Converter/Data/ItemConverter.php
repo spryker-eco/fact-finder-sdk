@@ -13,7 +13,6 @@ use SprykerEco\Client\FactFinderSdk\Business\Api\Converter\BaseConverter;
 
 class ItemConverter extends BaseConverter
 {
-
     /**
      * @var \FACTFinder\Data\Item
      */
@@ -41,5 +40,4 @@ class ItemConverter extends BaseConverter
 
         return $factFinderDataItemTransfer;
     }
-
 }

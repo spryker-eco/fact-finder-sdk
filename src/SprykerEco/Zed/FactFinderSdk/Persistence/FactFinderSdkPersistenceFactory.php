@@ -12,11 +12,10 @@ use SprykerEco\Zed\FactFinderSdk\FactFinderSdkDependencyProvider;
 
 /**
  * @method \SprykerEco\Zed\FactFinderSdk\FactFinderSdkConfig getConfig()
- * @method \SprykerEco\Zed\FactFinderSdk\Persistence\FactFinderSdkQueryContainer getQueryContainer()
+ * @method \SprykerEco\Zed\FactFinderSdk\Persistence\FactFinderSdkQueryContainerInterface getQueryContainer()
  */
 class FactFinderSdkPersistenceFactory extends AbstractPersistenceFactory
 {
-
     /**
      * @return \SprykerEco\Zed\FactFinderSdk\Dependency\Persistence\FactFinderSdkToProductAbstractDataFeedInterface
      */
@@ -32,5 +31,4 @@ class FactFinderSdkPersistenceFactory extends AbstractPersistenceFactory
     {
         return $this->getProvidedDependency(FactFinderSdkDependencyProvider::CATEGORY_DATA_FEED);
     }
-
 }

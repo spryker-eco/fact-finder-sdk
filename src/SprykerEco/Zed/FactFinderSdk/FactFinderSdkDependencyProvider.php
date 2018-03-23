@@ -16,7 +16,6 @@ use SprykerEco\Zed\FactFinderSdk\Dependency\Persistence\FactFinderSdkToProductAb
 
 class FactFinderSdkDependencyProvider extends AbstractBundleDependencyProvider
 {
-
     const PRODUCT_ABSTRACT_DATA_FEED = 'PRODUCT_ABSTRACT_DATA_FEED';
     const CATEGORY_DATA_FEED = 'CATEGORY_DATA_FEED';
     const LOCALE_FACADE = 'LOCALE_FACADE';
@@ -83,5 +82,4 @@ class FactFinderSdkDependencyProvider extends AbstractBundleDependencyProvider
 
         return $container;
     }
-
 }

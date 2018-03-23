@@ -13,11 +13,10 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 /**
  * @method \SprykerEco\Zed\FactFinderSdk\Communication\FactFinderSdkCommunicationFactory getFactory()
- * @method \SprykerEco\Zed\FactFinderSdk\Business\FactFinderSdkFacade getFacade()
+ * @method \SprykerEco\Zed\FactFinderSdk\Business\FactFinderSdkFacadeInterface getFacade()
  */
 class FactFinderSdkExportConsole extends Console
 {
-
     const COMMAND_NAME = 'fact-finder:export:products';
     const COMMAND_DESCRIPTION = 'Export product data for Fact Finder';
 
@@ -49,5 +48,4 @@ class FactFinderSdkExportConsole extends Console
                 ->createFactFinderSdkCsv($localeTransfer);
         }
     }
-
 }

@@ -16,7 +16,6 @@ use SprykerEco\Zed\FactFinderSdk\FactFinderSdkDependencyProvider;
  */
 class FactFinderSdkCommunicationFactory extends AbstractCommunicationFactory
 {
-
     /**
      * @return \SprykerEco\Zed\FactFinderSdk\Dependency\Facade\FactFinderSdkToLocaleInterface
      */
@@ -24,5 +23,4 @@ class FactFinderSdkCommunicationFactory extends AbstractCommunicationFactory
     {
         return $this->getProvidedDependency(FactFinderSdkDependencyProvider::LOCALE_FACADE);
     }
-
 }

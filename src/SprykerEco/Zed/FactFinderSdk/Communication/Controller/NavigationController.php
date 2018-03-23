@@ -8,13 +8,12 @@
 namespace SprykerEco\Zed\FactFinderSdk\Communication\Controller;
 
 use Spryker\Shared\Config\Config;
-use Spryker\Yves\Kernel\Controller\AbstractController;
+use Spryker\Zed\Kernel\Communication\Controller\AbstractController;
 use SprykerEco\Shared\FactFinderSdk\FactFinderSdkConstants;
 use Symfony\Component\HttpFoundation\Request;
 
 class NavigationController extends AbstractController
 {
-
     /**
      * @param \Symfony\Component\HttpFoundation\Request $request
      *
@@ -27,5 +26,4 @@ class NavigationController extends AbstractController
             Config::get($configKey)[FactFinderSdkConstants::ADMIN_PANEL_URL]
         );
     }
-
 }

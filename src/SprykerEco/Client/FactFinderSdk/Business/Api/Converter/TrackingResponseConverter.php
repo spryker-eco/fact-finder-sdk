@@ -12,7 +12,6 @@ use Generated\Shared\Transfer\FactFinderSdkTrackingResponseTransfer;
 
 class TrackingResponseConverter extends BaseConverter
 {
-
     /**
      * @var \FACTFinder\Adapter\Tracking
      */
@@ -35,5 +34,4 @@ class TrackingResponseConverter extends BaseConverter
 
         return $responseTransfer;
     }
-
 }

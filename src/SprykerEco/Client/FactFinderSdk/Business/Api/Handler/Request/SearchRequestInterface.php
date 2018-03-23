@@ -11,12 +11,10 @@ use Generated\Shared\Transfer\FactFinderSdkSearchRequestTransfer;
 
 interface SearchRequestInterface
 {
-
     /**
      * @param \Generated\Shared\Transfer\FactFinderSdkSearchRequestTransfer $factFinderSearchRequestTransfer
      *
      * @return \Generated\Shared\Transfer\FactFinderSdkSearchResponseTransfer
      */
     public function request(FactFinderSdkSearchRequestTransfer $factFinderSearchRequestTransfer);
-
 }

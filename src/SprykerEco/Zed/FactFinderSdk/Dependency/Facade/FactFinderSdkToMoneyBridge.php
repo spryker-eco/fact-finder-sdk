@@ -9,7 +9,6 @@ namespace SprykerEco\Zed\FactFinderSdk\Dependency\Facade;
 
 class FactFinderSdkToMoneyBridge implements FactFinderSdkToMoneyInterface
 {
-
     /**
      * @var \Spryker\Zed\Money\Business\MoneyFacadeInterface
      */
@@ -35,5 +34,4 @@ class FactFinderSdkToMoneyBridge implements FactFinderSdkToMoneyInterface
         return $this->money
             ->convertIntegerToDecimal($value);
     }
-
 }

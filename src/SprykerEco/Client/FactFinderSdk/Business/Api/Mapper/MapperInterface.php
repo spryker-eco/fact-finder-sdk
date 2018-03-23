@@ -9,10 +9,8 @@ namespace SprykerEco\Client\FactFinderSdk\Business\Api\Mapper;
 
 interface MapperInterface
 {
-
     /**
      * @return mixed
      */
     public function map();
-
 }

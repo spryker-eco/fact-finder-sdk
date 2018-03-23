@@ -14,7 +14,6 @@ use SprykerEco\Client\FactFinderSdk\Business\Api\Converter\BaseConverter;
 
 class PagingConverter extends BaseConverter
 {
-
     /**
      * @var \FACTFinder\Data\Paging
      */
@@ -80,5 +79,4 @@ class PagingConverter extends BaseConverter
 
         return $factFinderDataPageTransfer;
     }
-
 }

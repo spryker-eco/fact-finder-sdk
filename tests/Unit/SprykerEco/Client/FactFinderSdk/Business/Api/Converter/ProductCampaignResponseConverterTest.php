@@ -27,7 +27,6 @@ use SprykerEco\Client\FactFinderSdk\FactFinderSdkConfig;
  */
 class ProductCampaignResponseConverterTest extends PHPUnit_Framework_TestCase
 {
-
     /**
      * @return void
      */
@@ -148,5 +147,4 @@ class ProductCampaignResponseConverterTest extends PHPUnit_Framework_TestCase
 
         return $campaignIterator;
     }
-
 }

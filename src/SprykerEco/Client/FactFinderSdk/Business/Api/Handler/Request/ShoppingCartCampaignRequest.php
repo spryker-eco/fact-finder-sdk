@@ -9,7 +9,6 @@ namespace SprykerEco\Client\FactFinderSdk\Business\Api\Handler\Request;
 
 class ShoppingCartCampaignRequest extends ProductCampaignRequest
 {
-
     /**
      * @return \FACTFinder\Adapter\ProductCampaign
      */
@@ -22,5 +21,4 @@ class ShoppingCartCampaignRequest extends ProductCampaignRequest
 
         return $productCampaignAdapter;
     }
-
 }

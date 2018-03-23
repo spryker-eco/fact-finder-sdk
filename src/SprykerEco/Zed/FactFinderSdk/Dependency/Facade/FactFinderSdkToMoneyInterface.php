@@ -9,12 +9,10 @@ namespace SprykerEco\Zed\FactFinderSdk\Dependency\Facade;
 
 interface FactFinderSdkToMoneyInterface
 {
-
     /**
      * @param int $value
      *
      * @return float
      */
     public function convertIntegerToDecimal($value);
-
 }

@@ -9,6 +9,7 @@ namespace Functional\SprykerEco\Zed\FactFinderSdk\Business;
 
 use Codeception\Configuration;
 use Codeception\TestCase\Test;
+use Exception;
 use Spryker\Zed\Locale\Business\LocaleFacade;
 use SprykerEco\Zed\FactFinderSdk\Business\FactFinderSdkBusinessFactory;
 use SprykerEco\Zed\FactFinderSdk\Business\FactFinderSdkFacade;
@@ -24,7 +25,6 @@ use SprykerEco\Zed\FactFinderSdk\FactFinderSdkConfig;
  */
 class FactFinderSdkFacadeTest extends Test
 {
-
     /**
      * @var \SprykerEco\Zed\FactFinderSdk\Business\FactFinderSdkFacade
      */
@@ -47,7 +47,8 @@ class FactFinderSdkFacadeTest extends Test
 
         try {
             unlink($this->filePathName);
-        } catch (\Exception $e) {}
+        } catch (Exception $e) {
+        }
     }
 
     /**
@@ -117,5 +118,4 @@ class FactFinderSdkFacadeTest extends Test
 
         return $factory;
     }
-
 }

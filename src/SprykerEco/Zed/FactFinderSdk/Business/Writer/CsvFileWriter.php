@@ -9,7 +9,6 @@ namespace SprykerEco\Zed\FactFinderSdk\Business\Writer;
 
 class CsvFileWriter extends AbstractFileWriter
 {
-
     const DELIMITER = ',';
 
     /**
@@ -35,5 +34,4 @@ class CsvFileWriter extends AbstractFileWriter
 
         fclose($filePointer);
     }
-
 }

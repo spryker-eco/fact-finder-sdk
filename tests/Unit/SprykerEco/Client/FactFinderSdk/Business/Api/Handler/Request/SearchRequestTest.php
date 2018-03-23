@@ -38,7 +38,6 @@ use SprykerEco\Client\FactFinderSdk\FactFinderSdkConfig;
  */
 class SearchRequestTest extends PHPUnit_Framework_TestCase
 {
-
     /**
      * @return void
      */
@@ -385,5 +384,4 @@ class SearchRequestTest extends PHPUnit_Framework_TestCase
 
         return $result;
     }
-
 }

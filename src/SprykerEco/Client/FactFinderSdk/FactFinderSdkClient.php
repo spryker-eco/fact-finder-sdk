@@ -19,7 +19,6 @@ use Spryker\Client\Kernel\AbstractClient;
  */
 class FactFinderSdkClient extends AbstractClient implements FactFinderSdkClientInterface
 {
-
     /**
      * @api
      *
@@ -132,5 +131,4 @@ class FactFinderSdkClient extends AbstractClient implements FactFinderSdkClientI
         return $this->getFactory()
             ->getSession();
     }
-
 }

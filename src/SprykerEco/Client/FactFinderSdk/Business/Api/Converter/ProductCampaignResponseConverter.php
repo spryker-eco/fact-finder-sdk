@@ -16,7 +16,6 @@ use SprykerEco\Client\FactFinderSdk\Business\Api\Converter\Data\RecordConverter;
 
 class ProductCampaignResponseConverter extends BaseConverter
 {
-
     /**
      * @var \FACTFinder\Adapter\ProductCampaign
      */
@@ -136,5 +135,4 @@ class ProductCampaignResponseConverter extends BaseConverter
 
         return $factFinderDataCampaignIteratorTransfer;
     }
-
 }

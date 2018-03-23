@@ -11,7 +11,6 @@ use Generated\Shared\Transfer\FactFinderSdkSearchRequestTransfer;
 
 class MapperFactory
 {
-
     /**
      * @var \Generated\Shared\Transfer\FactFinderSdkSearchRequestTransfer
      */
@@ -24,5 +23,4 @@ class MapperFactory
     {
         $this->requestTransfer = $requestTransfer;
     }
-
 }

@@ -11,7 +11,6 @@ use Generated\Shared\Transfer\LocaleTransfer;
 
 interface FactFinderSdkFacadeInterface
 {
-
     /**
      * Specification:
      * - Creates a csv file
@@ -23,5 +22,4 @@ interface FactFinderSdkFacadeInterface
      * @return mixed
      */
     public function createFactFinderSdkCsv(LocaleTransfer $localeTransferTransfer);
-
 }

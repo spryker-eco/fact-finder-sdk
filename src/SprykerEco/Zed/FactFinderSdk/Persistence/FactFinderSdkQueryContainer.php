@@ -30,7 +30,6 @@ use SprykerEco\Shared\FactFinderSdk\FactFinderSdkConstants;
  */
 class FactFinderSdkQueryContainer extends AbstractQueryContainer implements FactFinderSdkQueryContainerInterface
 {
-
     const STOCK_QUANTITY_CONDITION = 'STOCK_QUANTITY_CONDITION';
     const STOCK_NEVER_OUTOFSTOCK_CONDITION = 'STOCK_NEVER_OUTOFSTOCK_CONDITION';
 
@@ -132,5 +131,4 @@ class FactFinderSdkQueryContainer extends AbstractQueryContainer implements Fact
 
         return $productsAbstractQuery;
     }
-
 }

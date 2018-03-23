@@ -12,7 +12,6 @@ use Generated\Shared\Transfer\FactFinderSdkTagCloudResponseTransfer;
 
 class TagCloudResponseConverter extends BaseConverter
 {
-
     /**
      * @var \FACTFinder\Adapter\TagCloud
      */
@@ -35,5 +34,4 @@ class TagCloudResponseConverter extends BaseConverter
 
         return $responseTransfer;
     }
-
 }

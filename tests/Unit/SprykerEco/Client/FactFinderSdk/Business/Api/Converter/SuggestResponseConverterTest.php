@@ -23,7 +23,6 @@ use SprykerEco\Client\FactFinderSdk\Business\Api\Converter\SuggestResponseConver
  */
 class SuggestResponseConverterTest extends PHPUnit_Framework_TestCase
 {
-
     /**
      * @return void
      */
@@ -90,5 +89,4 @@ class SuggestResponseConverterTest extends PHPUnit_Framework_TestCase
 
         return $factFinderSuggestResponseTransfer;
     }
-
 }

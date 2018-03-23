@@ -11,12 +11,10 @@ use Generated\Shared\Transfer\FactFinderSdkTagCloudRequestTransfer;
 
 interface TagCloudRequestInterface
 {
-
     /**
      * @param \Generated\Shared\Transfer\FactFinderSdkTagCloudRequestTransfer $factFinderTagCloudRequestTransfer
      *
      * @return \Generated\Shared\Transfer\FactFinderSdkTagCloudResponseTransfer
      */
     public function request(FactFinderSdkTagCloudRequestTransfer $factFinderTagCloudRequestTransfer);
-
 }

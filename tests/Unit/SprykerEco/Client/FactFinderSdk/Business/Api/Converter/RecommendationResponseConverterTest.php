@@ -24,7 +24,6 @@ use SprykerEco\Client\FactFinderSdk\FactFinderSdkConfig;
  */
 class RecommendationResponseConverterTest extends PHPUnit_Framework_TestCase
 {
-
     /**
      * @return void
      */
@@ -152,5 +151,4 @@ class RecommendationResponseConverterTest extends PHPUnit_Framework_TestCase
 
         return $configMock;
     }
-
 }

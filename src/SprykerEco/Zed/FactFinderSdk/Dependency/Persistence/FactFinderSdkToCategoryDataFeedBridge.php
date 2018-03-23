@@ -11,7 +11,6 @@ use Generated\Shared\Transfer\CategoryDataFeedTransfer;
 
 class FactFinderSdkToCategoryDataFeedBridge implements FactFinderSdkToCategoryDataFeedInterface
 {
-
     /**
      * @var \Spryker\Zed\CategoryDataFeed\Persistence\CategoryDataFeedQueryContainerInterface
      */
@@ -37,5 +36,4 @@ class FactFinderSdkToCategoryDataFeedBridge implements FactFinderSdkToCategoryDa
         return $this->categoryDataFeedQueryContainer
             ->queryCategoryDataFeed($categoryDataFeedTransfer);
     }
-
 }

@@ -9,7 +9,6 @@ namespace SprykerEco\Zed\FactFinderSdk\Dependency\Facade;
 
 class FactFinderSdkToLocaleBridge implements FactFinderSdkToLocaleInterface
 {
-
     /**
      * @var \Spryker\Zed\Locale\Business\LocaleFacadeInterface
      */
@@ -135,5 +134,4 @@ class FactFinderSdkToLocaleBridge implements FactFinderSdkToLocaleInterface
         $this->localeFacade
             ->install();
     }
-
 }

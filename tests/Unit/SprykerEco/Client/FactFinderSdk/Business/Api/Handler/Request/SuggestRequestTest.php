@@ -26,7 +26,6 @@ use SprykerEco\Client\FactFinderSdk\FactFinderSdkConfig;
  */
 class SuggestRequestTest extends PHPUnit_Framework_TestCase
 {
-
     /**
      * @return void
      */
@@ -121,5 +120,4 @@ class SuggestRequestTest extends PHPUnit_Framework_TestCase
             []
         );
     }
-
 }

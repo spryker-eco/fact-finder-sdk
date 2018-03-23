@@ -9,6 +9,7 @@ namespace Functional\SprykerEco\Zed\FactFinderSdk\Business\Writer;
 
 use Codeception\Configuration;
 use Codeception\TestCase\Test;
+use Exception;
 use SprykerEco\Zed\FactFinderSdk\Business\Writer\CsvFileWriter;
 
 /**
@@ -21,7 +22,6 @@ use SprykerEco\Zed\FactFinderSdk\Business\Writer\CsvFileWriter;
  */
 class CsvFileWriterTest extends Test
 {
-
     /**
      * @var \SprykerEco\Zed\FactFinderSdk\Business\Writer\CsvFileWriter
      */
@@ -44,7 +44,8 @@ class CsvFileWriterTest extends Test
 
         try {
             unlink($this->filePathName);
-        } catch (\Exception $e) {}
+        } catch (Exception $e) {
+        }
     }
 
     /**
@@ -70,5 +71,4 @@ class CsvFileWriterTest extends Test
 
         $this->assertFileExists($this->filePathName);
     }
-
 }

@@ -9,7 +9,6 @@ namespace SprykerEco\Shared\FactFinderSdk;
 
 interface FactFinderSdkConstants
 {
-
     const ENVIRONMENT = 'FACT_FINDER:ENVIRONMENT';
     const ENVIRONMENT_PRODUCTION = 'FACT_FINDER:ENVIRONMENT_PRODUCTION';
     const ENVIRONMENT_DEVELOPMENT = 'FACT_FINDER:ENVIRONMENT_DEVELOPMENT';
@@ -46,5 +45,4 @@ interface FactFinderSdkConstants
     const ITEM_PARENT_CATEGORY_NAME = 'ParentCategoryName';
     const ITEM_PARENT_CATEGORY_NODE_ID = 'ParentCategoryNodeId';
     const ITEM_MASTER_ID = 'MasterProductNumber';
-
 }

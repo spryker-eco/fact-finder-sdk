@@ -16,7 +16,6 @@ use SprykerEco\Client\FactFinderSdk\Business\Api\Converter\BaseConverter;
 
 class FilterGroupConverter extends BaseConverter
 {
-
     /**
      * @var \FACTFinder\Data\FilterGroup
      */
@@ -107,5 +106,4 @@ class FilterGroupConverter extends BaseConverter
 
         return $factFinderDataFilterTransfer;
     }
-
 }

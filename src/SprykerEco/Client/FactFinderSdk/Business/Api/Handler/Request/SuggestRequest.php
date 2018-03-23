@@ -7,6 +7,7 @@
 
 namespace SprykerEco\Client\FactFinderSdk\Business\Api\Handler\Request;
 
+use Exception;
 use FACTFinder\Util\Parameters;
 use Generated\Shared\Transfer\FactFinderSdkSuggestRequestTransfer;
 use Generated\Shared\Transfer\FactFinderSdkSuggestResponseTransfer;
@@ -14,7 +15,6 @@ use SprykerEco\Client\FactFinderSdk\Business\Api\ApiConstants;
 
 class SuggestRequest extends AbstractRequest implements SuggestRequestInterface
 {
-
     const TRANSACTION_TYPE = ApiConstants::TRANSACTION_TYPE_SUGGEST;
 
     /**
@@ -34,11 +34,10 @@ class SuggestRequest extends AbstractRequest implements SuggestRequestInterface
             $responseTransfer = $this->converterFactory
                 ->createSuggestResponseConverter($suggestAdapter)
                 ->convert();
-        } catch (\Exception $exception) {
+        } catch (Exception $exception) {
             $responseTransfer = new FactFinderSdkSuggestResponseTransfer();
         }
 
         return $responseTransfer;
     }
-
 }

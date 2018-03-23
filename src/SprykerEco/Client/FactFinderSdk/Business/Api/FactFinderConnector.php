@@ -16,7 +16,6 @@ use SprykerEco\Client\FactFinderSdk\FactFinderSdkConfig;
 
 class FactFinderConnector
 {
-
     /**
      * @var \FACTFinder\Util\Pimple
      */
@@ -433,13 +432,14 @@ class FactFinderConnector
         };
 
         $this->dic['encodingConverter'] = function ($c) {
-            if (extension_loaded('iconv'))
+            if (extension_loaded('iconv')) {
                 $type = 'Core\IConvEncodingConverter';
-            elseif (function_exists('utf8_encode')
-                && function_exists('utf8_decode'))
+            } elseif (function_exists('utf8_encode')
+                && function_exists('utf8_decode')) {
                 $type = 'Core\Utf8EncodingConverter';
-            else
+            } else {
                 throw new Exception('No encoding conversion available.');
+            }
 
             return FactFinderLoader::getInstance(
                 $type,
@@ -457,5 +457,4 @@ class FactFinderConnector
         return $this->factFinderConfig
             ->getLog4PhpConfigPath();
     }
-
 }

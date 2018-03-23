@@ -13,7 +13,6 @@ use SprykerEco\Shared\FactFinderSdk\FactFinderSdkConstants;
 
 class FactFinderSdkConfig extends AbstractBundleConfig
 {
-
     /**
      * @return string
      */
@@ -93,5 +92,4 @@ class FactFinderSdkConfig extends AbstractBundleConfig
     {
         return $this->get(FactFinderSdkConstants::CATEGORIES_MAX_COUNT);
     }
-
 }

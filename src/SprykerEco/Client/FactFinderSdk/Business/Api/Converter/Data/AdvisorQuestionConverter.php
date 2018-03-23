@@ -15,7 +15,6 @@ use SprykerEco\Client\FactFinderSdk\Business\Api\Converter\BaseConverter;
 
 class AdvisorQuestionConverter extends BaseConverter
 {
-
     /**
      * @var \FACTFinder\Data\AdvisorQuestion
      */
@@ -92,5 +91,4 @@ class AdvisorQuestionConverter extends BaseConverter
 
         return $factFinderDataAdvisorAnswerTransfer;
     }
-
 }
