@@ -20,6 +20,12 @@
         <property name="sortingItems" type="FactFinderSdkDataItem[]"/>
         <property name="isSearchTimedOut" type="bool"/>
         <property name="followSearchValue" type="int"/>
+        <property name="searchRedirect" type="FactFinderSearchRedirect"/>
+    </transfer>
+
+    <transfer name="FactFinderSearchRedirect">
+        <property name="url" type="string" />
+        <property name="redirect" type="bool" />
     </transfer>
 
     <!--FACTFinder\Data\.. Objects-->
@@ -111,6 +117,7 @@
         <property name="previousPage" type="FactFinderSdkDataPage"/>
         <property name="currentPage" type="FactFinderSdkDataPage"/>
         <property name="nextPage" type="FactFinderSdkDataPage"/>
+        <property name="pages" type="FactFinderSdkDataPage[]"/>
     </transfer>
 
     <transfer name="FactFinderSdkDataPage">
