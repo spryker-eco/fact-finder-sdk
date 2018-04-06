@@ -59,4 +59,12 @@ class FactFinderSdkConfig extends AbstractBundleConfig
     {
         return $this->get(FactFinderSdkConstants::ITEM_FIELDS);
     }
+
+    /**
+     * @return mixed
+     */
+    public function getRedirectIfOneResult()
+    {
+        return $this->get(FactFinderSdkConstants::REDIRECT_IF_ONE_RESULT, false);
+    }
 }
