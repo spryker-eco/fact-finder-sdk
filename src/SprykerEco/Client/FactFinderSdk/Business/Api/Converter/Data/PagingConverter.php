@@ -56,6 +56,8 @@ class PagingConverter extends BaseConverter
         $factFinderDataPagingTransfer->setCurrentPage($this->convertPage($this->paging->getCurrentPage()));
         $factFinderDataPagingTransfer->setNextPage($this->convertPage($this->paging->getNextPage()));
 
+        $this->addPagesArray($factFinderDataPagingTransfer);
+
         return $factFinderDataPagingTransfer;
     }
 
@@ -78,5 +80,17 @@ class PagingConverter extends BaseConverter
         );
 
         return $factFinderDataPageTransfer;
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\FactFinderSdkDataPagingTransfer $factFinderDataPagingTransfer
+     *
+     * @return void
+     */
+    protected function addPagesArray(FactFinderSdkDataPagingTransfer $factFinderDataPagingTransfer)
+    {
+        foreach ($this->paging->getArrayCopy() as $item) {
+            $factFinderDataPagingTransfer->addPages($this->convertPage($item));
+        }
     }
 }

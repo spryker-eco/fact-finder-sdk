@@ -25,12 +25,14 @@ use Generated\Shared\Transfer\FactFinderSdkDataResultTransfer;
 use Generated\Shared\Transfer\FactFinderSdkDataSingleWordSearchItemTransfer;
 use Generated\Shared\Transfer\FactFinderSdkDataSuggestQueryTransfer;
 use Generated\Shared\Transfer\FactFinderSdkSearchResponseTransfer;
+use Generated\Shared\Transfer\FactFinderSearchRedirectTransfer;
 use SprykerEco\Client\FactFinderSdk\Business\Api\Converter\Data\AdvisorQuestionConverter;
 use SprykerEco\Client\FactFinderSdk\Business\Api\Converter\Data\FilterGroupConverter;
 use SprykerEco\Client\FactFinderSdk\Business\Api\Converter\Data\ItemConverter;
 use SprykerEco\Client\FactFinderSdk\Business\Api\Converter\Data\PagingConverter;
 use SprykerEco\Client\FactFinderSdk\Business\Api\Converter\Data\RecordConverter;
 use SprykerEco\Client\FactFinderSdk\FactFinderSdkConfig;
+use SprykerEco\Shared\FactFinderSdk\FactFinderSdkConstants;
 
 class SearchResponseConverter extends BaseConverter
 {
@@ -138,6 +140,9 @@ class SearchResponseConverter extends BaseConverter
         );
         $this->responseTransfer->setFollowSearchValue(
             $this->searchAdapter->getFollowSearchValue()
+        );
+        $this->responseTransfer->setSearchRedirect(
+            $this->getSearchRedirect($this->responseTransfer)
         );
 
         return $this->responseTransfer;
@@ -362,5 +367,26 @@ class SearchResponseConverter extends BaseConverter
         }
 
         return $sortingItems;
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\FactFinderSdkSearchResponseTransfer $sdkSearchResponseTransfer
+     *
+     * @return \Generated\Shared\Transfer\FactFinderSearchRedirectTransfer
+     */
+    protected function getSearchRedirect(FactFinderSdkSearchResponseTransfer $sdkSearchResponseTransfer)
+    {
+        $searchRedirectTransfer = new FactFinderSearchRedirectTransfer();
+
+        if ($sdkSearchResponseTransfer->getResult()->getFoundRecordsCount() !== 1) {
+            return $searchRedirectTransfer;
+        }
+
+        $record = $sdkSearchResponseTransfer->getResult()->getRecords()[0];
+        $productUrl = $record->getFields()[FactFinderSdkConstants::ITEM_PRODUCT_URL];
+        $searchRedirectTransfer->setUrl($productUrl);
+        $searchRedirectTransfer->setRedirect(true);
+
+        return $searchRedirectTransfer;
     }
 }
