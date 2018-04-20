@@ -130,6 +130,7 @@
         <property name="fields" type="array"/>
         <property name="similarity" type="float"/>
         <property name="position" type="int"/>
+        <property name="originalPosition" type="int"/>
         <property name="seoPath" type="string"/>
         <property name="keywords" type="array"/>
     </transfer>

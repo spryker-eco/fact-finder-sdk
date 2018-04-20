@@ -46,4 +46,5 @@ interface FactFinderSdkConstants
     const ITEM_PARENT_CATEGORY_NAME = 'ParentCategoryName';
     const ITEM_PARENT_CATEGORY_NODE_ID = 'ParentCategoryNodeId';
     const ITEM_MASTER_ID = 'MasterProductNumber';
+    const ITEM_ORIGINAL_POSITION = '__ORIG_POSITION__';
 }

@@ -11,6 +11,7 @@ use FACTFinder\Data\Record;
 use Generated\Shared\Transfer\FactFinderSdkDataRecordTransfer;
 use SprykerEco\Client\FactFinderSdk\Business\Api\Converter\BaseConverter;
 use SprykerEco\Client\FactFinderSdk\FactFinderSdkConfig;
+use SprykerEco\Shared\FactFinderSdk\FactFinderSdkConstants;
 
 class RecordConverter extends BaseConverter
 {
@@ -55,6 +56,7 @@ class RecordConverter extends BaseConverter
         $factFinderDataRecordTransfer->setId($this->record->getID());
         $factFinderDataRecordTransfer->setSimilarity($this->record->getSimilarity());
         $factFinderDataRecordTransfer->setPosition($this->record->getPosition());
+        $factFinderDataRecordTransfer->setOriginalPosition($this->record->getField(FactFinderSdkConstants::ITEM_ORIGINAL_POSITION));
         $factFinderDataRecordTransfer->setSeoPath($this->record->getSeoPath());
         $factFinderDataRecordTransfer->setKeywords($this->record->getKeywords());
 
