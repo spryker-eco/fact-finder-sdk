@@ -31,7 +31,7 @@ class RecordConverter extends BaseConverter
      * @param \SprykerEco\Client\FactFinderSdk\FactFinderSdkConfig $config
      * @param \FACTFinder\Data\Record|null $record
      */
-    public function __construct(FactFinderSdkConfig $config, Record $record = null)
+    public function __construct(FactFinderSdkConfig $config, ?Record $record = null)
     {
         $this->record = $record;
         $this->config = $config;

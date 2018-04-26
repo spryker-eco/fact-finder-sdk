@@ -31,7 +31,7 @@ class FactFinderSdkToProductAbstractDataFeedBridge implements FactFinderSdkToPro
      *
      * @return \Orm\Zed\Product\Persistence\SpyProductAbstractQuery
      */
-    public function queryAbstractProductDataFeed(ProductAbstractDataFeedTransfer $productDataFeedTransfer = null)
+    public function queryAbstractProductDataFeed(?ProductAbstractDataFeedTransfer $productDataFeedTransfer = null)
     {
         return $this->productAbstractDataFeed->queryAbstractProductDataFeed($productDataFeedTransfer);
     }
