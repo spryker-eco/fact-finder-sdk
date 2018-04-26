@@ -21,6 +21,7 @@ use Generated\Shared\Transfer\FactFinderSdkDataRecordTransfer;
 use Generated\Shared\Transfer\FactFinderSdkDataResultsPerPageOptionsTransfer;
 use Generated\Shared\Transfer\FactFinderSdkDataResultTransfer;
 use Generated\Shared\Transfer\FactFinderSdkSearchResponseTransfer;
+use Generated\Shared\Transfer\FactFinderSearchRedirectTransfer;
 use PHPUnit_Framework_TestCase;
 use SprykerEco\Client\FactFinderSdk\Business\Api\Converter\ConverterFactory;
 use SprykerEco\Client\FactFinderSdk\Business\Api\Converter\SearchResponseConverter;
@@ -195,6 +196,7 @@ class SearchResponseConverterTest extends PHPUnit_Framework_TestCase
         $searchResponseTransfer->setSortingItems($this->getSortingItemsArray());
         $searchResponseTransfer->setFollowSearchValue('9998');
         $searchResponseTransfer->setIsSearchTimedOut(false);
+        $searchResponseTransfer->setSearchRedirect((new FactFinderSearchRedirectTransfer()));
 
         return $searchResponseTransfer;
     }
@@ -357,6 +359,7 @@ class SearchResponseConverterTest extends PHPUnit_Framework_TestCase
         $dataRecord->setPosition(1);
         $dataRecord->setKeywords([]);
         $dataRecord->setSeoPath('');
+        $dataRecord->setOriginalPosition(1);
 
         $result = new FactFinderSdkDataResultTransfer();
         $result->setFoundRecordsCount(2);

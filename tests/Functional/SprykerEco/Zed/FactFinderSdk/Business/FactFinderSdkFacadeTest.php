@@ -43,7 +43,7 @@ class FactFinderSdkFacadeTest extends Test
         parent::setUp();
 
         $this->factFinderFacade = new FactFinderSdkFacade();
-        $this->filePathName = Configuration::outputDir() . 'product_de_DE.csv';
+        $this->filePathName = Configuration::outputDir() . 'product_de_DE_DE_Euro.csv';
 
         try {
             unlink($this->filePathName);

@@ -80,7 +80,8 @@ class TrackingRequestTest extends PHPUnit_Framework_TestCase
     {
         return new TrackingRequest(
             $this->createFactFinderConnectorMock(),
-            new ConverterFactory($this->createConfigMock())
+            new ConverterFactory($this->createConfigMock()),
+            $this->createConfigMock()
         );
     }
 

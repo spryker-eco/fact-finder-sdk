@@ -11,6 +11,7 @@ use ArrayObject;
 use FACTFinder\Adapter\Search;
 use FACTFinder\Data\Record;
 use FACTFinder\Data\Result;
+use FACTFinder\Util\Parameters;
 use Generated\Shared\Transfer\FactFinderSdkDataAfterSearchNavigationTransfer;
 use Generated\Shared\Transfer\FactFinderSdkDataBreadCrumbTransfer;
 use Generated\Shared\Transfer\FactFinderSdkDataCampaignIteratorTransfer;
@@ -22,6 +23,7 @@ use Generated\Shared\Transfer\FactFinderSdkDataResultsPerPageOptionsTransfer;
 use Generated\Shared\Transfer\FactFinderSdkDataResultTransfer;
 use Generated\Shared\Transfer\FactFinderSdkSearchRequestTransfer;
 use Generated\Shared\Transfer\FactFinderSdkSearchResponseTransfer;
+use Generated\Shared\Transfer\FactFinderSearchRedirectTransfer;
 use PHPUnit_Framework_TestCase;
 use SprykerEco\Client\FactFinderSdk\Business\Api\Converter\ConverterFactory;
 use SprykerEco\Client\FactFinderSdk\Business\Api\FactFinderConnector;
@@ -44,9 +46,9 @@ class SearchRequestTest extends PHPUnit_Framework_TestCase
     public function testRequest()
     {
         $searchRequest = $this->createSearchRequest();
-        $factFinderTrackingRequestTransfer = new FactFinderSdkSearchRequestTransfer();
+        $factFinderSearchRequestTransfer = new FactFinderSdkSearchRequestTransfer();
 
-        $result = $searchRequest->request($factFinderTrackingRequestTransfer)
+        $result = $searchRequest->request($factFinderSearchRequestTransfer)
             ->toArray();
 
         $expected = $this->createExpectedTransfer()
@@ -98,6 +100,8 @@ class SearchRequestTest extends PHPUnit_Framework_TestCase
             ->getMock();
         $connector->method('createSearchAdapter')
             ->willReturn($this->createSearchAdapterMock());
+        $connector->method('createRequestParametersFromSearchRequestTransfer')
+            ->willReturn(new Parameters());
 
         return $connector;
     }
@@ -194,6 +198,7 @@ class SearchRequestTest extends PHPUnit_Framework_TestCase
         $searchResponseTransfer->setSortingItems($this->getSortingItemsArray());
         $searchResponseTransfer->setFollowSearchValue('9998');
         $searchResponseTransfer->setIsSearchTimedOut(false);
+        $searchResponseTransfer->setSearchRedirect(new FactFinderSearchRedirectTransfer());
 
         return $searchResponseTransfer;
     }
@@ -356,6 +361,7 @@ class SearchRequestTest extends PHPUnit_Framework_TestCase
         $dataRecord->setPosition(1);
         $dataRecord->setKeywords([]);
         $dataRecord->setSeoPath('');
+        $dataRecord->setOriginalPosition(1);
 
         $result = new FactFinderSdkDataResultTransfer();
         $result->setFoundRecordsCount(2);
