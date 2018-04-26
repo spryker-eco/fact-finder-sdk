@@ -59,39 +59,6 @@ sudo: required
 
 before_install:
   - echo "extension = redis.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
-  - if [[ $ON_EVENTS != *$TRAVIS_EVENT_TYPE* ]]; then exit ; fi
-  - if [[ $DB == 'mysql' ]]; then chmod +x ./config/Shared/ci/travis/mysql/* ; fi
-  - if [[ $DB == 'mysql' ]]; then ./config/Shared/ci/travis/mysql/travis_mysql_5.7.sh ; fi
-
-install:
-  - chmod -R a+x config/Shared/ci/travis/
-  - if [[ -d 'vendor/spryker/spryker' ]] ; then cd vendor/spryker/spryker && git clean -f -d && cd - ; fi
-  - composer remove --dev spryker/git-hook
-  - composer install --optimize-autoloader --no-interaction
-  - config/Shared/ci/travis/install_elasticsearch.sh
-
-before_script:
-  - nvm install 6
-
-  - mkdir -p shared/data/common/jenkins
-  - mkdir -p shared/data/common/jenkins/jobs
-  - mkdir -p data/DE/cache/Yves/twig -m 0777
-  - mkdir -p data/DE/cache/Zed/twig -m 0777
-  - mkdir -p data/DE/logs -m 0777
-  - chmod -R 777 data/
-
-  - if [[ -z $DB ]]; then cat config/Shared/ci/travis/postgresql_ci.config >> config/Shared/ci/travis/config_ci.php ; fi
-  - if [[ $DB == 'mysql' ]]; then cat config/Shared/ci/travis/mysql_ci.config >> config/Shared/ci/travis/config_ci.php ; fi
-
-  - cp config/Shared/ci/travis/config_ci.php config/Shared/config_local.php
-
-  - if [[ $DB == 'mysql' ]]; then sudo cp config/Shared/ci/travis/mysql/my.cnf /etc/ ; fi
-  - if [[ $DB == 'mysql' ]]; then sudo service mysql restart ; fi
-
-  - if [[ $TEST_GROUP == 'acceptance' ]]; then config/Shared/ci/travis/acceptance_env.sh ; fi
-
-  - if [[ $TEST_GROUP == 'acceptance' ]]; then vendor/bin/install DE -r testing ; fi
-  - if [[ $TEST_GROUP == 'without-acceptance' ]]; then vendor/bin/install DE -r testing -x frontend ; fi
 
 script:
   - git clone -b '0.1.0' --single-branch https://github.com/spryker-eco/eco-ci.git ecoci
