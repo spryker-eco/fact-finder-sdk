@@ -8,7 +8,7 @@
 namespace SprykerEco\Client\FactFinderSdk\Business\Api\Handler\Request;
 
 use SprykerEco\Client\FactFinderSdk\Business\Api\Converter\ConverterFactory;
-use SprykerEco\Client\FactFinderSdk\Business\Api\FactFinderConnector;
+use SprykerEco\Client\FactFinderSdk\Business\Api\FactFinderConnectorInterface;
 use SprykerEco\Client\FactFinderSdk\Business\Log\LoggerTrait;
 
 abstract class AbstractRequest
@@ -18,7 +18,7 @@ abstract class AbstractRequest
     const TRANSACTION_TYPE = null;
 
     /**
-     * @var \SprykerEco\Client\FactFinderSdk\Business\Api\FactFinderConnector
+     * @var \SprykerEco\Client\FactFinderSdk\Business\Api\FactFinderConnectorInterface
      */
     protected $factFinderConnector;
 
@@ -28,11 +28,11 @@ abstract class AbstractRequest
     protected $converterFactory;
 
     /**
-     * @param \SprykerEco\Client\FactFinderSdk\Business\Api\FactFinderConnector $factFinderConnector
+     * @param \SprykerEco\Client\FactFinderSdk\Business\Api\FactFinderConnectorInterface $factFinderConnector
      * @param \SprykerEco\Client\FactFinderSdk\Business\Api\Converter\ConverterFactory $converterFactory
      */
     public function __construct(
-        FactFinderConnector $factFinderConnector,
+        FactFinderConnectorInterface $factFinderConnector,
         ConverterFactory $converterFactory
     ) {
 

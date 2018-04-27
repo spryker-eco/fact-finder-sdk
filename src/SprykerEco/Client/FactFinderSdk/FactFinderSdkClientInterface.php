@@ -67,6 +67,8 @@ interface FactFinderSdkClientInterface
      * Specification:
      * - Returns product campaigns.
      *
+     * @api
+     *
      * @param \Generated\Shared\Transfer\FactFinderSdkProductCampaignRequestTransfer $factFinderSdkProductCampaignRequestTransfer
      *
      * @return \Generated\Shared\Transfer\FactFinderSdkProductCampaignResponseTransfer
@@ -76,6 +78,8 @@ interface FactFinderSdkClientInterface
     /**
      * Specification:
      * - Returns shopping cart campaigns.
+     *
+     * @api
      *
      * @param \Generated\Shared\Transfer\FactFinderSdkProductCampaignRequestTransfer $factFinderSdkProductCampaignRequestTransfer
      *

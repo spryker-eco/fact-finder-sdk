@@ -14,7 +14,7 @@ use Generated\Shared\Transfer\FactFinderSdkProductCampaignRequestTransfer;
 use Generated\Shared\Transfer\FactFinderSdkSearchRequestTransfer;
 use SprykerEco\Client\FactFinderSdk\FactFinderSdkConfig;
 
-class FactFinderConnector
+class FactFinderConnector implements FactFinderConnectorInterface
 {
     /**
      * @var \FACTFinder\Util\Pimple

@@ -10,7 +10,7 @@ namespace SprykerEco\Client\FactFinderSdk\Business\Api\Converter;
 use FACTFinder\Adapter\Tracking as FactFinderTrackingAdapter;
 use Generated\Shared\Transfer\FactFinderSdkTrackingResponseTransfer;
 
-class TrackingResponseConverter extends BaseConverter
+class TrackingResponseConverter extends BaseConverter implements ConverterInterface
 {
     /**
      * @var \FACTFinder\Adapter\Tracking

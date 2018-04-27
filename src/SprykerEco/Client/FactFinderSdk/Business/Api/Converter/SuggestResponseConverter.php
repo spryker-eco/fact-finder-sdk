@@ -10,7 +10,7 @@ namespace SprykerEco\Client\FactFinderSdk\Business\Api\Converter;
 use FACTFinder\Adapter\Suggest as FactFinderSuggestAdapter;
 use Generated\Shared\Transfer\FactFinderSdkSuggestResponseTransfer;
 
-class SuggestResponseConverter extends BaseConverter
+class SuggestResponseConverter extends BaseConverter implements ConverterInterface
 {
     /**
      * @var \FACTFinder\Adapter\Suggest

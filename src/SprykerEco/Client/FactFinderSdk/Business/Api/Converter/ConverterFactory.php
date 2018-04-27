@@ -39,7 +39,7 @@ class ConverterFactory
     /**
      * @param \FACTFinder\Adapter\Search $searchAdapter
      *
-     * @return \SprykerEco\Client\FactFinderSdk\Business\Api\Converter\SearchResponseConverter
+     * @return \SprykerEco\Client\FactFinderSdk\Business\Api\Converter\ConverterInterface
      */
     public function createSearchResponseConverter(FactFinderSearchAdapter $searchAdapter)
     {
@@ -57,7 +57,7 @@ class ConverterFactory
     /**
      * @param \FACTFinder\Adapter\Recommendation $recommendationAdapter
      *
-     * @return \SprykerEco\Client\FactFinderSdk\Business\Api\Converter\RecommendationResponseConverter
+     * @return \SprykerEco\Client\FactFinderSdk\Business\Api\Converter\ConverterInterface
      */
     public function createRecommendationResponseConverter(FactFinderRecommendationAdapter $recommendationAdapter)
     {
@@ -70,7 +70,7 @@ class ConverterFactory
     /**
      * @param \FACTFinder\Adapter\Suggest $suggestAdapter
      *
-     * @return \SprykerEco\Client\FactFinderSdk\Business\Api\Converter\SuggestResponseConverter
+     * @return \SprykerEco\Client\FactFinderSdk\Business\Api\Converter\ConverterInterface
      */
     public function createSuggestResponseConverter(FactFinderSuggestAdapter $suggestAdapter)
     {
@@ -80,7 +80,7 @@ class ConverterFactory
     /**
      * @param \FACTFinder\Adapter\TagCloud $tagCloudAdapter
      *
-     * @return \SprykerEco\Client\FactFinderSdk\Business\Api\Converter\TagCloudResponseConverter
+     * @return \SprykerEco\Client\FactFinderSdk\Business\Api\Converter\ConverterInterface
      */
     public function createTagCloudResponseConverter(FactFinderTagCloudAdapter $tagCloudAdapter)
     {
@@ -90,7 +90,7 @@ class ConverterFactory
     /**
      * @param \FACTFinder\Adapter\Tracking $trackingAdapter
      *
-     * @return \SprykerEco\Client\FactFinderSdk\Business\Api\Converter\TrackingResponseConverter
+     * @return \SprykerEco\Client\FactFinderSdk\Business\Api\Converter\ConverterInterface
      */
     public function createTrackingResponseConverter(FactFinderTrackingAdapter $trackingAdapter)
     {
@@ -100,7 +100,7 @@ class ConverterFactory
     /**
      * @param \FACTFinder\Adapter\SimilarRecords $similarRecordsAdapter
      *
-     * @return \SprykerEco\Client\FactFinderSdk\Business\Api\Converter\SimilarRecordsResponseConverter
+     * @return \SprykerEco\Client\FactFinderSdk\Business\Api\Converter\ConverterInterface
      */
     public function createSimilarRecordsResponseConverter(FactFinderSimilarRecordsAdapter $similarRecordsAdapter)
     {
@@ -110,7 +110,7 @@ class ConverterFactory
     /**
      * @param \FACTFinder\Adapter\ProductCampaign $productCampaignAdapter
      *
-     * @return \SprykerEco\Client\FactFinderSdk\Business\Api\Converter\ProductCampaignResponseConverter
+     * @return \SprykerEco\Client\FactFinderSdk\Business\Api\Converter\ConverterInterface
      */
     public function createProductCampaignResponseConverter(FactFinderProductCampaignAdapter $productCampaignAdapter)
     {
@@ -122,7 +122,7 @@ class ConverterFactory
     }
 
     /**
-     * @return \SprykerEco\Client\FactFinderSdk\Business\Api\Converter\Data\ItemConverter
+     * @return \SprykerEco\Client\FactFinderSdk\Business\Api\Converter\Data\ItemConverterInterface
      */
     public function createDataItemConverter()
     {
@@ -130,7 +130,7 @@ class ConverterFactory
     }
 
     /**
-     * @return \SprykerEco\Client\FactFinderSdk\Business\Api\Converter\Data\PagingConverter
+     * @return \SprykerEco\Client\FactFinderSdk\Business\Api\Converter\Data\PagingConverterInterface
      */
     public function createDataPagingConverter()
     {
@@ -140,7 +140,7 @@ class ConverterFactory
     }
 
     /**
-     * @return \SprykerEco\Client\FactFinderSdk\Business\Api\Converter\Data\RecordConverter
+     * @return \SprykerEco\Client\FactFinderSdk\Business\Api\Converter\Data\RecordConverterInterface
      */
     public function createDataRecordConverter()
     {
@@ -148,7 +148,7 @@ class ConverterFactory
     }
 
     /**
-     * @return \SprykerEco\Client\FactFinderSdk\Business\Api\Converter\Data\FilterGroupConverter
+     * @return \SprykerEco\Client\FactFinderSdk\Business\Api\Converter\Data\FilterGroupConverterInterface
      */
     public function createDataFilterGroup()
     {
@@ -158,7 +158,7 @@ class ConverterFactory
     }
 
     /**
-     * @return \SprykerEco\Client\FactFinderSdk\Business\Api\Converter\Data\AdvisorQuestionConverter
+     * @return \SprykerEco\Client\FactFinderSdk\Business\Api\Converter\Data\AdvisorQuestionConverterInterface
      */
     public function createDataAdvisorQuestionConverter()
     {

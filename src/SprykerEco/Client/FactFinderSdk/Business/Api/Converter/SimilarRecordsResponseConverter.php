@@ -10,7 +10,7 @@ namespace SprykerEco\Client\FactFinderSdk\Business\Api\Converter;
 use FACTFinder\Adapter\SimilarRecords as FactFinderSimilarRecords;
 use Generated\Shared\Transfer\FactFinderSdkSimilarRecordsResponseTransfer;
 
-class SimilarRecordsResponseConverter extends BaseConverter
+class SimilarRecordsResponseConverter extends BaseConverter implements ConverterInterface
 {
     /**
      * @var \FACTFinder\Adapter\SimilarRecords

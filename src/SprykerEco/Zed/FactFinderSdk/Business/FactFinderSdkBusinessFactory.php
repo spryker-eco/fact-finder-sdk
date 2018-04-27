@@ -21,6 +21,8 @@ use SprykerEco\Zed\FactFinderSdk\FactFinderSdkDependencyProvider;
 class FactFinderSdkBusinessFactory extends AbstractBusinessFactory
 {
     /**
+     * @SuppressWarnings(FactoryMethodReturnInterfaceRule)
+     *
      * @param \Generated\Shared\Transfer\LocaleTransfer $localeTransfer
      *
      * @return void
@@ -31,7 +33,7 @@ class FactFinderSdkBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return \SprykerEco\Zed\FactFinderSdk\FactFinderSdkConfig
+     * @return \SprykerEco\Zed\FactFinderSdk\FactFinderSdkConfigInterface
      */
     public function getFactFinderConfig()
     {
@@ -79,7 +81,7 @@ class FactFinderSdkBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return \SprykerEco\Zed\FactFinderSdk\Business\Writer\AbstractFileWriter
+     * @return \SprykerEco\Zed\FactFinderSdk\Business\Writer\FileWriterInterface
      */
     protected function createCsvFileWriter()
     {
@@ -90,7 +92,7 @@ class FactFinderSdkBusinessFactory extends AbstractBusinessFactory
      * @param \SprykerEco\Zed\FactFinderSdk\Business\Writer\AbstractFileWriter $fileWriter
      * @param \Generated\Shared\Transfer\LocaleTransfer $localeTransfer
      *
-     * @return \SprykerEco\Zed\FactFinderSdk\Business\Exporter\FactFinderSdkProductExporter
+     * @return \SprykerEco\Zed\FactFinderSdk\Business\Exporter\FactFinderSdkProductExporterInterface
      */
     protected function createFactFinderProductExporter(AbstractFileWriter $fileWriter, LocaleTransfer $localeTransfer)
     {

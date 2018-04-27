@@ -11,10 +11,10 @@ use FACTFinder\Adapter\ProductCampaign as FactFinderProductCampaign;
 use Generated\Shared\Transfer\FactFinderSdkDataCampaignIteratorTransfer;
 use Generated\Shared\Transfer\FactFinderSdkDataCampaignTransfer;
 use Generated\Shared\Transfer\FactFinderSdkProductCampaignResponseTransfer;
-use SprykerEco\Client\FactFinderSdk\Business\Api\Converter\Data\AdvisorQuestionConverter;
-use SprykerEco\Client\FactFinderSdk\Business\Api\Converter\Data\RecordConverter;
+use SprykerEco\Client\FactFinderSdk\Business\Api\Converter\Data\AdvisorQuestionConverterInterface;
+use SprykerEco\Client\FactFinderSdk\Business\Api\Converter\Data\RecordConverterInterface;
 
-class ProductCampaignResponseConverter extends BaseConverter
+class ProductCampaignResponseConverter extends BaseConverter implements ConverterInterface
 {
     /**
      * @var \FACTFinder\Adapter\ProductCampaign
@@ -22,12 +22,12 @@ class ProductCampaignResponseConverter extends BaseConverter
     protected $productCampaignAdapter;
 
     /**
-     * @var \SprykerEco\Client\FactFinderSdk\Business\Api\Converter\Data\RecordConverter
+     * @var \SprykerEco\Client\FactFinderSdk\Business\Api\Converter\Data\RecordConverterInterface
      */
     protected $recordConverter;
 
     /**
-     * @var \SprykerEco\Client\FactFinderSdk\Business\Api\Converter\Data\AdvisorQuestionConverter
+     * @var \SprykerEco\Client\FactFinderSdk\Business\Api\Converter\Data\AdvisorQuestionConverterInterface
      */
     protected $advisorQuestionConverter;
 
@@ -35,13 +35,13 @@ class ProductCampaignResponseConverter extends BaseConverter
      * ProductCampaignResponseConverter constructor.
      *
      * @param \FACTFinder\Adapter\ProductCampaign $productCampaignAdapter
-     * @param \SprykerEco\Client\FactFinderSdk\Business\Api\Converter\Data\RecordConverter $recordConverter
-     * @param \SprykerEco\Client\FactFinderSdk\Business\Api\Converter\Data\AdvisorQuestionConverter $advisorQuestionConverter
+     * @param \SprykerEco\Client\FactFinderSdk\Business\Api\Converter\Data\RecordConverterInterface $recordConverter
+     * @param \SprykerEco\Client\FactFinderSdk\Business\Api\Converter\Data\AdvisorQuestionConverterInterface $advisorQuestionConverter
      */
     public function __construct(
         FactFinderProductCampaign $productCampaignAdapter,
-        RecordConverter $recordConverter,
-        AdvisorQuestionConverter $advisorQuestionConverter
+        RecordConverterInterface $recordConverter,
+        AdvisorQuestionConverterInterface $advisorQuestionConverter
     ) {
         $this->productCampaignAdapter = $productCampaignAdapter;
         $this->recordConverter = $recordConverter;

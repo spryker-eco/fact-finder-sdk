@@ -10,7 +10,7 @@ namespace SprykerEco\Client\FactFinderSdk\Business\Api\Converter;
 use FACTFinder\Adapter\TagCloud as FactFinderTagCloudAdapter;
 use Generated\Shared\Transfer\FactFinderSdkTagCloudResponseTransfer;
 
-class TagCloudResponseConverter extends BaseConverter
+class TagCloudResponseConverter extends BaseConverter implements ConverterInterface
 {
     /**
      * @var \FACTFinder\Adapter\TagCloud

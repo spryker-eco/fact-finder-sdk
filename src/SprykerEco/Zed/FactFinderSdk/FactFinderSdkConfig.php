@@ -11,7 +11,7 @@ use Spryker\Shared\Application\ApplicationConstants;
 use Spryker\Zed\Kernel\AbstractBundleConfig;
 use SprykerEco\Shared\FactFinderSdk\FactFinderSdkConstants;
 
-class FactFinderSdkConfig extends AbstractBundleConfig
+class FactFinderSdkConfig extends AbstractBundleConfig implements FactFinderSdkConfigInterface
 {
     /**
      * @return string

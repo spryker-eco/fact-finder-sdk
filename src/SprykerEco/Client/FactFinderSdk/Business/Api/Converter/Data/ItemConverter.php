@@ -11,7 +11,7 @@ use FACTFinder\Data\Item;
 use Generated\Shared\Transfer\FactFinderSdkDataItemTransfer;
 use SprykerEco\Client\FactFinderSdk\Business\Api\Converter\BaseConverter;
 
-class ItemConverter extends BaseConverter
+class ItemConverter extends BaseConverter implements ItemConverterInterface
 {
     /**
      * @var \FACTFinder\Data\Item

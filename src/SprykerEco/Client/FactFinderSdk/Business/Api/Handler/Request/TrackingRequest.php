@@ -13,7 +13,7 @@ use Generated\Shared\Transfer\FactFinderSdkTrackingRequestTransfer;
 use Generated\Shared\Transfer\FactFinderSdkTrackingResponseTransfer;
 use SprykerEco\Client\FactFinderSdk\Business\Api\ApiConstants;
 use SprykerEco\Client\FactFinderSdk\Business\Api\Converter\ConverterFactory;
-use SprykerEco\Client\FactFinderSdk\Business\Api\FactFinderConnector;
+use SprykerEco\Client\FactFinderSdk\Business\Api\FactFinderConnectorInterface;
 use SprykerEco\Client\FactFinderSdk\FactFinderSdkConfig;
 
 class TrackingRequest extends AbstractRequest implements TrackingRequestInterface
@@ -28,11 +28,11 @@ class TrackingRequest extends AbstractRequest implements TrackingRequestInterfac
     /**
      * TrackingRequest constructor.
      *
-     * @param \SprykerEco\Client\FactFinderSdk\Business\Api\FactFinderConnector $factFinderConnector
+     * @param \SprykerEco\Client\FactFinderSdk\Business\Api\FactFinderConnectorInterface $factFinderConnector
      * @param \SprykerEco\Client\FactFinderSdk\Business\Api\Converter\ConverterFactory $converterFactory
      * @param \SprykerEco\Client\FactFinderSdk\FactFinderSdkConfig $config
      */
-    public function __construct(FactFinderConnector $factFinderConnector, ConverterFactory $converterFactory, FactFinderSdkConfig $config)
+    public function __construct(FactFinderConnectorInterface $factFinderConnector, ConverterFactory $converterFactory, FactFinderSdkConfig $config)
     {
         parent::__construct($factFinderConnector, $converterFactory);
         $this->config = $config;

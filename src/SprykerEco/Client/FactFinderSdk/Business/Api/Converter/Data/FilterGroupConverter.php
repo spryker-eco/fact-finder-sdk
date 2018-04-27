@@ -14,7 +14,7 @@ use Generated\Shared\Transfer\FactFinderSdkDataFilterGroupTransfer;
 use Generated\Shared\Transfer\FactFinderSdkDataFilterTransfer;
 use SprykerEco\Client\FactFinderSdk\Business\Api\Converter\BaseConverter;
 
-class FilterGroupConverter extends BaseConverter
+class FilterGroupConverter extends BaseConverter implements FilterGroupConverterInterface
 {
     /**
      * @var \FACTFinder\Data\FilterGroup
@@ -22,15 +22,15 @@ class FilterGroupConverter extends BaseConverter
     protected $filterGroup;
 
     /**
-     * @var \SprykerEco\Client\FactFinderSdk\Business\Api\Converter\Data\ItemConverter
+     * @var \SprykerEco\Client\FactFinderSdk\Business\Api\Converter\Data\ItemConverterInterface
      */
     protected $itemConverter;
 
     /**
-     * @param \SprykerEco\Client\FactFinderSdk\Business\Api\Converter\Data\ItemConverter $itemConverter
+     * @param \SprykerEco\Client\FactFinderSdk\Business\Api\Converter\Data\ItemConverterInterface $itemConverter
      */
     public function __construct(
-        ItemConverter $itemConverter
+        ItemConverterInterface $itemConverter
     ) {
         $this->itemConverter = $itemConverter;
     }

@@ -13,7 +13,7 @@ use Generated\Shared\Transfer\FactFinderSdkDataAdvisorAnswerTransfer;
 use Generated\Shared\Transfer\FactFinderSdkDataAdvisorQuestionTransfer;
 use SprykerEco\Client\FactFinderSdk\Business\Api\Converter\BaseConverter;
 
-class AdvisorQuestionConverter extends BaseConverter
+class AdvisorQuestionConverter extends BaseConverter implements AdvisorQuestionConverterInterface
 {
     /**
      * @var \FACTFinder\Data\AdvisorQuestion
@@ -21,15 +21,15 @@ class AdvisorQuestionConverter extends BaseConverter
     protected $advisorQuestion;
 
     /**
-     * @var \SprykerEco\Client\FactFinderSdk\Business\Api\Converter\Data\ItemConverter
+     * @var \SprykerEco\Client\FactFinderSdk\Business\Api\Converter\Data\ItemConverterInterface
      */
     protected $itemConverter;
 
     /**
-     * @param \SprykerEco\Client\FactFinderSdk\Business\Api\Converter\Data\ItemConverter $itemConverter
+     * @param \SprykerEco\Client\FactFinderSdk\Business\Api\Converter\Data\ItemConverterInterface $itemConverter
      */
     public function __construct(
-        ItemConverter $itemConverter
+        ItemConverterInterface $itemConverter
     ) {
         $this->itemConverter = $itemConverter;
     }

@@ -26,15 +26,15 @@ use Generated\Shared\Transfer\FactFinderSdkDataSingleWordSearchItemTransfer;
 use Generated\Shared\Transfer\FactFinderSdkDataSuggestQueryTransfer;
 use Generated\Shared\Transfer\FactFinderSdkSearchResponseTransfer;
 use Generated\Shared\Transfer\FactFinderSearchRedirectTransfer;
-use SprykerEco\Client\FactFinderSdk\Business\Api\Converter\Data\AdvisorQuestionConverter;
-use SprykerEco\Client\FactFinderSdk\Business\Api\Converter\Data\FilterGroupConverter;
-use SprykerEco\Client\FactFinderSdk\Business\Api\Converter\Data\ItemConverter;
-use SprykerEco\Client\FactFinderSdk\Business\Api\Converter\Data\PagingConverter;
-use SprykerEco\Client\FactFinderSdk\Business\Api\Converter\Data\RecordConverter;
+use SprykerEco\Client\FactFinderSdk\Business\Api\Converter\Data\AdvisorQuestionConverterInterface;
+use SprykerEco\Client\FactFinderSdk\Business\Api\Converter\Data\FilterGroupConverterInterface;
+use SprykerEco\Client\FactFinderSdk\Business\Api\Converter\Data\ItemConverterInterface;
+use SprykerEco\Client\FactFinderSdk\Business\Api\Converter\Data\PagingConverterInterface;
+use SprykerEco\Client\FactFinderSdk\Business\Api\Converter\Data\RecordConverterInterface;
 use SprykerEco\Client\FactFinderSdk\FactFinderSdkConfig;
 use SprykerEco\Shared\FactFinderSdk\FactFinderSdkConstants;
 
-class SearchResponseConverter extends BaseConverter
+class SearchResponseConverter extends BaseConverter implements ConverterInterface
 {
     /**
      * @var \FACTFinder\Adapter\Search
@@ -87,11 +87,11 @@ class SearchResponseConverter extends BaseConverter
      */
     public function __construct(
         FactFinderSearchAdapter $searchAdapter,
-        PagingConverter $pagingConverter,
-        ItemConverter $itemConverter,
-        RecordConverter $recordConverter,
-        FilterGroupConverter $filterGroupConverter,
-        AdvisorQuestionConverter $advisorQuestionConverter,
+        PagingConverterInterface $pagingConverter,
+        ItemConverterInterface $itemConverter,
+        RecordConverterInterface $recordConverter,
+        FilterGroupConverterInterface $filterGroupConverter,
+        AdvisorQuestionConverterInterface $advisorQuestionConverter,
         FactFinderSdkConfig $factFinderSdkConfig
     ) {
         $this->searchAdapter = $searchAdapter;

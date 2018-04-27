@@ -7,7 +7,7 @@
 
 namespace SprykerEco\Zed\FactFinderSdk\Business\Writer;
 
-class CsvFileWriter extends AbstractFileWriter
+class CsvFileWriter extends AbstractFileWriter implements FileWriterInterface
 {
     const DELIMITER = ',';
 

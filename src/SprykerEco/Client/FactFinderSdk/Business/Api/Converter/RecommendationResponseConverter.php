@@ -12,7 +12,7 @@ use FACTFinder\Data\Record;
 use Generated\Shared\Transfer\FactFinderSdkRecommendationResponseTransfer;
 use SprykerEco\Client\FactFinderSdk\FactFinderSdkConfig;
 
-class RecommendationResponseConverter extends BaseConverter
+class RecommendationResponseConverter extends BaseConverter implements ConverterInterface
 {
     /**
      * @var \FACTFinder\Adapter\Recommendation

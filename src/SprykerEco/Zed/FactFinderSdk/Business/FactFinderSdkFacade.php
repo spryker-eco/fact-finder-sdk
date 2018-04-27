@@ -20,7 +20,7 @@ class FactFinderSdkFacade extends AbstractFacade implements FactFinderSdkFacadeI
      *
      * @param \Generated\Shared\Transfer\LocaleTransfer $localeTransfer
      *
-     * @return mixed
+     * @return void
      */
     public function createFactFinderSdkCsv(LocaleTransfer $localeTransfer)
     {

@@ -13,7 +13,7 @@ use SprykerEco\Client\FactFinderSdk\Business\Api\Converter\BaseConverter;
 use SprykerEco\Client\FactFinderSdk\FactFinderSdkConfig;
 use SprykerEco\Shared\FactFinderSdk\FactFinderSdkConstants;
 
-class RecordConverter extends BaseConverter
+class RecordConverter extends BaseConverter implements RecordConverterInterface
 {
     /**
      * @var \FACTFinder\Data\Record
