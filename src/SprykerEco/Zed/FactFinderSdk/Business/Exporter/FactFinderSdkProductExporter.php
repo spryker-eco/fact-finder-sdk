@@ -20,6 +20,9 @@ use SprykerEco\Zed\FactFinderSdk\Persistence\FactFinderSdkQueryContainerInterfac
 
 class FactFinderSdkProductExporter implements FactFinderSdkProductExporterInterface
 {
+
+    const VIRTUAL_COLUMN_NAME = 'name';
+
     /**
      * @var \SprykerEco\Zed\FactFinderSdk\Business\Writer\AbstractFileWriter
      */
@@ -328,7 +331,7 @@ class FactFinderSdkProductExporter implements FactFinderSdkProductExporterInterf
         if (!$category) {
             return $pathArray;
         }
-        $pathArray[] = $category->getName();
+        $pathArray[] = $category->getVirtualColumn(static::VIRTUAL_COLUMN_NAME);
 
         /** @var \Orm\Zed\Category\Persistence\SpyCategoryNode $node */
         $node = $category->getNodes()

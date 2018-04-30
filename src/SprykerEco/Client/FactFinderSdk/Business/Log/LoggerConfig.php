@@ -30,7 +30,7 @@ class LoggerConfig implements LoggerConfigInterface
     }
 
     /**
-     * @return \callable[]
+     * @return array
      */
     public function getProcessors()
     {

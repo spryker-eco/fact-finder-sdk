@@ -22,7 +22,7 @@ class NavigationController extends AbstractController
     public function factFinderAdminPanelAction(Request $request)
     {
         $configKey = FactFinderSdkConstants::ENVIRONMENT . FactFinderSdkConstants::ENVIRONMENT_PRODUCTION;
-        return $this->redirectResponseExternal(
+        return $this->redirectResponse(
             Config::get($configKey)[FactFinderSdkConstants::ADMIN_PANEL_URL]
         );
     }
