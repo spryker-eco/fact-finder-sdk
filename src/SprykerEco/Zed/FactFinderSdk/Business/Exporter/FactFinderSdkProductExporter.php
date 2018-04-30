@@ -20,7 +20,6 @@ use SprykerEco\Zed\FactFinderSdk\Persistence\FactFinderSdkQueryContainerInterfac
 
 class FactFinderSdkProductExporter implements FactFinderSdkProductExporterInterface
 {
-
     const VIRTUAL_COLUMN_NAME = 'name';
 
     /**
