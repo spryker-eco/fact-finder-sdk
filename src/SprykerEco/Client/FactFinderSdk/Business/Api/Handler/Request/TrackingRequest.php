@@ -96,7 +96,6 @@ class TrackingRequest extends AbstractRequest implements TrackingRequestInterfac
     protected function fillDefaultValues($parameters)
     {
         $defaultValues = [
-            'query' => '*',
             'channel' => $this->config->getFactFinderConfiguration()['channel'],
         ];
 
