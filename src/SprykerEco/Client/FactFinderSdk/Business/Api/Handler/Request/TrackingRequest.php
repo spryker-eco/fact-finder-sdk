@@ -49,6 +49,7 @@ class TrackingRequest extends AbstractRequest implements TrackingRequestInterfac
         $parameters->setAll($this->getRequestData($factFinderTrackingRequestTransfer));
 
         $parameters = $this->fillDefaultValues($parameters);
+        $parameters = $this->removeEmptyParameters($parameters);
         $this->factFinderConnector->setRequestParameters($parameters);
 
         $trackingAdapter = $this->factFinderConnector->createTrackingAdapter();
@@ -102,6 +103,22 @@ class TrackingRequest extends AbstractRequest implements TrackingRequestInterfac
         foreach ($defaultValues as $key => $value) {
             if (empty($parameters[$key])) {
                 $parameters[$key] = $value;
+            }
+        }
+
+        return $parameters;
+    }
+
+    /**
+     * @param \FACTFinder\Util\Parameters $parameters
+     *
+     * @return \FACTFinder\Util\Parameters
+     */
+    protected function removeEmptyParameters($parameters)
+    {
+        foreach ($parameters->getArray() as $key => $value) {
+            if ($value === '' || $value === null) {
+                unset($parameters[$key]);
             }
         }
 
