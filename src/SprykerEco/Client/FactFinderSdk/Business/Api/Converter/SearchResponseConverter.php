@@ -285,9 +285,13 @@ class SearchResponseConverter extends BaseConverter implements ConverterInterfac
      *
      * @return \Generated\Shared\Transfer\FactFinderSdkDataResultsPerPageOptionsTransfer
      */
-    protected function convertResultsPerPageOptions(ResultsPerPageOptions $resultsPerPageOptions)
+    protected function convertResultsPerPageOptions(ResultsPerPageOptions $resultsPerPageOptions = null)
     {
         $factFinderDataResultsPerPageOptionsTransfer = new FactFinderSdkDataResultsPerPageOptionsTransfer();
+
+        if ($resultsPerPageOptions === null) {
+            return $factFinderDataResultsPerPageOptionsTransfer;
+        }
 
         $this->itemConverter->setItem($resultsPerPageOptions->getDefaultOption());
         $factFinderDataResultsPerPageOptionsTransfer->setDefaultOption(
@@ -356,9 +360,14 @@ class SearchResponseConverter extends BaseConverter implements ConverterInterfac
      *
      * @return \ArrayObject|\Generated\Shared\Transfer\FactFinderSdkDataItemTransfer[]
      */
-    protected function convertSorting(Sorting $sorting)
+    protected function convertSorting(Sorting $sorting = null)
     {
         $sortingItems = new ArrayObject();
+
+        if ($sorting === null) {
+            return $sortingItems;
+        }
+
         /** @var \FACTFinder\Data\Item $sortingItem */
         foreach ($sorting as $sortingItem) {
             $this->itemConverter->setItem($sortingItem);

@@ -38,7 +38,7 @@ class PagingConverter extends BaseConverter implements PagingConverterInterface
      *
      * @return void
      */
-    public function setPaging(Paging $paging)
+    public function setPaging(Paging $paging = null)
     {
         $this->paging = $paging;
     }
@@ -49,6 +49,11 @@ class PagingConverter extends BaseConverter implements PagingConverterInterface
     public function convert()
     {
         $factFinderDataPagingTransfer = new FactFinderSdkDataPagingTransfer();
+
+        if ($this->paging === null) {
+            return $factFinderDataPagingTransfer;
+        }
+
         $factFinderDataPagingTransfer->setPageCount($this->paging->getPageCount());
         $factFinderDataPagingTransfer->setFirstPage($this->convertPage($this->paging->getFirstPage()));
         $factFinderDataPagingTransfer->setLastPage($this->convertPage($this->paging->getLastPage()));
