@@ -281,11 +281,11 @@ class SearchResponseConverter extends BaseConverter implements ConverterInterfac
     }
 
     /**
-     * @param \FACTFinder\Data\ResultsPerPageOptions $resultsPerPageOptions
+     * @param \FACTFinder\Data\ResultsPerPageOptions|null $resultsPerPageOptions
      *
      * @return \Generated\Shared\Transfer\FactFinderSdkDataResultsPerPageOptionsTransfer
      */
-    protected function convertResultsPerPageOptions(ResultsPerPageOptions $resultsPerPageOptions = null)
+    protected function convertResultsPerPageOptions(?ResultsPerPageOptions $resultsPerPageOptions = null)
     {
         $factFinderDataResultsPerPageOptionsTransfer = new FactFinderSdkDataResultsPerPageOptionsTransfer();
 
@@ -356,11 +356,11 @@ class SearchResponseConverter extends BaseConverter implements ConverterInterfac
     }
 
     /**
-     * @param \FACTFinder\Data\Sorting $sorting
+     * @param \FACTFinder\Data\Sorting|null $sorting
      *
      * @return \ArrayObject|\Generated\Shared\Transfer\FactFinderSdkDataItemTransfer[]
      */
-    protected function convertSorting(Sorting $sorting = null)
+    protected function convertSorting(?Sorting $sorting = null)
     {
         $sortingItems = new ArrayObject();
 

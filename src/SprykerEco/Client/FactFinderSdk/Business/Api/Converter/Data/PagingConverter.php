@@ -34,11 +34,11 @@ class PagingConverter extends BaseConverter implements PagingConverterInterface
     }
 
     /**
-     * @param \FACTFinder\Data\Paging $paging
+     * @param \FACTFinder\Data\Paging|null $paging
      *
      * @return void
      */
-    public function setPaging(Paging $paging = null)
+    public function setPaging(?Paging $paging = null)
     {
         $this->paging = $paging;
     }
