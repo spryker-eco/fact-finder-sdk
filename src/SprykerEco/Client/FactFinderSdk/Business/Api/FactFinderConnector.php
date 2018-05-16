@@ -273,9 +273,6 @@ class FactFinderConnector implements FactFinderConnectorInterface
         if (empty($parameters['query']) || $parameters['query'] == '*') {
             $parameters['navigation'] = true;
         }
-        if (empty($parameters['productsPerPage'])) {
-            $parameters['productsPerPage'] = $this->factFinderConfig->getDefaultProductsPerPage();
-        }
 
         return FactFinderLoader::getInstance(
             'Util\Parameters',
