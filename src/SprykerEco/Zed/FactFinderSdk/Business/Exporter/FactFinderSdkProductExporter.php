@@ -209,10 +209,9 @@ class FactFinderSdkProductExporter implements FactFinderSdkProductExporterInterf
 
         foreach ($data as $row) {
             $prepared = [];
-            $categoriesPathArray = $this->getCategoryPathArray($localeTransfer, $row[FactFinderSdkConstants::ITEM_CATEGORY_ID]);
+            $categoriesPathArray = $this->getCategoryPathArray($localeTransfer, $row['IdProductAbstract']);
             $row = $this->addProductUrl($row);
             $row = $this->addCategoryPath($row, $categoriesPathArray);
-            $row = $this->addCategories($row, $categoriesPathArray);
             $row = $this->convertPrice($row);
             $row = $this->encodeDescription($row);
 
@@ -274,39 +273,15 @@ class FactFinderSdkProductExporter implements FactFinderSdkProductExporterInterf
      */
     protected function addCategoryPath($data, $categoriesPathArray)
     {
-        $categoriesPathArray = array_map(function ($value) {
-            return urlencode($value);
-        }, $categoriesPathArray);
-
-        $data[FactFinderSdkConstants::ITEM_CATEGORY_PATH] = implode('/', $categoriesPathArray);
-
-        return $data;
-    }
-
-    /**
-     * @param array $data
-     * @param array $categoriesPathArray
-     *
-     * @return mixed
-     */
-    protected function addCategories($data, $categoriesPathArray)
-    {
-        $categoriesMaxCount = $this->factFinderConfig->getCategoriesMaxCount();
-
-        for ($i = 1; $i <= $categoriesMaxCount; $i++) {
-            $data[FactFinderSdkConstants::ITEM_CATEGORY . $i] = '';
+        if (empty($data[FactFinderSdkConstants::ITEM_CATEGORY_PATH])) {
+            $data[FactFinderSdkConstants::ITEM_CATEGORY_PATH] = '';
         }
 
-        foreach ($categoriesPathArray as $key => $category) {
-            $key++;
-
-            if ($key < $categoriesMaxCount) {
-                $data[FactFinderSdkConstants::ITEM_CATEGORY . $key] = $category;
-            }
-        }
-
-        if (count($categoriesPathArray) > $categoriesMaxCount) {
-            $data[FactFinderSdkConstants::ITEM_CATEGORY . $categoriesMaxCount] = end($categoriesPathArray);
+        foreach ($categoriesPathArray as $key => $pathArray) {
+            $pathArray = array_map(function ($value) {
+                return urlencode($value);
+            }, $pathArray);
+            $data[FactFinderSdkConstants::ITEM_CATEGORY_PATH] .= implode('/', $pathArray) . '|';
         }
 
         return $data;
@@ -314,35 +289,54 @@ class FactFinderSdkProductExporter implements FactFinderSdkProductExporterInterf
 
     /**
      * @param \Generated\Shared\Transfer\LocaleTransfer $localeTransfer
-     * @param int $categoryId
+     * @param int $idProductAbstract
      *
      * @return array
      */
-    protected function getCategoryPathArray(LocaleTransfer $localeTransfer, $categoryId)
+    protected function getCategoryPathArray(LocaleTransfer $localeTransfer, $idProductAbstract)
     {
         $pathArray = [];
 
         $query = $this->factFinderQueryContainer
-            ->getParentCategoryQuery($localeTransfer, $categoryId)
-            ->filterByIsSearchable(true);
-        $category = $query->findOne();
+            ->getCategories($localeTransfer, $idProductAbstract);
+        $categories = $query->find();
 
-        if (!$category) {
+        if (!$categories) {
             return $pathArray;
         }
-        $pathArray[] = $category->getVirtualColumn(static::VIRTUAL_COLUMN_NAME);
 
+        foreach ($categories as $category) {
+            $pathArray[] = $this->getCategoryPath($category);
+        }
+
+        return $pathArray;
+    }
+
+    /**
+     * @param \Orm\Zed\Category\Persistence\SpyCategory $category
+     * @param array $path
+     *
+     * @return string
+     */
+    protected function getCategoryPath($category, $path = [])
+    {
         /** @var \Orm\Zed\Category\Persistence\SpyCategoryNode $node */
         $node = $category->getNodes()
             ->getFirst();
 
         if ($node->getFkParentCategoryNode()) {
-            $parentCategoryId = $node->getParentCategoryNode()
-                ->getFkCategory();
-            $pathArray = array_merge($this->getCategoryPathArray($localeTransfer, $parentCategoryId), $pathArray);
+            $parentCategory = $this->factFinderQueryContainer
+                ->getCategory($node->getParentCategoryNode()->getFkCategory(), $this->localeTransfer)
+                ->find()
+                ->getFirst();
+            $path = array_merge($path, $this->getCategoryPath($parentCategory, $path));
         }
 
-        return $pathArray;
+        if ($category->isSearchable()) {
+            $path[] = $category->getVirtualColumn(static::VIRTUAL_COLUMN_NAME);
+        }
+
+        return $path;
     }
 
     /**

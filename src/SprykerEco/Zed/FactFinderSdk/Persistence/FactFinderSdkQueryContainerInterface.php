@@ -31,9 +31,17 @@ interface FactFinderSdkQueryContainerInterface extends QueryContainerInterface
      * @api
      *
      * @param \Generated\Shared\Transfer\LocaleTransfer $localeTransfer
-     * @param int $categoryId
+     * @param int $idProductAbstract
      *
      * @return \Orm\Zed\Category\Persistence\SpyCategoryQuery
      */
-    public function getParentCategoryQuery(LocaleTransfer $localeTransfer, $categoryId);
+    public function getCategories(LocaleTransfer $localeTransfer, $idProductAbstract);
+
+    /**
+     * @param int $idCategory
+     * @param \Generated\Shared\Transfer\LocaleTransfer $localeTransfer
+     *
+     * @return \Orm\Zed\Category\Persistence\SpyCategoryQuery
+     */
+    public function getCategory($idCategory, LocaleTransfer $localeTransfer);
 }

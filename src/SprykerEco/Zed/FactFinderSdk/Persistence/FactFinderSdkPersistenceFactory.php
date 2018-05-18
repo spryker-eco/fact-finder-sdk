@@ -7,6 +7,7 @@
 
 namespace SprykerEco\Zed\FactFinderSdk\Persistence;
 
+use Orm\Zed\Category\Persistence\SpyCategoryQuery;
 use Spryker\Zed\Kernel\Persistence\AbstractPersistenceFactory;
 use SprykerEco\Zed\FactFinderSdk\FactFinderSdkDependencyProvider;
 
@@ -30,5 +31,13 @@ class FactFinderSdkPersistenceFactory extends AbstractPersistenceFactory
     public function getCategoryDataFeedQueryContainer()
     {
         return $this->getProvidedDependency(FactFinderSdkDependencyProvider::CATEGORY_DATA_FEED);
+    }
+
+    /**
+     * @return \Orm\Zed\Category\Persistence\SpyCategoryQuery
+     */
+    public function createCategoryQuery()
+    {
+        return SpyCategoryQuery::create();
     }
 }

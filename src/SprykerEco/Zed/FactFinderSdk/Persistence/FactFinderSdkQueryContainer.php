@@ -7,7 +7,6 @@
 
 namespace SprykerEco\Zed\FactFinderSdk\Persistence;
 
-use Generated\Shared\Transfer\CategoryDataFeedTransfer;
 use Generated\Shared\Transfer\CurrencyTransfer;
 use Generated\Shared\Transfer\LocaleTransfer;
 use Generated\Shared\Transfer\ProductAbstractDataFeedTransfer;
@@ -85,20 +84,38 @@ class FactFinderSdkQueryContainer extends AbstractQueryContainer implements Fact
      * @api
      *
      * @param \Generated\Shared\Transfer\LocaleTransfer $localeTransfer
-     * @param int $categoryId
+     * @param int $idProductAbstract
      *
      * @return \Orm\Zed\Category\Persistence\SpyCategoryQuery
      */
-    public function getParentCategoryQuery(LocaleTransfer $localeTransfer, $categoryId)
+    public function getCategories(LocaleTransfer $localeTransfer, $idProductAbstract)
     {
-        $categoryDataFeedTransfer = new CategoryDataFeedTransfer();
-        $categoryDataFeedTransfer->setIdLocale($localeTransfer->getIdLocale());
-
         $categoryQuery = $this->getFactory()
-            ->getCategoryDataFeedQueryContainer()
-            ->queryCategoryDataFeed($categoryDataFeedTransfer);
+            ->createCategoryQuery();
+        $categoryQuery->joinWithSpyProductCategory(Criteria::LEFT_JOIN)
+            ->joinWithAttribute(Criteria::INNER_JOIN)
+            ->where(SpyProductCategoryTableMap::COL_FK_PRODUCT_ABSTRACT . ' = ?', $idProductAbstract)
+            ->where(SpyCategoryAttributeTableMap::COL_FK_LOCALE . ' = ?', $localeTransfer->getIdLocale())
+            ->withColumn(SpyCategoryAttributeTableMap::COL_NAME, 'name');
 
-        $categoryQuery->where(SpyCategoryTableMap::COL_ID_CATEGORY . ' = ?', $categoryId);
+        return $categoryQuery;
+    }
+
+    /**
+     * @param int $idCategory
+     * @param \Generated\Shared\Transfer\LocaleTransfer $localeTransfer
+     *
+     * @return \Orm\Zed\Category\Persistence\SpyCategoryQuery
+     */
+    public function getCategory($idCategory, LocaleTransfer $localeTransfer)
+    {
+        $categoryQuery = $this->getFactory()
+            ->createCategoryQuery();
+        $categoryQuery->joinWithAttribute(Criteria::INNER_JOIN);
+
+        $categoryQuery->where(SpyCategoryTableMap::COL_ID_CATEGORY . ' = ?', $idCategory);
+        $categoryQuery->where(SpyCategoryAttributeTableMap::COL_FK_LOCALE . ' = ?', $localeTransfer->getIdLocale());
+        $categoryQuery->withColumn(SpyCategoryAttributeTableMap::COL_NAME, 'name');
 
         return $categoryQuery;
     }
