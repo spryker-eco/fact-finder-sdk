@@ -10,6 +10,7 @@ namespace SprykerEco\Client\FactFinderSdk\Business\Api\Converter;
 use ArrayObject;
 use FACTFinder\Adapter\Search as FactFinderSearchAdapter;
 use FACTFinder\Data\AfterSearchNavigation;
+use FACTFinder\Data\ArticleNumberSearchStatus;
 use FACTFinder\Data\BreadCrumbTrail;
 use FACTFinder\Data\CampaignIterator;
 use FACTFinder\Data\Result;
@@ -386,8 +387,10 @@ class SearchResponseConverter extends BaseConverter implements ConverterInterfac
     protected function getSearchRedirect(FactFinderSdkSearchResponseTransfer $sdkSearchResponseTransfer)
     {
         $searchRedirectTransfer = new FactFinderSearchRedirectTransfer();
+        $articleNumberStatus = $this->searchAdapter->getArticleNumberStatus();
+        $foundRecordsCount = $sdkSearchResponseTransfer->getResult()->getFoundRecordsCount();
 
-        if ($sdkSearchResponseTransfer->getResult()->getFoundRecordsCount() !== 1) {
+        if ($foundRecordsCount !== 1 || $articleNumberStatus !== ArticleNumberSearchStatus::IsArticleNumberResultFound()) {
             return $searchRedirectTransfer;
         }
 
