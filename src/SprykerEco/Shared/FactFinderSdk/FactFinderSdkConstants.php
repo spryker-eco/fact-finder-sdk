@@ -49,4 +49,10 @@ interface FactFinderSdkConstants
     const ITEM_PARENT_CATEGORY_NODE_ID = 'ParentCategoryNodeId';
     const ITEM_MASTER_ID = 'MasterProductNumber';
     const ITEM_ORIGINAL_POSITION = '__ORIG_POSITION__';
+    const ITEM_ATTRIBUTES = 'Attributes';
+    const ITEM_ABSTRACT_PRODUCT_ATTRIBUTES = 'AbstractProductAttributes';
+    const ITEM_CONCRETE_PRODUCT_ATTRIBUTES = 'ConcreteProductAttributes';
+    const ITEM_RATING = 'Rating';
+    const ITEM_CREATED_AT = 'CreatedAt';
+    const ITEM_IS_NEW = 'IsNew';
 }

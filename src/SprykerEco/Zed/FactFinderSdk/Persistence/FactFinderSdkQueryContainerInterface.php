@@ -10,6 +10,7 @@ namespace SprykerEco\Zed\FactFinderSdk\Persistence;
 use Generated\Shared\Transfer\CurrencyTransfer;
 use Generated\Shared\Transfer\LocaleTransfer;
 use Generated\Shared\Transfer\StoreTransfer;
+use Orm\Zed\Product\Persistence\SpyProductAbstractQuery;
 use Spryker\Zed\Kernel\Persistence\QueryContainer\QueryContainerInterface;
 
 interface FactFinderSdkQueryContainerInterface extends QueryContainerInterface
@@ -44,4 +45,12 @@ interface FactFinderSdkQueryContainerInterface extends QueryContainerInterface
      * @return \Orm\Zed\Category\Persistence\SpyCategoryQuery
      */
     public function getCategory($idCategory, LocaleTransfer $localeTransfer);
+
+    /**
+     * @param int $idProductAbstract
+     * @param LocaleTransfer $localeTransfer
+     *
+     * @return SpyProductAbstractQuery
+     */
+    public function getReviews($idProductAbstract, LocaleTransfer $localeTransfer);
 }

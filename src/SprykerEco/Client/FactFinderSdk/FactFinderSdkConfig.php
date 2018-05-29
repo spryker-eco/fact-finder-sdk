@@ -61,7 +61,7 @@ class FactFinderSdkConfig extends AbstractBundleConfig
     }
 
     /**
-     * @return mixed
+     * @return boolean
      */
     public function getRedirectIfOneResult()
     {
