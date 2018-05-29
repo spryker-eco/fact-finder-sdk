@@ -120,15 +120,4 @@ class FactFinderSdkClient extends AbstractClient implements FactFinderSdkClientI
 
         return $factFinderSdkProductCampaignResponseTransfer;
     }
-
-    /**
-     * @api
-     *
-     * @return \Spryker\Client\Session\SessionClientInterface
-     */
-    public function getSession()
-    {
-        return $this->getFactory()
-            ->getSession();
-    }
 }
