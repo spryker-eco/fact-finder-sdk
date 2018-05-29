@@ -186,6 +186,7 @@
 
     <transfer name="FactFinderSdkSuggestRequest">
         <property name="query" type="string"/>
+        <property name="sid" type="string"/>
     </transfer>
 
     <transfer name="FactFinderSdkSuggestResponse">
@@ -248,6 +249,7 @@
 
     <transfer name="FactFinderSdkProductCampaignRequest">
         <property name="productNumber" type="string[]"/>
+        <property name="sid" type="string"/>
     </transfer>
 
     <transfer name="FactFinderSdkProductCampaignResponse">
