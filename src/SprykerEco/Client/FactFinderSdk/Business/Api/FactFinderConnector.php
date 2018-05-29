@@ -289,6 +289,7 @@ class FactFinderConnector implements FactFinderConnectorInterface
     {
         $parameters = [];
         $parameters['productNumber'] = $factFinderProductCampaignRequestTransfer->getProductNumber();
+        $parameters['sid'] = $factFinderProductCampaignRequestTransfer->getSid();
 
         return FactFinderLoader::getInstance(
             'Util\Parameters',
