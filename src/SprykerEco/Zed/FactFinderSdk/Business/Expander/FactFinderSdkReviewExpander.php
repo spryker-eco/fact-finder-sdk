@@ -1,10 +1,12 @@
 <?php
 
+/**
+ * MIT License
+ * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
+ */
 namespace SprykerEco\Zed\FactFinderSdk\Business\Expander;
 
 use Generated\Shared\Transfer\LocaleTransfer;
-use Orm\Zed\Product\Persistence\SpyProductAbstract;
-use Propel\Runtime\Collection\ObjectCollection;
 use SprykerEco\Shared\FactFinderSdk\FactFinderSdkConstants;
 
 class FactFinderSdkReviewExpander extends FactFinderSdkAbstractExpander
@@ -12,8 +14,9 @@ class FactFinderSdkReviewExpander extends FactFinderSdkAbstractExpander
     const ID_PRODUCT_ABSTRACT = 'IdProductAbstract';
 
     /**
-     * @param LocaleTransfer $localeTransfer
-     * @param $productData
+     * @param \Generated\Shared\Transfer\LocaleTransfer $localeTransfer
+     * @param array $productData
+     *
      * @return array
      */
     public function expand(LocaleTransfer $localeTransfer, $productData)
@@ -33,7 +36,7 @@ class FactFinderSdkReviewExpander extends FactFinderSdkAbstractExpander
     }
 
     /**
-     * @param ObjectCollection $abstractProduct
+     * @param \Propel\Runtime\Collection\ObjectCollection $abstractProduct
      * @param array $productData
      *
      * @return array
@@ -57,5 +60,4 @@ class FactFinderSdkReviewExpander extends FactFinderSdkAbstractExpander
 
         return $productData;
     }
-
 }

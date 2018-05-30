@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * MIT License
+ * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
+ */
 namespace SprykerEco\Zed\FactFinderSdk\Business\Expander;
 
 use Generated\Shared\Transfer\LocaleTransfer;
@@ -11,8 +15,9 @@ class FactFinderSdkIsNewExpander extends FactFinderSdkAbstractExpander
     const NEW_TO = 'NewTo';
 
     /**
-     * @param LocaleTransfer $localeTransfer
-     * @param $productData
+     * @param \Generated\Shared\Transfer\LocaleTransfer $localeTransfer
+     * @param array $productData
+     *
      * @return array
      */
     public function expand(LocaleTransfer $localeTransfer, $productData)
@@ -20,7 +25,7 @@ class FactFinderSdkIsNewExpander extends FactFinderSdkAbstractExpander
         $newFrom = strtotime($productData[static::NEW_FROM]);
         $newTo = strtotime($productData[static::NEW_TO]);
 
-        $productData[FactFinderSdkConstants::ITEM_IS_NEW] = (int) $this->isNew($newFrom, $newTo);
+        $productData[FactFinderSdkConstants::ITEM_IS_NEW] = (int)$this->isNew($newFrom, $newTo);
 
         return $productData;
     }
@@ -43,5 +48,4 @@ class FactFinderSdkIsNewExpander extends FactFinderSdkAbstractExpander
 
         return true;
     }
-
 }

@@ -116,16 +116,16 @@ class FactFinderSdkBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return array
+     * @return \SprykerEco\Zed\FactFinderSdk\Business\Expander\FactFinderSdkExpanderInterface[]
      */
     protected function getExpanders()
     {
         return [
             new FactFinderSdkCategoryExpander($this->getQueryContainer(), $this->getConfig()),
             new FactFinderSdkPriceExpander($this->getQueryContainer(), $this->getConfig()),
+            new FactFinderSdkAttributesExpander($this->getQueryContainer(), $this->getConfig()),
             new FactFinderSdkUrlExpander($this->getQueryContainer(), $this->getConfig()),
             new FactFinderSdkDescriptionExpander($this->getQueryContainer(), $this->getConfig()),
-            new FactFinderSdkAttributesExpander($this->getQueryContainer(), $this->getConfig()),
             new FactFinderSdkReviewExpander($this->getQueryContainer(), $this->getConfig()),
             new FactFinderSdkTimestampExpander($this->getQueryContainer(), $this->getConfig()),
             new FactFinderSdkIsNewExpander($this->getQueryContainer(), $this->getConfig()),

@@ -31,6 +31,7 @@ interface FactFinderSdkConstants
     const REDIRECT_IF_ONE_RESULT = 'FACT_FINDER_SDK:REDIRECT_IF_ONE_RESULT';
 
     const ITEM_PRODUCT_NUMBER = 'ProductNumber';
+    const ITEM_ID_ABSTRACT_PRODUCT = 'IdProductAbstract';
     const ITEM_NAME = 'Name';
     const ABSTRACT_URL = 'AbstractUrl';
     const ITEM_PRICE = 'Price';
@@ -55,4 +56,7 @@ interface FactFinderSdkConstants
     const ITEM_RATING = 'Rating';
     const ITEM_CREATED_AT = 'CreatedAt';
     const ITEM_IS_NEW = 'IsNew';
+    const ITEM_NEW_FROM = 'NewFrom';
+    const ITEM_NEW_TO = 'NewTo';
+    const PRICE_TYPE_NAME = 'DEFAULT';
 }

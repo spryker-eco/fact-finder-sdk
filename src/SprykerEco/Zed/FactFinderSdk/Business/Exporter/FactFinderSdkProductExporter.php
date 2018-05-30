@@ -76,6 +76,7 @@ class FactFinderSdkProductExporter implements FactFinderSdkProductExporterInterf
      * @var \Spryker\Zed\Store\Business\StoreFacadeInterface
      */
     protected $storeFacade;
+
     /**
      * @var array
      */
@@ -88,7 +89,7 @@ class FactFinderSdkProductExporter implements FactFinderSdkProductExporterInterf
      * @param \SprykerEco\Zed\FactFinderSdk\Persistence\FactFinderSdkQueryContainerInterface $factFinderQueryContainer
      * @param \SprykerEco\Zed\FactFinderSdk\Dependency\Facade\FactFinderSdkToCurrencyInterface $currencyFacade
      * @param \SprykerEco\Zed\FactFinderSdk\Dependency\Facade\FactFinderSdkToStoreInterface $storeFacade
-     * @param array $expanders
+     * @param \SprykerEco\Zed\FactFinderSdk\Business\Expander\FactFinderSdkExpanderInterface[] $expanders
      */
     public function __construct(
         AbstractFileWriter $fileWriter,
@@ -97,7 +98,7 @@ class FactFinderSdkProductExporter implements FactFinderSdkProductExporterInterf
         FactFinderSdkQueryContainerInterface $factFinderQueryContainer,
         FactFinderSdkToCurrencyInterface $currencyFacade,
         FactFinderSdkToStoreInterface $storeFacade,
-        array $expanders
+        $expanders
     ) {
 
         $this->fileWriter = $fileWriter;
@@ -146,21 +147,30 @@ class FactFinderSdkProductExporter implements FactFinderSdkProductExporterInterf
         do {
             $result = $query->limit($this->queryLimit)
                 ->offset($offset)
-                ->find()
-                ->toArray(FactFinderSdkConstants::ITEM_PRODUCT_NUMBER);
+                ->find()->toArray(FactFinderSdkConstants::ITEM_PRODUCT_NUMBER);
             $offset += $this->queryLimit;
 
             foreach ($result as &$product) {
-                foreach ($this->expanders as $expander) {
-                    $product = $expander->expand($this->localeTransfer, $product);
-                }
-
-                $product = $this->prepareData($product);
+                $product = $this->expandData($product);
             }
 
             $this->fileWriter
                 ->write($filePath, $result, true);
         } while (!empty($result));
+    }
+
+    /**
+     * @param array $product
+     *
+     * @return array
+     */
+    protected function expandData($product)
+    {
+        foreach ($this->expanders as $expander) {
+            $product = $expander->expand($this->localeTransfer, $product);
+        }
+
+        return $this->prepareData($product);
     }
 
     /**
@@ -220,6 +230,11 @@ class FactFinderSdkProductExporter implements FactFinderSdkProductExporterInterf
         $this->fileWriter->write($filePath, [$header]);
     }
 
+    /**
+     * @param array $product
+     *
+     * @return array
+     */
     protected function prepareData($product)
     {
         $headers = $this->getFileHeader();

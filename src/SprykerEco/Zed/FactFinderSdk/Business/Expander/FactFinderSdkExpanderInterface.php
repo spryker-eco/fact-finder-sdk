@@ -7,9 +7,8 @@
 namespace SprykerEco\Zed\FactFinderSdk\Business\Expander;
 
 use Generated\Shared\Transfer\LocaleTransfer;
-use SprykerEco\Shared\FactFinderSdk\FactFinderSdkConstants;
 
-class FactFinderSdkDescriptionExpander extends FactFinderSdkAbstractExpander
+interface FactFinderSdkExpanderInterface
 {
     /**
      * @param \Generated\Shared\Transfer\LocaleTransfer $localeTransfer
@@ -17,10 +16,5 @@ class FactFinderSdkDescriptionExpander extends FactFinderSdkAbstractExpander
      *
      * @return array
      */
-    public function expand(LocaleTransfer $localeTransfer, $productData)
-    {
-        $data[FactFinderSdkConstants::ITEM_DESCRIPTION] = quotemeta($productData[FactFinderSdkConstants::ITEM_DESCRIPTION]);
-
-        return $productData;
-    }
+    public function expand(LocaleTransfer $localeTransfer, $productData);
 }

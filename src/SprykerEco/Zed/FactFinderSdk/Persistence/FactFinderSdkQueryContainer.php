@@ -12,7 +12,6 @@ use Generated\Shared\Transfer\LocaleTransfer;
 use Generated\Shared\Transfer\ProductAbstractDataFeedTransfer;
 use Generated\Shared\Transfer\StoreTransfer;
 use Orm\Zed\Category\Persistence\Map\SpyCategoryAttributeTableMap;
-use Orm\Zed\Category\Persistence\Map\SpyCategoryNodeTableMap;
 use Orm\Zed\Category\Persistence\Map\SpyCategoryTableMap;
 use Orm\Zed\PriceProduct\Persistence\Map\SpyPriceProductStoreTableMap;
 use Orm\Zed\Product\Persistence\Map\SpyProductAbstractTableMap;
@@ -65,10 +64,12 @@ class FactFinderSdkQueryContainer extends AbstractQueryContainer implements Fact
             ->endUse();
 
         $productsAbstractQuery
-            ->usePriceProductQuery()
-                ->usePriceProductStoreQuery()
-                    ->filterByFkCurrency($currencyTransfer->getIdCurrency())
-                    ->filterByFkStore($storeTransfer->getIdStore())
+            ->useSpyProductQuery()
+                ->usePriceProductQuery()
+                    ->usePriceProductStoreQuery()
+                        ->filterByFkCurrency($currencyTransfer->getIdCurrency())
+                        ->filterByFkStore($storeTransfer->getIdStore())
+                    ->endUse()
                 ->endUse()
             ->endUse();
 
@@ -121,9 +122,9 @@ class FactFinderSdkQueryContainer extends AbstractQueryContainer implements Fact
 
     /**
      * @param int $idProductAbstract
-     * @param LocaleTransfer $localeTransfer
+     * @param \Generated\Shared\Transfer\LocaleTransfer $localeTransfer
      *
-     * @return SpyProductAbstractQuery
+     * @return \Orm\Zed\Product\Persistence\SpyProductAbstractQuery
      */
     public function getReviews($idProductAbstract, LocaleTransfer $localeTransfer)
     {
@@ -150,6 +151,19 @@ class FactFinderSdkQueryContainer extends AbstractQueryContainer implements Fact
      */
     protected function addColumns(SpyProductAbstractQuery $productsAbstractQuery)
     {
+        $productsAbstractQuery->select([
+            SpyProductTableMap::COL_SKU,
+            SpyProductLocalizedAttributesTableMap::COL_NAME,
+            SpyStockProductTableMap::COL_QUANTITY,
+            SpyProductImageTableMap::COL_EXTERNAL_URL_SMALL,
+            SpyProductLocalizedAttributesTableMap::COL_DESCRIPTION,
+            SpyUrlTableMap::COL_URL,
+            SpyProductAbstractTableMap::COL_SKU,
+            SpyPriceProductStoreTableMap::COL_GROSS_PRICE,
+            SpyProductTableMap::COL_ATTRIBUTES,
+            SpyProductAbstractTableMap::COL_ATTRIBUTES,
+        ]);
+
         $productsAbstractQuery->withColumn(SpyProductTableMap::COL_SKU, FactFinderSdkConstants::ITEM_PRODUCT_NUMBER);
         $productsAbstractQuery->withColumn(SpyProductLocalizedAttributesTableMap::COL_NAME, FactFinderSdkConstants::ITEM_NAME);
         $productsAbstractQuery->withColumn(SpyStockProductTableMap::COL_QUANTITY, FactFinderSdkConstants::ITEM_STOCK);
@@ -160,6 +174,10 @@ class FactFinderSdkQueryContainer extends AbstractQueryContainer implements Fact
         $productsAbstractQuery->withColumn(SpyPriceProductStoreTableMap::COL_GROSS_PRICE, FactFinderSdkConstants::ITEM_PRICE);
         $productsAbstractQuery->withColumn(SpyProductTableMap::COL_ATTRIBUTES, FactFinderSdkConstants::ITEM_CONCRETE_PRODUCT_ATTRIBUTES);
         $productsAbstractQuery->withColumn(SpyProductAbstractTableMap::COL_ATTRIBUTES, FactFinderSdkConstants::ITEM_ABSTRACT_PRODUCT_ATTRIBUTES);
+        $productsAbstractQuery->withColumn(SpyProductAbstractTableMap::COL_ID_PRODUCT_ABSTRACT, FactFinderSdkConstants::ITEM_ID_ABSTRACT_PRODUCT);
+        $productsAbstractQuery->withColumn(SpyProductTableMap::COL_CREATED_AT, FactFinderSdkConstants::ITEM_CREATED_AT);
+        $productsAbstractQuery->withColumn(SpyProductAbstractTableMap::COL_NEW_FROM, FactFinderSdkConstants::ITEM_NEW_FROM);
+        $productsAbstractQuery->withColumn(SpyProductAbstractTableMap::COL_NEW_TO, FactFinderSdkConstants::ITEM_NEW_TO);
 
         return $productsAbstractQuery;
     }

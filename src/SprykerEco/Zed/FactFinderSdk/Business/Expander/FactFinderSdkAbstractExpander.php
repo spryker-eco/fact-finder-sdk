@@ -1,32 +1,35 @@
 <?php
 
+/**
+ * MIT License
+ * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
+ */
 namespace SprykerEco\Zed\FactFinderSdk\Business\Expander;
 
-use Generated\Shared\Transfer\LocaleTransfer;
-use SprykerEco\Shared\FactFinderSdk\FactFinderSdkConstants;
 use SprykerEco\Zed\FactFinderSdk\FactFinderSdkConfig;
 use SprykerEco\Zed\FactFinderSdk\Persistence\FactFinderSdkQueryContainerInterface;
 
-abstract class FactFinderSdkAbstractExpander
+abstract class FactFinderSdkAbstractExpander implements FactFinderSdkExpanderInterface
 {
     /**
-     * @var FactFinderSdkQueryContainerInterface
+     * @var \SprykerEco\Zed\FactFinderSdk\Persistence\FactFinderSdkQueryContainerInterface
      */
     protected $queryContainer;
+
     /**
-     * @var FactFinderSdkConfig
+     * @var \SprykerEco\Zed\FactFinderSdk\FactFinderSdkConfig
      */
     protected $config;
 
     /**
      * CategoryExpander constructor.
-     * @param FactFinderSdkQueryContainerInterface $queryContainer
-     * @param FactFinderSdkConfig $config
+     *
+     * @param \SprykerEco\Zed\FactFinderSdk\Persistence\FactFinderSdkQueryContainerInterface $queryContainer
+     * @param \SprykerEco\Zed\FactFinderSdk\FactFinderSdkConfig $config
      */
     public function __construct(FactFinderSdkQueryContainerInterface $queryContainer, FactFinderSdkConfig $config)
     {
         $this->queryContainer = $queryContainer;
         $this->config = $config;
     }
-
 }

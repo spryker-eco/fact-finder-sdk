@@ -1,9 +1,9 @@
 <?php
 
 /**
- * (c) Spryker Systems GmbH copyright protected
+ * MIT License
+ * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
-
 namespace FactFinder\Module;
 
 use Codeception\Module;

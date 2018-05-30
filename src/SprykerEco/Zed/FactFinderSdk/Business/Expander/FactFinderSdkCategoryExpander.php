@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * MIT License
+ * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
+ */
 namespace SprykerEco\Zed\FactFinderSdk\Business\Expander;
 
 use Generated\Shared\Transfer\LocaleTransfer;
@@ -10,13 +14,14 @@ class FactFinderSdkCategoryExpander extends FactFinderSdkAbstractExpander
     const VIRTUAL_COLUMN_NAME = 'name';
 
     /**
-     * @param LocaleTransfer $localeTransfer
-     * @param $productData
+     * @param \Generated\Shared\Transfer\LocaleTransfer $localeTransfer
+     * @param array $productData
+     *
      * @return array
      */
     public function expand(LocaleTransfer $localeTransfer, $productData)
     {
-        $categoryPathArray = $this->getCategoryPathArray($localeTransfer, $productData['IdProductAbstract']);
+        $categoryPathArray = $this->getCategoryPathArray($localeTransfer, $productData[FactFinderSdkConstants::ITEM_ID_ABSTRACT_PRODUCT]);
         $productData = $this->addCategoryPath($productData, $categoryPathArray);
 
         return $productData;
@@ -70,7 +75,7 @@ class FactFinderSdkCategoryExpander extends FactFinderSdkAbstractExpander
     }
 
     /**
-     * @param LocaleTransfer $localeTransfer
+     * @param \Generated\Shared\Transfer\LocaleTransfer $localeTransfer
      * @param \Orm\Zed\Category\Persistence\SpyCategory $category
      * @param array $path
      *
@@ -96,5 +101,4 @@ class FactFinderSdkCategoryExpander extends FactFinderSdkAbstractExpander
 
         return $path;
     }
-
 }
