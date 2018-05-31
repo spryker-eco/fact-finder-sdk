@@ -21,7 +21,7 @@ class FactFinderSdkTimestampExpander extends FactFinderSdkAbstractExpander
      */
     public function expand(LocaleTransfer $localeTransfer, $productData)
     {
-        $productData[FactFinderSdkConstants::ITEM_CREATED_AT] = strtotime($productData[static::CREATED_AT]);
+        $productData[FactFinderSdkConstants::ITEM_CREATED_AT] = strtotime($productData[static::CREATED_AT]) * 1000;
 
         return $productData;
     }
