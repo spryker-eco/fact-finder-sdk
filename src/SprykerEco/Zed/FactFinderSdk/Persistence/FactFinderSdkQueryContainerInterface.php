@@ -35,7 +35,7 @@ interface FactFinderSdkQueryContainerInterface extends QueryContainerInterface
      *
      * @return \Orm\Zed\Category\Persistence\SpyCategoryQuery
      */
-    public function getCategories(LocaleTransfer $localeTransfer, $idProductAbstract);
+    public function getCategoriesQuery(LocaleTransfer $localeTransfer, $idProductAbstract);
 
     /**
      * @param int $idCategory
@@ -43,13 +43,39 @@ interface FactFinderSdkQueryContainerInterface extends QueryContainerInterface
      *
      * @return \Orm\Zed\Category\Persistence\SpyCategoryQuery
      */
-    public function getCategory($idCategory, LocaleTransfer $localeTransfer);
+    public function getCategoryQuery($idCategory, LocaleTransfer $localeTransfer);
 
     /**
+     * @api
+     *
      * @param int $idProductAbstract
      * @param \Generated\Shared\Transfer\LocaleTransfer $localeTransfer
      *
      * @return \Orm\Zed\Product\Persistence\SpyProductAbstractQuery
      */
-    public function getReviews($idProductAbstract, LocaleTransfer $localeTransfer);
+    public function getReviewsQuery($idProductAbstract, LocaleTransfer $localeTransfer);
+
+    /**
+     * @api
+     *
+     * @param string $concreteProductSku
+     * @param \Generated\Shared\Transfer\CurrencyTransfer $currencyTransfer
+     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
+     *
+     * @return \Orm\Zed\PriceProduct\Persistence\SpyPriceProductQuery
+     */
+    public function getPricesQuery($concreteProductSku, CurrencyTransfer $currencyTransfer, StoreTransfer $storeTransfer);
+
+    /**
+     * @api
+     *
+     * @param string $concreteProductSku
+     * @param \Generated\Shared\Transfer\CurrencyTransfer $currencyTransfer
+     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
+     *
+     * @throws \Spryker\Zed\Propel\Business\Exception\AmbiguousComparisonException
+     *
+     * @return \Orm\Zed\PriceProduct\Persistence\SpyPriceProductQuery
+     */
+    public function getProductAbstractPriceQuery($concreteProductSku, CurrencyTransfer $currencyTransfer, StoreTransfer $storeTransfer);
 }

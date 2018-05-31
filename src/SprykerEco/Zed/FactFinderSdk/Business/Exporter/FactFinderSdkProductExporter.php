@@ -130,16 +130,18 @@ class FactFinderSdkProductExporter implements FactFinderSdkProductExporterInterf
         }
         $filePath = $this->getFilePath($this->localeTransfer, $store, $currency);
 
-        $this->exportToCsv($filePath, $query);
+        $this->exportToCsv($filePath, $query, $currency, $store);
     }
 
     /**
      * @param string $filePath
      * @param \Orm\Zed\Product\Persistence\Base\SpyProductAbstractQuery $query
+     * @param \Generated\Shared\Transfer\CurrencyTransfer $currencyTransfer
+     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
      *
      * @return void
      */
-    protected function exportToCsv($filePath, SpyProductAbstractQuery $query)
+    protected function exportToCsv($filePath, SpyProductAbstractQuery $query, CurrencyTransfer $currencyTransfer, StoreTransfer $storeTransfer)
     {
         $offset = 0;
         $this->saveFileHeader($filePath);
@@ -151,7 +153,7 @@ class FactFinderSdkProductExporter implements FactFinderSdkProductExporterInterf
             $offset += $this->queryLimit;
 
             foreach ($result as &$product) {
-                $product = $this->expandData($product);
+                $product = $this->expandData($currencyTransfer, $storeTransfer, $product);
             }
 
             $this->fileWriter
@@ -160,14 +162,16 @@ class FactFinderSdkProductExporter implements FactFinderSdkProductExporterInterf
     }
 
     /**
+     * @param \Generated\Shared\Transfer\CurrencyTransfer $currencyTransfer
+     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
      * @param array $product
      *
      * @return array
      */
-    protected function expandData($product)
+    protected function expandData(CurrencyTransfer $currencyTransfer, StoreTransfer $storeTransfer, $product)
     {
         foreach ($this->expanders as $expander) {
-            $product = $expander->expand($this->localeTransfer, $product);
+            $product = $expander->expand($this->localeTransfer, $currencyTransfer, $storeTransfer, $product);
         }
 
         return $this->prepareData($product);

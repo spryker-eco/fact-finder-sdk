@@ -50,7 +50,6 @@ class FactFinderSdkQueryContainer extends AbstractQueryContainer implements Fact
         $productAbstractDataFeedTransfer = new ProductAbstractDataFeedTransfer();
         $productAbstractDataFeedTransfer->setJoinProduct(true);
         $productAbstractDataFeedTransfer->setJoinImage(true);
-        $productAbstractDataFeedTransfer->setJoinPrice(true);
 
         $productAbstractDataFeedTransfer->setIdLocale($localeTransfer->getIdLocale());
 
@@ -61,16 +60,6 @@ class FactFinderSdkQueryContainer extends AbstractQueryContainer implements Fact
         $productsAbstractQuery
             ->useSpyUrlQuery()
                 ->filterByFkLocale($localeTransfer->getIdLocale())
-            ->endUse();
-
-        $productsAbstractQuery
-            ->useSpyProductQuery()
-                ->usePriceProductQuery()
-                    ->usePriceProductStoreQuery()
-                        ->filterByFkCurrency($currencyTransfer->getIdCurrency())
-                        ->filterByFkStore($storeTransfer->getIdStore())
-                    ->endUse()
-                ->endUse()
             ->endUse();
 
         $productsAbstractQuery = $this->addColumns($productsAbstractQuery);
@@ -88,7 +77,7 @@ class FactFinderSdkQueryContainer extends AbstractQueryContainer implements Fact
      *
      * @return \Orm\Zed\Category\Persistence\SpyCategoryQuery
      */
-    public function getCategories(LocaleTransfer $localeTransfer, $idProductAbstract)
+    public function getCategoriesQuery(LocaleTransfer $localeTransfer, $idProductAbstract)
     {
         $categoryQuery = $this->getFactory()
             ->createCategoryQuery();
@@ -107,7 +96,7 @@ class FactFinderSdkQueryContainer extends AbstractQueryContainer implements Fact
      *
      * @return \Orm\Zed\Category\Persistence\SpyCategoryQuery
      */
-    public function getCategory($idCategory, LocaleTransfer $localeTransfer)
+    public function getCategoryQuery($idCategory, LocaleTransfer $localeTransfer)
     {
         $categoryQuery = $this->getFactory()
             ->createCategoryQuery();
@@ -121,12 +110,66 @@ class FactFinderSdkQueryContainer extends AbstractQueryContainer implements Fact
     }
 
     /**
+     * @param string $concreteProductSku
+     * @param \Generated\Shared\Transfer\CurrencyTransfer $currencyTransfer
+     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
+     *
+     * @return \Orm\Zed\PriceProduct\Persistence\SpyPriceProductQuery
+     */
+    public function getPricesQuery($concreteProductSku, CurrencyTransfer $currencyTransfer, StoreTransfer $storeTransfer)
+    {
+        $priceProductQuery = $this->getFactory()
+            ->createPriceProductQuery();
+
+        $priceProductQuery
+            ->useProductQuery()
+                ->filterBySku($concreteProductSku)
+            ->endUse()
+            ->usePriceProductStoreQuery()
+                ->filterByFkCurrency($currencyTransfer->getIdCurrency())
+                ->filterByFkStore($storeTransfer->getIdStore())
+            ->endUse();
+
+        $priceProductQuery->withColumn(SpyPriceProductStoreTableMap::COL_GROSS_PRICE, FactFinderSdkConstants::ITEM_PRICE);
+
+        return $priceProductQuery;
+    }
+
+    /**
+     * @param string $concreteProductSku
+     * @param \Generated\Shared\Transfer\CurrencyTransfer $currencyTransfer
+     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
+     *
+     * @return \Orm\Zed\PriceProduct\Persistence\SpyPriceProductQuery
+     */
+    public function getProductAbstractPriceQuery($concreteProductSku, CurrencyTransfer $currencyTransfer, StoreTransfer $storeTransfer)
+    {
+        $priceProductQuery = $this->getFactory()
+            ->createPriceProductQuery();
+
+        $priceProductQuery
+            ->useSpyProductAbstractQuery()
+                ->useSpyProductQuery()
+                    ->filterBySku($concreteProductSku)
+                ->endUse()
+            ->endUse()
+            ->usePriceProductStoreQuery()
+                ->filterByFkCurrency($currencyTransfer->getIdCurrency())
+                ->filterByFkStore($storeTransfer->getIdStore())
+            ->endUse();
+
+        $priceProductQuery->withColumn(SpyPriceProductStoreTableMap::COL_GROSS_PRICE, FactFinderSdkConstants::ITEM_PRICE);
+
+        return $priceProductQuery;
+    }
+
+    /**
      * @param int $idProductAbstract
      * @param \Generated\Shared\Transfer\LocaleTransfer $localeTransfer
      *
      * @return \Orm\Zed\Product\Persistence\SpyProductAbstractQuery
      */
-    public function getReviews($idProductAbstract, LocaleTransfer $localeTransfer)
+    public function getReviewsQuery($idProductAbstract, LocaleTransfer $localeTransfer)
     {
         $productAbstractDataFeedTransfer = new ProductAbstractDataFeedTransfer();
         $productAbstractDataFeedTransfer->setIdLocale($localeTransfer->getIdLocale());
@@ -159,7 +202,6 @@ class FactFinderSdkQueryContainer extends AbstractQueryContainer implements Fact
             SpyProductLocalizedAttributesTableMap::COL_DESCRIPTION,
             SpyUrlTableMap::COL_URL,
             SpyProductAbstractTableMap::COL_SKU,
-            SpyPriceProductStoreTableMap::COL_GROSS_PRICE,
             SpyProductTableMap::COL_ATTRIBUTES,
             SpyProductAbstractTableMap::COL_ATTRIBUTES,
         ]);
@@ -171,36 +213,12 @@ class FactFinderSdkQueryContainer extends AbstractQueryContainer implements Fact
         $productsAbstractQuery->withColumn(SpyProductLocalizedAttributesTableMap::COL_DESCRIPTION, FactFinderSdkConstants::ITEM_DESCRIPTION);
         $productsAbstractQuery->withColumn(SpyUrlTableMap::COL_URL, FactFinderSdkConstants::ITEM_PRODUCT_URL);
         $productsAbstractQuery->withColumn(SpyProductAbstractTableMap::COL_SKU, FactFinderSdkConstants::ITEM_MASTER_ID);
-        $productsAbstractQuery->withColumn(SpyPriceProductStoreTableMap::COL_GROSS_PRICE, FactFinderSdkConstants::ITEM_PRICE);
         $productsAbstractQuery->withColumn(SpyProductTableMap::COL_ATTRIBUTES, FactFinderSdkConstants::ITEM_CONCRETE_PRODUCT_ATTRIBUTES);
         $productsAbstractQuery->withColumn(SpyProductAbstractTableMap::COL_ATTRIBUTES, FactFinderSdkConstants::ITEM_ABSTRACT_PRODUCT_ATTRIBUTES);
         $productsAbstractQuery->withColumn(SpyProductAbstractTableMap::COL_ID_PRODUCT_ABSTRACT, FactFinderSdkConstants::ITEM_ID_ABSTRACT_PRODUCT);
         $productsAbstractQuery->withColumn(SpyProductTableMap::COL_CREATED_AT, FactFinderSdkConstants::ITEM_CREATED_AT);
         $productsAbstractQuery->withColumn(SpyProductAbstractTableMap::COL_NEW_FROM, FactFinderSdkConstants::ITEM_NEW_FROM);
         $productsAbstractQuery->withColumn(SpyProductAbstractTableMap::COL_NEW_TO, FactFinderSdkConstants::ITEM_NEW_TO);
-
-        return $productsAbstractQuery;
-    }
-
-    /**
-     * @param \Orm\Zed\Product\Persistence\SpyProductAbstractQuery $productsAbstractQuery
-     *
-     * @return \Orm\Zed\Product\Persistence\SpyProductAbstractQuery
-     */
-    protected function addInStockConditions(SpyProductAbstractQuery $productsAbstractQuery)
-    {
-        $productsAbstractQuery->condition(
-            self::STOCK_QUANTITY_CONDITION,
-            SpyStockProductTableMap::COL_QUANTITY . ' > 0 '
-        );
-        $productsAbstractQuery->condition(
-            self::STOCK_NEVER_OUTOFSTOCK_CONDITION,
-            SpyStockProductTableMap::COL_IS_NEVER_OUT_OF_STOCK . ' = true'
-        );
-        $productsAbstractQuery->where([
-            self::STOCK_QUANTITY_CONDITION,
-            self::STOCK_NEVER_OUTOFSTOCK_CONDITION,
-        ], Criteria::LOGICAL_OR);
 
         return $productsAbstractQuery;
     }

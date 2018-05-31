@@ -6,7 +6,9 @@
  */
 namespace SprykerEco\Zed\FactFinderSdk\Business\Expander;
 
+use Generated\Shared\Transfer\CurrencyTransfer;
 use Generated\Shared\Transfer\LocaleTransfer;
+use Generated\Shared\Transfer\StoreTransfer;
 use SprykerEco\Shared\FactFinderSdk\FactFinderSdkConstants;
 
 class FactFinderSdkCategoryExpander extends FactFinderSdkAbstractExpander
@@ -15,11 +17,13 @@ class FactFinderSdkCategoryExpander extends FactFinderSdkAbstractExpander
 
     /**
      * @param \Generated\Shared\Transfer\LocaleTransfer $localeTransfer
+     * @param \Generated\Shared\Transfer\CurrencyTransfer $currencyTransfer
+     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
      * @param array $productData
      *
      * @return array
      */
-    public function expand(LocaleTransfer $localeTransfer, $productData)
+    public function expand(LocaleTransfer $localeTransfer, CurrencyTransfer $currencyTransfer, StoreTransfer $storeTransfer, $productData)
     {
         $categoryPathArray = $this->getCategoryPathArray($localeTransfer, $productData[FactFinderSdkConstants::ITEM_ID_ABSTRACT_PRODUCT]);
         $productData = $this->addCategoryPath($productData, $categoryPathArray);
@@ -60,7 +64,7 @@ class FactFinderSdkCategoryExpander extends FactFinderSdkAbstractExpander
         $pathArray = [];
 
         $query = $this->queryContainer
-            ->getCategories($localeTransfer, $idProductAbstract);
+            ->getCategoriesQuery($localeTransfer, $idProductAbstract);
         $categories = $query->find();
 
         if (!$categories) {
@@ -89,7 +93,7 @@ class FactFinderSdkCategoryExpander extends FactFinderSdkAbstractExpander
 
         if ($node->getFkParentCategoryNode()) {
             $parentCategory = $this->queryContainer
-                ->getCategory($node->getParentCategoryNode()->getFkCategory(), $localeTransfer)
+                ->getCategoryQuery($node->getParentCategoryNode()->getFkCategory(), $localeTransfer)
                 ->find()
                 ->getFirst();
             $path = array_merge($path, $this->getCategoryPath($localeTransfer, $parentCategory, $path));

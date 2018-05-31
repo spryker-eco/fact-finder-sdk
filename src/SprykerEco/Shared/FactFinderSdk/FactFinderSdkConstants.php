@@ -58,5 +58,4 @@ interface FactFinderSdkConstants
     const ITEM_IS_NEW = 'IsNew';
     const ITEM_NEW_FROM = 'NewFrom';
     const ITEM_NEW_TO = 'NewTo';
-    const PRICE_TYPE_NAME = 'DEFAULT';
 }
