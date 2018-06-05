@@ -10,14 +10,14 @@ $config[FactFinderSdkConstants::ENVIRONMENT . FactFinderSdkConstants::ENVIRONMEN
     'requestProtocol' => 'http', //https
     'serverAddress' => 'partner3.fact-finder.de',
     'port' => '80',
-    'context' => 'Context',
-    'channel' => 'test',
+    'context' => 'context',
+    'channel' => 'channel',
     'language' => 'de',
     'authenticationType' => 'advanced',
 // This is another possible option for authentication type
 //   'authenticationType' => 'manual',
     'userName' => 'user',
-    'password' => 'change123',
+    'password' => 'password',
     'authenticationPrefix' => 'FACT-FINDER',
     'authenticationPostfix' => 'FACT-FINDER',
     'clientMappings' => [],
@@ -62,4 +62,8 @@ $config[FactFinderSdkConstants::ITEM_FIELDS] = [
     FactFinderSdkConstants::ITEM_PRODUCT_URL,
     FactFinderSdkConstants::ITEM_IMAGE_URL,
     FactFinderSdkConstants::ITEM_DESCRIPTION,
+    FactFinderSdkConstants::ITEM_ATTRIBUTES,
+    FactFinderSdkConstants::ITEM_RATING,
+    FactFinderSdkConstants::ITEM_CREATED_AT,
+    FactFinderSdkConstants::ITEM_IS_NEW,
 ];
