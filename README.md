@@ -1,4 +1,4 @@
-# FactFinderSdk Bundle
+# FactFinderSdk Module
 
 ## Installation
 
