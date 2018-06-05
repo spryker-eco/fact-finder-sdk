@@ -17,7 +17,7 @@ $config[FactFinderSdkConstants::ENVIRONMENT . FactFinderSdkConstants::ENVIRONMEN
 // This is another possible option for authentication type
 //   'authenticationType' => 'manual',
     'userName' => 'user',
-    'password' => 'passworf',
+    'password' => 'password',
     'authenticationPrefix' => 'FACT-FINDER',
     'authenticationPostfix' => 'FACT-FINDER',
     'clientMappings' => [],
