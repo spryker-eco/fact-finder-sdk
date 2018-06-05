@@ -18,8 +18,8 @@ use SprykerEco\Zed\FactFinderSdk\Business\Expander\FactFinderSdkReviewExpander;
 use SprykerEco\Zed\FactFinderSdk\Business\Expander\FactFinderSdkTimestampExpander;
 use SprykerEco\Zed\FactFinderSdk\Business\Expander\FactFinderSdkUrlExpander;
 use SprykerEco\Zed\FactFinderSdk\Business\Exporter\FactFinderSdkProductExporter;
-use SprykerEco\Zed\FactFinderSdk\Business\Writer\AbstractFileWriter;
 use SprykerEco\Zed\FactFinderSdk\Business\Writer\CsvFileWriter;
+use SprykerEco\Zed\FactFinderSdk\Business\Writer\FileWriterInterface;
 use SprykerEco\Zed\FactFinderSdk\FactFinderSdkDependencyProvider;
 
 /**
@@ -41,41 +41,9 @@ class FactFinderSdkBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return \SprykerEco\Zed\FactFinderSdk\FactFinderSdkConfigInterface
-     */
-    public function getFactFinderConfig()
-    {
-        return $this->getConfig();
-    }
-
-    /**
-     * @return \SprykerEco\Zed\FactFinderSdk\Persistence\FactFinderSdkQueryContainerInterface
-     */
-    public function getFactFinderQueryContainer()
-    {
-        return $this->getQueryContainer();
-    }
-
-    /**
-     * @return \SprykerEco\Zed\FactFinderSdk\Dependency\Facade\FactFinderSdkToLocaleInterface
-     */
-    public function getLocaleFacade()
-    {
-        return $this->getProvidedDependency(FactFinderSdkDependencyProvider::LOCALE_FACADE);
-    }
-
-    /**
-     * @return \SprykerEco\Zed\FactFinderSdk\Dependency\Facade\FactFinderSdkToMoneyInterface
-     */
-    public function getMoneyFacade()
-    {
-        return $this->getProvidedDependency(FactFinderSdkDependencyProvider::MONEY_FACADE);
-    }
-
-    /**
      * @return \SprykerEco\Zed\FactFinderSdk\Dependency\Facade\FactFinderSdkToStoreInterface
      */
-    public function getStoreFacade()
+    protected function getStoreFacade()
     {
         return $this->getProvidedDependency(FactFinderSdkDependencyProvider::STORE_FACADE);
     }
@@ -83,7 +51,7 @@ class FactFinderSdkBusinessFactory extends AbstractBusinessFactory
     /**
      * @return \SprykerEco\Zed\FactFinderSdk\Dependency\Facade\FactFinderSdkToCurrencyInterface
      */
-    public function getCurrencyFacade()
+    protected function getCurrencyFacade()
     {
         return $this->getProvidedDependency(FactFinderSdkDependencyProvider::CURRENCY_FACADE);
     }
@@ -102,7 +70,7 @@ class FactFinderSdkBusinessFactory extends AbstractBusinessFactory
      *
      * @return \SprykerEco\Zed\FactFinderSdk\Business\Exporter\FactFinderSdkProductExporterInterface
      */
-    protected function createFactFinderProductExporter(AbstractFileWriter $fileWriter, LocaleTransfer $localeTransfer)
+    protected function createFactFinderProductExporter(FileWriterInterface $fileWriter, LocaleTransfer $localeTransfer)
     {
         return new FactFinderSdkProductExporter(
             $fileWriter,

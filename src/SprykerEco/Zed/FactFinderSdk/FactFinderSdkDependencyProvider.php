@@ -21,7 +21,6 @@ class FactFinderSdkDependencyProvider extends AbstractBundleDependencyProvider
     const PRODUCT_ABSTRACT_DATA_FEED = 'PRODUCT_ABSTRACT_DATA_FEED';
     const CATEGORY_DATA_FEED = 'CATEGORY_DATA_FEED';
     const LOCALE_FACADE = 'LOCALE_FACADE';
-    const MONEY_FACADE = 'MONEY_FACADE';
     const STORE_FACADE = 'STORE_FACADE';
     const CURRENCY_FACADE = 'CURRENCY_FACADE';
 
@@ -72,7 +71,6 @@ class FactFinderSdkDependencyProvider extends AbstractBundleDependencyProvider
     {
         $container = $this->addStoreFacade($container);
         $container = $this->addCurrencyFacade($container);
-        $container = $this->addMoneyFacade($container);
 
         return $container;
     }
@@ -108,24 +106,6 @@ class FactFinderSdkDependencyProvider extends AbstractBundleDependencyProvider
                 ->facade();
 
             return new FactFinderSdkToCurrencyBridge($currencyFacade);
-        };
-
-        return $container;
-    }
-
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
-    protected function addMoneyFacade(Container $container)
-    {
-        $container[self::MONEY_FACADE] = function (Container $container) {
-            $moneyFacade = $container->getLocator()
-                ->money()
-                ->facade();
-
-            return new FactFinderSdkToMoneyBridge($moneyFacade);
         };
 
         return $container;
