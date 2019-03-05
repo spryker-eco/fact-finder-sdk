@@ -13,7 +13,7 @@ use SprykerEco\Shared\FactFinderSdk\FactFinderSdkConstants;
 
 class FactFinderSdkReviewExpander extends FactFinderSdkAbstractExpander
 {
-    const ID_PRODUCT_ABSTRACT = 'IdProductAbstract';
+    public const ID_PRODUCT_ABSTRACT = 'IdProductAbstract';
 
     /**
      * @param \Generated\Shared\Transfer\LocaleTransfer $localeTransfer

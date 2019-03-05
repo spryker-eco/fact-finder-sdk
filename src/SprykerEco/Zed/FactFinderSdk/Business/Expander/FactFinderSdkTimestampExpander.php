@@ -13,7 +13,7 @@ use SprykerEco\Shared\FactFinderSdk\FactFinderSdkConstants;
 
 class FactFinderSdkTimestampExpander extends FactFinderSdkAbstractExpander
 {
-    const CREATED_AT = 'CreatedAt';
+    public const CREATED_AT = 'CreatedAt';
 
     /**
      * @param \Generated\Shared\Transfer\LocaleTransfer $localeTransfer

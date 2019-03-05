@@ -38,6 +38,8 @@ interface FactFinderSdkQueryContainerInterface extends QueryContainerInterface
     public function getCategoriesQuery(LocaleTransfer $localeTransfer, $idProductAbstract);
 
     /**
+     * @api
+     *
      * @param int $idCategory
      * @param \Generated\Shared\Transfer\LocaleTransfer $localeTransfer
      *

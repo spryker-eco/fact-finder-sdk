@@ -22,8 +22,6 @@ abstract class FactFinderSdkAbstractExpander implements FactFinderSdkExpanderInt
     protected $config;
 
     /**
-     * CategoryExpander constructor.
-     *
      * @param \SprykerEco\Zed\FactFinderSdk\Persistence\FactFinderSdkQueryContainerInterface $queryContainer
      * @param \SprykerEco\Zed\FactFinderSdk\FactFinderSdkConfig $config
      */

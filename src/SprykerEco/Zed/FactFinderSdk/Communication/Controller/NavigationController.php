@@ -12,6 +12,11 @@ use Spryker\Zed\Kernel\Communication\Controller\AbstractController;
 use SprykerEco\Shared\FactFinderSdk\FactFinderSdkConstants;
 use Symfony\Component\HttpFoundation\Request;
 
+/**
+ * @method \SprykerEco\Zed\FactFinderSdk\Persistence\FactFinderSdkQueryContainerInterface getQueryContainer()
+ * @method \SprykerEco\Zed\FactFinderSdk\Business\FactFinderSdkFacadeInterface getFacade()
+ * @method \SprykerEco\Zed\FactFinderSdk\Communication\FactFinderSdkCommunicationFactory getFactory()
+ */
 class NavigationController extends AbstractController
 {
     /**

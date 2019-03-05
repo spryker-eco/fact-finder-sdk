@@ -13,6 +13,7 @@ use SprykerEco\Zed\FactFinderSdk\FactFinderSdkDependencyProvider;
 /**
  * @method \SprykerEco\Zed\FactFinderSdk\Persistence\FactFinderSdkQueryContainerInterface getQueryContainer()
  * @method \SprykerEco\Zed\FactFinderSdk\FactFinderSdkConfig getConfig()
+ * @method \SprykerEco\Zed\FactFinderSdk\Business\FactFinderSdkFacadeInterface getFacade()
  */
 class FactFinderSdkCommunicationFactory extends AbstractCommunicationFactory
 {

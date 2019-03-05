@@ -104,8 +104,7 @@ class FactFinderSdkClient extends AbstractClient implements FactFinderSdkClientI
     }
 
     /**
-     * Specification:
-     * - Returns shopping cart campaigns.
+     * @api
      *
      * @param \Generated\Shared\Transfer\FactFinderSdkProductCampaignRequestTransfer $factFinderSdkProductCampaignRequestTransfer
      *

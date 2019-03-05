@@ -18,7 +18,7 @@ use SprykerEco\Client\FactFinderSdk\FactFinderSdkConfig;
 
 class TrackingRequest extends AbstractRequest implements TrackingRequestInterface
 {
-    const TRANSACTION_TYPE = ApiConstants::TRANSACTION_TYPE_SEARCH;
+    public const TRANSACTION_TYPE = ApiConstants::TRANSACTION_TYPE_SEARCH;
 
     /**
      * @var \SprykerEco\Client\FactFinderSdk\FactFinderSdkConfig
@@ -26,8 +26,6 @@ class TrackingRequest extends AbstractRequest implements TrackingRequestInterfac
     protected $config;
 
     /**
-     * TrackingRequest constructor.
-     *
      * @param \SprykerEco\Client\FactFinderSdk\Business\Api\FactFinderConnectorInterface $factFinderConnector
      * @param \SprykerEco\Client\FactFinderSdk\Business\Api\Converter\ConverterFactory $converterFactory
      * @param \SprykerEco\Client\FactFinderSdk\FactFinderSdkConfig $config

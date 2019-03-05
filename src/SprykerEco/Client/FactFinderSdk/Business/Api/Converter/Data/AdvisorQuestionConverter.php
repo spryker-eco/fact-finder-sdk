@@ -51,7 +51,7 @@ class AdvisorQuestionConverter extends BaseConverter implements AdvisorQuestionC
      */
     public function convert($advisorQuestion = null)
     {
-        $advisorQuestion = $advisorQuestion === null?$advisorQuestion:$this->advisorQuestion;
+        $advisorQuestion = $advisorQuestion === null ? $advisorQuestion : $this->advisorQuestion;
         $factFinderDataAdvisorQuestionTransfer = new FactFinderSdkDataAdvisorQuestionTransfer();
         $factFinderDataAdvisorQuestionTransfer->setText($advisorQuestion->getText());
 

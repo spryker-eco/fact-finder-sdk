@@ -13,7 +13,7 @@ use SprykerEco\Shared\FactFinderSdk\FactFinderSdkConstants;
 
 class FactFinderSdkCategoryExpander extends FactFinderSdkAbstractExpander
 {
-    const VIRTUAL_COLUMN_NAME = 'name';
+    public const VIRTUAL_COLUMN_NAME = 'name';
 
     /**
      * @param \Generated\Shared\Transfer\LocaleTransfer $localeTransfer

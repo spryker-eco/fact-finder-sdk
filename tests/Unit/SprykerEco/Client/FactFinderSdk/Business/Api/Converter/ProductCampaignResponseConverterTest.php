@@ -17,11 +17,9 @@ use Generated\Shared\Transfer\FactFinderSdkDataCampaignTransfer;
 use Generated\Shared\Transfer\FactFinderSdkDataRecordTransfer;
 use Generated\Shared\Transfer\FactFinderSdkProductCampaignResponseTransfer;
 use PHPUnit_Framework_TestCase;
-use Spryker\Shared\Config\Config;
 use SprykerEco\Client\FactFinderSdk\Business\Api\Converter\ConverterFactory;
 use SprykerEco\Client\FactFinderSdk\Business\Api\Converter\ProductCampaignResponseConverter;
 use SprykerEco\Client\FactFinderSdk\FactFinderSdkConfig;
-use SprykerEco\Shared\FactFinderSdk\FactFinderSdkConstants;
 
 /**
  * @group Unit
@@ -47,6 +45,7 @@ class ProductCampaignResponseConverterTest extends PHPUnit_Framework_TestCase
             ->toArray();
         $result = $productCampaignResponseConverter->convert()
             ->toArray();
+
         $this->assertEquals($expected, $result);
     }
 
@@ -96,11 +95,11 @@ class ProductCampaignResponseConverterTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @return object
+     * @return \FACTFinder\Data\CampaignIterator
      */
     protected function getCampaigns()
     {
-        $pushedProducts = array(
+        $pushedProducts = [
             new Record(
                 '111_28549472',
                 [
@@ -122,7 +121,7 @@ class ProductCampaignResponseConverterTest extends PHPUnit_Framework_TestCase
                 99.980000000000004,
                 1
             ),
-        );
+        ];
 
         return new CampaignIterator(
             [
@@ -131,10 +130,10 @@ class ProductCampaignResponseConverterTest extends PHPUnit_Framework_TestCase
                     'test category',
                     "https://google.de/",
                     $pushedProducts,
-                    array(),
-                    array(),
-                    array()
-                )
+                    [],
+                    [],
+                    []
+                ),
             ]
         );
     }
@@ -187,6 +186,7 @@ class ProductCampaignResponseConverterTest extends PHPUnit_Framework_TestCase
                 $factFinderDataRecordTransfer->setId($pushedProduct->getID());
                 $factFinderDataRecordTransfer->setSimilarity($pushedProduct->getSimilarity());
                 $factFinderDataRecordTransfer->setPosition($pushedProduct->getPosition());
+                $factFinderDataRecordTransfer->setOriginalPosition($pushedProduct->getPosition());
                 $factFinderDataRecordTransfer->setSeoPath($pushedProduct->getSeoPath());
                 $factFinderDataRecordTransfer->setKeywords($pushedProduct->getKeywords());
 
@@ -197,6 +197,7 @@ class ProductCampaignResponseConverterTest extends PHPUnit_Framework_TestCase
                 $factFinderDataRecordTransfer->setFields($fields);
 
                 $campaignIterator->addPushedProducts($factFinderDataRecordTransfer);
+                $factFinderDataCampaignTransfer->addPushedProducts($factFinderDataRecordTransfer);
             }
         }
 

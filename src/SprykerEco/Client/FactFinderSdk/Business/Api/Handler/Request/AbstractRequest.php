@@ -15,7 +15,7 @@ abstract class AbstractRequest
 {
     use LoggerTrait;
 
-    const TRANSACTION_TYPE = null;
+    public const TRANSACTION_TYPE = null;
 
     /**
      * @var \SprykerEco\Client\FactFinderSdk\Business\Api\FactFinderConnectorInterface

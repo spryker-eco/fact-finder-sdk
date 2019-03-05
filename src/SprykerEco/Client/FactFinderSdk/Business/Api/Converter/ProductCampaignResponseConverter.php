@@ -32,8 +32,6 @@ class ProductCampaignResponseConverter extends BaseConverter implements Converte
     protected $advisorQuestionConverter;
 
     /**
-     * ProductCampaignResponseConverter constructor.
-     *
      * @param \FACTFinder\Adapter\ProductCampaign $productCampaignAdapter
      * @param \SprykerEco\Client\FactFinderSdk\Business\Api\Converter\Data\RecordConverterInterface $recordConverter
      * @param \SprykerEco\Client\FactFinderSdk\Business\Api\Converter\Data\AdvisorQuestionConverterInterface $advisorQuestionConverter

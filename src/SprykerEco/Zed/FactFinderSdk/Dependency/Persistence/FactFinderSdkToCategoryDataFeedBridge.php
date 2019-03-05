@@ -17,8 +17,6 @@ class FactFinderSdkToCategoryDataFeedBridge implements FactFinderSdkToCategoryDa
     protected $categoryDataFeedQueryContainer;
 
     /**
-     * FactFinderToCategoryDataFeedBridge constructor.
-     *
      * @param \Spryker\Zed\CategoryDataFeed\Persistence\CategoryDataFeedQueryContainerInterface $categoryDataFeedQueryContainer
      */
     public function __construct($categoryDataFeedQueryContainer)

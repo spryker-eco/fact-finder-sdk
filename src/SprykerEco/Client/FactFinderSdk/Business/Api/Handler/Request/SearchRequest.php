@@ -15,8 +15,8 @@ use SprykerEco\Client\FactFinderSdk\Business\Api\ApiConstants;
 
 class SearchRequest extends AbstractRequest implements SearchRequestInterface
 {
-    const TRANSACTION_TYPE = ApiConstants::TRANSACTION_TYPE_SEARCH;
-    const REQUEST_CATEGORY_PATH_ROOT_NAME = 'filterCategoryPathROOT';
+    public const TRANSACTION_TYPE = ApiConstants::TRANSACTION_TYPE_SEARCH;
+    public const REQUEST_CATEGORY_PATH_ROOT_NAME = 'filterCategoryPathROOT';
 
     /**
      * @param \Generated\Shared\Transfer\FactFinderSdkSearchRequestTransfer $factFinderSearchRequestTransfer
