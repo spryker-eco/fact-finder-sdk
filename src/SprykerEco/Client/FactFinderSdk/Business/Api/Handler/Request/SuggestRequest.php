@@ -15,7 +15,7 @@ use SprykerEco\Client\FactFinderSdk\Business\Api\ApiConstants;
 
 class SuggestRequest extends AbstractRequest implements SuggestRequestInterface
 {
-    const TRANSACTION_TYPE = ApiConstants::TRANSACTION_TYPE_SUGGEST;
+    public const TRANSACTION_TYPE = ApiConstants::TRANSACTION_TYPE_SUGGEST;
 
     /**
      * @param \Generated\Shared\Transfer\FactFinderSdkSuggestRequestTransfer $factFinderSuggestRequestTransfer

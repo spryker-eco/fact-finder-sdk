@@ -13,8 +13,8 @@ use SprykerEco\Shared\FactFinderSdk\FactFinderSdkConstants;
 
 class FactFinderSdkIsNewExpander extends FactFinderSdkAbstractExpander
 {
-    const NEW_FROM = 'NewFrom';
-    const NEW_TO = 'NewTo';
+    public const NEW_FROM = 'NewFrom';
+    public const NEW_TO = 'NewTo';
 
     /**
      * @param \Generated\Shared\Transfer\LocaleTransfer $localeTransfer

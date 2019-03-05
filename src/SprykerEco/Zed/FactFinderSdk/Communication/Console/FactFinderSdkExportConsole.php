@@ -14,19 +14,20 @@ use Symfony\Component\Console\Output\OutputInterface;
 /**
  * @method \SprykerEco\Zed\FactFinderSdk\Communication\FactFinderSdkCommunicationFactory getFactory()
  * @method \SprykerEco\Zed\FactFinderSdk\Business\FactFinderSdkFacadeInterface getFacade()
+ * @method \SprykerEco\Zed\FactFinderSdk\Persistence\FactFinderSdkQueryContainerInterface getQueryContainer()
  */
 class FactFinderSdkExportConsole extends Console
 {
-    const COMMAND_NAME = 'fact-finder:export:products';
-    const COMMAND_DESCRIPTION = 'Export product data for Fact Finder';
+    public const COMMAND_NAME = 'fact-finder:export:products';
+    public const COMMAND_DESCRIPTION = 'Export product data for Fact Finder';
 
     /**
      * @return void
      */
     protected function configure()
     {
-        $this->setName(self::COMMAND_NAME);
-        $this->setDescription(self::COMMAND_DESCRIPTION);
+        $this->setName(static::COMMAND_NAME);
+        $this->setDescription(static::COMMAND_DESCRIPTION);
 
         parent::configure();
     }

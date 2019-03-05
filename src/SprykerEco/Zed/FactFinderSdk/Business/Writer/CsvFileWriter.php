@@ -9,7 +9,7 @@ namespace SprykerEco\Zed\FactFinderSdk\Business\Writer;
 
 class CsvFileWriter extends AbstractFileWriter implements FileWriterInterface
 {
-    const DELIMITER = ',';
+    public const DELIMITER = ',';
 
     /**
      * @param string $filePath
@@ -29,7 +29,7 @@ class CsvFileWriter extends AbstractFileWriter implements FileWriterInterface
         }
 
         foreach ($data as $row) {
-            fputcsv($filePointer, $row, self::DELIMITER);
+            fputcsv($filePointer, $row, static::DELIMITER);
         }
 
         fclose($filePointer);

@@ -123,7 +123,7 @@ class SearchResponseConverterTest extends PHPUnit_Framework_TestCase
         $mock->method('convertServerQueryToClientUrl')
             ->will($this->returnValue(' '));
         $mock->method('getResult')
-            ->will($this->returnValue($this->createResult()));
+            ->will($this->returnValue($this->createFactfinderResult()));
 
         return $mock;
     }
@@ -131,7 +131,7 @@ class SearchResponseConverterTest extends PHPUnit_Framework_TestCase
     /**
      * @return \FACTFinder\Data\Result
      */
-    protected function createResult()
+    protected function createFactfinderResult()
     {
         return new Result([
             new Record(

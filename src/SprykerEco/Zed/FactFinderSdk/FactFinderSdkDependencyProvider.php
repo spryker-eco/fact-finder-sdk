@@ -11,18 +11,17 @@ use Spryker\Zed\Kernel\AbstractBundleDependencyProvider;
 use Spryker\Zed\Kernel\Container;
 use SprykerEco\Zed\FactFinderSdk\Dependency\Facade\FactFinderSdkToCurrencyBridge;
 use SprykerEco\Zed\FactFinderSdk\Dependency\Facade\FactFinderSdkToLocaleBridge;
-use SprykerEco\Zed\FactFinderSdk\Dependency\Facade\FactFinderSdkToMoneyBridge;
 use SprykerEco\Zed\FactFinderSdk\Dependency\Facade\FactFinderSdkToStoreBridge;
 use SprykerEco\Zed\FactFinderSdk\Dependency\Persistence\FactFinderSdkToCategoryDataFeedBridge;
 use SprykerEco\Zed\FactFinderSdk\Dependency\Persistence\FactFinderSdkToProductAbstractDataFeedBridge;
 
 class FactFinderSdkDependencyProvider extends AbstractBundleDependencyProvider
 {
-    const PRODUCT_ABSTRACT_DATA_FEED = 'PRODUCT_ABSTRACT_DATA_FEED';
-    const CATEGORY_DATA_FEED = 'CATEGORY_DATA_FEED';
-    const LOCALE_FACADE = 'LOCALE_FACADE';
-    const STORE_FACADE = 'STORE_FACADE';
-    const CURRENCY_FACADE = 'CURRENCY_FACADE';
+    public const PRODUCT_ABSTRACT_DATA_FEED = 'PRODUCT_ABSTRACT_DATA_FEED';
+    public const CATEGORY_DATA_FEED = 'CATEGORY_DATA_FEED';
+    public const LOCALE_FACADE = 'LOCALE_FACADE';
+    public const STORE_FACADE = 'STORE_FACADE';
+    public const CURRENCY_FACADE = 'CURRENCY_FACADE';
 
     /**
      * @param \Spryker\Zed\Kernel\Container $container
@@ -43,7 +42,7 @@ class FactFinderSdkDependencyProvider extends AbstractBundleDependencyProvider
      */
     public function providePersistenceLayerDependencies(Container $container)
     {
-        $container[self::PRODUCT_ABSTRACT_DATA_FEED] = function (Container $container) {
+        $container[static::PRODUCT_ABSTRACT_DATA_FEED] = function (Container $container) {
             $productAbstractDataFeedQueryContainer = $container->getLocator()
                 ->productAbstractDataFeed()
                 ->queryContainer();
@@ -51,7 +50,7 @@ class FactFinderSdkDependencyProvider extends AbstractBundleDependencyProvider
             return new FactFinderSdkToProductAbstractDataFeedBridge($productAbstractDataFeedQueryContainer);
         };
 
-        $container[self::CATEGORY_DATA_FEED] = function (Container $container) {
+        $container[static::CATEGORY_DATA_FEED] = function (Container $container) {
             $categoryDataFeedQueryContainer = $container->getLocator()
                 ->categoryDataFeed()
                 ->queryContainer();
@@ -82,7 +81,7 @@ class FactFinderSdkDependencyProvider extends AbstractBundleDependencyProvider
      */
     protected function addStoreFacade(Container $container)
     {
-        $container[self::STORE_FACADE] = function (Container $container) {
+        $container[static::STORE_FACADE] = function (Container $container) {
             $storeFacade = $container->getLocator()
                 ->store()
                 ->facade();
@@ -100,7 +99,7 @@ class FactFinderSdkDependencyProvider extends AbstractBundleDependencyProvider
      */
     protected function addCurrencyFacade(Container $container)
     {
-        $container[self::CURRENCY_FACADE] = function (Container $container) {
+        $container[static::CURRENCY_FACADE] = function (Container $container) {
             $currencyFacade = $container->getLocator()
                 ->currency()
                 ->facade();
@@ -118,7 +117,7 @@ class FactFinderSdkDependencyProvider extends AbstractBundleDependencyProvider
      */
     protected function addLocaleFacade(Container $container)
     {
-        $container[self::LOCALE_FACADE] = function (Container $container) {
+        $container[static::LOCALE_FACADE] = function (Container $container) {
             $localeFacade = $container->getLocator()
                 ->locale()
                 ->facade();

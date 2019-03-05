@@ -17,8 +17,6 @@ class FactFinderSdkToProductAbstractDataFeedBridge implements FactFinderSdkToPro
     protected $productAbstractDataFeed;
 
     /**
-     * FactFinderToProductAbstractDataFeedBridge constructor.
-     *
      * @param \Spryker\Zed\ProductAbstractDataFeed\Persistence\ProductAbstractDataFeedQueryContainerInterface $productAbstractDataFeed
      */
     public function __construct($productAbstractDataFeed)

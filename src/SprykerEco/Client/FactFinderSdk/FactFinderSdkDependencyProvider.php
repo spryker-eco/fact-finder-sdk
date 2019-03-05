@@ -12,9 +12,9 @@ use Spryker\Client\Kernel\Container;
 
 class FactFinderSdkDependencyProvider extends AbstractDependencyProvider
 {
-    const SERVICE_ZED = 'SERVICE_ZED';
-    const CLIENT_SESSION = 'CLIENT_SESSION';
-    const CLIENT_KV_STORAGE = 'CLIENT_KV_STORAGE';
+    public const SERVICE_ZED = 'SERVICE_ZED';
+    public const CLIENT_SESSION = 'CLIENT_SESSION';
+    public const CLIENT_KV_STORAGE = 'CLIENT_KV_STORAGE';
 
     /**
      * @param \Spryker\Client\Kernel\Container $container
@@ -23,13 +23,13 @@ class FactFinderSdkDependencyProvider extends AbstractDependencyProvider
      */
     public function provideServiceLayerDependencies(Container $container)
     {
-        $container[self::SERVICE_ZED] = function (Container $container) {
+        $container[static::SERVICE_ZED] = function (Container $container) {
             return $container->getLocator()->zedRequest()->client();
         };
-        $container[self::CLIENT_SESSION] = function (Container $container) {
+        $container[static::CLIENT_SESSION] = function (Container $container) {
             return $container->getLocator()->session()->client();
         };
-        $container[self::CLIENT_KV_STORAGE] = function (Container $container) {
+        $container[static::CLIENT_KV_STORAGE] = function (Container $container) {
             return $container->getLocator()->storage()->client();
         };
 

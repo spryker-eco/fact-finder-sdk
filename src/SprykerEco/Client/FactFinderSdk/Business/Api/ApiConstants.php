@@ -9,13 +9,13 @@ namespace SprykerEco\Client\FactFinderSdk\Business\Api;
 
 class ApiConstants
 {
-    const REQUEST_FORMAT = 'json';
+    public const REQUEST_FORMAT = 'json';
 
-    const TRANSACTION_TYPE_SEARCH = 'search';
-    const TRANSACTION_TYPE_RECOMMENDATION = 'recommendation';
-    const TRANSACTION_TYPE_SUGGEST = 'suggest';
-    const TRANSACTION_TYPE_TAG_CLOUD = 'tag_cloud';
-    const TRANSACTION_TYPE_TRACKING = 'tracking';
-    const TRANSACTION_TYPE_SIMILAR_RECORDS = 'similar_records';
-    const TRANSACTION_TYPE_PRODUCT_CAMPAIGN = 'product_campaign';
+    public const TRANSACTION_TYPE_SEARCH = 'search';
+    public const TRANSACTION_TYPE_RECOMMENDATION = 'recommendation';
+    public const TRANSACTION_TYPE_SUGGEST = 'suggest';
+    public const TRANSACTION_TYPE_TAG_CLOUD = 'tag_cloud';
+    public const TRANSACTION_TYPE_TRACKING = 'tracking';
+    public const TRANSACTION_TYPE_SIMILAR_RECORDS = 'similar_records';
+    public const TRANSACTION_TYPE_PRODUCT_CAMPAIGN = 'product_campaign';
 }

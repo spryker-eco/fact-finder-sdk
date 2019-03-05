@@ -15,8 +15,6 @@ class FactFinderSdkToLocaleBridge implements FactFinderSdkToLocaleInterface
     protected $localeFacade;
 
     /**
-     * FactFinderToLocaleBridge constructor.
-     *
      * @param \Spryker\Zed\Locale\Business\LocaleFacadeInterface $localeFacade
      */
     public function __construct($localeFacade)

@@ -26,8 +26,6 @@ class RecordConverter extends BaseConverter implements RecordConverterInterface
     private $config;
 
     /**
-     * RecordConverter constructor.
-     *
      * @param \SprykerEco\Client\FactFinderSdk\FactFinderSdkConfig $config
      * @param \FACTFinder\Data\Record|null $record
      */

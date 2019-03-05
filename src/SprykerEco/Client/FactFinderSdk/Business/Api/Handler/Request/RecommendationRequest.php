@@ -13,7 +13,7 @@ use SprykerEco\Client\FactFinderSdk\Business\Api\ApiConstants;
 
 class RecommendationRequest extends AbstractRequest implements RecommendationRequestInterface
 {
-    const TRANSACTION_TYPE = ApiConstants::TRANSACTION_TYPE_RECOMMENDATION;
+    public const TRANSACTION_TYPE = ApiConstants::TRANSACTION_TYPE_RECOMMENDATION;
 
     /**
      * @param \Generated\Shared\Transfer\FactFinderSdkRecommendationRequestTransfer $factFinderRecommendationRequestTransfer

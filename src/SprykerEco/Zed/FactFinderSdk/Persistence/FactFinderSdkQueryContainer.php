@@ -31,8 +31,8 @@ use SprykerEco\Shared\FactFinderSdk\FactFinderSdkConstants;
  */
 class FactFinderSdkQueryContainer extends AbstractQueryContainer implements FactFinderSdkQueryContainerInterface
 {
-    const STOCK_QUANTITY_CONDITION = 'STOCK_QUANTITY_CONDITION';
-    const STOCK_NEVER_OUTOFSTOCK_CONDITION = 'STOCK_NEVER_OUTOFSTOCK_CONDITION';
+    public const STOCK_QUANTITY_CONDITION = 'STOCK_QUANTITY_CONDITION';
+    public const STOCK_NEVER_OUTOFSTOCK_CONDITION = 'STOCK_NEVER_OUTOFSTOCK_CONDITION';
 
     /**
      * @api
@@ -91,6 +91,8 @@ class FactFinderSdkQueryContainer extends AbstractQueryContainer implements Fact
     }
 
     /**
+     * @api
+     *
      * @param int $idCategory
      * @param \Generated\Shared\Transfer\LocaleTransfer $localeTransfer
      *
@@ -110,6 +112,8 @@ class FactFinderSdkQueryContainer extends AbstractQueryContainer implements Fact
     }
 
     /**
+     * @api
+     *
      * @param string $concreteProductSku
      * @param \Generated\Shared\Transfer\CurrencyTransfer $currencyTransfer
      * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
@@ -136,6 +140,8 @@ class FactFinderSdkQueryContainer extends AbstractQueryContainer implements Fact
     }
 
     /**
+     * @api
+     *
      * @param string $concreteProductSku
      * @param \Generated\Shared\Transfer\CurrencyTransfer $currencyTransfer
      * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
@@ -164,6 +170,8 @@ class FactFinderSdkQueryContainer extends AbstractQueryContainer implements Fact
     }
 
     /**
+     * @api
+     *
      * @param int $idProductAbstract
      * @param \Generated\Shared\Transfer\LocaleTransfer $localeTransfer
      *
