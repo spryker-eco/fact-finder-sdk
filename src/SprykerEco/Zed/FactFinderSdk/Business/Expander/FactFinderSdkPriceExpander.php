@@ -36,7 +36,11 @@ class FactFinderSdkPriceExpander extends FactFinderSdkAbstractExpander
             ->getProductAbstractPriceQuery($productData[FactFinderSdkConstants::ITEM_PRODUCT_NUMBER], $currencyTransfer, $storeTransfer);
         $price = $priceProductQuery->findOne();
 
-        return $this->addPrice($productData, $price);
+        if ($price !== null) {
+            return $this->addPrice($productData, $price);
+        }
+
+        return $productData;
     }
 
     /**
