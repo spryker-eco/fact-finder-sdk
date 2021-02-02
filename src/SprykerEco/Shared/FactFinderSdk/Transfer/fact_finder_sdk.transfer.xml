@@ -30,8 +30,8 @@
     </transfer>
 
     <transfer name="FactFinderSearchRedirect">
-        <property name="url" type="string" />
-        <property name="redirect" type="bool" />
+        <property name="url" type="string"/>
+        <property name="redirect" type="bool"/>
     </transfer>
 
     <!--FACTFinder\Data\.. Objects-->
@@ -261,10 +261,10 @@
     </transfer>
 
     <transfer name="FactFinderSdkCsv">
-        <property name="locale" type="string" />
-        <property name="type" type="string" />
-        <property name="number" type="string" />
-        <property name="contents" type="string" />
+        <property name="locale" type="string"/>
+        <property name="type" type="string"/>
+        <property name="number" type="string"/>
+        <property name="contents" type="string"/>
     </transfer>
 
     <transfer name="Locale">

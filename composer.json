@@ -2,7 +2,7 @@
   "name": "spryker-eco/fact-finder-sdk",
   "type": "library",
   "description": "FactFinderSdk module",
-  "license": "proprietary",
+  "license": "MIT",
   "require": {
     "fact-finder/fact-finder-php-library": "1.3.*",
     "php": ">=7.3",
