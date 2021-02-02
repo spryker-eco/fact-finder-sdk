@@ -119,12 +119,12 @@ interface FactFinderConnectorInterface
     public function getSessionId();
 
     /**
-     * @return \FACTFinder\Data\SearchStatus
+     * @return string
      */
     public function getSearchStatusEnum();
 
     /**
-     * @return \FACTFinder\Data\ArticleNumberSearchStatus
+     * @return string
      */
     public function getArticleNumberSearchStatusEnum();
 }

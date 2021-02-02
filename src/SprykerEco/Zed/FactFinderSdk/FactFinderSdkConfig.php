@@ -64,7 +64,7 @@ class FactFinderSdkConfig extends AbstractBundleConfig implements FactFinderSdkC
     /**
      * @api
      *
-     * @return string
+     * @return int
      */
     public function getExportQueryLimit()
     {

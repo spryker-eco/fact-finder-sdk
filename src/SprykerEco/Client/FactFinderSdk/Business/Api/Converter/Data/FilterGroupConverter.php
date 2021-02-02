@@ -97,10 +97,10 @@ class FilterGroupConverter extends BaseConverter implements FilterGroupConverter
         $factFinderDataFilterTransfer->setHasPreviewImage($filter->hasPreviewImage());
 
         if ($filter instanceof SliderFilter) {
-            $factFinderDataFilterTransfer->setAbsoluteMinimum($filter->getAbsoluteMinimum());
-            $factFinderDataFilterTransfer->setAbsoluteMaximum($filter->getAbsoluteMaximum());
-            $factFinderDataFilterTransfer->setSelectedMinimum($filter->getSelectedMinimum());
-            $factFinderDataFilterTransfer->setSelectedMaximum($filter->getSelectedMaximum());
+            $factFinderDataFilterTransfer->setAbsoluteMinimum((string)$filter->getAbsoluteMinimum());
+            $factFinderDataFilterTransfer->setAbsoluteMaximum((string)$filter->getAbsoluteMaximum());
+            $factFinderDataFilterTransfer->setSelectedMinimum((string)$filter->getSelectedMinimum());
+            $factFinderDataFilterTransfer->setSelectedMaximum((string)$filter->getSelectedMaximum());
         }
 
         return $factFinderDataFilterTransfer;

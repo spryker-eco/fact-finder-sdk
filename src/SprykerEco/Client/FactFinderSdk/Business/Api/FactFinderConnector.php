@@ -363,7 +363,7 @@ class FactFinderConnector implements FactFinderConnectorInterface
     }
 
     /**
-     * @return \FACTFinder\Data\SearchStatus
+     * @return string
      */
     public function getSearchStatusEnum()
     {
@@ -371,7 +371,7 @@ class FactFinderConnector implements FactFinderConnectorInterface
     }
 
     /**
-     * @return \FACTFinder\Data\ArticleNumberSearchStatus
+     * @return string
      */
     public function getArticleNumberSearchStatusEnum()
     {

@@ -12,7 +12,7 @@ use Generated\Shared\Transfer\LocaleTransfer;
 use Generated\Shared\Transfer\StoreTransfer;
 use Orm\Zed\Product\Persistence\Base\SpyProductAbstractQuery;
 use SprykerEco\Shared\FactFinderSdk\FactFinderSdkConstants;
-use SprykerEco\Zed\FactFinderSdk\Business\Writer\AbstractFileWriter;
+use SprykerEco\Zed\FactFinderSdk\Business\Writer\FileWriterInterface;
 use SprykerEco\Zed\FactFinderSdk\Dependency\Facade\FactFinderSdkToCurrencyInterface;
 use SprykerEco\Zed\FactFinderSdk\Dependency\Facade\FactFinderSdkToStoreInterface;
 use SprykerEco\Zed\FactFinderSdk\FactFinderSdkConfig;
@@ -23,7 +23,7 @@ class FactFinderSdkProductExporter implements FactFinderSdkProductExporterInterf
     public const VIRTUAL_COLUMN_NAME = 'name';
 
     /**
-     * @var \SprykerEco\Zed\FactFinderSdk\Business\Writer\AbstractFileWriter
+     * @var \SprykerEco\Zed\FactFinderSdk\Business\Writer\FileWriterInterface
      */
     protected $fileWriter;
 
@@ -58,7 +58,7 @@ class FactFinderSdkProductExporter implements FactFinderSdkProductExporterInterf
     protected $fileExtension;
 
     /**
-     * @var \SprykerEco\Zed\FactFinderSdk\Persistence\FactFinderSdkQueryContainer
+     * @var \SprykerEco\Zed\FactFinderSdk\Persistence\FactFinderSdkQueryContainerInterface
      */
     protected $factFinderQueryContainer;
 
@@ -68,12 +68,12 @@ class FactFinderSdkProductExporter implements FactFinderSdkProductExporterInterf
     protected $factFinderConfig;
 
     /**
-     * @var \Spryker\Zed\Currency\Business\CurrencyFacadeInterface
+     * @var \SprykerEco\Zed\FactFinderSdk\Dependency\Facade\FactFinderSdkToCurrencyInterface
      */
     protected $currencyFacade;
 
     /**
-     * @var \Spryker\Zed\Store\Business\StoreFacadeInterface
+     * @var \SprykerEco\Zed\FactFinderSdk\Dependency\Facade\FactFinderSdkToStoreInterface
      */
     protected $storeFacade;
 
@@ -83,7 +83,7 @@ class FactFinderSdkProductExporter implements FactFinderSdkProductExporterInterf
     private $expanders;
 
     /**
-     * @param \SprykerEco\Zed\FactFinderSdk\Business\Writer\AbstractFileWriter $fileWriter
+     * @param \SprykerEco\Zed\FactFinderSdk\Business\Writer\FileWriterInterface $fileWriter
      * @param \Generated\Shared\Transfer\LocaleTransfer $localeTransfer
      * @param \SprykerEco\Zed\FactFinderSdk\FactFinderSdkConfig $factFinderConfig
      * @param \SprykerEco\Zed\FactFinderSdk\Persistence\FactFinderSdkQueryContainerInterface $factFinderQueryContainer
@@ -92,7 +92,7 @@ class FactFinderSdkProductExporter implements FactFinderSdkProductExporterInterf
      * @param \SprykerEco\Zed\FactFinderSdk\Business\Expander\FactFinderSdkExpanderInterface[] $expanders
      */
     public function __construct(
-        AbstractFileWriter $fileWriter,
+        FileWriterInterface $fileWriter,
         LocaleTransfer $localeTransfer,
         FactFinderSdkConfig $factFinderConfig,
         FactFinderSdkQueryContainerInterface $factFinderQueryContainer,

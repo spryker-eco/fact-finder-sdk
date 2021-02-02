@@ -54,7 +54,7 @@ class RecordConverter extends BaseConverter implements RecordConverterInterface
         $factFinderDataRecordTransfer->setId($this->record->getID());
         $factFinderDataRecordTransfer->setSimilarity($this->record->getSimilarity());
         $factFinderDataRecordTransfer->setPosition($this->record->getPosition());
-        $factFinderDataRecordTransfer->setOriginalPosition($this->record->getField(FactFinderSdkConstants::ITEM_ORIGINAL_POSITION));
+        $factFinderDataRecordTransfer->setOriginalPosition((int)$this->record->getField(FactFinderSdkConstants::ITEM_ORIGINAL_POSITION));
         $factFinderDataRecordTransfer->setSeoPath($this->record->getSeoPath());
         $factFinderDataRecordTransfer->setKeywords($this->record->getKeywords());
 

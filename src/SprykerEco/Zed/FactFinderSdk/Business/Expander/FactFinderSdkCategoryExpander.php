@@ -68,7 +68,7 @@ class FactFinderSdkCategoryExpander extends FactFinderSdkAbstractExpander
             ->getCategoriesQuery($localeTransfer, $idProductAbstract);
         $categories = $query->find();
 
-        if (!$categories) {
+        if (!count($categories)) {
             return $pathArray;
         }
 
@@ -84,7 +84,7 @@ class FactFinderSdkCategoryExpander extends FactFinderSdkAbstractExpander
      * @param \Orm\Zed\Category\Persistence\SpyCategory $category
      * @param array $path
      *
-     * @return string
+     * @return string[]
      */
     protected function getCategoryPath(LocaleTransfer $localeTransfer, $category, $path = [])
     {

@@ -25,7 +25,7 @@ interface FactFinderSdkConfigInterface
     public function getCsvDirectory();
 
     /**
-     * @return string
+     * @return int
      */
     public function getExportQueryLimit();
 

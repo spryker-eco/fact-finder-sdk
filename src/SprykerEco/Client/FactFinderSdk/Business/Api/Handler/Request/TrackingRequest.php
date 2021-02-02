@@ -87,9 +87,9 @@ class TrackingRequest extends AbstractRequest implements TrackingRequestInterfac
     }
 
     /**
-     * @param array $parameters
+     * @param \FACTFinder\Util\Parameters $parameters
      *
-     * @return array
+     * @return \FACTFinder\Util\Parameters
      */
     protected function fillDefaultValues($parameters)
     {
