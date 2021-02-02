@@ -87,7 +87,9 @@ interface FactFinderConnectorInterface
      *
      * @return \FACTFinder\Util\Parameters
      */
-    public function createRequestParametersFromProductCampaignRequestTransfer(FactFinderSdkProductCampaignRequestTransfer $factFinderProductCampaignRequestTransfer);
+    public function createRequestParametersFromProductCampaignRequestTransfer(
+        FactFinderSdkProductCampaignRequestTransfer $factFinderProductCampaignRequestTransfer
+    );
 
     /**
      * @return \FACTFinder\Util\Parameters

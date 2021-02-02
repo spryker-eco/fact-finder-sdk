@@ -39,9 +39,9 @@ class SuggestResponseConverterTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @return \PHPUnit_Framework_MockObject_MockObject|\FACTFinder\Adapter\Suggest
+     * @return \PHPUnit\Framework\MockObject\MockObject|\FACTFinder\Adapter\Suggest
      */
-    protected function createSuggestAdapterMock()
+    protected function createSuggestAdapterMock(): Suggest
     {
         $suggestAdapterMock = $this->getMockBuilder(Suggest::class)
             ->disableOriginalConstructor()

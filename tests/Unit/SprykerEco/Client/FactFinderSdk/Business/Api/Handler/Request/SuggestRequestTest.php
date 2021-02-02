@@ -66,9 +66,9 @@ class SuggestRequestTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @return \PHPUnit_Framework_MockObject_MockObject|\SprykerEco\Client\FactFinderSdk\FactFinderSdkConfig
+     * @return \PHPUnit\Framework\MockObject\MockObject|\SprykerEco\Client\FactFinderSdk\FactFinderSdkConfig
      */
-    protected function createConfigMock()
+    protected function createConfigMock(): FactFinderSdkConfig
     {
         $configMock = $this->createMock(FactFinderSdkConfig::class);
 
@@ -76,9 +76,9 @@ class SuggestRequestTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @return \PHPUnit_Framework_MockObject_MockObject|\SprykerEco\Client\FactFinderSdk\Business\Api\FactFinderConnector
+     * @return \PHPUnit\Framework\MockObject\MockObject|\SprykerEco\Client\FactFinderSdk\Business\Api\FactFinderConnector
      */
-    protected function createFactFinderConnectorMock()
+    protected function createFactFinderConnectorMock(): FactFinderConnector
     {
         $connector = $this->getMockBuilder(FactFinderConnector::class)
             ->disableOriginalConstructor()
@@ -90,9 +90,9 @@ class SuggestRequestTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @return \PHPUnit_Framework_MockObject_MockObject|\FACTFinder\Adapter\Suggest
+     * @return \PHPUnit\Framework\MockObject\MockObject|\FACTFinder\Adapter\Suggest
      */
-    protected function createSuggestAdapterMock()
+    protected function createSuggestAdapterMock(): Suggest
     {
         $suggestAdapterMock = $this->getMockBuilder(Suggest::class)
             ->disableOriginalConstructor()

@@ -1,0 +1,5 @@
+parameters:
+    bootstrap: %rootDir%/../../../phpstan-bootstrap.php
+
+    ignoreErrors:
+        - '#Call to method [a-zA-Z]+\(\) on an unknown class FACTFinder\\Adapter\\FACTFinder\\Data\\SuggestQuery.#'

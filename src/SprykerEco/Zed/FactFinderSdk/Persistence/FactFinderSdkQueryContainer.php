@@ -21,7 +21,6 @@ use Orm\Zed\Product\Persistence\SpyProductAbstractQuery;
 use Orm\Zed\ProductCategory\Persistence\Map\SpyProductCategoryTableMap;
 use Orm\Zed\ProductImage\Persistence\Map\SpyProductImageTableMap;
 use Orm\Zed\Stock\Persistence\Map\SpyStockProductTableMap;
-use Orm\Zed\Url\Persistence\Map\SpyUrlTableMap;
 use Spryker\Zed\Kernel\Persistence\AbstractQueryContainer;
 use Spryker\Zed\PropelOrm\Business\Runtime\ActiveQuery\Criteria;
 use SprykerEco\Shared\FactFinderSdk\FactFinderSdkConstants;
@@ -35,6 +34,13 @@ class FactFinderSdkQueryContainer extends AbstractQueryContainer implements Fact
     public const STOCK_NEVER_OUTOFSTOCK_CONDITION = 'STOCK_NEVER_OUTOFSTOCK_CONDITION';
 
     /**
+     * @uses \Orm\Zed\Url\Persistence\Map\SpyUrlTableMap::COL_URL
+     */
+    protected const COLUMN_URL = 'spy_url.url';
+
+    /**
+     * {@inheritDoc}
+     *
      * @api
      *
      * @param \Generated\Shared\Transfer\LocaleTransfer $localeTransfer
@@ -70,6 +76,8 @@ class FactFinderSdkQueryContainer extends AbstractQueryContainer implements Fact
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @api
      *
      * @param \Generated\Shared\Transfer\LocaleTransfer $localeTransfer
@@ -91,6 +99,8 @@ class FactFinderSdkQueryContainer extends AbstractQueryContainer implements Fact
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @api
      *
      * @param int $idCategory
@@ -112,6 +122,8 @@ class FactFinderSdkQueryContainer extends AbstractQueryContainer implements Fact
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @api
      *
      * @param string $concreteProductSku
@@ -140,6 +152,8 @@ class FactFinderSdkQueryContainer extends AbstractQueryContainer implements Fact
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @api
      *
      * @param string $concreteProductSku
@@ -170,6 +184,8 @@ class FactFinderSdkQueryContainer extends AbstractQueryContainer implements Fact
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @api
      *
      * @param int $idProductAbstract
@@ -208,7 +224,7 @@ class FactFinderSdkQueryContainer extends AbstractQueryContainer implements Fact
             SpyStockProductTableMap::COL_QUANTITY,
             SpyProductImageTableMap::COL_EXTERNAL_URL_SMALL,
             SpyProductLocalizedAttributesTableMap::COL_DESCRIPTION,
-            SpyUrlTableMap::COL_URL,
+            static::COLUMN_URL,
             SpyProductAbstractTableMap::COL_SKU,
             SpyProductTableMap::COL_ATTRIBUTES,
             SpyProductAbstractTableMap::COL_ATTRIBUTES,
@@ -219,7 +235,7 @@ class FactFinderSdkQueryContainer extends AbstractQueryContainer implements Fact
         $productsAbstractQuery->withColumn(SpyStockProductTableMap::COL_QUANTITY, FactFinderSdkConstants::ITEM_STOCK);
         $productsAbstractQuery->withColumn(SpyProductImageTableMap::COL_EXTERNAL_URL_SMALL, FactFinderSdkConstants::ITEM_IMAGE_URL);
         $productsAbstractQuery->withColumn(SpyProductLocalizedAttributesTableMap::COL_DESCRIPTION, FactFinderSdkConstants::ITEM_DESCRIPTION);
-        $productsAbstractQuery->withColumn(SpyUrlTableMap::COL_URL, FactFinderSdkConstants::ITEM_PRODUCT_URL);
+        $productsAbstractQuery->withColumn(static::COLUMN_URL, FactFinderSdkConstants::ITEM_PRODUCT_URL);
         $productsAbstractQuery->withColumn(SpyProductAbstractTableMap::COL_SKU, FactFinderSdkConstants::ITEM_MASTER_ID);
         $productsAbstractQuery->withColumn(SpyProductTableMap::COL_ATTRIBUTES, FactFinderSdkConstants::ITEM_CONCRETE_PRODUCT_ATTRIBUTES);
         $productsAbstractQuery->withColumn(SpyProductAbstractTableMap::COL_ATTRIBUTES, FactFinderSdkConstants::ITEM_ABSTRACT_PRODUCT_ATTRIBUTES);

@@ -12,6 +12,7 @@ use Spryker\Zed\Kernel\Business\AbstractBusinessFactory;
 use SprykerEco\Zed\FactFinderSdk\Business\Expander\FactFinderSdkAttributesExpander;
 use SprykerEco\Zed\FactFinderSdk\Business\Expander\FactFinderSdkCategoryExpander;
 use SprykerEco\Zed\FactFinderSdk\Business\Expander\FactFinderSdkDescriptionExpander;
+use SprykerEco\Zed\FactFinderSdk\Business\Expander\FactFinderSdkExpanderInterface;
 use SprykerEco\Zed\FactFinderSdk\Business\Expander\FactFinderSdkIsNewExpander;
 use SprykerEco\Zed\FactFinderSdk\Business\Expander\FactFinderSdkPriceExpander;
 use SprykerEco\Zed\FactFinderSdk\Business\Expander\FactFinderSdkReviewExpander;
@@ -65,7 +66,7 @@ class FactFinderSdkBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @param \SprykerEco\Zed\FactFinderSdk\Business\Writer\AbstractFileWriter $fileWriter
+     * @param \SprykerEco\Zed\FactFinderSdk\Business\Writer\FileWriterInterface $fileWriter
      * @param \Generated\Shared\Transfer\LocaleTransfer $localeTransfer
      *
      * @return \SprykerEco\Zed\FactFinderSdk\Business\Exporter\FactFinderSdkProductExporterInterface
@@ -89,14 +90,78 @@ class FactFinderSdkBusinessFactory extends AbstractBusinessFactory
     protected function getExpanders()
     {
         return [
-            new FactFinderSdkCategoryExpander($this->getQueryContainer(), $this->getConfig()),
-            new FactFinderSdkPriceExpander($this->getQueryContainer(), $this->getConfig()),
-            new FactFinderSdkAttributesExpander($this->getQueryContainer(), $this->getConfig()),
-            new FactFinderSdkUrlExpander($this->getQueryContainer(), $this->getConfig()),
-            new FactFinderSdkDescriptionExpander($this->getQueryContainer(), $this->getConfig()),
-            new FactFinderSdkReviewExpander($this->getQueryContainer(), $this->getConfig()),
-            new FactFinderSdkTimestampExpander($this->getQueryContainer(), $this->getConfig()),
-            new FactFinderSdkIsNewExpander($this->getQueryContainer(), $this->getConfig()),
+            $this->createFactFinderSdkCategoryExpander(),
+            $this->createFactFinderSdkPriceExpander(),
+            $this->createFactFinderSdkAttributesExpander(),
+            $this->createFactFinderSdkUrlExpander(),
+            $this->createFactFinderSdkDescriptionExpander(),
+            $this->createFactFinderSdkReviewExpander(),
+            $this->createFactFinderSdkTimestampExpander(),
+            $this->createFactFinderSdkIsNewExpander(),
         ];
+    }
+
+    /**
+     * @return \SprykerEco\Zed\FactFinderSdk\Business\Expander\FactFinderSdkExpanderInterface
+     */
+    public function createFactFinderSdkCategoryExpander(): FactFinderSdkExpanderInterface
+    {
+        return new FactFinderSdkCategoryExpander($this->getQueryContainer(), $this->getConfig());
+    }
+
+    /**
+     * @return \SprykerEco\Zed\FactFinderSdk\Business\Expander\FactFinderSdkExpanderInterface
+     */
+    public function createFactFinderSdkPriceExpander(): FactFinderSdkExpanderInterface
+    {
+        return new FactFinderSdkPriceExpander($this->getQueryContainer(), $this->getConfig());
+    }
+
+    /**
+     * @return \SprykerEco\Zed\FactFinderSdk\Business\Expander\FactFinderSdkExpanderInterface
+     */
+    public function createFactFinderSdkAttributesExpander(): FactFinderSdkExpanderInterface
+    {
+        return new FactFinderSdkAttributesExpander($this->getQueryContainer(), $this->getConfig());
+    }
+
+    /**
+     * @return \SprykerEco\Zed\FactFinderSdk\Business\Expander\FactFinderSdkExpanderInterface
+     */
+    public function createFactFinderSdkUrlExpander(): FactFinderSdkExpanderInterface
+    {
+        return new FactFinderSdkUrlExpander($this->getQueryContainer(), $this->getConfig());
+    }
+
+    /**
+     * @return \SprykerEco\Zed\FactFinderSdk\Business\Expander\FactFinderSdkExpanderInterface
+     */
+    public function createFactFinderSdkDescriptionExpander(): FactFinderSdkExpanderInterface
+    {
+        return new FactFinderSdkDescriptionExpander($this->getQueryContainer(), $this->getConfig());
+    }
+
+    /**
+     * @return \SprykerEco\Zed\FactFinderSdk\Business\Expander\FactFinderSdkExpanderInterface
+     */
+    public function createFactFinderSdkReviewExpander(): FactFinderSdkExpanderInterface
+    {
+        return new FactFinderSdkReviewExpander($this->getQueryContainer(), $this->getConfig());
+    }
+
+    /**
+     * @return \SprykerEco\Zed\FactFinderSdk\Business\Expander\FactFinderSdkExpanderInterface
+     */
+    public function createFactFinderSdkTimestampExpander(): FactFinderSdkExpanderInterface
+    {
+        return new FactFinderSdkTimestampExpander($this->getQueryContainer(), $this->getConfig());
+    }
+
+    /**
+     * @return \SprykerEco\Zed\FactFinderSdk\Business\Expander\FactFinderSdkExpanderInterface
+     */
+    public function createFactFinderSdkIsNewExpander(): FactFinderSdkExpanderInterface
+    {
+        return new FactFinderSdkIsNewExpander($this->getQueryContainer(), $this->getConfig());
     }
 }

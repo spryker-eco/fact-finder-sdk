@@ -77,9 +77,9 @@ class FactFinderSdkFacadeTest extends Test
     }
 
     /**
-     * @return \PHPUnit_Framework_MockObject_MockObject|\SprykerEco\Zed\FactFinderSdk\FactFinderSdkConfig
+     * @return \PHPUnit\Framework\MockObject\MockObject|\SprykerEco\Zed\FactFinderSdk\FactFinderSdkConfig
      */
-    protected function createConfigMock()
+    protected function createConfigMock(): FactFinderSdkConfig
     {
         $configMock = $this->createMock(FactFinderSdkConfig::class);
         $configMock->method('getCsvDirectory')

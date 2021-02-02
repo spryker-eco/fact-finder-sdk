@@ -47,7 +47,7 @@ class RecommendationResponseConverter extends BaseConverter implements Converter
         if ($recommendations->count()) {
             foreach ($recommendations as $recommendation) {
                 $recommendationData = $this->getRecommendationData($recommendation);
-                $responseTransfer->addRecommendations($recommendationData);
+                $responseTransfer->addRecommendation($recommendationData);
             }
         }
 

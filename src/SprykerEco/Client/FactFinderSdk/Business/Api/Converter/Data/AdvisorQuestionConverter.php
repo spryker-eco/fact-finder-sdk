@@ -28,9 +28,8 @@ class AdvisorQuestionConverter extends BaseConverter implements AdvisorQuestionC
     /**
      * @param \SprykerEco\Client\FactFinderSdk\Business\Api\Converter\Data\ItemConverterInterface $itemConverter
      */
-    public function __construct(
-        ItemConverterInterface $itemConverter
-    ) {
+    public function __construct(ItemConverterInterface $itemConverter)
+    {
         $this->itemConverter = $itemConverter;
     }
 
@@ -57,7 +56,7 @@ class AdvisorQuestionConverter extends BaseConverter implements AdvisorQuestionC
 
         if ($advisorQuestion->hasAnswers()) {
             foreach ($advisorQuestion->getAnswers() as $advisorAnswer) {
-                $factFinderDataAdvisorQuestionTransfer->addAdvisorAnswers(
+                $factFinderDataAdvisorQuestionTransfer->addAdvisorAnswer(
                     $this->convertAnswer($advisorAnswer)
                 );
             }
@@ -83,7 +82,7 @@ class AdvisorQuestionConverter extends BaseConverter implements AdvisorQuestionC
 
         if ($advisorAnswer->hasFollowUpQuestions()) {
             foreach ($advisorAnswer->getFollowUpQuestions() as $followUpQuestion) {
-                $factFinderDataAdvisorAnswerTransfer->addFollowUpQuestions(
+                $factFinderDataAdvisorAnswerTransfer->addFollowUpQuestion(
                     $this->convert($followUpQuestion)
                 );
             }

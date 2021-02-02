@@ -7,7 +7,7 @@
 
 namespace SprykerEco\Client\FactFinderSdk\Business\Log;
 
-use SprykerEco\Shared\Log\LoggerFactory;
+use Spryker\Shared\Log\LoggerFactory;
 
 trait LoggerTrait
 {

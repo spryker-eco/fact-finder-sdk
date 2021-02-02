@@ -13,6 +13,8 @@ use SprykerEco\Shared\FactFinderSdk\FactFinderSdkConstants;
 class FactFinderSdkConfig extends AbstractBundleConfig
 {
     /**
+     * @api
+     *
      * @return string
      */
     public function getEnvironment()
@@ -21,6 +23,8 @@ class FactFinderSdkConfig extends AbstractBundleConfig
     }
 
     /**
+     * @api
+     *
      * @return array
      */
     public function getFactFinderConfiguration()
@@ -29,6 +33,8 @@ class FactFinderSdkConfig extends AbstractBundleConfig
     }
 
     /**
+     * @api
+     *
      * @return string
      */
     public function getCsvDirectory()
@@ -37,6 +43,8 @@ class FactFinderSdkConfig extends AbstractBundleConfig
     }
 
     /**
+     * @api
+     *
      * @return string
      */
     public function getLog4PhpConfigPath()
@@ -45,6 +53,8 @@ class FactFinderSdkConfig extends AbstractBundleConfig
     }
 
     /**
+     * @api
+     *
      * @return string
      */
     public function getDefaultProductsPerPage()
@@ -53,6 +63,8 @@ class FactFinderSdkConfig extends AbstractBundleConfig
     }
 
     /**
+     * @api
+     *
      * @return array
      */
     public function getItemFields()
@@ -61,6 +73,8 @@ class FactFinderSdkConfig extends AbstractBundleConfig
     }
 
     /**
+     * @api
+     *
      * @return bool
      */
     public function getRedirectIfOneResult()

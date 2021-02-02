@@ -29,9 +29,8 @@ class FilterGroupConverter extends BaseConverter implements FilterGroupConverter
     /**
      * @param \SprykerEco\Client\FactFinderSdk\Business\Api\Converter\Data\ItemConverterInterface $itemConverter
      */
-    public function __construct(
-        ItemConverterInterface $itemConverter
-    ) {
+    public function __construct(ItemConverterInterface $itemConverter)
+    {
         $this->itemConverter = $itemConverter;
     }
 
@@ -54,7 +53,7 @@ class FilterGroupConverter extends BaseConverter implements FilterGroupConverter
 
         /** @var \FACTFinder\Data\Filter $filter */
         foreach ($this->filterGroup as $filter) {
-            $factFinderDataFilterGroupTransfer->addFilters(
+            $factFinderDataFilterGroupTransfer->addFilter(
                 $this->convertFilter($filter)
             );
         }

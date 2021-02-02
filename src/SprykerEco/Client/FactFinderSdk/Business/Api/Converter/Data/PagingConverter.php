@@ -27,9 +27,8 @@ class PagingConverter extends BaseConverter implements PagingConverterInterface
     /**
      * @param \SprykerEco\Client\FactFinderSdk\Business\Api\Converter\Data\ItemConverterInterface $itemConverter
      */
-    public function __construct(
-        ItemConverterInterface $itemConverter
-    ) {
+    public function __construct(ItemConverterInterface $itemConverter)
+    {
         $this->itemConverter = $itemConverter;
     }
 
@@ -95,7 +94,7 @@ class PagingConverter extends BaseConverter implements PagingConverterInterface
     protected function addPagesArray(FactFinderSdkDataPagingTransfer $factFinderDataPagingTransfer)
     {
         foreach ($this->paging->getArrayCopy() as $item) {
-            $factFinderDataPagingTransfer->addPages($this->convertPage($item));
+            $factFinderDataPagingTransfer->addPage($this->convertPage($item));
         }
     }
 }

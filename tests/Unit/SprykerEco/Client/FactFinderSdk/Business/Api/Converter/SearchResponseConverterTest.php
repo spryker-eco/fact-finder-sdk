@@ -56,17 +56,17 @@ class SearchResponseConverterTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @return \PHPUnit_Framework_MockObject_MockObject|\SprykerEco\Client\FactFinderSdk\Business\Api\Converter\ConverterFactory
+     * @return \PHPUnit\Framework\MockObject\MockObject|\SprykerEco\Client\FactFinderSdk\Business\Api\Converter\ConverterFactory
      */
-    protected function createConverterFactory()
+    protected function createConverterFactory(): ConverterFactory
     {
         return new ConverterFactory($this->createConfigMock());
     }
 
     /**
-     * @return \PHPUnit_Framework_MockObject_MockObject|\SprykerEco\Client\FactFinderSdk\FactFinderSdkConfig
+     * @return \PHPUnit\Framework\MockObject\MockObject|\SprykerEco\Client\FactFinderSdk\FactFinderSdkConfig
      */
-    protected function createConfigMock()
+    protected function createConfigMock(): FactFinderSdkConfig
     {
         $configMock = $this->createMock(FactFinderSdkConfig::class);
         $configMock->method('getItemFields')
@@ -89,10 +89,12 @@ class SearchResponseConverterTest extends PHPUnit_Framework_TestCase
      * @param \FACTFinder\Adapter\Search $searchAdapter
      * @param \SprykerEco\Client\FactFinderSdk\Business\Api\Converter\ConverterFactory $converterFactory
      *
-     * @return \PHPUnit_Framework_MockObject_MockObject|\SprykerEco\Client\FactFinderSdk\Business\Api\Converter\SearchResponseConverter
+     * @return \PHPUnit\Framework\MockObject\MockObject|\SprykerEco\Client\FactFinderSdk\Business\Api\Converter\SearchResponseConverter
      */
-    protected function createSearchResponseConverter(Search $searchAdapter, ConverterFactory $converterFactory)
-    {
+    protected function createSearchResponseConverter(
+        Search $searchAdapter,
+        ConverterFactory $converterFactory
+    ): SearchResponseConverter {
         return new SearchResponseConverter(
             $searchAdapter,
             $converterFactory->createDataPagingConverter(),
@@ -105,9 +107,9 @@ class SearchResponseConverterTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @return \PHPUnit_Framework_MockObject_MockObject|\FACTFinder\Adapter\Search
+     * @return \PHPUnit\Framework\MockObject\MockObject|\FACTFinder\Adapter\Search
      */
-    protected function createSearchAdapter()
+    protected function createSearchAdapter(): Search
     {
         $mock = $this->getMockBuilder(Search::class)
             ->setMethods([

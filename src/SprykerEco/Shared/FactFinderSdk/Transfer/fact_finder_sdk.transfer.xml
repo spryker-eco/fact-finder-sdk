@@ -1,23 +1,29 @@
 <?xml version="1.0"?>
-<transfer
-    xmlns="http://xsd.spryker.com"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://xsd.spryker.com ../../src/Spryker/TransferObjectDefinitionSchema.xsd"
->
+<transfers xmlns="spryker:transfer-01"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="spryker:transfer-01 http://static.spryker.com/transfer-01.xsd">
+
+    <transfer name="CategoryDataFeed">
+    </transfer>
+
+    <transfer name="Currency">
+        <property name="name" type="string"/>
+        <property name="idCurrency" type="int"/>
+    </transfer>
 
     <transfer name="FactFinderSdkSearchRequest">
-        <property name="request" type="array"/>
+        <property name="request" type="array" singular="request"/>
     </transfer>
 
     <transfer name="FactFinderSdkSearchResponse">
         <property name="campaignIterator" type="FactFinderSdkDataCampaignIterator"/>
         <property name="afterSearchNavigation" type="FactFinderSdkDataAfterSearchNavigation"/>
-        <property name="breadCrumbs" type="FactFinderSdkDataBreadCrumb[]"/>
+        <property name="breadCrumbs" type="FactFinderSdkDataBreadCrumb[]" singular="breadCrumb"/>
         <property name="paging" type="FactFinderSdkDataPaging"/>
         <property name="result" type="FactFinderSdkDataResult"/>
         <property name="resultsPerPageOptions" type="FactFinderSdkDataResultsPerPageOptions"/>
-        <property name="singleWordSearchItems" type="FactFinderSdkDataSingleWordSearchItem[]"/>
-        <property name="sortingItems" type="FactFinderSdkDataItem[]"/>
+        <property name="singleWordSearchItems" type="FactFinderSdkDataSingleWordSearchItem[]" singular="singleWordSearchItem"/>
+        <property name="sortingItems" type="FactFinderSdkDataItem[]" singular="sortingItem"/>
         <property name="isSearchTimedOut" type="bool"/>
         <property name="followSearchValue" type="int"/>
         <property name="searchRedirect" type="FactFinderSearchRedirect"/>
@@ -41,23 +47,22 @@
         <property name="hasFeedback" type="bool"/>
         <property name="feedback" type="string"/>
         <property name="hasPushedProducts" type="bool"/>
-        <property name="pushedProducts" type="FactFinderSdkDataRecord[]"/>
+        <property name="pushedProducts" type="FactFinderSdkDataRecord[]" singular="pushedProduct"/>
         <property name="hasActiveQuestions" type="bool"/>
-        <property name="getActiveQuestions" type="FactFinderSdkDataRecord[]"/>
+        <property name="getActiveQuestions" type="FactFinderSdkDataRecord[]" singular="getActiveQuestion"/>
         <property name="hasAdvisorTree" type="bool"/>
-        <property name="advisorTree" type="FactFinderSdkDataRecord[]"/>
-
-        <property name="campaigns" type="FactFinderSdkDataCampaign[]"/>
+        <property name="advisorTree" type="FactFinderSdkDataRecord[]" singular="advisor"/>
+        <property name="campaigns" type="FactFinderSdkDataCampaign[]" singular="campaign"/>
     </transfer>
 
     <transfer name="FactFinderSdkDataCampaign">
         <property name="name" type="string"/>
         <property name="category" type="string"/>
         <property name="redirectUrl" type="string"/>
-        <property name="pushedProducts" type="FactFinderSdkDataRecord[]"/>
-        <property name="feedback" type="array"/>
-        <property name="activeQuestions" type="FactFinderSdkDataAdvisorQuestion[]"/>
-        <property name="advisorTree" type="FactFinderSdkDataAdvisorQuestion[]"/>
+        <property name="pushedProducts" type="FactFinderSdkDataRecord[]" singular="pushedProduct"/>
+        <property name="feedback" type="array" singular="feedback"/>
+        <property name="activeQuestions" type="FactFinderSdkDataAdvisorQuestion[]" singular="activeQuestion"/>
+        <property name="advisorTree" type="FactFinderSdkDataAdvisorQuestion[]" singular="advisor"/>
         <property name="hasRedirect" type="bool"/>
         <property name="hasPushedProducts" type="bool"/>
     </transfer>
@@ -65,12 +70,11 @@
     <transfer name="FactFinderSdkDataAfterSearchNavigation">
         <property name="hasPreviewImages" type="bool"/>
 
-        <property name="filterGroups" type="FactFinderSdkDataFilterGroup[]"/>
+        <property name="filterGroups" type="FactFinderSdkDataFilterGroup[]" singular="filterGroup"/>
     </transfer>
 
     <transfer name="FactFinderSdkDataFilterGroup">
-        <property name="filters" type="FactFinderSdkDataFilter[]"/>
-
+        <property name="filters" type="FactFinderSdkDataFilter[]" singular="filter"/>
         <property name="name" type="string"/>
         <property name="detailedLinkCount" type="int"/>
         <property name="unit" type="string"/>
@@ -117,7 +121,7 @@
         <property name="previousPage" type="FactFinderSdkDataPage"/>
         <property name="currentPage" type="FactFinderSdkDataPage"/>
         <property name="nextPage" type="FactFinderSdkDataPage"/>
-        <property name="pages" type="FactFinderSdkDataPage[]"/>
+        <property name="pages" type="FactFinderSdkDataPage[]" singular="page"/>
     </transfer>
 
     <transfer name="FactFinderSdkDataPage">
@@ -127,16 +131,16 @@
 
     <transfer name="FactFinderSdkDataRecord">
         <property name="id" type="string"/>
-        <property name="fields" type="array"/>
+        <property name="fields" type="array" singular="field"/>
         <property name="similarity" type="float"/>
         <property name="position" type="int"/>
         <property name="originalPosition" type="int"/>
         <property name="seoPath" type="string"/>
-        <property name="keywords" type="array"/>
+        <property name="keywords" type="array" singular="keyword"/>
     </transfer>
 
     <transfer name="FactFinderSdkDataAdvisorQuestion">
-        <property name="advisorAnswers" type="FactFinderSdkDataAdvisorAnswer[]"/>
+        <property name="advisorAnswers" type="FactFinderSdkDataAdvisorAnswer[]" singular="advisorAnswer"/>
         <property name="text" type="string"/>
         <property name="hasAnswers" type="bool"/>
     </transfer>
@@ -145,17 +149,17 @@
         <property name="item" type="FactFinderSdkDataItem"/>
         <property name="text" type="string"/>
         <property name="url" type="string"/>
-        <property name="followUpQuestions" type="FactFinderSdkDataAdvisorQuestion[]"/>
+        <property name="followUpQuestions" type="FactFinderSdkDataAdvisorQuestion[]" singular="followUpQuestion"/>
     </transfer>
 
     <transfer name="FactFinderSdkDataResult">
-        <property name="records" type="FactFinderSdkDataRecord[]"/>
-        <property name="fieldNames" type="array"/>
+        <property name="records" type="FactFinderSdkDataRecord[]" singular="record"/>
+        <property name="fieldNames" type="array" singular="fieldName"/>
         <property name="foundRecordsCount" type="int"/>
     </transfer>
 
     <transfer name="FactFinderSdkDataResultsPerPageOptions">
-        <property name="items" type="FactFinderSdkDataItem[]"/>
+        <property name="items" type="FactFinderSdkDataItem[]" singular="item"/>
         <property name="defaultOption" type="FactFinderSdkDataItem"/>
         <property name="selectedOption" type="FactFinderSdkDataItem"/>
     </transfer>
@@ -165,23 +169,23 @@
         <property name="hitCount" type="int"/>
         <property name="type" type="string"/>
         <property name="imageUrl" type="string"/>
-        <property name="attributes" type="array"/>
+        <property name="attributes" type="array" singular="attribute"/>
     </transfer>
 
     <transfer name="FactFinderSdkDataSingleWordSearchItem">
         <property name="suggestQuery" type="FactFinderSdkDataSuggestQuery"/>
-        <property name="previewRecords" type="FactFinderSdkDataRecord[]"/>
+        <property name="previewRecords" type="FactFinderSdkDataRecord[]" singular="previewRecord"/>
     </transfer>
 
     <!--END FACTFinder\Data\.. Objects-->
 
     <transfer name="FactFinderSdkRecommendationRequest">
         <property name="sid" type="string"/>
-        <property name="id" type="string[]"/>
+        <property name="id" type="string[]" singular="id"/>
     </transfer>
 
     <transfer name="FactFinderSdkRecommendationResponse">
-        <property name="recommendations" type="array"/>
+        <property name="recommendations" type="array" singular="recommendation"/>
     </transfer>
 
     <transfer name="FactFinderSdkSuggestRequest">
@@ -190,7 +194,7 @@
     </transfer>
 
     <transfer name="FactFinderSdkSuggestResponse">
-        <property name="suggestions" type="array"/>
+        <property name="suggestions" type="array" singular="suggestion"/>
     </transfer>
 
     <transfer name="FactFinderSdkTagCloudRequest">
@@ -248,7 +252,7 @@
     </transfer>
 
     <transfer name="FactFinderSdkProductCampaignRequest">
-        <property name="productNumber" type="string[]"/>
+        <property name="productNumber" type="string[]" singular="productNumber"/>
         <property name="sid" type="string"/>
     </transfer>
 
@@ -262,4 +266,21 @@
         <property name="number" type="string" />
         <property name="contents" type="string" />
     </transfer>
-</transfer>
+
+    <transfer name="Locale">
+        <property name="idLocale" type="int"/>
+        <property name="localeName" type="string"/>
+    </transfer>
+
+    <transfer name="ProductAbstractDataFeed">
+        <property name="joinProduct" type="bool"/>
+        <property name="joinImage" type="bool"/>
+        <property name="idLocale" type="int"/>
+    </transfer>
+
+    <transfer name="Store">
+        <property name="idStore" type="int"/>
+        <property name="name" type="string"/>
+    </transfer>
+
+</transfers>

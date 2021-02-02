@@ -9,6 +9,7 @@ namespace Unit\SprykerEco\Client\FactFinderSdk\Business\Api\Converter;
 
 use ArrayObject;
 use FACTFinder\Adapter\ProductCampaign;
+use FACTFinder\Adapter\Recommendation;
 use FACTFinder\Data\Campaign;
 use FACTFinder\Data\CampaignIterator;
 use FACTFinder\Data\Record;
@@ -50,17 +51,17 @@ class ProductCampaignResponseConverterTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @return \PHPUnit_Framework_MockObject_MockObject|\SprykerEco\Client\FactFinderSdk\Business\Api\Converter\ConverterFactory
+     * @return \PHPUnit\Framework\MockObject\MockObject|\SprykerEco\Client\FactFinderSdk\Business\Api\Converter\ConverterFactory
      */
-    protected function createConverterFactory()
+    protected function createConverterFactory(): ConverterFactory
     {
         return new ConverterFactory($this->createConfigMock());
     }
 
     /**
-     * @return \PHPUnit_Framework_MockObject_MockObject|\SprykerEco\Client\FactFinderSdk\FactFinderSdkConfig
+     * @return \PHPUnit\Framework\MockObject\MockObject|\SprykerEco\Client\FactFinderSdk\FactFinderSdkConfig
      */
-    protected function createConfigMock()
+    protected function createConfigMock(): FactFinderSdkConfig
     {
         $configMock = $this->createMock(FactFinderSdkConfig::class);
         $configMock->method('getItemFields')
@@ -80,9 +81,9 @@ class ProductCampaignResponseConverterTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @return \PHPUnit_Framework_MockObject_MockObject|\FACTFinder\Adapter\Recommendation
+     * @return \PHPUnit\Framework\MockObject\MockObject|\FACTFinder\Adapter\Recommendation
      */
-    protected function createProductCampaignAdapterMock()
+    protected function createProductCampaignAdapterMock(): Recommendation
     {
         $recommendationAdapterMock = $this->getMockBuilder(ProductCampaign::class)
             ->disableOriginalConstructor()
@@ -128,7 +129,7 @@ class ProductCampaignResponseConverterTest extends PHPUnit_Framework_TestCase
                 new Campaign(
                     'test campaign',
                     'test category',
-                    "https://google.de/",
+                    'https://google.de/',
                     $pushedProducts,
                     [],
                     [],

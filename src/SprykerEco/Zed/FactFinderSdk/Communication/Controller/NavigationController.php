@@ -7,7 +7,6 @@
 
 namespace SprykerEco\Zed\FactFinderSdk\Communication\Controller;
 
-use Spryker\Shared\Config\Config;
 use Spryker\Zed\Kernel\Communication\Controller\AbstractController;
 use SprykerEco\Shared\FactFinderSdk\FactFinderSdkConstants;
 use Symfony\Component\HttpFoundation\Request;
@@ -26,9 +25,10 @@ class NavigationController extends AbstractController
      */
     public function factFinderAdminPanelAction(Request $request)
     {
-        $configKey = FactFinderSdkConstants::ENVIRONMENT . FactFinderSdkConstants::ENVIRONMENT_PRODUCTION;
+        $factFinderProductionConfiguration = $this->getFactory()->getConfig()->getFactFinderProductionConfiguration();
+
         return $this->redirectResponse(
-            Config::get($configKey)[FactFinderSdkConstants::ADMIN_PANEL_URL]
+            $factFinderProductionConfiguration[FactFinderSdkConstants::ADMIN_PANEL_URL]
         );
     }
 }

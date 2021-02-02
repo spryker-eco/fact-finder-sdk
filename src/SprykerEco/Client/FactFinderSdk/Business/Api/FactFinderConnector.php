@@ -24,7 +24,7 @@ class FactFinderConnector implements FactFinderConnectorInterface
     /**
      * @var \FACTFinder\Util\Parameters|null
      */
-    protected $requestParameters = null;
+    protected $requestParameters;
 
     /**
      * @var \SprykerEco\Client\FactFinderSdk\FactFinderSdkConfig
@@ -285,8 +285,9 @@ class FactFinderConnector implements FactFinderConnectorInterface
      *
      * @return \FACTFinder\Util\Parameters
      */
-    public function createRequestParametersFromProductCampaignRequestTransfer(FactFinderSdkProductCampaignRequestTransfer $factFinderProductCampaignRequestTransfer)
-    {
+    public function createRequestParametersFromProductCampaignRequestTransfer(
+        FactFinderSdkProductCampaignRequestTransfer $factFinderProductCampaignRequestTransfer
+    ) {
         $parameters = [];
         $parameters['productNumber'] = $factFinderProductCampaignRequestTransfer->getProductNumber();
         $parameters['sid'] = $factFinderProductCampaignRequestTransfer->getSid();
@@ -378,8 +379,6 @@ class FactFinderConnector implements FactFinderConnectorInterface
     }
 
     /**
-     * @throws \Exception
-     *
      * @return void
      */
     protected function init()
@@ -387,6 +386,7 @@ class FactFinderConnector implements FactFinderConnectorInterface
         $this->dic['loggerClass'] = function ($c) {
             $loggerClass = FactFinderLoader::getClassName('Util\Log4PhpLogger');
             $loggerClass::configure($this->getLog4phpConfigXml());
+
             return $loggerClass;
         };
 
@@ -432,8 +432,10 @@ class FactFinderConnector implements FactFinderConnectorInterface
         $this->dic['encodingConverter'] = function ($c) {
             if (extension_loaded('iconv')) {
                 $type = 'Core\IConvEncodingConverter';
-            } elseif (function_exists('utf8_encode')
-                && function_exists('utf8_decode')) {
+            } elseif (
+                function_exists('utf8_encode')
+                && function_exists('utf8_decode')
+            ) {
                 $type = 'Core\Utf8EncodingConverter';
             } else {
                 throw new Exception('No encoding conversion available.');

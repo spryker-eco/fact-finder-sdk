@@ -42,21 +42,17 @@ class FactFinderSdkDependencyProvider extends AbstractBundleDependencyProvider
      */
     public function providePersistenceLayerDependencies(Container $container)
     {
-        $container[static::PRODUCT_ABSTRACT_DATA_FEED] = function (Container $container) {
-            $productAbstractDataFeedQueryContainer = $container->getLocator()
-                ->productAbstractDataFeed()
-                ->queryContainer();
+        $container->set(static::PRODUCT_ABSTRACT_DATA_FEED, function (Container $container) {
+            return new FactFinderSdkToProductAbstractDataFeedBridge(
+                $container->getLocator()->productAbstractDataFeed()->queryContainer()
+            );
+        });
 
-            return new FactFinderSdkToProductAbstractDataFeedBridge($productAbstractDataFeedQueryContainer);
-        };
-
-        $container[static::CATEGORY_DATA_FEED] = function (Container $container) {
-            $categoryDataFeedQueryContainer = $container->getLocator()
-                ->categoryDataFeed()
-                ->queryContainer();
-
-            return new FactFinderSdkToCategoryDataFeedBridge($categoryDataFeedQueryContainer);
-        };
+        $container->set(static::CATEGORY_DATA_FEED, function (Container $container) {
+            return new FactFinderSdkToCategoryDataFeedBridge(
+                $container->getLocator()->categoryDataFeed()->queryContainer()
+            );
+        });
 
         return $container;
     }
@@ -81,13 +77,9 @@ class FactFinderSdkDependencyProvider extends AbstractBundleDependencyProvider
      */
     protected function addStoreFacade(Container $container)
     {
-        $container[static::STORE_FACADE] = function (Container $container) {
-            $storeFacade = $container->getLocator()
-                ->store()
-                ->facade();
-
-            return new FactFinderSdkToStoreBridge($storeFacade);
-        };
+        $container->set(static::STORE_FACADE, function (Container $container) {
+            return new FactFinderSdkToStoreBridge($container->getLocator()->store()->facade());
+        });
 
         return $container;
     }
@@ -99,13 +91,11 @@ class FactFinderSdkDependencyProvider extends AbstractBundleDependencyProvider
      */
     protected function addCurrencyFacade(Container $container)
     {
-        $container[static::CURRENCY_FACADE] = function (Container $container) {
-            $currencyFacade = $container->getLocator()
-                ->currency()
-                ->facade();
-
-            return new FactFinderSdkToCurrencyBridge($currencyFacade);
-        };
+        $container->set(static::CURRENCY_FACADE, function (Container $container) {
+            return new FactFinderSdkToCurrencyBridge(
+                $container->getLocator()->currency()->facade()
+            );
+        });
 
         return $container;
     }
@@ -117,13 +107,11 @@ class FactFinderSdkDependencyProvider extends AbstractBundleDependencyProvider
      */
     protected function addLocaleFacade(Container $container)
     {
-        $container[static::LOCALE_FACADE] = function (Container $container) {
-            $localeFacade = $container->getLocator()
-                ->locale()
-                ->facade();
-
-            return new FactFinderSdkToLocaleBridge($localeFacade);
-        };
+        $container->set(static::LOCALE_FACADE, function (Container $container) {
+            return new FactFinderSdkToLocaleBridge(
+                $container->getLocator()->locale()->facade()
+            );
+        });
 
         return $container;
     }

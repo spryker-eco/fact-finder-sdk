@@ -100,7 +100,6 @@ class FactFinderSdkProductExporter implements FactFinderSdkProductExporterInterf
         FactFinderSdkToStoreInterface $storeFacade,
         $expanders
     ) {
-
         $this->fileWriter = $fileWriter;
         $this->localeTransfer = $localeTransfer;
         $this->queryLimit = $factFinderConfig->getExportQueryLimit();
@@ -186,6 +185,7 @@ class FactFinderSdkProductExporter implements FactFinderSdkProductExporterInterf
     {
         $productsCount = $query->limit($this->queryLimit)
             ->count();
+
         return $productsCount > 0;
     }
 

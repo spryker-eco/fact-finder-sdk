@@ -40,9 +40,9 @@ class RecommendationResponseConverterTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @return \PHPUnit_Framework_MockObject_MockObject|\FACTFinder\Adapter\Recommendation
+     * @return \PHPUnit\Framework\MockObject\MockObject|\FACTFinder\Adapter\Recommendation
      */
-    protected function createRecommendationAdapterMock()
+    protected function createRecommendationAdapterMock(): Recommendation
     {
         $recommendationAdapterMock = $this->getMockBuilder(Recommendation::class)
             ->disableOriginalConstructor()
@@ -60,24 +60,24 @@ class RecommendationResponseConverterTest extends PHPUnit_Framework_TestCase
     protected function getRecommendations()
     {
         $recordData = [
-            "Description" => "test",
-            "MasterProductNumber" => "101",
-            "FFAutomaticSearchOptimization" => "",
-            "DQAttributes" => "",
-            "ImageURL" => "http://images.icecat.biz/img/gallery_raw/29406182_3072.png",
-            "ProductNumber" => "60",
-            "ProductURL" => "http://www.de.project.local/de/acer-liquid-z630-101",
-            "FFCheckoutCount" => "0",
-            "Name" => "Acer Liquid Z630",
-            "FFAfterSearchReorder" => "",
-            "Category4" => "",
-            "CategoryPath" => "|CategoryPathROOT=Telekommunikation & Navigation|CategoryPathROOT/Telekommunikation & Navigation=Smartphones|",
-            "Category3" => "",
-            "Category2" => "..Smartphones..",
-            "Category1" => "..Telekommunikation & Navigation..",
-            "Price" => "1879",
-            "brand" => "..Acer..",
-            "Stock" => "1",
+            'Description' => 'test',
+            'MasterProductNumber' => '101',
+            'FFAutomaticSearchOptimization' => '',
+            'DQAttributes' => '',
+            'ImageURL' => 'http://images.icecat.biz/img/gallery_raw/29406182_3072.png',
+            'ProductNumber' => '60',
+            'ProductURL' => 'http://www.de.project.local/de/acer-liquid-z630-101',
+            'FFCheckoutCount' => '0',
+            'Name' => 'Acer Liquid Z630',
+            'FFAfterSearchReorder' => '',
+            'Category4' => '',
+            'CategoryPath' => '|CategoryPathROOT=Telekommunikation & Navigation|CategoryPathROOT/Telekommunikation & Navigation=Smartphones|',
+            'Category3' => '',
+            'Category2' => '..Smartphones..',
+            'Category1' => '..Telekommunikation & Navigation..',
+            'Price' => '1879',
+            'brand' => '..Acer..',
+            'Stock' => '1',
         ];
         $records = [
             Loader::getInstance(
@@ -129,9 +129,9 @@ class RecommendationResponseConverterTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @return \PHPUnit_Framework_MockObject_MockObject|\SprykerEco\Client\FactFinderSdk\FactFinderSdkConfig
+     * @return \PHPUnit\Framework\MockObject\MockObject|\SprykerEco\Client\FactFinderSdk\FactFinderSdkConfig
      */
-    protected function createConfigMock()
+    protected function createConfigMock(): FactFinderSdkConfig
     {
         $configMock = $this->getMockBuilder(FactFinderSdkConfig::class)
             ->disableOriginalConstructor()

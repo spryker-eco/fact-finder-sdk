@@ -36,9 +36,9 @@ class TrackingResponseConverterTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @return \PHPUnit_Framework_MockObject_MockObject|\FACTFinder\Adapter\Tracking
+     * @return \PHPUnit\Framework\MockObject\MockObject|\FACTFinder\Adapter\Tracking
      */
-    protected function createTrackingAdapterMock()
+    protected function createTrackingAdapterMock(): Tracking
     {
         $trackingAdapterMock = $this->getMockBuilder(Tracking::class)
             ->disableOriginalConstructor()

@@ -35,7 +35,7 @@ class SuggestResponseConverter extends BaseConverter implements ConverterInterfa
         $suggestions = $this->suggestAdapter->getSuggestions();
 
         foreach ($suggestions as $suggestion) {
-            $responseTransfer->addSuggestions([
+            $responseTransfer->addSuggestion([
                 'imageUrl' => $suggestion->getImageUrl(),
                 'label' => $suggestion->getLabel(),
                 'url' => $suggestion->getUrl(),

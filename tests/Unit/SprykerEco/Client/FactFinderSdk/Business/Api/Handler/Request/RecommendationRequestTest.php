@@ -8,6 +8,7 @@
 namespace Unit\SprykerEco\Client\FactFinderSdk\Business\Api\Handler\Request;
 
 use FACTFinder\Adapter\Recommendation;
+use FACTFinder\Adapter\Suggest;
 use FACTFinder\Data\Record;
 use FACTFinder\Data\Result;
 use Generated\Shared\Transfer\FactFinderSdkRecommendationRequestTransfer;
@@ -77,9 +78,9 @@ class RecommendationRequestTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @return \PHPUnit_Framework_MockObject_MockObject|\SprykerEco\Client\FactFinderSdk\FactFinderSdkConfig
+     * @return \PHPUnit\Framework\MockObject\MockObject|\SprykerEco\Client\FactFinderSdk\FactFinderSdkConfig
      */
-    protected function createConfigMock()
+    protected function createConfigMock(): FactFinderSdkConfig
     {
         $configMock = $this->createMock(FactFinderSdkConfig::class);
         $configMock->method('getItemFields')
@@ -99,9 +100,9 @@ class RecommendationRequestTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @return \PHPUnit_Framework_MockObject_MockObject|\SprykerEco\Client\FactFinderSdk\Business\Api\FactFinderConnector
+     * @return \PHPUnit\Framework\MockObject\MockObject|\SprykerEco\Client\FactFinderSdk\Business\Api\FactFinderConnector
      */
-    protected function createFactFinderConnectorMock()
+    protected function createFactFinderConnectorMock(): FactFinderConnector
     {
         $connector = $this->getMockBuilder(FactFinderConnector::class)
             ->disableOriginalConstructor()
@@ -113,9 +114,9 @@ class RecommendationRequestTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @return \PHPUnit_Framework_MockObject_MockObject|\FACTFinder\Adapter\Suggest
+     * @return \PHPUnit\Framework\MockObject\MockObject|\FACTFinder\Adapter\Suggest
      */
-    protected function createRecommendationAdapterMock()
+    protected function createRecommendationAdapterMock(): Suggest
     {
         $suggestAdapterMock = $this->getMockBuilder(Recommendation::class)
             ->disableOriginalConstructor()
@@ -136,24 +137,24 @@ class RecommendationRequestTest extends PHPUnit_Framework_TestCase
             new Record(
                 '111_28549472',
                 [
-                    "Description" => "test",
-                    "MasterProductNumber" => "101",
-                    "FFAutomaticSearchOptimization" => "",
-                    "DQAttributes" => "",
-                    "ImageURL" => "http://images.icecat.biz/img/gallery_raw/29406182_3072.png",
-                    "ProductNumber" => "60",
-                    "ProductURL" => "http://www.de.project.local/de/acer-liquid-z630-101",
-                    "FFCheckoutCount" => "0",
-                    "Name" => "Acer Liquid Z630",
-                    "FFAfterSearchReorder" => "",
-                    "Category4" => "",
-                    "CategoryPath" => "|CategoryPathROOT=Telekommunikation & Navigation|CategoryPathROOT/Telekommunikation & Navigation=Smartphones|",
-                    "Category3" => "",
-                    "Category2" => "..Smartphones..",
-                    "Category1" => "..Telekommunikation & Navigation..",
-                    "Price" => "1879",
-                    "brand" => "..Acer..",
-                    "Stock" => "1",
+                    'Description' => 'test',
+                    'MasterProductNumber' => '101',
+                    'FFAutomaticSearchOptimization' => '',
+                    'DQAttributes' => '',
+                    'ImageURL' => 'http://images.icecat.biz/img/gallery_raw/29406182_3072.png',
+                    'ProductNumber' => '60',
+                    'ProductURL' => 'http://www.de.project.local/de/acer-liquid-z630-101',
+                    'FFCheckoutCount' => '0',
+                    'Name' => 'Acer Liquid Z630',
+                    'FFAfterSearchReorder' => '',
+                    'Category4' => '',
+                    'CategoryPath' => '|CategoryPathROOT=Telekommunikation & Navigation|CategoryPathROOT/Telekommunikation & Navigation=Smartphones|',
+                    'Category3' => '',
+                    'Category2' => '..Smartphones..',
+                    'Category1' => '..Telekommunikation & Navigation..',
+                    'Price' => '1879',
+                    'brand' => '..Acer..',
+                    'Stock' => '1',
                 ]
             ),
         ], 1);

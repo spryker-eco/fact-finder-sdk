@@ -46,9 +46,9 @@ class TrackingRequestTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @return \PHPUnit_Framework_MockObject_MockObject|\FACTFinder\Adapter\Tracking
+     * @return \PHPUnit\Framework\MockObject\MockObject|\FACTFinder\Adapter\Tracking
      */
-    protected function createTrackingAdapterMock()
+    protected function createTrackingAdapterMock(): Tracking
     {
         $trackingAdapterMock = $this->getMockBuilder(Tracking::class)
             ->disableOriginalConstructor()
@@ -60,9 +60,9 @@ class TrackingRequestTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @return \PHPUnit_Framework_MockObject_MockObject|\SprykerEco\Client\FactFinderSdk\Business\Api\FactFinderConnector
+     * @return \PHPUnit\Framework\MockObject\MockObject|\SprykerEco\Client\FactFinderSdk\Business\Api\FactFinderConnector
      */
-    protected function createFactFinderConnectorMock()
+    protected function createFactFinderConnectorMock(): FactFinderConnector
     {
         $connector = $this->getMockBuilder(FactFinderConnector::class)
             ->disableOriginalConstructor()
@@ -86,9 +86,9 @@ class TrackingRequestTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @return \PHPUnit_Framework_MockObject_MockObject|\SprykerEco\Client\FactFinderSdk\FactFinderSdkConfig
+     * @return \PHPUnit\Framework\MockObject\MockObject|\SprykerEco\Client\FactFinderSdk\FactFinderSdkConfig
      */
-    protected function createConfigMock()
+    protected function createConfigMock(): FactFinderSdkConfig
     {
         $configMock = $this->createMock(FactFinderSdkConfig::class);
 

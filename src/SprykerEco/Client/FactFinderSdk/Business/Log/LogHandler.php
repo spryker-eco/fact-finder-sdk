@@ -35,7 +35,7 @@ class LogHandler extends AbstractProcessingHandler
      *
      * @return void
      */
-    protected function write(array $record)
+    protected function write(array $record): void
     {
         $this->logger->info($record['message'], $record['context']);
     }

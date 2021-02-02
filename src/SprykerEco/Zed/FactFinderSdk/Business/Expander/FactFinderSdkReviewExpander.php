@@ -4,6 +4,7 @@
  * MIT License
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
+
 namespace SprykerEco\Zed\FactFinderSdk\Business\Expander;
 
 use Generated\Shared\Transfer\CurrencyTransfer;
@@ -31,6 +32,7 @@ class FactFinderSdkReviewExpander extends FactFinderSdkAbstractExpander
 
         if ($abstractProduct->count() === 0) {
             $productData[FactFinderSdkConstants::ITEM_RATING] = 0;
+
             return $productData;
         }
 
