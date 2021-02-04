@@ -43,6 +43,10 @@ class FactFinderSdkQueryContainer extends AbstractQueryContainer implements Fact
      *
      * @api
      *
+     * @module Product
+     * @module ProductAbstractDataFeed
+     * @module Url
+     *
      * @param \Generated\Shared\Transfer\LocaleTransfer $localeTransfer
      * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
      * @param \Generated\Shared\Transfer\CurrencyTransfer $currencyTransfer
@@ -80,6 +84,8 @@ class FactFinderSdkQueryContainer extends AbstractQueryContainer implements Fact
      *
      * @api
      *
+     * @module Category
+     *
      * @param \Generated\Shared\Transfer\LocaleTransfer $localeTransfer
      * @param int $idProductAbstract
      *
@@ -103,6 +109,8 @@ class FactFinderSdkQueryContainer extends AbstractQueryContainer implements Fact
      *
      * @api
      *
+     * @module Category
+     *
      * @param int $idCategory
      * @param \Generated\Shared\Transfer\LocaleTransfer $localeTransfer
      *
@@ -125,6 +133,9 @@ class FactFinderSdkQueryContainer extends AbstractQueryContainer implements Fact
      * {@inheritDoc}
      *
      * @api
+     *
+     * @module Product
+     * @module PriceProduct
      *
      * @param string $concreteProductSku
      * @param \Generated\Shared\Transfer\CurrencyTransfer $currencyTransfer
@@ -155,6 +166,9 @@ class FactFinderSdkQueryContainer extends AbstractQueryContainer implements Fact
      * {@inheritDoc}
      *
      * @api
+     *
+     * @module Product
+     * @module PriceProduct
      *
      * @param string $concreteProductSku
      * @param \Generated\Shared\Transfer\CurrencyTransfer $currencyTransfer
@@ -187,6 +201,10 @@ class FactFinderSdkQueryContainer extends AbstractQueryContainer implements Fact
      * {@inheritDoc}
      *
      * @api
+     *
+     * @module Product
+     * @module ProductAbstractDataFeed
+     * @module ProductReview
      *
      * @param int $idProductAbstract
      * @param \Generated\Shared\Transfer\LocaleTransfer $localeTransfer
