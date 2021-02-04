@@ -7,6 +7,9 @@
 
 namespace SprykerEco\Zed\FactFinderSdk\Dependency\Facade;
 
+/**
+ * @SuppressWarnings(BridgeNameRule)
+ */
 interface FactFinderSdkToCurrencyInterface
 {
     /**

@@ -35,9 +35,8 @@
     }
   },
   "autoload-dev": {
-    "psr-0": {
-      "Unit": "tests/",
-      "Functional": "tests/"
+    "psr-4": {
+      "SprykerEcoTest\\": "tests/SprykerEcoTest/"
     }
   },
   "minimum-stability": "dev",

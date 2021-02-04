@@ -44,7 +44,7 @@ class FactFinderSdkBusinessFactory extends AbstractBusinessFactory
     /**
      * @return \SprykerEco\Zed\FactFinderSdk\Dependency\Facade\FactFinderSdkToStoreInterface
      */
-    protected function getStoreFacade()
+    public function getStoreFacade()
     {
         return $this->getProvidedDependency(FactFinderSdkDependencyProvider::STORE_FACADE);
     }
@@ -52,7 +52,7 @@ class FactFinderSdkBusinessFactory extends AbstractBusinessFactory
     /**
      * @return \SprykerEco\Zed\FactFinderSdk\Dependency\Facade\FactFinderSdkToCurrencyInterface
      */
-    protected function getCurrencyFacade()
+    public function getCurrencyFacade()
     {
         return $this->getProvidedDependency(FactFinderSdkDependencyProvider::CURRENCY_FACADE);
     }
@@ -60,7 +60,7 @@ class FactFinderSdkBusinessFactory extends AbstractBusinessFactory
     /**
      * @return \SprykerEco\Zed\FactFinderSdk\Business\Writer\FileWriterInterface
      */
-    protected function createCsvFileWriter()
+    public function createCsvFileWriter()
     {
         return new CsvFileWriter();
     }
@@ -71,7 +71,7 @@ class FactFinderSdkBusinessFactory extends AbstractBusinessFactory
      *
      * @return \SprykerEco\Zed\FactFinderSdk\Business\Exporter\FactFinderSdkProductExporterInterface
      */
-    protected function createFactFinderProductExporter(FileWriterInterface $fileWriter, LocaleTransfer $localeTransfer)
+    public function createFactFinderProductExporter(FileWriterInterface $fileWriter, LocaleTransfer $localeTransfer)
     {
         return new FactFinderSdkProductExporter(
             $fileWriter,
@@ -87,7 +87,7 @@ class FactFinderSdkBusinessFactory extends AbstractBusinessFactory
     /**
      * @return \SprykerEco\Zed\FactFinderSdk\Business\Expander\FactFinderSdkExpanderInterface[]
      */
-    protected function getExpanders()
+    public function getExpanders()
     {
         return [
             $this->createFactFinderSdkCategoryExpander(),

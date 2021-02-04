@@ -9,6 +9,9 @@ namespace SprykerEco\Zed\FactFinderSdk\Dependency\Persistence;
 
 use Generated\Shared\Transfer\CategoryDataFeedTransfer;
 
+/**
+ * @SuppressWarnings(BridgeNameRule)
+ */
 interface FactFinderSdkToCategoryDataFeedInterface
 {
     /**

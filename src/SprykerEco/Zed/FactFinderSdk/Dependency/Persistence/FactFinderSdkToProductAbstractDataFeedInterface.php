@@ -9,6 +9,9 @@ namespace SprykerEco\Zed\FactFinderSdk\Dependency\Persistence;
 
 use Generated\Shared\Transfer\ProductAbstractDataFeedTransfer;
 
+/**
+ * @SuppressWarnings(BridgeNameRule)
+ */
 interface FactFinderSdkToProductAbstractDataFeedInterface
 {
     /**

@@ -1,0 +1,17 @@
+namespace: SprykerEcoTest\Client\FactFinderSdk
+paths:
+    tests: .
+    data: ../../../_data
+    support: _support
+    log: ../../../_output
+coverage:
+    enabled: true
+    remote: false
+    whitelist: { include: ['../../../../src/*'] }
+suites:
+    Business:
+        path: .
+        actor: FactFinderSdkClientTester
+        modules:
+            enabled:
+                - \SprykerTest\Shared\Testify\Helper\Environment

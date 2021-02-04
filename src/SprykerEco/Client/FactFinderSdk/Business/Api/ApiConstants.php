@@ -7,6 +7,10 @@
 
 namespace SprykerEco\Client\FactFinderSdk\Business\Api;
 
+/**
+ * @SuppressWarnings(ModuleConstantsPathRule)
+ * @SuppressWarnings(ModuleConstantsTypeRule)
+ */
 class ApiConstants
 {
     public const REQUEST_FORMAT = 'json';

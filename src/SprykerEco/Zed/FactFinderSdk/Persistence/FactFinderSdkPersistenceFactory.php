@@ -35,6 +35,8 @@ class FactFinderSdkPersistenceFactory extends AbstractPersistenceFactory
     }
 
     /**
+     * @SuppressWarnings(FactoryMethodReturnInterfaceRule)
+     *
      * @return \Orm\Zed\Category\Persistence\SpyCategoryQuery
      */
     public function createCategoryQuery()
@@ -43,6 +45,8 @@ class FactFinderSdkPersistenceFactory extends AbstractPersistenceFactory
     }
 
     /**
+     * @SuppressWarnings(FactoryMethodReturnInterfaceRule)
+     *
      * @return \Orm\Zed\PriceProduct\Persistence\SpyPriceProductQuery
      */
     public function createPriceProductQuery()
