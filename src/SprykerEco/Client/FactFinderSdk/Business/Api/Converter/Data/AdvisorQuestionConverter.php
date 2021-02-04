@@ -56,7 +56,7 @@ class AdvisorQuestionConverter extends BaseConverter implements AdvisorQuestionC
 
         if ($advisorQuestion->hasAnswers()) {
             foreach ($advisorQuestion->getAnswers() as $advisorAnswer) {
-                $factFinderDataAdvisorQuestionTransfer->addAdvisorAnswer(
+                $factFinderDataAdvisorQuestionTransfer->addAdvisorAnswers(
                     $this->convertAnswer($advisorAnswer)
                 );
             }
@@ -82,7 +82,7 @@ class AdvisorQuestionConverter extends BaseConverter implements AdvisorQuestionC
 
         if ($advisorAnswer->hasFollowUpQuestions()) {
             foreach ($advisorAnswer->getFollowUpQuestions() as $followUpQuestion) {
-                $factFinderDataAdvisorAnswerTransfer->addFollowUpQuestion(
+                $factFinderDataAdvisorAnswerTransfer->addFollowUpQuestions(
                     $this->convert($followUpQuestion)
                 );
             }

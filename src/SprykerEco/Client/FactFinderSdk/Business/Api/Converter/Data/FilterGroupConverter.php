@@ -53,7 +53,7 @@ class FilterGroupConverter extends BaseConverter implements FilterGroupConverter
 
         /** @var \FACTFinder\Data\Filter $filter */
         foreach ($this->filterGroup as $filter) {
-            $factFinderDataFilterGroupTransfer->addFilter(
+            $factFinderDataFilterGroupTransfer->addFilters(
                 $this->convertFilter($filter)
             );
         }

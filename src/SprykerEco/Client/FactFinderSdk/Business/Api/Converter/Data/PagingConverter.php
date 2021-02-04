@@ -94,7 +94,7 @@ class PagingConverter extends BaseConverter implements PagingConverterInterface
     protected function addPagesArray(FactFinderSdkDataPagingTransfer $factFinderDataPagingTransfer)
     {
         foreach ($this->paging->getArrayCopy() as $item) {
-            $factFinderDataPagingTransfer->addPage($this->convertPage($item));
+            $factFinderDataPagingTransfer->addPages($this->convertPage($item));
         }
     }
 }

@@ -42,17 +42,8 @@ class FactFinderSdkDependencyProvider extends AbstractBundleDependencyProvider
      */
     public function providePersistenceLayerDependencies(Container $container)
     {
-        $container->set(static::PRODUCT_ABSTRACT_DATA_FEED, function (Container $container) {
-            return new FactFinderSdkToProductAbstractDataFeedBridge(
-                $container->getLocator()->productAbstractDataFeed()->queryContainer()
-            );
-        });
-
-        $container->set(static::CATEGORY_DATA_FEED, function (Container $container) {
-            return new FactFinderSdkToCategoryDataFeedBridge(
-                $container->getLocator()->categoryDataFeed()->queryContainer()
-            );
-        });
+        $container = $this->addProductAbstractDataFeedQueryContainer($container);
+        $container = $this->addCategoryDataFeedQueryContainer($container);
 
         return $container;
     }
@@ -66,6 +57,38 @@ class FactFinderSdkDependencyProvider extends AbstractBundleDependencyProvider
     {
         $container = $this->addStoreFacade($container);
         $container = $this->addCurrencyFacade($container);
+
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    protected function addProductAbstractDataFeedQueryContainer(Container $container): Container
+    {
+        $container->set(static::PRODUCT_ABSTRACT_DATA_FEED, function (Container $container) {
+            return new FactFinderSdkToProductAbstractDataFeedBridge(
+                $container->getLocator()->productAbstractDataFeed()->queryContainer()
+            );
+        });
+
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    protected function addCategoryDataFeedQueryContainer(Container $container): Container
+    {
+        $container->set(static::CATEGORY_DATA_FEED, function (Container $container) {
+            return new FactFinderSdkToCategoryDataFeedBridge(
+                $container->getLocator()->categoryDataFeed()->queryContainer()
+            );
+        });
 
         return $container;
     }

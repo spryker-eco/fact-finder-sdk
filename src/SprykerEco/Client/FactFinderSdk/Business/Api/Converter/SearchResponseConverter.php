@@ -164,7 +164,7 @@ class SearchResponseConverter extends BaseConverter implements ConverterInterfac
         /** @var \FACTFinder\Data\Record $pushedProduct */
         foreach ($campaigns->getPushedProducts() as $pushedProduct) {
             $this->recordConverter->setRecord($pushedProduct);
-            $factFinderDataCampaignIteratorTransfer->addPushedProduct(
+            $factFinderDataCampaignIteratorTransfer->addPushedProducts(
                 $this->recordConverter->convert()
             );
         }
@@ -173,7 +173,7 @@ class SearchResponseConverter extends BaseConverter implements ConverterInterfac
         /** @var \FACTFinder\Data\Record $advisorTree */
         foreach ($campaigns->getAdvisorTree() as $advisorTree) {
             $this->recordConverter->setRecord($advisorTree);
-            $factFinderDataCampaignIteratorTransfer->addAdvisor(
+            $factFinderDataCampaignIteratorTransfer->addAdvisorTree(
                 $this->recordConverter->convert()
             );
         }
@@ -190,26 +190,26 @@ class SearchResponseConverter extends BaseConverter implements ConverterInterfac
             /** @var \FACTFinder\Data\Record $pushedProduct */
             foreach ($campaign->getPushedProducts() as $pushedProduct) {
                 $this->recordConverter->setRecord($pushedProduct);
-                $factFinderDataCampaignTransfer->addPushedProduct(
+                $factFinderDataCampaignTransfer->addPushedProducts(
                     $this->recordConverter->convert()
                 );
             }
             /** @var \FACTFinder\Data\AdvisorQuestion $activeQuestion */
             foreach ($campaign->getActiveQuestions() as $activeQuestion) {
                 $this->advisorQuestionConverter->setAdvisorQuestion($activeQuestion);
-                $factFinderDataCampaignTransfer->addActiveQuestion(
+                $factFinderDataCampaignTransfer->addActiveQuestions(
                     $this->advisorQuestionConverter->convert($activeQuestion)
                 );
             }
             /** @var \FACTFinder\Data\AdvisorQuestion $advisorTree */
             foreach ($campaign->getAdvisorTree() as $advisorTree) {
                 $this->advisorQuestionConverter->setAdvisorQuestion($advisorTree);
-                $factFinderDataCampaignTransfer->addAdvisor(
+                $factFinderDataCampaignTransfer->addAdvisorTree(
                     $this->advisorQuestionConverter->convert()
                 );
             }
 
-            $factFinderDataCampaignIteratorTransfer->addCampaign($factFinderDataCampaignTransfer);
+            $factFinderDataCampaignIteratorTransfer->addCampaigns($factFinderDataCampaignTransfer);
         }
 
         return $factFinderDataCampaignIteratorTransfer;
@@ -228,7 +228,7 @@ class SearchResponseConverter extends BaseConverter implements ConverterInterfac
         /** @var \FACTFinder\Data\FilterGroup $filterGroup */
         foreach ($afterSearchNavigation as $filterGroup) {
             $this->filterGroupConverter->setFilterGroup($filterGroup);
-            $factFinderDataAfterSearchNavigationTransfer->addFilterGroup(
+            $factFinderDataAfterSearchNavigationTransfer->addFilterGroups(
                 $this->filterGroupConverter->convert()
             );
         }
@@ -273,7 +273,7 @@ class SearchResponseConverter extends BaseConverter implements ConverterInterfac
         /** @var \FACTFinder\Data\Record $record */
         foreach ($result as $record) {
             $this->recordConverter->setRecord($record);
-            $factFinderDataResultTransfer->addRecord(
+            $factFinderDataResultTransfer->addRecords(
                 $this->recordConverter->convert()
             );
         }
@@ -305,7 +305,7 @@ class SearchResponseConverter extends BaseConverter implements ConverterInterfac
         /** @var \FACTFinder\Data\Item $resultsPerPageOption */
         foreach ($resultsPerPageOptions as $resultsPerPageOption) {
             $this->itemConverter->setItem($resultsPerPageOption);
-            $factFinderDataResultsPerPageOptionsTransfer->addItem(
+            $factFinderDataResultsPerPageOptionsTransfer->addItems(
                 $this->itemConverter->convert()
             );
         }
@@ -326,7 +326,7 @@ class SearchResponseConverter extends BaseConverter implements ConverterInterfac
             /** @var \FACTFinder\Data\Record $previewRecord */
             foreach ($singleWordSearchItem->getPreviewRecords() as $previewRecord) {
                 $this->recordConverter->setRecord($previewRecord);
-                $factFinderDataSingleWordSearchItemTransfer->addPreviewRecord(
+                $factFinderDataSingleWordSearchItemTransfer->addPreviewRecords(
                     $this->recordConverter->convert()
                 );
             }
