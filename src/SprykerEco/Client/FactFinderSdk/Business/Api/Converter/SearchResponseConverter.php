@@ -48,27 +48,27 @@ class SearchResponseConverter extends BaseConverter implements ConverterInterfac
     protected $responseTransfer;
 
     /**
-     * @var \SprykerEco\Client\FactFinderSdk\Business\Api\Converter\Data\PagingConverter
+     * @var \SprykerEco\Client\FactFinderSdk\Business\Api\Converter\Data\PagingConverterInterface
      */
     protected $pagingConverter;
 
     /**
-     * @var \SprykerEco\Client\FactFinderSdk\Business\Api\Converter\Data\ItemConverter
+     * @var \SprykerEco\Client\FactFinderSdk\Business\Api\Converter\Data\ItemConverterInterface
      */
     protected $itemConverter;
 
     /**
-     * @var \SprykerEco\Client\FactFinderSdk\Business\Api\Converter\Data\RecordConverter
+     * @var \SprykerEco\Client\FactFinderSdk\Business\Api\Converter\Data\RecordConverterInterface
      */
     protected $recordConverter;
 
     /**
-     * @var \SprykerEco\Client\FactFinderSdk\Business\Api\Converter\Data\FilterGroupConverter
+     * @var \SprykerEco\Client\FactFinderSdk\Business\Api\Converter\Data\FilterGroupConverterInterface
      */
     protected $filterGroupConverter;
 
     /**
-     * @var \SprykerEco\Client\FactFinderSdk\Business\Api\Converter\Data\AdvisorQuestionConverter
+     * @var \SprykerEco\Client\FactFinderSdk\Business\Api\Converter\Data\AdvisorQuestionConverterInterface
      */
     protected $advisorQuestionConverter;
 
@@ -79,11 +79,11 @@ class SearchResponseConverter extends BaseConverter implements ConverterInterfac
 
     /**
      * @param \FACTFinder\Adapter\Search $searchAdapter
-     * @param \SprykerEco\Client\FactFinderSdk\Business\Api\Converter\Data\PagingConverter $pagingConverter
-     * @param \SprykerEco\Client\FactFinderSdk\Business\Api\Converter\Data\ItemConverter $itemConverter
-     * @param \SprykerEco\Client\FactFinderSdk\Business\Api\Converter\Data\RecordConverter $recordConverter
-     * @param \SprykerEco\Client\FactFinderSdk\Business\Api\Converter\Data\FilterGroupConverter $filterGroupConverter
-     * @param \SprykerEco\Client\FactFinderSdk\Business\Api\Converter\Data\AdvisorQuestionConverter $advisorQuestionConverter
+     * @param \SprykerEco\Client\FactFinderSdk\Business\Api\Converter\Data\PagingConverterInterface $pagingConverter
+     * @param \SprykerEco\Client\FactFinderSdk\Business\Api\Converter\Data\ItemConverterInterface $itemConverter
+     * @param \SprykerEco\Client\FactFinderSdk\Business\Api\Converter\Data\RecordConverterInterface $recordConverter
+     * @param \SprykerEco\Client\FactFinderSdk\Business\Api\Converter\Data\FilterGroupConverterInterface $filterGroupConverter
+     * @param \SprykerEco\Client\FactFinderSdk\Business\Api\Converter\Data\AdvisorQuestionConverterInterface $advisorQuestionConverter
      * @param \SprykerEco\Client\FactFinderSdk\FactFinderSdkConfig $factFinderSdkConfig
      */
     public function __construct(

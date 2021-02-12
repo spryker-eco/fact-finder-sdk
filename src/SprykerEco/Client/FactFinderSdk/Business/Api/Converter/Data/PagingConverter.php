@@ -27,9 +27,8 @@ class PagingConverter extends BaseConverter implements PagingConverterInterface
     /**
      * @param \SprykerEco\Client\FactFinderSdk\Business\Api\Converter\Data\ItemConverterInterface $itemConverter
      */
-    public function __construct(
-        ItemConverterInterface $itemConverter
-    ) {
+    public function __construct(ItemConverterInterface $itemConverter)
+    {
         $this->itemConverter = $itemConverter;
     }
 

@@ -7,13 +7,19 @@
 
 namespace SprykerEco\Zed\FactFinderSdk;
 
-use Spryker\Shared\Application\ApplicationConstants;
 use Spryker\Zed\Kernel\AbstractBundleConfig;
 use SprykerEco\Shared\FactFinderSdk\FactFinderSdkConstants;
 
 class FactFinderSdkConfig extends AbstractBundleConfig implements FactFinderSdkConfigInterface
 {
     /**
+     * @uses \Spryker\Shared\Application\ApplicationConstants::HOST_YVES
+     */
+    protected const HOST_YVES = 'HOST_YVES';
+
+    /**
+     * @api
+     *
      * @return string
      */
     public function getEnvironment()
@@ -22,6 +28,8 @@ class FactFinderSdkConfig extends AbstractBundleConfig implements FactFinderSdkC
     }
 
     /**
+     * @api
+     *
      * @return array
      */
     public function getFactFinderConfiguration()
@@ -30,6 +38,22 @@ class FactFinderSdkConfig extends AbstractBundleConfig implements FactFinderSdkC
     }
 
     /**
+     * @api
+     *
+     * @return mixed[]
+     */
+    public function getFactFinderProductionConfiguration(): array
+    {
+        return $this->get(sprintf(
+            '%s%s',
+            FactFinderSdkConstants::ENVIRONMENT,
+            FactFinderSdkConstants::ENVIRONMENT_PRODUCTION
+        ));
+    }
+
+    /**
+     * @api
+     *
      * @return string
      */
     public function getCsvDirectory()
@@ -38,7 +62,9 @@ class FactFinderSdkConfig extends AbstractBundleConfig implements FactFinderSdkC
     }
 
     /**
-     * @return string
+     * @api
+     *
+     * @return int
      */
     public function getExportQueryLimit()
     {
@@ -46,6 +72,8 @@ class FactFinderSdkConfig extends AbstractBundleConfig implements FactFinderSdkC
     }
 
     /**
+     * @api
+     *
      * @return string
      */
     public function getExportFileNamePrefix()
@@ -54,6 +82,8 @@ class FactFinderSdkConfig extends AbstractBundleConfig implements FactFinderSdkC
     }
 
     /**
+     * @api
+     *
      * @return string
      */
     public function getExportFileNameDelimiter()
@@ -62,6 +92,8 @@ class FactFinderSdkConfig extends AbstractBundleConfig implements FactFinderSdkC
     }
 
     /**
+     * @api
+     *
      * @return string
      */
     public function getExportFileExtension()
@@ -70,14 +102,18 @@ class FactFinderSdkConfig extends AbstractBundleConfig implements FactFinderSdkC
     }
 
     /**
+     * @api
+     *
      * @return string
      */
     public function getYvesHost()
     {
-        return $this->get(ApplicationConstants::HOST_YVES);
+        return $this->get(static::HOST_YVES);
     }
 
     /**
+     * @api
+     *
      * @return array
      */
     public function getItemFields()
@@ -86,6 +122,8 @@ class FactFinderSdkConfig extends AbstractBundleConfig implements FactFinderSdkC
     }
 
     /**
+     * @api
+     *
      * @return int
      */
     public function getCategoriesMaxCount()

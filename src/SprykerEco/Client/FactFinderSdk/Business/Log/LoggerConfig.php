@@ -7,7 +7,7 @@
 
 namespace SprykerEco\Client\FactFinderSdk\Business\Log;
 
-use SprykerEco\Shared\Log\Config\LoggerConfigInterface;
+use Spryker\Shared\Log\Config\LoggerConfigInterface;
 
 class LoggerConfig implements LoggerConfigInterface
 {
@@ -16,7 +16,7 @@ class LoggerConfig implements LoggerConfigInterface
      */
     public function getChannelName()
     {
-        return "FactFinderLogger";
+        return 'FactFinderLogger';
     }
 
     /**

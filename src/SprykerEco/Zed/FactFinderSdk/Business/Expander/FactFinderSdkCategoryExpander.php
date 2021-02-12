@@ -4,6 +4,7 @@
  * MIT License
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
+
 namespace SprykerEco\Zed\FactFinderSdk\Business\Expander;
 
 use Generated\Shared\Transfer\CurrencyTransfer;
@@ -67,7 +68,7 @@ class FactFinderSdkCategoryExpander extends FactFinderSdkAbstractExpander
             ->getCategoriesQuery($localeTransfer, $idProductAbstract);
         $categories = $query->find();
 
-        if (!$categories) {
+        if (!count($categories)) {
             return $pathArray;
         }
 
@@ -83,7 +84,7 @@ class FactFinderSdkCategoryExpander extends FactFinderSdkAbstractExpander
      * @param \Orm\Zed\Category\Persistence\SpyCategory $category
      * @param array $path
      *
-     * @return string
+     * @return string[]
      */
     protected function getCategoryPath(LocaleTransfer $localeTransfer, $category, $path = [])
     {

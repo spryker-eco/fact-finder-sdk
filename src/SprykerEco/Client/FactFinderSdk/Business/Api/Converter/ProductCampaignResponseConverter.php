@@ -52,9 +52,11 @@ class ProductCampaignResponseConverter extends BaseConverter implements Converte
     public function convert()
     {
         $responseTransfer = new FactFinderSdkProductCampaignResponseTransfer();
+        /** @var \FACTFinder\Data\CampaignIterator $campaigns */
+        $campaigns = $this->productCampaignAdapter->getCampaigns();
 
         $responseTransfer->setCampaignIterator(
-            $this->convertCampaigns($this->productCampaignAdapter->getCampaigns())
+            $this->convertCampaigns($campaigns)
         );
 
         return $responseTransfer;

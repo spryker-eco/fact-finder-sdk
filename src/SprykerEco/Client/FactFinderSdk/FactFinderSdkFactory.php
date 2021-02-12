@@ -106,12 +106,4 @@ class FactFinderSdkFactory extends AbstractFactory
     {
         return new ConverterFactory($this->getConfig());
     }
-
-    /**
-     * @return \Spryker\Client\Session\SessionClientInterface
-     */
-    public function getSession()
-    {
-        return $this->getProvidedDependency(FactFinderSdkDependencyProvider::CLIENT_SESSION);
-    }
 }

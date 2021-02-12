@@ -87,7 +87,9 @@ interface FactFinderConnectorInterface
      *
      * @return \FACTFinder\Util\Parameters
      */
-    public function createRequestParametersFromProductCampaignRequestTransfer(FactFinderSdkProductCampaignRequestTransfer $factFinderProductCampaignRequestTransfer);
+    public function createRequestParametersFromProductCampaignRequestTransfer(
+        FactFinderSdkProductCampaignRequestTransfer $factFinderProductCampaignRequestTransfer
+    );
 
     /**
      * @return \FACTFinder\Util\Parameters
@@ -117,12 +119,12 @@ interface FactFinderConnectorInterface
     public function getSessionId();
 
     /**
-     * @return \FACTFinder\Data\SearchStatus
+     * @return string
      */
     public function getSearchStatusEnum();
 
     /**
-     * @return \FACTFinder\Data\ArticleNumberSearchStatus
+     * @return string
      */
     public function getArticleNumberSearchStatusEnum();
 }

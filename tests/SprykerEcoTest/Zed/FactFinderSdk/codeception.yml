@@ -1,0 +1,20 @@
+namespace: SprykerEcoTest\Zed\FactFinderSdk
+
+paths:
+    tests: .
+    data: ../../../_data
+    support: _support
+    log: ../../../_output
+
+coverage:
+    enabled: true
+    remote: false
+    whitelist: { include: ['../../../../src/*'] }
+
+suites:
+    Business:
+        path: .
+        actor: FactFinderSdkZedTester
+        modules:
+            enabled:
+                - \SprykerTest\Shared\Propel\Helper\TransactionHelper

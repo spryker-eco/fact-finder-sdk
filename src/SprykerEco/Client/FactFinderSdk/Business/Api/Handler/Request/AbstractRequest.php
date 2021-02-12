@@ -35,7 +35,6 @@ abstract class AbstractRequest
         FactFinderConnectorInterface $factFinderConnector,
         ConverterFactory $converterFactory
     ) {
-
         $this->factFinderConnector = $factFinderConnector;
         $this->converterFactory = $converterFactory;
     }

@@ -20,6 +20,8 @@ use Spryker\Client\Kernel\AbstractClient;
 class FactFinderSdkClient extends AbstractClient implements FactFinderSdkClientInterface
 {
     /**
+     * {@inheritDoc}
+     *
      * @api
      *
      * @param \Generated\Shared\Transfer\FactFinderSdkSearchRequestTransfer $factFinderSearchRequestTransfer
@@ -37,6 +39,8 @@ class FactFinderSdkClient extends AbstractClient implements FactFinderSdkClientI
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @api
      *
      * @param \Generated\Shared\Transfer\FactFinderSdkTrackingRequestTransfer $factFinderTrackingRequestTransfer
@@ -53,6 +57,8 @@ class FactFinderSdkClient extends AbstractClient implements FactFinderSdkClientI
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @api
      *
      * @param \Generated\Shared\Transfer\FactFinderSdkSuggestRequestTransfer $factFinderSuggestRequestTransfer
@@ -70,6 +76,8 @@ class FactFinderSdkClient extends AbstractClient implements FactFinderSdkClientI
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @api
      *
      * @param \Generated\Shared\Transfer\FactFinderSdkRecommendationRequestTransfer $factFinderRecommendationRequestTransfer
@@ -87,6 +95,8 @@ class FactFinderSdkClient extends AbstractClient implements FactFinderSdkClientI
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @api
      *
      * @param \Generated\Shared\Transfer\FactFinderSdkProductCampaignRequestTransfer $factFinderSdkProductCampaignRequestTransfer
@@ -104,6 +114,8 @@ class FactFinderSdkClient extends AbstractClient implements FactFinderSdkClientI
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @api
      *
      * @param \Generated\Shared\Transfer\FactFinderSdkProductCampaignRequestTransfer $factFinderSdkProductCampaignRequestTransfer

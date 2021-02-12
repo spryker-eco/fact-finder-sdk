@@ -1,17 +1,23 @@
-namespace: FactFinder
-actor: Tester
+namespace: FactFinderSdk
+
+include:
+    - tests/SprykerEcoTest/Client/FactFinderSdk
+    - tests/SprykerEcoTest/Zed/FactFinderSdk
+
 paths:
     tests: tests
+    support: .
     log: tests/_output
     data: tests/_data
-    support: tests/_support
     envs: tests/_envs
+
 settings:
     bootstrap: _bootstrap.php
     suite_class: \PHPUnit_Framework_TestSuite
     colors: true
     memory_limit: 1024M
     log: true
+
 coverage:
     enabled: true
     whitelist: { include: ['src/*'] }
